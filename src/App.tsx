@@ -22,10 +22,34 @@ export const App: React.FC = () => {
       link: 'http://google.com',
       color: 'gray',
     },
+    {
+      title: 'Library',
+      logo: 'book_2',
+      link: 'http://google.com',
+      color: 'orange',
+    },
+    {
+      title: 'Print Services',
+      logo: 'print',
+      link: 'http://google.com',
+      color: 'gray',
+    },
+    {
+      title: 'onTRAC II',
+      logo: 'work',
+      link: 'http://google.com',
+      color: 'green',
+    },
+    {
+      title: 'Facility Bookings',
+      logo: 'bed',
+      link: 'http://google.com',
+      color: 'orange',
+    },
   ];
+
   return (
     <div className="App">
-
       <header className="Header">
         <h1>SMU Shortcuts</h1>
       </header>

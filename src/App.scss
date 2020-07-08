@@ -1,19 +1,10 @@
 .App {
-  padding-left: 32px;
-  padding-right: 32px;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 .Header {
-  // background-color: #282c34;
-  // min-height: 100vh;
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
-  // justify-content: center;
-  // font-size: calc(10px + 2vmin);
-  // color: white;
   font-size: 1.5em;
-
 }
 
 body {
@@ -28,4 +19,19 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+// Mobile Friendly
+@media (max-width: 700px) {
+  .App {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+@media (max-width: 800px) {
+  .App {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
 }

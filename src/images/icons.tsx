@@ -31,7 +31,7 @@ export const Umbrella: React.FC<IconProps> = ({ fill, width, height }: IconProps
 export const Wallet: React.FC<IconProps> = ({ fill, width, height }: IconProps) => {
   return (
     <svg viewBox="0 0 24 24" fill={fill} width={width} height={height}>
-     <path d="M0 0h24v24H0V0z" fill="none" />
+      <path d="M0 0h24v24H0V0z" fill="none" />
       <path d="M10 16V8a2 2 0 012-2h9V5c0-1.1-.9-2-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h14c1.1 0 2-.9 2-2v-1h-9a2 2 0 01-2-2zm3-8c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h9V8h-9zm3 5.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
     </svg>
   );
@@ -43,7 +43,56 @@ export const Book_2: React.FC<IconProps> = ({ fill, width, height }: IconProps) 
       <path d="M0 0h24v24H0V0z" fill="none" />
       <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z" />
     </svg>
-  )
+  );
+};
+
+export const Print: React.FC<IconProps> = ({ fill, width, height }: IconProps) => {
+  return (
+    <svg viewBox="0 0 24 24" fill={fill} width={width} height={height}>
+      <path d="M0 0h24v24H0V0z" fill="none" />
+      <path d="M19 8H5c-1.66 0-3 1.34-3 3v4c0 1.1.9 2 2 2h2v2c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2v-2h2c1.1 0 2-.9 2-2v-4c0-1.66-1.34-3-3-3zm-4 11H9c-.55 0-1-.45-1-1v-4h8v4c0 .55-.45 1-1 1zm4-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-2-9H7c-.55 0-1 .45-1 1v2c0 .55.45 1 1 1h10c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1z" />
+    </svg>
+  );
+};
+
+export const Work: React.FC<IconProps> = ({ fill, width, height }: IconProps) => {
+  return (
+    <svg viewBox="0 0 24 24" fill={fill} width={width} height={height}>
+      <path d="M0 0h24v24H0V0z" fill="none" />
+      <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" />
+    </svg>
+  );
+};
+
+export const Bed: React.FC<IconProps> = ({ fill, width, height }: IconProps) => {
+  return (
+    <svg viewBox="0 0 24 24" fill={fill} width={width} height={height}>
+      <g fill="none">
+        <path d="M0 0h24v24H0z" />
+        <path d="M0 0h24v24H0z" />
+      </g>
+      <path fill="none" d="M6 7h5v3H6zM13 7h5v3h-5z" />
+      <path d="M20 10V7c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2v3c-1.1 0-2 .9-2 2v5h1.33l.51 1.53c.1.28.36.47.66.47a.7.7 0 00.66-.47L5.67 17h12.67l.51 1.53c.09.28.35.47.65.47a.7.7 0 00.66-.47l.51-1.53H22v-5c0-1.1-.9-2-2-2zm-9 0H6V8c0-.55.45-1 1-1h4v3zm7 0h-5V7h4c.55 0 1 .45 1 1v2z" />
+    </svg>
+  );
+};
+
+export const Guide: React.FC<IconProps> = ({ fill, width, height }: IconProps) => {
+  return (
+    <svg viewBox="0 0 24 24" fill={fill} width={width} height={height}>
+      <path d="M0 0h24v24H0V0z" fill="none" />
+      <path d="M11.5 2C6.81 2 3 5.81 3 10.5S6.81 19 11.5 19h.5v3c4.86-2.34 8-7 8-11.5C20 5.81 16.19 2 11.5 2zm1 14.5h-2v-2h2v2zm.4-4.78c-.01.01-.02.03-.03.05-.05.08-.1.16-.14.24-.02.03-.03.07-.04.11-.03.07-.06.14-.08.21-.07.21-.1.43-.1.68H10.5c0-.51.08-.94.2-1.3 0-.01 0-.02.01-.03.01-.04.04-.06.05-.1.06-.16.13-.3.22-.44.03-.05.07-.1.1-.15.03-.04.05-.09.08-.12l.01.01c.84-1.1 2.21-1.44 2.32-2.68.09-.98-.61-1.93-1.57-2.13-1.04-.22-1.98.39-2.3 1.28-.14.36-.47.65-.88.65h-.2c-.6 0-1.04-.59-.87-1.17a4.002 4.002 0 014.43-2.79c1.69.25 3.04 1.64 3.33 3.33.44 2.44-1.63 3.03-2.53 4.35z" />
+    </svg>
+  );
+};
+
+export const Chat: React.FC<IconProps> = ({ fill, width, height }: IconProps) => {
+  return (
+    <svg viewBox="0 0 24 24" fill={fill} width={width} height={height}>
+      <path d="M0 0h24v24H0V0z" fill="none" />
+      <path d="M20 6h-1v8c0 .55-.45 1-1 1H6v1c0 1.1.9 2 2 2h10l4 4V8c0-1.1-.9-2-2-2zm-3 5V4c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v13l4-4h9c1.1 0 2-.9 2-2z" />
+    </svg>
+  );
 };
 
 Book.defaultProps = {
