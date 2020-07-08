@@ -1,0 +1,26 @@
+.card {
+  // padding-left: 16px;
+  // padding-right: 16px;
+  border-radius: 16px;
+  width: 230px;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.imageView {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+}
+
+.label {
+  height: auto;
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+}
