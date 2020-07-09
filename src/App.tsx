@@ -7,11 +7,11 @@ export const App: React.FC = () => {
 
   return (
     <div className="App">
-      <header className="Header">
+      <header className="header">
         <h1>SMU Shortcuts</h1>
       </header>
 
-      <main className="SchoolNav">
+      <main className="schoolNav">
         <CardList data={school_links} title={'School Links'} />
       </main>
     </div>

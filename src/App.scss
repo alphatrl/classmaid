@@ -1,10 +1,15 @@
 .App {
   padding-left: 10%;
   padding-right: 10%;
+  background-color: white;
 }
 
-.Header {
+.Hhader {
   font-size: 1.5em;
+}
+
+.schoolNav {
+  padding-top: 32px;
 }
 
 body {
@@ -16,22 +21,25 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 // Mobile Friendly
-@media (max-width: 700px) {
-  .App {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-}
 
 @media (max-width: 800px) {
   .App {
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+// @media (max-width: 720px) {
+//   .App {
+//     padding-left: 16px;
+//     padding-right: 16px;
+//   }
+// }
+
+@media (max-width: 350px) {
+  .App {
+    padding-left: 8px;
+    padding-right: 8px;
   }
 }

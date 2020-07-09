@@ -6,7 +6,6 @@
   text-transform: uppercase;
   font-weight: bold;
   font-size: 18px;
-  
   padding-bottom: 12px;
 }
 
@@ -32,8 +31,28 @@
   }
 }
 
-@media (max-width: 845px) {
+// @media (max-width: 750px) {
+//   .list {
+//     grid-template-columns: repeat(3, 1fr);
+
+//   }
+// }
+
+@media (max-width: 720px) {
   .list {
-    grid-template-columns: repeat(2, 1fr);
+    // display: flex;
+    // flex-direction: row;
+    // flex-wrap: wrap;
+    // justify-content: space-between;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 450px) {
+  .list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 }

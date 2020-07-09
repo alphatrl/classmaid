@@ -22,8 +22,68 @@
 }
 
 .label {
-  height: auto;
   font-size: 24px;
   font-weight: 600;
   color: white;
+}
+
+/* Mobile Friendly */
+
+@media (max-width: 720px) {
+  .card {
+    border-radius: 12px;
+    width: 150px;
+  }
+
+  .imageView {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+  }
+
+  .label {
+    font-size: 20px;
+  }
+}
+
+
+@media (max-width: 375px) {
+  .card {
+    border-radius: 12px;
+    width: 150px;
+  }
+
+  .imageView {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+  }
+
+  .label {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 350px) {
+  .card {
+    border-radius: 12px;
+    width: 140px;
+    height: 100px;
+  }
+
+  .imageView {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+  }
+
+  .label {
+    font-size: 20px;
+  }
 }

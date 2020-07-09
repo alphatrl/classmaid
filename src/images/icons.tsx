@@ -109,3 +109,57 @@ Book.defaultProps = {
   height: 'auto',
   width: 'auto',
 };
+
+Umbrella.defaultProps = {
+  fill: 'black',
+  height: 'auto',
+  width: 'auto',
+};
+
+Wallet.defaultProps = {
+  fill: 'black',
+  height: 'auto',
+  width: 'auto',
+};
+
+Book_2.defaultProps = {
+  fill: 'black',
+  height: 'auto',
+  width: 'auto',
+};
+
+Print.defaultProps = {
+  fill: 'black',
+  height: 'auto',
+  width: 'auto',
+};
+
+Work.defaultProps = {
+  fill: 'black',
+  height: 'auto',
+  width: 'auto',
+};
+
+Bed.defaultProps = {
+  fill: 'black',
+  height: 'auto',
+  width: 'auto',
+};
+
+Guide.defaultProps = {
+  fill: 'black',
+  height: 'auto',
+  width: 'auto',
+};
+
+Chat.defaultProps = {
+  fill: 'black',
+  height: 'auto',
+  width: 'auto',
+};
+
+Missing.defaultProps = {
+  fill: 'black',
+  height: 'auto',
+  width: 'auto',
+};
