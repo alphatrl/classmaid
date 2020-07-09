@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Icon from '../images/icons';
 
-export const getIcon = (name?: string) => {
+export const getIcon = (name?: string): JSX.Element => {
   switch (name) {
     case 'book':
       return <Icon.Book fill="white" width="65%" />;
@@ -31,6 +31,6 @@ export const getIcon = (name?: string) => {
       return <Icon.Chat fill="white" width="65%" />;
 
     default:
-      return null;
+      return <Icon.Missing fill="white" width="65%" />;
   }
 };

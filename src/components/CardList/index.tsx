@@ -1,9 +1,11 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
 import { Card } from '../Card';
+import { getButtonColor } from '../../constants/colors';
+
 import './styles.scss';
 
 interface CardListProps {
+  title?: string;
   data: {
     title: string;
     logo: string;
@@ -12,46 +14,28 @@ interface CardListProps {
   }[];
 }
 
-export const CardList: React.FC<CardListProps> = ({ data }: CardListProps) => {
-  // const [data, setData] = useState(null);
+export const CardList: React.FC<CardListProps> = ({ title, data }: CardListProps) => {
+  const header = !title ? undefined : <div className="header">{title}</div>;
 
   return (
     <div className="cardList">
-      {data.map((entry, index) => {
-        return (
-          <div key={index} className="card">
-            <Card
-              title={entry.title}
-              logo={entry.logo}
-              link={entry.link}
-              color={entry.color}
-            />
-          </div>
-        );
-      })}
+      {header}
+
+      <div className="list">
+        {data.map((entry, index) => {
+          return (
+            <div key={index} className="card">
+              <Card
+                title={entry.title}
+                logo={entry.logo}
+                link={entry.link}
+                color={getButtonColor(entry.color)}
+              />
+            </div>
+          );
+        })}
+      </div>
+      {/* <div className="empty" /> */}
     </div>
   );
-};
-
-CardList.defaultProps = {
-  data: [
-    {
-      title: 'eLearn',
-      logo: 'book',
-      link: 'google.com',
-      color: 'red',
-    },
-    // {
-    //   title: 'Oasis',
-    //   logo: 'umbrella',
-    //   link: 'google.com',
-    //   color: 'blue',
-    // },
-    // {
-    //   title: 'BOSS',
-    //   logo: 'wallet',
-    //   link: 'google.com',
-    //   color: 'blue-green',
-    // },
-  ],
 };

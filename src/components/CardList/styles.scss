@@ -1,9 +1,17 @@
 .cardList {
-  display: grid;
-  // flex-direction: row;
-  // flex-wrap: wrap;
-  // justify-content: space-between;
   width: 100%;
+}
+
+.header {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 18px;
+  
+  padding-bottom: 12px;
+}
+
+.list {
+  display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
 
@@ -19,13 +27,13 @@
 
 // mobile responsiveness
 @media (max-width: 1150px) {
-  .cardList {
+  .list {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 845px) {
-  .cardList {
+  .list {
     grid-template-columns: repeat(2, 1fr);
   }
 }

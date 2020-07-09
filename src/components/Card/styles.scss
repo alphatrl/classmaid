@@ -1,6 +1,4 @@
 .card {
-  // padding-left: 16px;
-  // padding-right: 16px;
   border-radius: 16px;
   width: 230px;
   text-decoration: none;
@@ -8,6 +6,11 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+}
+
+.cardLink {
+  border-radius: 16px;
+  text-decoration: none;
 }
 
 .imageView {

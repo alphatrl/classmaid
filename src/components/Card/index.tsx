@@ -1,5 +1,5 @@
 import React from 'react';
-import { getIcon } from '../../helpers/getIcon';
+import { getIcon } from '../../constants/getIcon';
 import './styles.scss';
 
 interface CardProps {
@@ -11,16 +11,18 @@ interface CardProps {
 
 export const Card: React.FC<CardProps> = ({ title, logo, link, color }: CardProps) => {
   return (
-    <a href={link} className="card" style={{ backgroundColor: color }}>
-      <div className="imageView">{getIcon(logo)}</div>
-      <div className="label">{title}</div>
+    <a href={link} className="cardLink">
+      <div className="card" style={{ backgroundColor: color }}>
+        <div className="imageView">{getIcon(logo)}</div>
+        <div className="label">{title}</div>
+      </div>
     </a>
   );
 };
 
 Card.defaultProps = {
   title: '',
-  logo: 'book',
+  logo: '',
   link: 'smu.edu.sg',
   color: 'red',
 };
