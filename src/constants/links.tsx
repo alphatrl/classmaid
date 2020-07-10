@@ -42,3 +42,18 @@ export const school_links = [
     color: 'purple',
   },
 ];
+
+export const community_links = [
+  {
+    title: 'Guides',
+    logo: 'guide',
+    link: '/',
+    color: 'green',
+  },
+  {
+    title: 'Community',
+    logo: 'chat',
+    link: '/',
+    color: 'turquoise',
+  },
+];

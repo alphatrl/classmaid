@@ -9,39 +9,53 @@
   padding-bottom: 12px;
 }
 
-.list {
+.cardListView {
   display: grid;
-  // grid-template-columns: repeat(4, 1fr);
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-
+  grid-template-columns: repeat(7, 1fr);
+  // grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
 }
 
 .cardView {
   // padding-left: 16px;
   // padding-right: 16px;
-  margin-bottom: 16px;;
+  margin-bottom: 16px;
+  // flex: 0 1 calc(10% );
 }
 
 .empty {
   flex: 1,
 }
 
-// mobile responsiveness
-// @media (max-width: 1150px) {
-//   .list {
-//     grid-template-columns: repeat(3, 1fr);
-    
-//   }
-// }
 
-@media (max-width: 750px) {
-  .list {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+/* Hardcoding solution */
+
+@media (max-width: 2000px) {
+  .cardListView {
+    grid-template-columns: repeat(6, 1fr);
   }
 }
 
-@media (max-width: 450px) {
-  .list {
+@media (max-width: 1800px) {
+  .cardListView {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 1400px) {
+  .cardListView {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 1200px) {
+  .cardListView {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .cardListView {
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -49,9 +63,3 @@
     width: 100%;
   }
 }
-
-// @media (min-width: 1500px) {
-//   .list {
-//     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-// }
-// }

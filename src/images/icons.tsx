@@ -106,60 +106,60 @@ export const Missing: React.FC<IconProps> = ({ fill, width, height }: IconProps)
 
 Book.defaultProps = {
   fill: 'black',
-  height: 'auto',
-  width: 'auto',
+  height: '24',
+  width: '24',
 };
 
 Umbrella.defaultProps = {
   fill: 'black',
-  height: 'auto',
-  width: 'auto',
+  height: '24',
+  width: '24',
 };
 
 Wallet.defaultProps = {
   fill: 'black',
-  height: 'auto',
-  width: 'auto',
+  height: '24',
+  width: '24',
 };
 
 Book_2.defaultProps = {
   fill: 'black',
-  height: 'auto',
-  width: 'auto',
+  height: '24',
+  width: '24',
 };
 
 Print.defaultProps = {
   fill: 'black',
-  height: 'auto',
-  width: 'auto',
+  height: '24',
+  width: '24',
 };
 
 Work.defaultProps = {
   fill: 'black',
-  height: 'auto',
-  width: 'auto',
+  height: '24',
+  width: '24',
 };
 
 Bed.defaultProps = {
   fill: 'black',
-  height: 'auto',
-  width: 'auto',
+  height: '24',
+  width: '24',
 };
 
 Guide.defaultProps = {
   fill: 'black',
-  height: 'auto',
-  width: 'auto',
+  height: '24',
+  width: '24',
 };
 
 Chat.defaultProps = {
   fill: 'black',
-  height: 'auto',
-  width: 'auto',
+  height: '24',
+  width: '24',
 };
 
 Missing.defaultProps = {
   fill: 'black',
-  height: 'auto',
-  width: 'auto',
+  height: '24',
+  width: '24',
 };
