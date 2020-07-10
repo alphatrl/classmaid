@@ -11,10 +11,12 @@
 
 .list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  // grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+
 }
 
-.card {
+.cardView {
   // padding-left: 16px;
   // padding-right: 16px;
   margin-bottom: 16px;;
@@ -25,34 +27,31 @@
 }
 
 // mobile responsiveness
-@media (max-width: 1150px) {
-  .list {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-// @media (max-width: 750px) {
+// @media (max-width: 1150px) {
 //   .list {
 //     grid-template-columns: repeat(3, 1fr);
-
+    
 //   }
 // }
 
-@media (max-width: 720px) {
+@media (max-width: 750px) {
   .list {
-    // display: flex;
-    // flex-direction: row;
-    // flex-wrap: wrap;
-    // justify-content: space-between;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
 }
 
 @media (max-width: 450px) {
   .list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cardView {
+    width: 100%;
   }
 }
+
+// @media (min-width: 1500px) {
+//   .list {
+//     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+// }
+// }

@@ -24,7 +24,7 @@ export const CardList: React.FC<CardListProps> = ({ title, data }: CardListProps
       <div className="list">
         {data.map((entry, index) => {
           return (
-            <div key={index} className="card">
+            <div key={index} className="cardView">
               <Card
                 title={entry.title}
                 logo={entry.logo}
