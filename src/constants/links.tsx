@@ -47,13 +47,13 @@ export const community_links = [
   {
     title: 'Guides',
     logo: 'guide',
-    link: '/',
+    link: '/guides',
     color: 'green',
   },
   {
     title: 'Community',
     logo: 'chat',
-    link: '/',
+    link: '/community',
     color: 'turquoise',
   },
 ];

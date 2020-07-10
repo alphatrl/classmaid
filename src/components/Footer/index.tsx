@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.scss';
 
-export const Footer = ():JSX.Element => {
+const Footer: React.FC = (): JSX.Element => {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -11,10 +11,12 @@ export const Footer = ():JSX.Element => {
         <a href="/" className="link">
           Links
         </a>
-        <a href="/" className="link">
+        <a href="/about" className="link">
           About
         </a>
       </div>
     </footer>
   );
 };
+
+export default Footer;

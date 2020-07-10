@@ -9,7 +9,7 @@ interface CardProps {
   color?: string;
 }
 
-export const Card: React.FC<CardProps> = ({ title, logo, link, color }: CardProps) => {
+const Card: React.FC<CardProps> = ({ title, logo, link, color }: CardProps) => {
   return (
     <a href={link} className="cardLink">
       <div className="card" style={{ backgroundColor: color }}>
@@ -26,3 +26,5 @@ Card.defaultProps = {
   link: 'smu.edu.sg',
   color: 'red',
 };
+
+export default Card;

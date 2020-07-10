@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from '../Card';
+import { Card } from '../';
 import { getButtonColor } from '../../constants/colors';
 
 import './styles.scss';
@@ -14,7 +14,7 @@ interface CardListProps {
   }[];
 }
 
-export const CardList: React.FC<CardListProps> = ({ title, data }: CardListProps) => {
+const CardList: React.FC<CardListProps> = ({ title, data }: CardListProps) => {
   const header = !title ? undefined : <div className="header">{title}</div>;
 
   return (
@@ -35,7 +35,8 @@ export const CardList: React.FC<CardListProps> = ({ title, data }: CardListProps
           );
         })}
       </div>
-      {/* <div className="empty" /> */}
     </div>
   );
 };
+
+export default CardList;

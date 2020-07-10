@@ -1,24 +1,30 @@
 import React from 'react';
 import './App.scss';
 import 'normalize.css';
-import { CardList } from './components/CardList';
-import { Footer } from './components/Footer';
-import { school_links, community_links } from './constants/links';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Home, Guides, Community, About } from './screens';
+import { Footer } from './components/';
 
 export const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="header">
-        <h1>SMU Shortcuts</h1>
-      </header>
-
-      <main className="mainView">
-        <CardList data={school_links} title={'School Links'} />
-        <div className="padding" />
-        <CardList data={community_links} title={'Community Links'} />
-      </main>
-
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/guides">
+            <Guides />
+          </Route>
+          <Route exact path="/community">
+            <Community />
+          </Route>
+          <Route exact path="/about">
+            <About />
+          </Route>
+        </Switch>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
