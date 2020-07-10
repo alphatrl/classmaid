@@ -1,15 +1,15 @@
 .App {
-  padding-left: 10%;
-  padding-right: 10%;
   background-color: white;
+  width: 80%;
+  margin: 0 auto;
 }
 
-.Hhader {
-  font-size: 1.5em;
+.header h1{
+  font-size: 2.5em;
 }
 
 .schoolNav {
-  padding-top: 32px;
+  padding-top: 16px;
 }
 
 body {
@@ -25,21 +25,12 @@ body {
 
 @media (max-width: 800px) {
   .App {
-    padding-left: 32px;
-    padding-right: 32px;
+    width: 90%
   }
 }
 
-// @media (max-width: 720px) {
-//   .App {
-//     padding-left: 16px;
-//     padding-right: 16px;
-//   }
-// }
-
 @media (max-width: 350px) {
   .App {
-    padding-left: 8px;
-    padding-right: 8px;
+    width: 90%
   }
 }
