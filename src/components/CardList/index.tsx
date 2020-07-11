@@ -15,7 +15,7 @@ interface CardListProps {
 }
 
 const CardList: React.FC<CardListProps> = ({ title, data }: CardListProps) => {
-  const header = !title ? undefined : <div className="header">{title}</div>;
+  const header = !title ? undefined : <div className="cardListHeader">{title}</div>;
 
   return (
     <div className="cardList">

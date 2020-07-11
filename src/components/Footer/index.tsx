@@ -9,7 +9,7 @@ const Footer: React.FC = (): JSX.Element => {
       <div className="copyrights">&copy; {currentYear} SMU Shortcuts</div>
       <div className="linkView">
         <a href="/" className="link">
-          Links
+          Home
         </a>
         <a href="/about" className="link">
           About

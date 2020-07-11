@@ -2,7 +2,7 @@ import React from 'react';
 import './styles.scss';
 import 'normalize.css';
 import { CardList } from '../../components/';
-import { school_links, community_links } from '../../constants/links';
+import { home_links as links } from '../../constants/links';
 
 export const Home: React.FC = () => {
   return (
@@ -12,10 +12,11 @@ export const Home: React.FC = () => {
       </header>
 
       <main className="mainView">
-        <CardList data={school_links} title={'School Links'} />
-        <div className="padding" />
-        <CardList data={community_links} title={'Community Links'} />
+        <CardList data={links.school} title={'School Links'} />
+        <div className="paddingCard" />
+        <CardList data={links.community} title={'Community Links'} />
       </main>
+      {/* <Footer /> */}
     </div>
   );
 }

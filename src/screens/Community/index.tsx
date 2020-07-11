@@ -1,16 +1,23 @@
 import React from 'react';
 import './styles.scss';
 import 'normalize.css';
-// import { CardList } from '../../components/';
+import { community_links as links } from '../../constants/links';
+import { List } from '../../components/';
 
 export const Community: React.FC = () => {
   return (
     <div>
       <header className="header">
-        <h1>Communnity</h1>
+        <h1>Community</h1>
       </header>
 
-      <main className="mainView">Community</main>
+      <main className="mainView">
+        <List title="Telegram" data={links.telegram} />
+        <div className="paddingList" />
+        <List title="Instagram" data={links.instagram} />
+        <div className="paddingList" />
+        <List title="Websites" data={links.websites} />
+      </main>
     </div>
   );
 }
