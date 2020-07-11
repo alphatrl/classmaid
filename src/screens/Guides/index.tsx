@@ -8,7 +8,7 @@ export const Community: React.FC = () => {
   return (
     <div>
       <header className="header">
-        <h1>Community</h1>
+        <h1>Guides</h1>
       </header>
 
       <main className="mainView">
