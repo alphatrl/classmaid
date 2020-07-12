@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from '../';
-import { getButtonColor } from '../../constants/colors';
+// import { getButtonColor } from '../../constants/colors';
 
 import './styles.scss';
 
@@ -32,7 +32,7 @@ const CardList: React.FC<CardListProps> = ({ title, data }: CardListProps) => {
                 title={entry.title}
                 logo={entry.logo}
                 link={entry.link}
-                color={getButtonColor(entry.color)}
+                color={entry.color}
                 newTab={entry.newTab}
               />
             </div>

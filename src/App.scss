@@ -1,5 +1,4 @@
 .App {
-  background-color: white;
   width: 80%;
   margin: 0 auto;
 }
@@ -30,6 +29,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  background-color: white;
+}
+
 // Mobile Friendly
 
 @media (min-width: 1500px) {
@@ -48,4 +51,19 @@ body {
   .App {
     width: 90%
   }
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    background-color: #2F2F2F;
+  }
+
+  .header h1{
+    color: white;
+  }
+
+  body {
+    color: white;
+  }
+
 }

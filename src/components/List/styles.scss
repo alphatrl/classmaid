@@ -26,3 +26,13 @@
 .listChild a:hover {
   color: #EF5AD8;
 }
+
+@media (prefers-color-scheme: dark) {
+  .listChild {
+    color: #46D3F0;
+  }
+
+  .listChild a:hover {
+    color: #DD60CA;
+  }
+}

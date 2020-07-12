@@ -1,6 +1,7 @@
 import React from 'react';
 import { getIcon } from '../../constants/getIcon';
 import './styles.scss';
+import '../../constants/colors.scss';
 
 interface CardProps {
   title?: string;
@@ -12,10 +13,11 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ title, logo, link, color, newTab }: CardProps) => {
   const isNewTab = newTab ? '_blank' : '_self';
+  const className = 'card ' + color;
 
   return (
     <a href={link} className="cardLink" target={isNewTab}>
-      <div className="card" style={{ backgroundColor: color }}>
+      <div className={className}>
         <div className="imageView">{getIcon(logo)}</div>
         <div className="label">{title}</div>
       </div>
