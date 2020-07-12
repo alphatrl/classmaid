@@ -14,7 +14,7 @@ export const Home: React.FC = () => {
       <main className="mainView">
         <CardList data={links.school} title={'School Links'} />
         <div className="paddingCard" />
-        <CardList data={links.community} title={'Community Links'} />
+        <CardList data={links.community} title={'More Resources'} />
       </main>
       {/* <Footer /> */}
     </div>

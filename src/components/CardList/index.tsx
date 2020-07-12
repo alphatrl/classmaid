@@ -3,6 +3,7 @@ import { Card } from '../';
 import { getButtonColor } from '../../constants/colors';
 
 import './styles.scss';
+import { networkInterfaces } from 'os';
 
 interface CardListProps {
   title?: string;
@@ -11,11 +12,14 @@ interface CardListProps {
     logo: string;
     link: string;
     color: string;
+    newTab: boolean;
   }[];
 }
 
 const CardList: React.FC<CardListProps> = ({ title, data }: CardListProps) => {
-  const header = !title ? undefined : <div className="cardListHeader">{title}</div>;
+  const header = !title ? undefined : (
+    <div className="cardListHeader">{title}</div>
+  );
 
   return (
     <div className="cardList">
@@ -30,6 +34,7 @@ const CardList: React.FC<CardListProps> = ({ title, data }: CardListProps) => {
                 logo={entry.logo}
                 link={entry.link}
                 color={getButtonColor(entry.color)}
+                newTab={entry.newTab}
               />
             </div>
           );

@@ -7,11 +7,14 @@ interface CardProps {
   logo?: string;
   link?: string;
   color?: string;
+  newTab?: boolean;
 }
 
-const Card: React.FC<CardProps> = ({ title, logo, link, color }: CardProps) => {
+const Card: React.FC<CardProps> = ({ title, logo, link, color, newTab }: CardProps) => {
+  const isNewTab = newTab ? '_blank' : '_self';
+
   return (
-    <a href={link} className="cardLink">
+    <a href={link} className="cardLink" target={isNewTab}>
       <div className="card" style={{ backgroundColor: color }}>
         <div className="imageView">{getIcon(logo)}</div>
         <div className="label">{title}</div>
@@ -25,6 +28,7 @@ Card.defaultProps = {
   logo: '',
   link: 'smu.edu.sg',
   color: 'red',
+  newTab: false,
 };
 
 export default Card;
