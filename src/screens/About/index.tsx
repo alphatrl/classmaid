@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './styles.scss';
 import 'normalize.css';
 // import { CardList } from '../../components/';
 
 export const About: React.FC = () => {
+  useEffect(() => {
+    document.title = 'SMU Shortcuts | About';
+  }, []);
+
   return (
     <div>
       <header className="header">
@@ -36,6 +40,6 @@ export const About: React.FC = () => {
       </main>
     </div>
   );
-}
+};
 
 export default About;

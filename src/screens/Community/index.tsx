@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './styles.scss';
 import 'normalize.css';
 import { community_links as links } from '../../constants/links';
 import { List } from '../../components/';
 
 export const Community: React.FC = () => {
+  useEffect(() => {
+    document.title = 'SMU Shortcuts | Community';
+  }, []);
+
   return (
     <div>
       <header className="header">
@@ -20,6 +24,6 @@ export const Community: React.FC = () => {
       </main>
     </div>
   );
-}
+};
 
 export default Community;
