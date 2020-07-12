@@ -7,7 +7,14 @@ export const About: React.FC = () => {
   return (
     <div>
       <header className="header">
-        <h1>About</h1>
+        <h1>
+          About
+          <img
+            src="logo192.png"
+            className="shortcutsLogo"
+            alt="shortcut-logo"
+          />
+        </h1>
       </header>
 
       <main className="mainView">

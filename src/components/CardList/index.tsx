@@ -3,7 +3,6 @@ import { Card } from '../';
 import { getButtonColor } from '../../constants/colors';
 
 import './styles.scss';
-import { networkInterfaces } from 'os';
 
 interface CardListProps {
   title?: string;
