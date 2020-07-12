@@ -24,3 +24,9 @@
 .contribute a:hover {
   color: #EF5AD8;
 }
+
+@media (prefers-color-scheme: dark) {
+  .contribute {
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+  }
+}
