@@ -15,6 +15,7 @@ export const About: React.FC = () => {
           Providing students a quick one-click bookmarks to commonly used sites
           in SMU.
         </p>
+        <p> Designed by SMU students for SMU students </p>
         <p>This site is non-affliated with SMU.</p>
 
         <div className="contribute">

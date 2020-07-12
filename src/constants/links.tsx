@@ -90,7 +90,7 @@ export const community_links = {
       link: 'https://www.instagram.com/smuconfessionspage/',
     },
     {
-      title: 'SMUSU',
+      title: "SMU Students' Association",
       link: 'https://www.instagram.com/sgsmusa/',
     },
   ],
@@ -118,6 +118,10 @@ export const guides_link = {
       title: 'Concession Card',
       link:
         'https://matriculation.smu.edu.sg/2020/tertiary-student-ez-link-card',
+    },
+    {
+      title: 'Boss Bidding Guidebook 2020',
+      link: 'bit.ly/smusa-bossbidding-guidebook',
     },
   ],
 };
