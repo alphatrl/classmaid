@@ -131,7 +131,7 @@ export const guides_link = {
     },
     {
       title: 'Boss Bidding Guidebook 2020',
-      link: 'bit.ly/smusa-bossbidding-guidebook',
+      link: 'http://bit.ly/smusa-bossbidding-guidebook',
     },
   ],
 };
