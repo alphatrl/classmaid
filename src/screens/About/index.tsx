@@ -23,7 +23,7 @@ export const About: React.FC = () => {
           <p>
             Want to suggest more sites? Add an issue or make a pull request
             on&nbsp;
-            <a href="">Github</a>
+            <a href="https://github.com/bottleneckco/smu-shortcuts">Github</a>
           </p>
         </div>
       </main>
