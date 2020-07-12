@@ -32,6 +32,12 @@ body {
 
 // Mobile Friendly
 
+@media (min-width: 1500px) {
+  .App {
+    width: 1200px;
+  }
+}
+
 @media (max-width: 800px) {
   .App {
     width: 90%

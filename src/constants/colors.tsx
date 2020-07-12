@@ -29,6 +29,9 @@ export const getButtonColor = (color : string): string => {
     case 'gray':
       return 'rgb(100, 100, 100)';
 
+    case 'pink':
+      return 'rgb(213, 10, 138)';
+
     default:
       return color;
   }

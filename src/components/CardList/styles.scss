@@ -11,7 +11,7 @@
 
 .cardListView {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   // grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
 }
 
@@ -28,18 +28,6 @@
 
 
 /* Hardcoding solution */
-
-@media (max-width: 2000px) {
-  .cardListView {
-    grid-template-columns: repeat(6, 1fr);
-  }
-}
-
-@media (max-width: 1800px) {
-  .cardListView {
-    grid-template-columns: repeat(5, 1fr);
-  }
-}
 
 @media (max-width: 1400px) {
   .cardListView {

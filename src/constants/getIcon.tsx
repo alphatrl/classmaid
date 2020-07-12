@@ -30,6 +30,9 @@ export const getIcon = (name?: string): JSX.Element => {
     case 'chat':
       return <Icon.Chat fill="white" width="65%" height="65%" />;
 
+      case 'heart':
+        return <Icon.Heart fill="white" width="65%" height="65%" />;
+
     default:
       return <Icon.Missing fill="white" width="65%" height="65%" />;
   }

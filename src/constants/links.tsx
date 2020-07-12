@@ -42,13 +42,19 @@ export const home_links = {
       link: 'https://fbs.intranet.smu.edu.sg',
       color: 'purple',
     },
+    {
+      title: 'Student Wellness',
+      logo: 'heart',
+      link: 'https://www.smu.edu.sg/campus-life/student-wellness',
+      color: 'pink',
+    },
   ],
   community: [
     {
       title: 'Guides',
       logo: 'guide',
       link: '/guides',
-      color: 'green',
+      color: 'gray',
     },
     {
       title: 'Community',
@@ -90,7 +96,7 @@ export const community_links = {
   ],
   websites: [
     {
-      title: 'SMU Mods',
+      title: 'SMUMods',
       link: 'https://smumods.com',
     },
   ],
