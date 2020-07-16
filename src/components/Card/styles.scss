@@ -21,6 +21,11 @@
   height: 90px;
 }
 
+.material-icons-round {
+  font-size: 52px;
+  color: white;
+}
+
 .label {
   font-size: 24px;
   font-weight: 600;
@@ -46,6 +51,10 @@
   .label {
     font-size: 16px;
     padding-right: 8px;;
+  }
+
+  .material-icons-round {
+    font-size: 36px;
   }
 }
 

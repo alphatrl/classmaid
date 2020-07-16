@@ -16,9 +16,8 @@ export const Home: React.FC = () => {
         <div className="paddingCard" />
         <CardList data={links.community} title={'More Resources'} />
       </main>
-      {/* <Footer /> */}
     </div>
   );
-}
+};
 
 export default Home;

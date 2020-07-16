@@ -1,5 +1,4 @@
 import React from 'react';
-import { getIcon } from '../../constants/getIcon';
 import './styles.scss';
 import '../../constants/colors.scss';
 
@@ -18,7 +17,9 @@ const Card: React.FC<CardProps> = ({ title, logo, link, color, newTab }: CardPro
   return (
     <a href={link} className="cardLink" target={isNewTab}>
       <div className={className}>
-        <div className="imageView">{getIcon(logo)}</div>
+        <div className="imageView">
+          <span className="material-icons-round md-48">{logo}</span>
+        </div>
         <div className="label">{title}</div>
       </div>
     </a>
@@ -27,7 +28,7 @@ const Card: React.FC<CardProps> = ({ title, logo, link, color, newTab }: CardPro
 
 Card.defaultProps = {
   title: '',
-  logo: '',
+  logo: 'help_outline',
   link: 'smu.edu.sg',
   color: 'red',
   newTab: false,

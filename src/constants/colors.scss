@@ -23,7 +23,7 @@
 }
 
 .turquoise {
-  background-color: #27BAA5;
+  background-color: #29DEC5;
 }
 
 .gray {
@@ -32,6 +32,10 @@
 
 .pink {
   background-color: #D50A8A;
+}
+
+.dark-blue {
+  background-color: #1b2faf;
 }
 
 /* Hover */
@@ -52,7 +56,7 @@
 }
 
 .blue:hover {
-  background-color: #3B78E5;
+  background-color: #5790F7;
 }
 
 .purple:hover {
@@ -60,7 +64,7 @@
 }
 
 .turquoise:hover {
-  background-color: #1EDBC1;
+  background-color: #65E5D4;
 }
 
 .gray:hover {
@@ -69,6 +73,10 @@
 
 .pink:hover {
   background-color: #ED44AF;
+}
+
+.dark-blue:hover {
+  background-color: #2742F9;
 }
 
 @media (prefers-color-scheme :dark) {
@@ -97,7 +105,7 @@
   }
   
   .turquoise {
-    background-color: #38D0BB;
+    background-color: #31BEAA;
   }
   
   .gray {
@@ -106,5 +114,9 @@
   
   .pink {
     background-color: #E1219A;
+  }
+
+  .dark-blue {
+    background-color: #1A35E6;
   }
 }
