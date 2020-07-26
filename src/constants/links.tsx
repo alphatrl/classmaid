@@ -57,10 +57,17 @@ export const home_links = {
       newTab: true,
     },
     {
+      title: 'Important Dates',
+      logo: 'today',
+      link: 'https://inet.smu.edu.sg/sites/courses/Pages/Online-Critical-Dates.aspx',
+      color: 'dark-blue',
+      newTab: true,
+    },
+    {
       title: 'SPS',
       logo: 'biotech',
       link: 'https://sps.intranet.smu.edu.sg',
-      color: 'dark-blue',
+      color: 'orange',
       newTab: true,
     },
     {
