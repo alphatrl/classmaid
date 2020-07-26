@@ -154,5 +154,9 @@ export const guides_link = {
       title: 'Boss Bidding Guidebook 2020',
       link: 'http://bit.ly/smusa-bossbidding-guidebook',
     },
+    {
+      title: 'Student Academic Handbook',
+      link: 'https://inet.smu.edu.sg/sites/courses/Pages/Student-Academic-Handbook.aspx',
+    },
   ],
 };
