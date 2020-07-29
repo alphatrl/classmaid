@@ -16,7 +16,7 @@ export const About: React.FC = () => {
 
       <main className="mainView">
         <img
-          src="logo-nobg.png"
+          src="resources/images/logo-nobg.png"
           className="shortcutsLogo"
           alt="shortcut-logo"
         />

@@ -1,0 +1,97 @@
+{
+  "school": [
+    {
+      "title": "eLearn",
+      "logo": "menu_book",
+      "link": "https://elearn.smu.edu.sg",
+      "color": "orange",
+      "newTab": true
+    },
+    {
+      "title": "Oasis",
+      "logo": "beach_access",
+      "link": "https://oasis.smu.edu.sg/",
+      "color": "blue",
+      "newTab": true
+    },
+    {
+      "title": "BOSS",
+      "logo": "account_balance_wallet",
+      "link": "https://boss.intranet.smu.edu.sg",
+      "color": "turquoise",
+      "newTab": true
+    },
+    {
+      "title": "Library",
+      "logo": "book",
+      "link": "https://library.smu.edu.sg/",
+      "color": "red",
+      "newTab": true
+    },
+    {
+      "title": "Print Services",
+      "logo": "print",
+      "link": "https://smu.sg/print",
+      "color": "yellow",
+      "newTab": true
+    },
+    {
+      "title": "onTRAC II",
+      "logo": "work",
+      "link": "https://ontrac.smu.edu.sg",
+      "color": "green",
+      "newTab": true
+    },
+    {
+      "title": "Facility Bookings",
+      "logo": "king_bed",
+      "link": "https://fbs.intranet.smu.edu.sg",
+      "color": "purple",
+      "newTab": true
+    },
+    {
+      "title": "WebEx",
+      "logo": "computer",
+      "link": "https://elearnapps.smu.edu.sg/WebExSearch/",
+      "color": "gray",
+      "newTab": true
+    },
+    {
+      "title": "Important Dates",
+      "logo": "today",
+      "link": "https://inet.smu.edu.sg/sites/courses/Pages/Online-Critical-Dates.aspx",
+      "color": "dark-blue",
+      "newTab": true
+    },
+    {
+      "title": "SPS",
+      "logo": "biotech",
+      "link": "https://sps.intranet.smu.edu.sg",
+      "color": "orange",
+      "newTab": true
+    },
+    {
+      "title": "Student Wellness",
+      "logo": "favorite_border",
+      "link": "https://www.smu.edu.sg/campus-life/student-wellness",
+      "color": "pink",
+      "newTab": true
+    }
+  ],
+  "others":  [
+    {
+      "title": "Guides",
+      "logo": "contact_support",
+      "link": "/guides",
+      "color": "gray",
+      "newTab": false
+    },
+    {
+      "title": "Community",
+      "logo": "question_answer",
+      "link": "/community",
+      "color": "turquoise",
+      "newTab": false
+    }
+  ]
+}

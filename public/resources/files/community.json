@@ -1,0 +1,36 @@
+{
+  "telegram": [
+    {
+      "title": "Ask.SMU (Requires an Invitation)",
+      "link": "https://t.me"
+    },
+    {
+      "title": "Buffet Cleaners",
+      "link": "https://t.me/joinchat/DVuB8UO-_6LV1JhuML_CtA"
+    }
+  ],
+  "instagram": [
+    {
+      "title": "Singapore Meme University",
+      "link": "https://www.instagram.com/singaporememeuniversity/"
+    },
+    {
+      "title": "SMU Cat",
+      "link": "https://www.instagram.com/smu.cat/"
+    },
+    {
+      "title": "SMU Confessions",
+      "link": "https://www.instagram.com/smuconfessionspage/"
+    },
+    {
+      "title": "SMU Students' Association",
+      "link": "https://www.instagram.com/sgsmusa/"
+    }
+  ],
+  "websites": [
+    {
+      "title": "SMUMods",
+      "link": "https://smumods.com"
+    }
+  ]
+}

@@ -1,10 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './styles.scss';
 import 'normalize.css';
 import { CardList } from '../../components/';
-import { home_links as links } from '../../constants/links';
 
 export const Home: React.FC = () => {
+
+  const [links, setLinks] = useState({
+    school: [
+      {
+        title: '',
+        logo: '',
+        link: '',
+        color: '',
+        newTab: false,
+      },
+    ],
+    others: [
+      {
+        title: '',
+        logo: '',
+        link: '',
+        color: '',
+        newTab: false,
+      },
+    ],
+  });
+
+  useEffect(() => {
+    const load = async () => {
+      const link = await fetch('resources/files/home.json').then((r) => {
+        return r.json();
+      });
+
+      setLinks(link);
+    };
+
+    load();
+  }, []);
+
   return (
     <div>
       <header className="header">
@@ -14,7 +47,7 @@ export const Home: React.FC = () => {
       <main className="mainView">
         <CardList data={links.school} title={'School Links'} />
         <div className="paddingCard" />
-        <CardList data={links.community} title={'More Resources'} />
+        <CardList data={links.others} title={'More Resources'} />
       </main>
     </div>
   );

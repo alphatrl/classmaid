@@ -27,15 +27,6 @@
   color: #EF5AD8;
 }
 
-@media (min-height: 1200px ) and (min-width: 900px) {
-  .footer {
-    width: 80%;
-    height: 80px;
-    position: absolute;
-    bottom: 0;
-  }
-}
-
 @media (max-width: 500px) {
   .footer {
     height: 100px;

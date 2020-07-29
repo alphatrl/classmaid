@@ -1,12 +1,41 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './styles.scss';
 import 'normalize.css';
-import { community_links as links } from '../../constants/links';
 import { List } from '../../components/';
 
 export const Community: React.FC = () => {
+  const [links, setLinks] = useState({
+    telegram: [
+      {
+        title: '',
+        link: '',
+      },
+    ],
+    instagram: [
+      {
+        title: '',
+        link: '',
+      },
+    ],
+    websites: [
+      {
+        title: '',
+        link: '',
+      },
+    ],
+  });
+
   useEffect(() => {
+    const load = async () => {
+      const link = await fetch('resources/files/community.json').then((r) => {
+        return r.json();
+      });
+
+      setLinks(link);
+    };
+
     document.title = 'SMU Shortcuts | Community';
+    load();
   }, []);
 
   return (
