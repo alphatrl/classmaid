@@ -29,11 +29,17 @@ export const About: React.FC = () => {
 
         <div className="contribute">
           <div className="aboutHeader">Contribute</div>
-          <p>
-            Want to suggest more sites? Add an issue or make a pull request
-            on&nbsp;
-            <a href="https://github.com/bottleneckco/smu-shortcuts">Github</a>
-          </p>
+          <p>Want to add more sites or offer suggestions?</p>
+          <ul className="listView">
+            <li>
+              SMU Student? Make a suggestion&nbsp;
+              <a href="https://bit.ly/30SRyIo">here</a>
+            </li>
+            <li>
+              Developer? Add an issue or make a pull request on&nbsp;
+              <a href="https://github.com/bottleneckco/smu-shortcuts">Github</a>
+            </li>
+          </ul>
         </div>
       </main>
     </div>
