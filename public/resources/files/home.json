@@ -71,6 +71,13 @@
       "newTab": true
     },
     {
+      "title": "Day Pass",
+      "logo": "local_activity",
+      "link": "https://entry.intranet.smu.edu.sg",
+      "color": "blue",
+      "newTab": true
+    },
+    {
       "title": "Student Wellness",
       "logo": "favorite_border",
       "link": "https://www.smu.edu.sg/campus-life/student-wellness",
