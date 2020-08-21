@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './styles.scss';
-import 'normalize.css';
-import { CardList } from '../../components/';
+import { CardList } from '../components';
+import ReactGA from 'react-ga';
+
 
 export const Home: React.FC = () => {
-
   const [links, setLinks] = useState({
     school: [
       {
@@ -28,13 +28,14 @@ export const Home: React.FC = () => {
 
   useEffect(() => {
     const load = async () => {
-      const link = await fetch('resources/files/home.json').then((r) => {
-        return r.json();
-      });
-
+      const link = await fetch(`${process.env.SERVER_URL}/home.json`).then(
+        (r) => {
+          return r.json();
+        }
+      );
       setLinks(link);
     };
-
+    ReactGA.pageview(window.location.pathname);
     load();
   }, []);
 

@@ -1,9 +1,8 @@
 import React from 'react';
 import './App.scss';
-import 'normalize.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Home, Guides, Community, About } from './screens';
-import { Footer } from './components/';
+import { Footer } from './components';
 
 export const App: React.FC = () => {
   return (

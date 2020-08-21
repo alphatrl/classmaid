@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './styles.scss';
-import 'normalize.css';
-import { List } from '../../components/';
+import { List } from '../components';
 
 export const Community: React.FC = () => {
   const [links, setLinks] = useState({
@@ -15,7 +14,7 @@ export const Community: React.FC = () => {
 
   useEffect(() => {
     const load = async () => {
-      const link = await fetch('resources/files/guides.json').then((r) => {
+      const link = await fetch(`${process.env.SERVER_URL}/guides.json`).then((r) => {
         return r.json();
       });
       setLinks(link);
