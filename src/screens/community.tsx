@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './styles.scss';
 import { List } from '../components';
+import ReactGA from 'react-ga';
 
 export const Community: React.FC = () => {
   const [links, setLinks] = useState({
@@ -35,6 +36,7 @@ export const Community: React.FC = () => {
     };
 
     document.title = 'SMU Shortcuts | Community';
+    ReactGA.pageview(window.location.pathname);
     load();
   }, []);
 

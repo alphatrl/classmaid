@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import logo from '../images/logo-nobg.png';
 import './styles.scss';
+import ReactGA from 'react-ga';
 
 export const About: React.FC = () => {
   useEffect(() => {
     document.title = 'SMU Shortcuts | About';
+    ReactGA.pageview(window.location.pathname);
   }, []);
 
   return (

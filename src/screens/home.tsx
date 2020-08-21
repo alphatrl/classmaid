@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './styles.scss';
 import { CardList } from '../components';
+import ReactGA from 'react-ga';
+
 
 export const Home: React.FC = () => {
   const [links, setLinks] = useState({
@@ -33,7 +35,7 @@ export const Home: React.FC = () => {
       );
       setLinks(link);
     };
-
+    ReactGA.pageview(window.location.pathname);
     load();
   }, []);
 
