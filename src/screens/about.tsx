@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
+import logo from '../images/logo-nobg.png';
 import './styles.scss';
-import 'normalize.css';
-// import { CardList } from '../../components/';
 
 export const About: React.FC = () => {
   useEffect(() => {
@@ -15,11 +14,7 @@ export const About: React.FC = () => {
       </header>
 
       <main className="mainView">
-        <img
-          src="resources/images/logo-nobg.png"
-          className="shortcutsLogo"
-          alt="shortcut-logo"
-        />
+        <img src={logo} className="shortcutsLogo" alt="shortcut-logo" />
         <p>
           Providing students a quick one-click bookmarks to commonly used sites
           in SMU.
