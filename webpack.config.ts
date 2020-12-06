@@ -75,7 +75,7 @@ const config: webpack.Configuration = {
   devServer: {
     port: 3000,
     contentBase: path.join(__dirname, 'dist'),
-    host: '0.0.0.0',
+    host: 'localhost',
     publicPath: '/',
     hot: true,
     historyApiFallback: true,
