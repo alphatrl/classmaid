@@ -22,7 +22,7 @@ export const App: React.FC = () => {
             <About />
           </Route>
         </Switch>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </BrowserRouter>
   );

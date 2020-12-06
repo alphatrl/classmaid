@@ -4,7 +4,9 @@ import ReactDOM from 'react-dom';
 import { App } from './App';
 import ReactGA from 'react-ga';
 
-ReactGA.initialize(`${process.env.GA}`);
+if (process.env.NODE_ENV) {
+  ReactGA.initialize(`${process.env.GA}`);
+}
 
 ReactDOM.render(
   <React.StrictMode>
