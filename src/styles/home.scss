@@ -1,0 +1,18 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 12px 0;
+
+    .shortcutsLogo {
+        width: 80px;
+    };
+
+    h1 {
+        margin: 0;
+        font-size: 1.5em;
+    }
+}
+
+
