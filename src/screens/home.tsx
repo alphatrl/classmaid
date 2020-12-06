@@ -1,36 +1,54 @@
 import React, { useEffect, useState } from 'react';
-import ReactGA from 'react-ga';
-
-import { NavBar, Ticker } from '../components';
-import logo from '../images/logo-nobg.png';
-
 import './styles.scss';
-import '../styles/home.scss';
-import { collapseTextChangeRangesAcrossMultipleVersions } from 'typescript';
-import { string } from 'prop-types';
-
+import { CardList } from '../components';
+import ReactGA from 'react-ga';
 
 
 export const Home: React.FC = () => {
-  
+  const [links, setLinks] = useState({
+    school: [
+      {
+        title: '',
+        logo: '',
+        link: '',
+        color: '',
+        newTab: false,
+      },
+    ],
+    others: [
+      {
+        title: '',
+        logo: '',
+        link: '',
+        color: '',
+        newTab: false,
+      },
+    ],
+  });
 
   useEffect(() => {
-    // ReactGA.pageview(window.location.pathname);
+    const load = async () => {
+      const link = await fetch(`${process.env.SERVER_URL}/home.json`).then(
+        (r) => {
+          return r.json();
+        }
+      );
+      setLinks(link);
+    };
+    ReactGA.pageview(window.location.pathname);
+    load();
   }, []);
 
   return (
     <div>
       <header className="header">
-        <img src={logo} className="shortcutsLogo" alt="smu-shortcut icon"></img>
         <h1>SMU Shortcuts</h1>
       </header>
 
-      <NavBar />
-      <Ticker />
-      
-
       <main className="mainView">
-        
+        <CardList data={links.school} title={'School Links'} />
+        <div className="paddingCard" />
+        <CardList data={links.others} title={'More Resources'} />
       </main>
     </div>
   );
