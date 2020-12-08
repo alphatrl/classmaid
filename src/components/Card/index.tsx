@@ -1,37 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState, useRef, ReactChild } from 'react';
+
 import './styles.scss';
-import '../../constants/colors.scss';
 
 interface CardProps {
-  title?: string;
-  logo?: string;
-  link?: string;
-  color?: string;
-  newTab?: boolean;
+  children?: ReactChild;
+  style?: object;
 }
 
-const Card: React.FC<CardProps> = ({ title, logo, link, color, newTab }: CardProps) => {
-  const isNewTab = newTab ? '_blank' : '_self';
-  const className = 'card ' + color;
+const Card: React.FC<CardProps> = ({children, style}: CardProps) => {
+  const [height, setHeight] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+
+  useEffect(() => {
+    const updateSquare = () => {
+      const current = containerRef.current;
+      setHeight(height => current ? current.offsetWidth : height);
+    }
+    updateSquare();
+    window.addEventListener("resize", () => updateSquare());
+
+    return (() => window.removeEventListener("resize", () => updateSquare()));
+  }, [])
 
   return (
-    <a href={link} className="cardLink" target={isNewTab}>
-      <div className={className}>
-        <div className="imageView">
-          <span className="material-icons-round md-48">{logo}</span>
-        </div>
-        <div className="label">{title}</div>
-      </div>
-    </a>
+    <div
+      className="box"
+      ref={containerRef}
+      style={{...style, ...{height: height}}}
+    >
+        {children}
+    </div>
   );
-};
-
-Card.defaultProps = {
-  title: '',
-  logo: 'help_outline',
-  link: 'smu.edu.sg',
-  color: 'red',
-  newTab: false,
-};
+}
 
 export default Card;
