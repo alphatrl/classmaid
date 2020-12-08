@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactGA from 'react-ga';
 
-import { NavBar, Ticker } from '../components';
+import { NavBar, Ticker, Card, TodayView } from '../components';
 import logo from '../images/logo-nobg.png';
 
 import './styles.scss';
@@ -26,6 +26,7 @@ export const Home: React.FC = () => {
       <Ticker />
 
       <div className="container">
+        <TodayView cardStyle={{gridArea: "b1"}} />
 
         
         
