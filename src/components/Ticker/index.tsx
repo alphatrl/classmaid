@@ -1,20 +1,21 @@
+import { string } from 'prop-types';
 import React, {useState, useEffect} from 'react';
 import './styles.scss';
 
-const Ticker: React.FC = () => {
+const Tick: React.FC = () => {
   const [ticker, setTicker] = useState([
     {
       title: "",
       content: ""
     }
   ]);
+  const [tickerIndex, setTickerIndex] = useState(0);
 
-  useEffect(() => {
+  useEffect(() => {    
     const load = async () => {
       const tickerList: {title: string, content: string}[] = [];
-
       await fetch(`https://smulibraries.southeastasia.cloudapp.azure.com/public/count.json`)
-        .then((r: any) => r.json())
+        .then((r: Response) => r.json())
         .then((data: any) => {
           tickerList.push({
             title: "Occupancy Level",
@@ -32,23 +33,49 @@ const Ticker: React.FC = () => {
     load();
   }, []);
 
+  const Message = () => {
+
+    const [message, setMessage] = useState(ticker[tickerIndex]);
+    const [index, setIndex] = useState(tickerIndex);
+    const repeatTime = 5000;
+
+    useEffect(() => {
+      const timer = setInterval(() => {
+        setMessage(ticker[tickerIndex]);
+        // reset index to 0 if we overshot the array count
+        setTickerIndex((tickerIndex) => tickerIndex + 1 >= ticker.length ? 0 : tickerIndex + 1);
+      }, repeatTime);
+
+      return (() => clearInterval(timer));
+    }, []) 
+    
+
+    return ticker.length > 0 ? (
+      <div
+        className="ticker-container"
+        // style={{animation: "fadeInOut 5s ease-out 0s 1"}}
+      >
+        <span className="ticker-header">
+          {message.title}
+        </span>
+        <span className="ticker-info">
+          {message.content}
+        </span>
+      </div>
+    ) : (
+      <div className="ticker-container">
+        <span className="ticker-info">
+          "No announcements"
+        </span>
+      </div>
+    );
+  }
+
   return (
     <div className="ticker">
-      {ticker.map((obj, index)=> {
-        return(
-          <div className="ticker-container" key={index}>
-            <p className="ticker-header">
-              {obj.title}
-            </p>
-            <p className="ticker-info">
-              {obj.content}
-            </p>
-          </div>
-          
-        );
-      })}
+      <Message />
     </div>
-   );
+  );
 }
 
-export default Ticker;
+export default Tick;
