@@ -35,17 +35,17 @@ const TodayView: React.FC<CardProps> = ({ cardStyle }: CardProps) => {
                 for (let week of term.weeks) {
                   const weekStart = Date.parse(week.startdate + " GMT+0800")
                   const weekEnd = Date.parse(week.enddate + " GMT+0800");
-                  console.log(weekStart, weekEnd)
 
                   if (todayDate > weekStart && todayDate < weekEnd) {
                     const title = week.name;
                     console.log('hi')
-                    const days = Math.floor((todayDate - weekStart) / (1000 * 3600 * 24));
+                    const days = (todayDate - weekStart) / (1000 * 3600 * 24);
+                    console.log(todayDate, weekStart);
                     console.log(days)
                     return {
                       title: title,
                       isBreak: title === "Vacation" || title === "Recess",
-                      daysIn: days
+                      daysIn: Math.ceil(days),
                     }
                   }
                 }
@@ -59,11 +59,44 @@ const TodayView: React.FC<CardProps> = ({ cardStyle }: CardProps) => {
     }
       const todayDate = Date.now();
       getSchoolTerm();
-  }, [])
+  }, []);
+
+  const Today = () => {
+    
+    const [ todayDate, setTodayDate ] = useState("");
+    
+    useEffect(() => {
+      const today = new Date();
+      const todayList = today.toDateString().split(" ")
+      setTodayDate(`${todayList[2]} ${todayList[1]} ${todayList[3]}`)
+    }, [])
+
+    return !schoolTerm.isBreak ? 
+    (
+      <>
+        <h1>{schoolTerm.title.toUpperCase()}</h1>
+      </>
+    ) :
+    (
+      <>
+        <div className="today-event">
+          <h1>DAY {schoolTerm.daysIn}</h1>
+          <h1>OF</h1>
+          <h1>{schoolTerm.title.toUpperCase()}</h1>
+        </div>
+        <div className="timer">
+          {todayDate}
+        </div>
+        
+      </>
+    )
+  }
 
   return (
     <Card style={cardStyle}>
-      <>{schoolTerm.title}</>
+      <div className="today">
+        <Today />
+      </div>
     </Card>
   )
 }
