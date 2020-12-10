@@ -14,11 +14,22 @@ const TodayView: React.FC<CardProps> = ({ cardStyle }: CardProps) => {
     isBreak: false,
     daysIn: 0,
   });
-  const [ upcomingEvents, setUpcomingEvents ] =  useState([]);
+  const [ upcomingEvents, setUpcomingEvents ] =  useState([
+    {
+      summary: "",
+      startDate: 0,
+      endDate: 0,
+    }
+  ]);
+  const maxUpcomingEvents = 3;
 
   useEffect(() => {
+    /**
+     *  Finds the current schedule in school
+     *    E.g. Week 2, Vacation, Recess Week.
+     *  Returns an object
+     */
     const getSchoolTerm = async () => {
-      
       const currentSchTerm = await fetch(`${process.env.SERVER_URL}` + "/sch_terms.json")
         .then((r: Response) => r.json())
         .then(async (annualYear: any) => {
@@ -38,10 +49,9 @@ const TodayView: React.FC<CardProps> = ({ cardStyle }: CardProps) => {
 
                   if (todayDate > weekStart && todayDate < weekEnd) {
                     const title = week.name;
-                    console.log('hi')
                     const days = (todayDate - weekStart) / (1000 * 3600 * 24);
-                    console.log(todayDate, weekStart);
-                    console.log(days)
+                    // console.log(todayDate, weekStart);
+                    // console.log(days)
                     return {
                       title: title,
                       isBreak: title === "Vacation" || title === "Recess",
@@ -56,47 +66,98 @@ const TodayView: React.FC<CardProps> = ({ cardStyle }: CardProps) => {
 
         if (currentSchTerm) 
           setSchoolTerm(await currentSchTerm);
+    };
+
+    /**
+     * Return the upcoming events as an array containing objects.
+     */
+    const getUpcoming = async () => {
+      const upcoming = await fetch(`${process.env.SERVER_URL}` + "/important_dates.json")
+        .then((r: Response) => r.json())
+        .then(async (dates: any) => {
+          const topThree = [];
+          let count = 0;
+
+          for await (let date of dates) {
+            const startDate = date.startTime;
+            const endDate = date.endTime;
+            
+            // if found, add to array
+            if (todayDate > startDate && todayDate < endDate) {
+              topThree.push(date);
+              count++;
+            }
+
+            // break loop at what is set at maxUpcomingEvents
+            if (topThree.length === maxUpcomingEvents) { 
+              break; 
+            }
+          }
+          return topThree;
+        });
+
+        setUpcomingEvents(upcoming);
     }
-      const todayDate = Date.now();
-      getSchoolTerm();
+
+    const todayDate = Date.now();
+    getSchoolTerm();
+    getUpcoming();
+
   }, []);
 
   const Today = () => {
     
+    return !schoolTerm.isBreak ? 
+    (
+      <div className="today">
+        <h1 className="highlight">{schoolTerm.title.toUpperCase()}</h1>
+      </div>
+    ) :
+    (
+      <div className="today">
+          <h1>DAY {schoolTerm.daysIn}</h1>
+          <h1>OF</h1>
+          <h1 className="highlight">{schoolTerm.title.toUpperCase()}</h1>
+
+      </div>
+    );
+  };
+
+  const DateNow = () => {
     const [ todayDate, setTodayDate ] = useState("");
     
     useEffect(() => {
       const today = new Date();
-      const todayList = today.toDateString().split(" ")
-      setTodayDate(`${todayList[2]} ${todayList[1]} ${todayList[3]}`)
-    }, [])
+      const todayList = today.toDateString().split(" ");
+      setTodayDate(`${todayList[2]} ${todayList[1]} ${todayList[3]}`);
+    }, []);
 
-    return !schoolTerm.isBreak ? 
-    (
-      <>
-        <h1>{schoolTerm.title.toUpperCase()}</h1>
-      </>
-    ) :
-    (
-      <>
-        <div className="today-event">
-          <h1>DAY {schoolTerm.daysIn}</h1>
-          <h1>OF</h1>
-          <h1>{schoolTerm.title.toUpperCase()}</h1>
-        </div>
-        <div className="timer">
-          {todayDate}
-        </div>
-        
-      </>
+    return (
+      <div className="timer">
+        {todayDate}
+      </div>
     )
   }
 
+  const Upcoming = () => {
+    const [ upcoming, setUpcoming] = useState([]);
+    
+    useEffect(() => {
+      console.log(upcomingEvents)
+    }, []);
+
+    return  (
+      null
+    )
+
+  };
+
   return (
     <Card style={cardStyle}>
-      <div className="today">
+      <>
         <Today />
-      </div>
+        <DateNow />
+      </>
     </Card>
   )
 }
