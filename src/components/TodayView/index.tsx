@@ -9,19 +9,20 @@ interface CardProps {
 }
 
 const TodayView: React.FC<CardProps> = ({ cardStyle }: CardProps) => {
-  const [ schoolTerm, setSchoolTerm ] = useState({
-    title: "",
+  const [schoolTerm, setSchoolTerm] = useState({
+    title: '',
     isBreak: false,
     daysIn: 0,
   });
-  const [ upcomingEvents, setUpcomingEvents ] =  useState([
+  const [upcomingEvents, setUpcomingEvents] = useState([
     {
-      summary: "",
+      summary: '',
       startDate: 0,
       endDate: 0,
     }
   ]);
-  const maxUpcomingEvents = 3;
+  const [todayDate, setTodayDate] = useState(Date.now());
+  const maxUpcomingEvents = 1;
 
   useEffect(() => {
     /**
@@ -30,22 +31,24 @@ const TodayView: React.FC<CardProps> = ({ cardStyle }: CardProps) => {
      *  Returns an object
      */
     const getSchoolTerm = async () => {
-      const currentSchTerm = await fetch(`${process.env.SERVER_URL}` + "/sch_terms.json")
+      const currentSchTerm = await fetch(
+        `${process.env.SERVER_URL}` + '/sch_terms.json'
+      )
         .then((r: Response) => r.json())
         .then(async (annualYear: any) => {
-          for await (let year of annualYear) {
-            for (let num in year) {
+          for await (const year of annualYear) {
+            for (const num in year) {
               const term = year[num];
-              const termStart = Date.parse(term.startdate + " GMT+0800");
-              const termEnd = Date.parse(term.enddate + " GMT+0800");
-              
+              const termStart = Date.parse(term.startdate + ' GMT+0800');
+              const termEnd = Date.parse(term.enddate + ' GMT+0800');
+
               // we found our term with 2 conditions
               // current date is more than term start date
               // current date is less than term end date
-              if (todayDate > termStart && todayDate < termEnd) {                
-                for (let week of term.weeks) {
-                  const weekStart = Date.parse(week.startdate + " GMT+0800")
-                  const weekEnd = Date.parse(week.enddate + " GMT+0800");
+              if (todayDate > termStart && todayDate < termEnd) {
+                for (const week of term.weeks) {
+                  const weekStart = Date.parse(week.startdate + ' GMT+0800');
+                  const weekEnd = Date.parse(week.enddate + ' GMT+0800');
 
                   if (todayDate > weekStart && todayDate < weekEnd) {
                     const title = week.name;
@@ -54,9 +57,9 @@ const TodayView: React.FC<CardProps> = ({ cardStyle }: CardProps) => {
                     // console.log(days)
                     return {
                       title: title,
-                      isBreak: title === "Vacation" || title === "Recess",
+                      isBreak: title === 'Vacation' || title === 'Recess',
                       daysIn: Math.ceil(days),
-                    }
+                    };
                   }
                 }
               }
@@ -64,86 +67,72 @@ const TodayView: React.FC<CardProps> = ({ cardStyle }: CardProps) => {
           }
         });
 
-        if (currentSchTerm) 
-          setSchoolTerm(await currentSchTerm);
+      if (currentSchTerm) setSchoolTerm(currentSchTerm);
     };
-
-    /**
-     * Return the upcoming events as an array containing objects.
-     */
-    const getUpcoming = async () => {
-      const upcoming = await fetch(`${process.env.SERVER_URL}` + "/important_dates.json")
-        .then((r: Response) => r.json())
-        .then(async (dates: any) => {
-          const topThree = [];
-          let count = 0;
-
-          for await (let date of dates) {
-            const startDate = date.startTime;
-            const endDate = date.endTime;
-            
-            // if found, add to array
-            if (todayDate > startDate && todayDate < endDate) {
-              topThree.push(date);
-              count++;
-            }
-
-            // break loop at what is set at maxUpcomingEvents
-            if (topThree.length === maxUpcomingEvents) { 
-              break; 
-            }
-          }
-          return topThree;
-        });
-
-        setUpcomingEvents(upcoming);
-    }
-
-    const todayDate = Date.now();
     getSchoolTerm();
-    getUpcoming();
-
   }, []);
 
   const Today = () => {
-    
-    return !schoolTerm.isBreak ? 
-    (
+    return !schoolTerm.isBreak ? (
       <div className="today">
         <h1 className="highlight">{schoolTerm.title.toUpperCase()}</h1>
       </div>
-    ) :
-    (
+    ) : (
       <div className="today">
-          <h1>DAY {schoolTerm.daysIn}</h1>
-          <h1>OF</h1>
-          <h1 className="highlight">{schoolTerm.title.toUpperCase()}</h1>
-
+        <h1>DAY {schoolTerm.daysIn}</h1>
+        <h1>OF</h1>
+        <h1 className="highlight">{schoolTerm.title.toUpperCase()}</h1>
       </div>
     );
   };
 
   const DateNow = () => {
-    const [ todayDate, setTodayDate ] = useState("");
-    
+    const [today, setToday] = useState('');
+
     useEffect(() => {
-      const today = new Date();
-      const todayList = today.toDateString().split(" ");
-      setTodayDate(`${todayList[2]} ${todayList[1]} ${todayList[3]}`);
+      const todayList = new Date(todayDate).toDateString().split(' ');
+      setToday(`${todayList[2]} ${todayList[1]} ${todayList[3]}`);
     }, []);
 
-    return (
-      <div className="timer">
-        {todayDate}
-      </div>
-    )
+    return <div className="timer">{today}</div>;
   }
 
   const Upcoming = () => {
     const [ upcoming, setUpcoming] = useState([]);
-    
+
     useEffect(() => {
-      console.log(upcomingEvents)
+      /**
+       * Return the upcoming events as an array containing objects.
+       */
+      const getUpcoming = async () => {
+        const upcoming = await fetch(
+          `${process.env.SERVER_URL}` + '/important_dates.json'
+        )
+          .then((r: Response) => r.json())
+          .then(async (dates: any) => {
+            const topThree = [];
+
+            for await (const date of dates) {
+              const startDate = date.startTime;
+              const endDate = date.endTime;
+
+              // if found, add to array
+              if (todayDate > startDate && todayDate > endDate) {
+                topThree.push(date);
+              }
+
+              // break loop at what is set at maxUpcomingEvents
+              if (topThree.length === maxUpcomingEvents) {
+                break;
+              }
+            }
+            return topThree;
+          });
+
+        setUpcomingEvents(upcoming);
+      };
+
+      getUpcoming();
     }, []);
 
     return  (
@@ -159,7 +148,7 @@ const TodayView: React.FC<CardProps> = ({ cardStyle }: CardProps) => {
         <DateNow />
       </>
     </Card>
-  )
-}
+  );
+};
 
 export default TodayView;
