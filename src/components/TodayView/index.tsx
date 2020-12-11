@@ -14,13 +14,7 @@ const TodayView: React.FC<CardProps> = ({ cardStyle }: CardProps) => {
     isBreak: false,
     daysIn: 0,
   });
-  const [upcomingEvents, setUpcomingEvents] = useState([
-    {
-      summary: '',
-      startDate: 0,
-      endDate: 0,
-    }
-  ]);
+
   const [todayDate, setTodayDate] = useState(Date.now());
   const maxUpcomingEvents = 1;
 
@@ -98,7 +92,12 @@ const TodayView: React.FC<CardProps> = ({ cardStyle }: CardProps) => {
   }
 
   const Upcoming = () => {
-    const [ upcoming, setUpcoming] = useState([]);
+    const [upcoming, setUpcoming] = useState({
+      summary: '',
+      startTime: 0,
+      endTime: 0,
+    });
+    const [date, setDate] = useState('');
 
     useEffect(() => {
       /**
@@ -110,7 +109,7 @@ const TodayView: React.FC<CardProps> = ({ cardStyle }: CardProps) => {
         )
           .then((r: Response) => r.json())
           .then(async (dates: any) => {
-            const topThree = [];
+            const topEvents = [];
 
             for await (const date of dates) {
               const startDate = date.startTime;
@@ -118,27 +117,38 @@ const TodayView: React.FC<CardProps> = ({ cardStyle }: CardProps) => {
 
               // if found, add to array
               if (todayDate > startDate && todayDate > endDate) {
-                topThree.push(date);
+                topEvents.push(date);
               }
 
               // break loop at what is set at maxUpcomingEvents
-              if (topThree.length === maxUpcomingEvents) {
+              if (topEvents.length === maxUpcomingEvents) {
                 break;
               }
             }
-            return topThree;
+            return topEvents;
           });
 
-        setUpcomingEvents(upcoming);
+        setUpcoming(upcoming[0]);
+        const dateList = new Date(upcoming[0].startTime)
+          .toDateString()
+          .split(' ');
+        console.log(dateList);
+        setDate(`(${dateList[2]} ${dateList[1]})`);
       };
 
       getUpcoming();
     }, []);
 
-    return  (
-      null
-    )
-
+    return upcoming.summary === '' ? (
+      <div className="upcoming">
+        <h2>No Upcoming Event</h2>
+      </div>
+    ) : (
+      <div className="upcoming">
+        <h2>Upcoming Event {date}</h2>
+        <p>{upcoming.summary}</p>
+      </div>
+    );
   };
 
   return (
@@ -146,6 +156,7 @@ const TodayView: React.FC<CardProps> = ({ cardStyle }: CardProps) => {
       <>
         <Today />
         <DateNow />
+        <Upcoming />
       </>
     </Card>
   );
