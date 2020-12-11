@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import ReactGA from 'react-ga';
 
-import { NavBar, Ticker, Card, TodayView } from '../components';
+import { NavBar, Ticker, CardLink, TodayView } from '../components';
 import logo from '../images/logo-nobg.png';
 
 import './styles.scss';
 import '../styles/home.scss';
 
 export const Home: React.FC = () => {
-  
-
   useEffect(() => {
     // ReactGA.pageview(window.location.pathname);
   }, []);
@@ -21,16 +19,11 @@ export const Home: React.FC = () => {
         <h1>SMU Shortcuts</h1>
       </header>
 
-    
       <NavBar />
       <Ticker />
 
       <div className="container">
-        <TodayView cardStyle={{gridArea: "b1"}} />
-
-        
-        
-
+        <TodayView cardStyle={{ gridArea: 'b1' }} />
       </div>
     </>
   );
