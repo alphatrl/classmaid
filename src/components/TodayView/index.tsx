@@ -116,7 +116,8 @@ const TodayView: React.FC<CardProps> = ({ cardStyle }: CardProps) => {
               const endDate = date.endTime;
 
               // if found, add to array
-              if (todayDate > startDate && todayDate > endDate) {
+              console.log(endDate);
+              if (todayDate < startDate) {
                 topEvents.push(date);
               }
 
@@ -125,7 +126,15 @@ const TodayView: React.FC<CardProps> = ({ cardStyle }: CardProps) => {
                 break;
               }
             }
-            return topEvents;
+            return topEvents.length > 0
+              ? topEvents
+              : [
+                  {
+                    summary: '',
+                    startTime: 0,
+                    endTime: 0,
+                  },
+                ];
           });
 
         setUpcoming(upcoming[0]);
