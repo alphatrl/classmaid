@@ -1,25 +1,3 @@
-.App {
-  width: 80%;
-  margin: 0 auto;
-}
-
-.mainView {
-  padding-top: 16px;
-  padding-bottom: 64px;
-}
-
-.paddingCard {
-  padding: 32px;
-}
-
-.paddingList {
-  padding: 16px;
-}
-
-.padding {
-  padding: 32px;
-}
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -31,26 +9,6 @@ body {
 
 html {
   background-color: #F9F9F9;
-}
-
-// Mobile Friendly
-
-@media (min-width: 1500px) {
-  .App {
-    width: 1200px;
-  }
-}
-
-@media (max-width: 800px) {
-  .App {
-    width: 90%
-  }
-}
-
-@media (max-width: 350px) {
-  .App {
-    width: 95%
-  }
 }
 
 // @media (prefers-color-scheme: dark) {
