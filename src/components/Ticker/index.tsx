@@ -1,29 +1,70 @@
-import { string } from 'prop-types';
-import React, {useState, useEffect} from 'react';
-import './styles.scss';
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+
+const TickerWrapper = styled.div`
+  padding: 12px 8px;
+  border: 3px solid #2b2b2b;
+  margin-bottom: 16px;
+`;
+
+const TickerContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  animation: fadeInOut 5s ease-out 0s 1;
+  -webkit-animation: fadeInOut 5s ease-out 0s 1;
+
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+`;
+
+const TickerHeader = styled.span`
+  font-weight: 700;
+  padding-right: 12px;
+  color: rgba(0, 0, 0, 0.56);
+`;
+
+const TickerMessage = styled.span`
+  font-weight: 500;
+`;
 
 const Tick: React.FC = () => {
   const [ticker, setTicker] = useState([
     {
-      title: "",
-      content: ""
+      title: '',
+      content: '',
     }
   ]);
   const [tickerIndex, setTickerIndex] = useState(0);
 
-  useEffect(() => {    
+  useEffect(() => {
     const load = async () => {
-      const tickerList: {title: string, content: string}[] = [];
-      await fetch(`https://smulibraries.southeastasia.cloudapp.azure.com/public/count.json`)
+      const tickerList: { title: string; content: string }[] = [];
+      await fetch(
+        `https://smulibraries.southeastasia.cloudapp.azure.com/public/count.json`
+      )
         .then((r: Response) => r.json())
         .then((data: any) => {
           tickerList.push({
-            title: "Occupancy Level",
+            title: 'Occupancy Level',
             content: `Li Ka Shing Library: ${data.lks.inside} / 1000`,
           });
 
           tickerList.push({
-            title: "Occupancy Level",
+            title: 'Occupancy Level',
             content: `Kwa Geok Choo Law Library: ${data.kgc.inside} / 300`,
           })
         });
@@ -34,47 +75,38 @@ const Tick: React.FC = () => {
   }, []);
 
   const Message = () => {
-
     const [message, setMessage] = useState(ticker[tickerIndex]);
-    const [index, setIndex] = useState(tickerIndex);
     const repeatTime = 5000;
 
     useEffect(() => {
       const timer = setInterval(() => {
         setMessage(ticker[tickerIndex]);
+        console.log(tickerIndex);
         // reset index to 0 if we overshot the array count
-        setTickerIndex((tickerIndex) => tickerIndex + 1 >= ticker.length ? 0 : tickerIndex + 1);
+        setTickerIndex((tickerIndex) =>
+          tickerIndex + 1 >= ticker.length ? 0 : tickerIndex + 1
+        );
       }, repeatTime);
 
-      return (() => clearInterval(timer));
-    }, []) 
-    
+      return () => clearInterval(timer);
+    }, []);
 
     return ticker.length > 0 ? (
-      <div
-        className="ticker-container"
-        // style={{animation: "fadeInOut 5s ease-out 0s 1"}}
-      >
-        <span className="ticker-header">
-          {message.title}
-        </span>
-        <span className="ticker-info">
-          {message.content}
-        </span>
-      </div>
+      <TickerContainer>
+        <TickerHeader>{message.title}</TickerHeader>
+        <TickerMessage>{message.content}</TickerMessage>
+      </TickerContainer>
     ) : (
-      <div className="ticker-container">
-        <span className="ticker-info">
-          "No announcements"
-        </span>
-      </div>
+      <TickerContainer>
+        <TickerMessage>No announcements</TickerMessage>
+      </TickerContainer>
     );
-  }
+  };
 
   return (
-    <div className="ticker">
+    <TickerWrapper>
       <Message />
-    </div>
+    </TickerWrapper>
   );
 }
 
