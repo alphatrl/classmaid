@@ -1,11 +1,10 @@
-import { number, object, string } from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { Card } from '../index';
 
 import './styles.scss';
 
 interface CardProps {
-  cardStyle?: object;
+  cardStyle?: Record<string, unknown>;
 }
 
 const TodayView: React.FC<CardProps> = ({ cardStyle }: CardProps) => {
@@ -74,7 +73,7 @@ const TodayView: React.FC<CardProps> = ({ cardStyle }: CardProps) => {
     ) : (
       <div className="today">
         <h1>DAY {schoolTerm.daysIn}</h1>
-        <h1>OF</h1>
+        <span>OF</span>
         <h1 className="highlight">{schoolTerm.title.toUpperCase()}</h1>
       </div>
     );
@@ -113,10 +112,8 @@ const TodayView: React.FC<CardProps> = ({ cardStyle }: CardProps) => {
 
             for await (const date of dates) {
               const startDate = date.startTime;
-              const endDate = date.endTime;
 
               // if found, add to array
-              console.log(endDate);
               if (todayDate < startDate) {
                 topEvents.push(date);
               }
@@ -141,7 +138,6 @@ const TodayView: React.FC<CardProps> = ({ cardStyle }: CardProps) => {
         const dateList = new Date(upcoming[0].startTime)
           .toDateString()
           .split(' ');
-        console.log(dateList);
         setDate(`(${dateList[2]} ${dateList[1]})`);
       };
 

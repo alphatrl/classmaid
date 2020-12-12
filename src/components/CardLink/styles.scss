@@ -6,34 +6,32 @@
   .card-container {
     height: 100%;
     width: 100%;
-    // background-color: #0A0A0A;
     color: #FFFFFF;
+    transition: 5ms;
   }
 
   .image {
     height: 55%;
-    // color: #E3A311;
-    // color: #FFFFFF;
-    color: #D4DF9E;
-
     display: flex;
     justify-content: flex-end;
     text-decoration: none;
-
   }
 
   .title {
     height: 45%;
     display: flex;
     flex-direction: column-reverse;
-    // background-color: gray;
 
-    font-weight: 700;
+    font-weight: 600;
     font-size: 2vw;
   }
 
   .material-icons-sharp {
-    font-size: 6.2vw;
+    font-size: 6vw;
+  }
+
+  .card-container:hover {
+    color: #e4a925;
   }
 
   @media screen and (max-width: 720px)  {

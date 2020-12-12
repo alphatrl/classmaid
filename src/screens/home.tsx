@@ -35,13 +35,13 @@ export const Home: React.FC = () => {
           cardStyle={{ gridArea: 's2' }}
           title="Oasis"
           logo="beach_access"
-          link="https://elearn.smu.edu.sg"
+          link="https://oasis.smu.edu.sg"
         />
         <CardLink
           cardStyle={{ gridArea: 's3' }}
           title="Facility Bookings"
           logo="airline_seat_individual_suite"
-          link="https://elearn.smu.edu.sg"
+          link="https://fbs.intranet.smu.edu.sg"
         />
         <CardLink
           cardStyle={{ gridArea: 's4' }}
@@ -107,9 +107,9 @@ export const Home: React.FC = () => {
         />
         <CardLink
           cardStyle={{ gridArea: 'c6' }}
-          title="Community"
-          logo="groups"
-          link="/community"
+          title="Contribute"
+          logo="construction"
+          link="https://github.com/bottleneckco/smu-shortcuts"
         />
       </div>
     </>
