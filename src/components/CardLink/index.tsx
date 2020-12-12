@@ -25,7 +25,7 @@ const CardLink: React.FC<CardProps> = ({
       style={{
         ...cardStyle,
         ...{
-          backgroundColor: '#0A0A0A',
+          backgroundColor: '#2b2b2b',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
