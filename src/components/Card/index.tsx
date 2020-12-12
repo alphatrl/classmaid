@@ -1,11 +1,16 @@
 import React, { useEffect, useState, useRef, ReactChild } from 'react';
-
-import './styles.scss';
+import styled from 'styled-components';
 
 interface CardProps {
   children?: ReactChild;
   style?: Record<string, unknown>;
 }
+
+const CardContainer = styled.div`
+  border: 3px solid #272727;
+  box-sizing: border-box;
+  width: 100%;
+`;
 
 const Card: React.FC<CardProps> = ({ children, style }: CardProps) => {
   const [height, setHeight] = useState(0);
@@ -23,13 +28,12 @@ const Card: React.FC<CardProps> = ({ children, style }: CardProps) => {
   }, []);
 
   return (
-    <div
-      className="box"
+    <CardContainer
       ref={containerRef}
       style={{ ...style, ...{ height: height } }}
     >
       {children}
-    </div>
+    </CardContainer>
   );
 }
 
