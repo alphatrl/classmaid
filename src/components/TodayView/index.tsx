@@ -1,11 +1,125 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import { Card } from '../index';
-
-import './styles.scss';
 
 interface CardProps {
   cardStyle?: Record<string, unknown>;
 }
+
+const WeekContainer = styled.div`
+  height: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  color: #ffffff;
+  background-color: #2b2b2b;
+
+  .highlight {
+    color: #e4a925;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 96%;
+  }
+
+  span {
+    font-weight: 700;
+    padding: 4px 0;
+    font-size: 1.5em;
+  }
+
+  @media screen and (max-width: 1100px) {
+    h1 {
+      font-size: 2.25rem;
+    }
+
+    span {
+      font-size: 1.2em;
+    }
+  }
+
+  @media screen and (max-width: 720px) {
+    h1 {
+      font-size: 12vw;
+    }
+
+    span {
+      font-size: 8vw;
+    }
+  }
+`;
+
+const TimerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  height: 10%;
+
+  font-weight: 800;
+  font-size: 1.35rem;
+  color: #272727;
+
+  border-bottom: 3px solid #272727;
+
+  @media screen and (max-width: 1100px) {
+    font-size: 2vw;
+  }
+
+  @media screen and (max-width: 720px) {
+    font-size: 6vw;
+  }
+`;
+
+const UpcomingContainer = styled.div`
+  height: 35%;
+  padding: 0 8px;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    text-overflow: ellipsis;
+  }
+
+  p {
+    margin: 4px 0;
+    font-weight: 500;
+    font-size: 1.2rem;
+  }
+
+  @media screen and (max-width: 1100px) {
+    padding: 0 4px;
+    h2 {
+      font-size: 2vw;
+    }
+    p {
+      font-size: 1.75vw;
+    }
+  }
+
+  @media screen and (max-width: 720px) {
+    padding: 0 16px;
+    h2 {
+      font-size: 5.65vw;
+      margin-bottom: 0.5vw;
+    }
+    p {
+      margin: 8px 0;
+      font-size: 4vw;
+    }
+  }
+`;
 
 const TodayView: React.FC<CardProps> = ({ cardStyle }: CardProps) => {
   const [schoolTerm, setSchoolTerm] = useState({
@@ -67,15 +181,15 @@ const TodayView: React.FC<CardProps> = ({ cardStyle }: CardProps) => {
 
   const Today = () => {
     return !schoolTerm.isBreak ? (
-      <div className="today">
+      <WeekContainer>
         <h1 className="highlight">{schoolTerm.title.toUpperCase()}</h1>
-      </div>
+      </WeekContainer>
     ) : (
-      <div className="today">
+      <WeekContainer>
         <h1>DAY {schoolTerm.daysIn}</h1>
         <span>OF</span>
         <h1 className="highlight">{schoolTerm.title.toUpperCase()}</h1>
-      </div>
+      </WeekContainer>
     );
   };
 
@@ -87,8 +201,8 @@ const TodayView: React.FC<CardProps> = ({ cardStyle }: CardProps) => {
       setToday(`${todayList[2]} ${todayList[1]} ${todayList[3]}`);
     }, []);
 
-    return <div className="timer">{today}</div>;
-  }
+    return <TimerContainer>{today}</TimerContainer>;
+  };
 
   const Upcoming = () => {
     const [upcoming, setUpcoming] = useState({
@@ -145,14 +259,14 @@ const TodayView: React.FC<CardProps> = ({ cardStyle }: CardProps) => {
     }, []);
 
     return upcoming.summary === '' ? (
-      <div className="upcoming">
+      <UpcomingContainer>
         <h2>No Upcoming Event</h2>
-      </div>
+      </UpcomingContainer>
     ) : (
-      <div className="upcoming">
+      <UpcomingContainer>
         <h2>Upcoming Event {date}</h2>
         <p>{upcoming.summary}</p>
-      </div>
+      </UpcomingContainer>
     );
   };
 
