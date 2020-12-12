@@ -4,6 +4,7 @@ import { Card } from '../index';
 
 interface CardProps {
   cardStyle?: Record<string, unknown>;
+  gridArea: string;
 }
 
 const WeekContainer = styled.div`
@@ -121,15 +122,16 @@ const UpcomingContainer = styled.div`
   }
 `;
 
-const TodayView: React.FC<CardProps> = ({ cardStyle }: CardProps) => {
+const TodayView: React.FC<CardProps> = (props) => {
+  const { gridArea } = props;
+  const [todayDate, setTodayDate] = useState(Date.now());
+  const maxUpcomingEvents = 1;
+  const isSmall = false;
   const [schoolTerm, setSchoolTerm] = useState({
     title: '',
     isBreak: false,
     daysIn: 0,
   });
-
-  const [todayDate, setTodayDate] = useState(Date.now());
-  const maxUpcomingEvents = 1;
 
   useEffect(() => {
     /**
@@ -271,7 +273,7 @@ const TodayView: React.FC<CardProps> = ({ cardStyle }: CardProps) => {
   };
 
   return (
-    <Card style={cardStyle}>
+    <Card gridArea={gridArea} isSmall={isSmall}>
       <>
         <Today />
         <DateNow />
