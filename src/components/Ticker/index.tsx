@@ -81,7 +81,6 @@ const Tick: React.FC = () => {
     useEffect(() => {
       const timer = setInterval(() => {
         setMessage(ticker[tickerIndex]);
-        console.log(tickerIndex);
         // reset index to 0 if we overshot the array count
         setTickerIndex((tickerIndex) =>
           tickerIndex + 1 >= ticker.length ? 0 : tickerIndex + 1
