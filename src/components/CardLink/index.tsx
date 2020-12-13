@@ -20,12 +20,7 @@ const Link = styled.a`
 const Container = styled.div`
   height: 100%;
   width: 100%;
-  color: #ffffff;
   transition: 5ms;
-
-  &:hover {
-    color: #2b2b2b;
-  }
 `;
 
 const Image = styled.div`

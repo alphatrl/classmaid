@@ -27,10 +27,17 @@ const SmallCard = styled(CardContainer)`
   align-items: center;
   justify-content: center;
   transition: 5ms;
+  a {
+    color: white;
+  }
 
   &:hover {
     border: 3px solid #e4a925;
     background-color: #e4a925;
+
+    a {
+      color: #2b2b2b;
+    }
   }
 `;
 
