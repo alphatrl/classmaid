@@ -110,12 +110,14 @@ export const Home: React.FC = () => {
           title="Guides"
           logo="forum"
           link="/guides"
+          newTab={false}
         />
         <CardLink
           gridArea="s8"
           title="Community"
           logo="groups"
           link="/community"
+          newTab={false}
         />
 
         <CardLink
