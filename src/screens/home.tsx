@@ -5,8 +5,6 @@ import styled from 'styled-components';
 import { NavBar, Ticker, CardLink, TodayView } from '../components';
 import logo from '../images/logo-nobg.png';
 
-import './styles.scss';
-
 const Header = styled.div`
   display: flex;
   justify-content: center;
