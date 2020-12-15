@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Card } from '../index';
 import styled from 'styled-components';
 
@@ -31,7 +31,11 @@ const Image = styled.div`
 `;
 
 const Icon = styled.span`
-  font-size: 6vw;
+  font-size: 72px;
+
+  @media screen and (max-width: 1400px) {
+    font-size: 6vw;
+  }
 
   @media screen and (max-width: 720px) {
     font-size: 20vw;
@@ -43,7 +47,11 @@ const Title = styled.span`
   display: flex;
   flex-direction: column-reverse;
   font-weight: 600;
-  font-size: 2vw;
+  font-size: 2em;
+
+  @media screen and (max-width: 1400px) {
+    font-size: 2vw;
+  }
 
   @media screen and (max-width: 720px) {
     font-size: 7vw;

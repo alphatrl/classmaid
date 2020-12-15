@@ -6,9 +6,13 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Home, Guides, Community, About } from './screens';
 
 const Wrapper = styled.div`
-  width: 80%;
+  width: 1200px;
   margin: 0 auto;
   padding-bottom: 24px;
+
+  @media (max-width: 1400px) {
+    width: 80%;
+  }
 
   @media (max-width: 720px) {
     width: 90%;
