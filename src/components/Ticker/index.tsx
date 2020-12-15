@@ -44,15 +44,15 @@ const TickerMessage = styled.span`
 const Tick: React.FC = () => {
   const [ticker, setTicker] = useState([
     {
-      title: '',
-      content: '',
+      title: 'News',
+      content: 'Welcome to SMU Shortcuts!',
     }
   ]);
   const [tickerIndex, setTickerIndex] = useState(0);
 
   useEffect(() => {
     const load = async () => {
-      const tickerList: { title: string; content: string }[] = [];
+      const tickerList: { title: string; content: string }[] = ticker;
       await fetch(
         `https://smulibraries.southeastasia.cloudapp.azure.com/public/count.json`
       )
@@ -66,7 +66,7 @@ const Tick: React.FC = () => {
           tickerList.push({
             title: 'Occupancy Level',
             content: `Kwa Geok Choo Law Library: ${data.kgc.inside} / 300`,
-          })
+          });
         });
 
       setTicker(tickerList);
