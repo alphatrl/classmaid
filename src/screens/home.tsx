@@ -99,9 +99,9 @@ export const Home: React.FC = () => {
         />
         <CardLink
           gridArea="s6"
-          title="Student Wellness"
-          logo="favorite"
-          link="https://www.smu.edu.sg/campus-life/student-wellness"
+          title="Academic Calendar"
+          logo="event"
+          link="https://inet.smu.edu.sg/sites/courses/Pages/Online-Critical-Dates.aspx"
         />
         <CardLink
           gridArea="s7"
@@ -120,39 +120,39 @@ export const Home: React.FC = () => {
 
         <CardLink
           gridArea="c1"
+          title="Student Wellness"
+          logo="favorite"
+          link="https://www.smu.edu.sg/campus-life/student-wellness"
+        />
+        <CardLink
+          gridArea="c2"
+          title="Voices@ SMU"
+          logo="hearing"
+          link="https://voices.smu.edu.sg/get-support#speak-to-us"
+        />
+        <CardLink
+          gridArea="c3"
           title="Boss"
           logo="account_balance_wallet"
           link="https://boss.intranet.smu.edu.sg"
         />
         <CardLink
-          gridArea="c2"
+          gridArea="c4"
           title="onTRAC II"
           logo="work"
           link="https://ontrac.smu.edu.sg"
         />
         <CardLink
-          gridArea="c3"
+          gridArea="c5"
           title="SPS"
           logo="biotech"
           link="https://sps.intranet.smu.edu.sg"
         />
         <CardLink
-          gridArea="c4"
-          title="Upcoming Events"
-          logo="event"
-          link="https://inet.smu.edu.sg/sites/courses/Pages/Online-Critical-Dates.aspx"
-        />
-        <CardLink
-          gridArea="c5"
+          gridArea="c6"
           title="Course Offerings"
           logo="payments"
           link="https://inet.smu.edu.sg/sites/courses/Pages/Course-Offerings.aspx"
-        />
-        <CardLink
-          gridArea="c6"
-          title="Contribute"
-          logo="construction"
-          link="https://github.com/bottleneckco/smu-shortcuts"
         />
       </Container>
     </>
