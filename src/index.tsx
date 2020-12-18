@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+// import * as _ from 'lodash';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { App } from './App';
