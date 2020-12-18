@@ -1,4 +1,3 @@
-import { string } from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import ReactGA from 'react-ga';
 import styled from 'styled-components';
@@ -84,6 +83,7 @@ export const Calendar: React.FC = () => {
       endTime: 0,
     },
   ]);
+  const maxUpcomingEvents = 10;
 
   useEffect(() => {
     const getEvents = async () => {
@@ -123,8 +123,10 @@ export const Calendar: React.FC = () => {
           setUpcoming(upcoming);
         });
     };
+    document.title = 'SMU Shortcuts | Academic Calendar';
     const now = new Date().setHours(0, 0, 0, 0);
     getEvents();
+    ReactGA.pageview(window.location.pathname);
   }, []);
 
   const Event: React.FC<EventProps> = (props) => {

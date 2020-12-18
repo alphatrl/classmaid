@@ -50,7 +50,8 @@ const Container = styled.main`
 
 export const Home: React.FC = () => {
   useEffect(() => {
-    // ReactGA.pageview(window.location.pathname);
+    document.title = 'SMU Shortcuts';
+    ReactGA.pageview(window.location.pathname);
   }, []);
 
   return (
