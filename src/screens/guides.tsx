@@ -73,6 +73,7 @@ export const Community: React.FC = () => {
     };
 
     document.title = 'SMU Shortcuts | Guides';
+    ReactGA.pageview(window.location.pathname);
     load();
   }, []);
 

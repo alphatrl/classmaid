@@ -49,12 +49,16 @@ const Card: React.FC<CardProps> = (props) => {
   useEffect(() => {
     const updateSquare = () => {
       const current = containerRef.current;
-      setHeight((height) => (current ? current.offsetWidth : height));
-    }
+      setHeight(current?.offsetWidth || height);
+    };
     updateSquare();
-    window.addEventListener('resize', () => updateSquare());
 
-    return () => window.removeEventListener('resize', () => updateSquare());
+    // quick hack to update height once components loaded
+    setTimeout(() => updateSquare(), 100);
+    window.addEventListener('resize', () => updateSquare());
+    return () => {
+      window.removeEventListener('resize', () => updateSquare());
+    };
   }, []);
 
   return isSmall ? (
@@ -62,7 +66,7 @@ const Card: React.FC<CardProps> = (props) => {
       {children}
     </SmallCard>
   ) : (
-    <CardContainer ref={containerRef} height={height} gridArea={gridArea} >
+    <CardContainer ref={containerRef} height={height} gridArea={gridArea}>
       {children}
     </CardContainer>
   );
