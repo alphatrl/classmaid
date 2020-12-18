@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-// import ReactGA from 'react-ga';
+import ReactGA from 'react-ga';
 import styled from 'styled-components';
 
 import { NavBar, Ticker, CardLink, TodayView } from '../components';
@@ -101,7 +101,8 @@ export const Home: React.FC = () => {
           gridArea="s6"
           title="Academic Calendar"
           logo="event"
-          link="https://inet.smu.edu.sg/sites/courses/Pages/Online-Critical-Dates.aspx"
+          link="/calendar"
+          newTab={false}
         />
         <CardLink
           gridArea="s7"

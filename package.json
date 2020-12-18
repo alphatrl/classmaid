@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack serve --open --mode=development",
     "test": "echo \"Error: No Test specified\" && exit 1",
-    "build": "webpack -p --mode=production",
+    "build": "webpack --mode=production",
     "clean": "rm -Rf dist/*"
   },
   "devDependencies": {

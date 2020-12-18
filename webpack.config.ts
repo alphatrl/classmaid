@@ -78,6 +78,7 @@ const config: webpack.Configuration = {
     host: 'localhost',
     publicPath: '/',
     hot: true,
+    open: true,
     historyApiFallback: true,
   },
 };

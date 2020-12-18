@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import './App.scss';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { Home, Guides, Community, About } from './screens';
+import { Home, Guides, Community, About, Calendar } from './screens';
 
 const Wrapper = styled.div`
   width: 1200px;
@@ -39,6 +39,9 @@ export const App: React.FC = () => {
           </Route>
           <Route exact path="/about">
             <About />
+          </Route>
+          <Route exact path="/calendar">
+            <Calendar />
           </Route>
         </Switch>
       </Wrapper>
