@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles.scss';
+import styled from 'styled-components';
 
 interface ListProps {
   title?: string;
@@ -9,24 +9,56 @@ interface ListProps {
   }[];
 }
 
+const Container = styled.div`
+  h3 {
+    margin: 0;
+    font-size: 1.2em;
+  }
+`;
+const ContentView = styled.div`
+  ul,
+  ol {
+    margin: 0;
+    padding-top: 8px;
+    padding-left: 0.4em;
+    margin-left: 0.8em 0;
+  }
+
+  li {
+    margin-left: 1em;
+    margin-bottom: 0;
+    margin-top: 0;
+    line-height: 1.65em;
+  }
+
+  li a {
+    color: #2b2b2b;
+    font-weight: 600;
+  }
+
+  li a:hover {
+    color: #946c14;
+  }
+`;
+
 const List: React.FC<ListProps> = ({ title, data }: ListProps) => {
-  const header = !title ? undefined : <div className="listHeader">{title}</div>;
+  const header = !title ? undefined : <h3>{title}</h3>;
   return (
-    <div className="list">
+    <Container>
       {header}
 
-      <div className="listView">
+      <ContentView>
         <ul>
           {data.map((entry, index) => {
             return (
-              <li key={index} className="listChild">
+              <li key={index}>
                 <a href={entry.link}>{entry.title}</a>
               </li>
             );
           })}
         </ul>
-      </div>
-    </div>
+      </ContentView>
+    </Container>
   );
 };
 

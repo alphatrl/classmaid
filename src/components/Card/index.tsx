@@ -1,37 +1,79 @@
-import React from 'react';
-import './styles.scss';
-import '../../constants/colors.scss';
+import React, { useEffect, useState, useRef, ReactChild } from 'react';
+import styled from 'styled-components';
 
 interface CardProps {
-  title?: string;
-  logo?: string;
-  link?: string;
-  color?: string;
-  newTab?: boolean;
+  children?: ReactChild;
+  style?: Record<string, unknown>;
+  gridArea: string;
+  isSmall?: boolean;
 }
 
-const Card: React.FC<CardProps> = ({ title, logo, link, color, newTab }: CardProps) => {
-  const isNewTab = newTab ? '_blank' : '_self';
-  const className = 'card ' + color;
+interface CardContainerProps {
+  height: number;
+  gridArea: string;
+}
 
-  return (
-    <a href={link} className="cardLink" target={isNewTab}>
-      <div className={className}>
-        <div className="imageView">
-          <span className="material-icons-round md-48">{logo}</span>
-        </div>
-        <div className="label">{title}</div>
-      </div>
-    </a>
+const CardContainer = styled.div<CardContainerProps>`
+  border: 3px solid #2b2b2b;
+  box-sizing: border-box;
+  width: 100%;
+  height: ${(props) => props.height}px;
+  grid-area: ${(props) => props.gridArea};
+`;
+
+const SmallCard = styled(CardContainer)`
+  background-color: #2b2b2b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 5ms;
+  a {
+    color: white;
+  }
+
+  &:hover {
+    border: 3px solid #e4a925;
+    background-color: #e4a925;
+
+    a {
+      color: #2b2b2b;
+    }
+  }
+`;
+
+const Card: React.FC<CardProps> = (props) => {
+  const { children, style, gridArea, isSmall } = props;
+  const [height, setHeight] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const updateSquare = () => {
+      const current = containerRef.current;
+      setHeight(current?.offsetWidth || height);
+    };
+    updateSquare();
+
+    // quick hack to update height once components loaded
+    setTimeout(() => updateSquare(), 100);
+    window.addEventListener('resize', () => updateSquare());
+    return () => {
+      window.removeEventListener('resize', () => updateSquare());
+    };
+  }, []);
+
+  return isSmall ? (
+    <SmallCard ref={containerRef} height={height} gridArea={gridArea}>
+      {children}
+    </SmallCard>
+  ) : (
+    <CardContainer ref={containerRef} height={height} gridArea={gridArea}>
+      {children}
+    </CardContainer>
   );
 };
 
 Card.defaultProps = {
-  title: '',
-  logo: 'help_outline',
-  link: 'smu.edu.sg',
-  color: 'red',
-  newTab: false,
-};
+  isSmall: true,
+}
 
 export default Card;

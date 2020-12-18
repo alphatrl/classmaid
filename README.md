@@ -1,29 +1,65 @@
-# SMU Shortcuts
+<p align="center" style="background-color: #FAFAFA;">
+    <img alt="smu-shortcut logo" src="./src/images/logo-nobg.png" width="100px">
+    <h1 align="center">SMU Shortcuts</h1>
+</p>
 
-![smu-shortcuts-logo](./src/images/logo192.png "SMU Shortcuts")
+<h4 align="center">
+  A one-click bookmark to commonly-used websites in SMU. </br>
+  This site is non-affliated with SMU.
+</h4>
 
-To provide students with a quick one-click bookmarks to commonly used websites used in SMU.
+---
 
-This site is non-affliated with SMU.
+<p align="center">
+  <img alt="smu-shortcut promotion-image" src="./src/images/promo-image.png">
+</p>
 
-## Developer Tools
+---
 
-In the project directory, you can run:
+## 💻 Try it
 
-### `yarn start`
+Visit [SMU Shortcuts](https://smushortcuts.netlify.app)
 
-Runs the app in the development mode.<br />
+## 🤩 Features
+
+- Bookmarks of commonly-used websites in SMU
+- View upcoming school events
+- View current school term event
+
+## 🛠 Develop
+
+Run the following commands:
+
+```bash
+# Clone the repo
+git clone https://github.com/bottleneckco/smu-shortcuts.git && cd smu-shortcuts
+
+# Install dependencies
+yarn install
+
+# Copy the env.example files
+cp .env.example .env
+
+# Run the app
+yarn start
+```
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### 💾 Data
 
-### `yarn build`
+The data used by SMU-Shortcuts is stored in [smu-scraper](https://github.com/bottleneckco/smu-scraper)
 
-Builds the app for production to the `dist` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🙋 Contribute
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+If you found a bug, or if you have an idea for this app, please [file an issue here](https://github.com/bottleneckco/smu-shortcuts/issues). We appreaciate your feedbacks and inputs.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 📜 License
+
+MIT License. See [LICENSE](./LICENSE) file for more information.
+
+## ⭐️ Credits
+
+Created by [Amos](http://github.com/alphatrl)
+
+A huge thanks to the following contributers for their amazing work:

@@ -34,7 +34,7 @@ const config: webpack.Configuration = {
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         use: 'file-loader',
-      }
+      },
     ],
   },
   resolve: {
@@ -75,9 +75,10 @@ const config: webpack.Configuration = {
   devServer: {
     port: 3000,
     contentBase: path.join(__dirname, 'dist'),
-    host: '0.0.0.0',
+    host: 'localhost',
     publicPath: '/',
     hot: true,
+    open: true,
     historyApiFallback: true,
   },
 };
