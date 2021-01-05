@@ -95,6 +95,7 @@ const UpcomingContainer = styled.div`
 
   p {
     margin: 4px 0;
+    width: 100%;
     font-weight: 500;
     font-size: 1.2rem;
   }
@@ -129,8 +130,9 @@ const TodayView: React.FC<CardProps> = (props) => {
   const isSmall = false;
   const [schoolTerm, setSchoolTerm] = useState({
     title: '',
-    isBreak: false,
     daysIn: 0,
+    isBreak: false,
+    isLastDay: false,
   });
 
   useEffect(() => {
@@ -148,26 +150,38 @@ const TodayView: React.FC<CardProps> = (props) => {
           for await (const year of annualYear) {
             for (const num in year) {
               const term = year[num];
-              const termStart = Date.parse(term.startdate + ' GMT+0800');
-              const termEnd = Date.parse(term.enddate + ' GMT+0800');
+
+              const termStart = new Date(
+                Date.parse(term.startdate + ' GMT+08:00')
+              ).setHours(0, 0, 0);
+              const termEnd = new Date(
+                Date.parse(term.enddate + ' GMT+08:00')
+              ).setHours(23, 59, 59);
 
               // we found our term with 2 conditions
               // current date is more than term start date
               // current date is less than term end date
               if (todayDate > termStart && todayDate < termEnd) {
                 for (const week of term.weeks) {
-                  const weekStart = Date.parse(week.startdate + ' GMT+0800');
-                  const weekEnd = Date.parse(week.enddate + ' GMT+0800');
+                  const weekStart = new Date(
+                    Date.parse(week.startdate + ' GMT+0800')
+                  ).setHours(0, 0, 0);
+                  const weekEnd = new Date(
+                    Date.parse(week.enddate + ' GMT+0800')
+                  ).setHours(23, 59, 59);
 
                   if (todayDate > weekStart && todayDate < weekEnd) {
                     const title = week.name;
                     const days = (todayDate - weekStart) / (1000 * 3600 * 24);
+                    const daysToEnd =
+                      (weekEnd - todayDate) / (1000 * 3600 * 24);
                     // console.log(todayDate, weekStart);
-                    // console.log(days)
+                    // console.log(daysToEnd);
                     return {
                       title: title,
-                      isBreak: title === 'Vacation' || title === 'Recess',
                       daysIn: Math.ceil(days),
+                      isBreak: title === 'Vacation' || title === 'Recess',
+                      isLastDay: Math.ceil(daysToEnd) === 1,
                     };
                   }
                 }
@@ -188,7 +202,11 @@ const TodayView: React.FC<CardProps> = (props) => {
       </WeekContainer>
     ) : (
       <WeekContainer>
-        <h1>DAY {schoolTerm.daysIn}</h1>
+        {!schoolTerm.isLastDay ? (
+          <h1>DAY {schoolTerm.daysIn}</h1>
+        ) : (
+          <h1>Last Day</h1>
+        )}
         <span>OF</span>
         <h1 className="highlight">{schoolTerm.title.toUpperCase()}</h1>
       </WeekContainer>
