@@ -53,7 +53,13 @@ const Loader = styled.div`
 export const Community: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [links, setLinks] = useState({
-    intro: [
+    welcome: [
+      {
+        title: '',
+        link: '',
+      },
+    ],
+    study: [
       {
         title: '',
         link: '',
@@ -87,7 +93,14 @@ export const Community: React.FC = () => {
       <NavBar />
 
       <Container>
-        {loading ? <Loader /> : <List title="Intro" data={links.intro} />}
+        {loading ? (
+          <Loader />
+        ) : (
+          <>
+            <List title="Welcome" data={links.welcome} />
+            <List title="Study" data={links.study} />
+          </>
+        )}
       </Container>
     </>
   );
