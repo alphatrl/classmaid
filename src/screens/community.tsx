@@ -102,8 +102,8 @@ export const Community: React.FC = () => {
           <Loader />
         ) : (
           <>
-            <List title="Telegram" data={links.telegram} /> <br />
-            <List title="Instagram" data={links.instagram} /> <br />
+            <List title="Telegram" data={links.telegram} />
+            <List title="Instagram" data={links.instagram} />
             <List title="Websites" data={links.websites} />
           </>
         )}

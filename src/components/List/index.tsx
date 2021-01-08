@@ -10,6 +10,8 @@ interface ListProps {
 }
 
 const Container = styled.div`
+  margin-bottom: 16px;
+
   h3 {
     margin: 0;
     font-size: 1.2em;
