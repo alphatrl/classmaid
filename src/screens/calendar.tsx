@@ -109,7 +109,7 @@ export const Calendar: React.FC = () => {
             const startDate = new Date(event.startTime).setHours(0, 0, 0, 0);
             const endDate = new Date(event.endTime).setHours(0, 0, 0, 0);
 
-            console.log(startDate, now);
+            // console.log(startDate, now);
             // check if event is current
             if (now >= startDate && now <= endDate) {
               current.push(event);
@@ -161,7 +161,7 @@ export const Calendar: React.FC = () => {
     const start = getDateTimeString(startDateTime);
     const end = getDateTimeString(endDateTime);
 
-    console.log(start, end);
+    // console.log(start, end);
 
     return (
       <EventView>
