@@ -158,9 +158,6 @@ const TodayView: React.FC<CardProps> = (props) => {
                 Date.parse(term.enddate + ' GMT+08:00')
               ).setHours(23, 59, 59);
 
-              // const termStart = Date.parse(termStartDate.toISOString());
-              // const termEnd = Date.parse(termEndDate.toISOString());
-
               // we found our term with 2 conditions
               // current date is more than term start date
               // current date is less than term end date
@@ -179,12 +176,12 @@ const TodayView: React.FC<CardProps> = (props) => {
                     const daysToEnd =
                       (weekEnd - todayDate) / (1000 * 3600 * 24);
                     // console.log(todayDate, weekStart);
-                    // console.log(days)
+                    // console.log(daysToEnd);
                     return {
                       title: title,
                       daysIn: Math.ceil(days),
                       isBreak: title === 'Vacation' || title === 'Recess',
-                      isLastDay: Math.ceil(daysToEnd) === 0,
+                      isLastDay: Math.ceil(daysToEnd) === 1,
                     };
                   }
                 }
