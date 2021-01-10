@@ -95,6 +95,7 @@ const UpcomingContainer = styled.div`
 
   p {
     margin: 4px 0;
+    width: 100%;
     font-weight: 500;
     font-size: 1.2rem;
   }
@@ -149,16 +150,28 @@ const TodayView: React.FC<CardProps> = (props) => {
           for await (const year of annualYear) {
             for (const num in year) {
               const term = year[num];
-              const termStart = Date.parse(term.startdate + ' GMT+0800');
-              const termEnd = Date.parse(term.enddate + ' GMT+0800');
+
+              const termStart = new Date(
+                Date.parse(term.startdate + ' GMT+08:00')
+              ).setHours(0, 0, 0);
+              const termEnd = new Date(
+                Date.parse(term.enddate + ' GMT+08:00')
+              ).setHours(23, 59, 59);
+
+              // const termStart = Date.parse(termStartDate.toISOString());
+              // const termEnd = Date.parse(termEndDate.toISOString());
 
               // we found our term with 2 conditions
               // current date is more than term start date
               // current date is less than term end date
               if (todayDate > termStart && todayDate < termEnd) {
                 for (const week of term.weeks) {
-                  const weekStart = Date.parse(week.startdate + ' GMT+0800');
-                  const weekEnd = Date.parse(week.enddate + ' GMT+0800');
+                  const weekStart = new Date(
+                    Date.parse(week.startdate + ' GMT+0800')
+                  ).setHours(0, 0, 0);
+                  const weekEnd = new Date(
+                    Date.parse(week.enddate + ' GMT+0800')
+                  ).setHours(23, 59, 59);
 
                   if (todayDate > weekStart && todayDate < weekEnd) {
                     const title = week.name;
