@@ -38,6 +38,9 @@ const NavBar: React.FC = () => {
       <StyledLink href="/">
         <span>Home</span>
       </StyledLink>
+      <StyledLink href="/boss-timetable">
+        <span>BOSS Timetable</span>
+      </StyledLink>
       <StyledLink href="/about">
         <span>About</span>
       </StyledLink>
