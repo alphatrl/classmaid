@@ -8,7 +8,7 @@ import { NavBar } from '../components';
 
 import parse from 'csv-parse/lib/sync';
 import moment from 'moment';
-import { capitalize } from 'lodash';
+import { capitalize, uniqBy } from 'lodash';
 
 const Header = styled.div`
   display: flex;
@@ -28,35 +28,45 @@ const Header = styled.div`
   }
 `;
 
-function convert(data: string[][]) {
+function convert(data: string[][], allowedModules: string[] = []) {
   const relevantData = data.slice(1);
 
-  const events = relevantData.map((event) => {
-    const classCode = event[3];
-    const classDesc = event[4];
+  const events = relevantData
+    .filter((event) => {
+      const classCode = event[3];
 
-    const section = event[5];
-    const type = event[7];
+      return (
+        allowedModules.length === 0 || allowedModules.indexOf(classCode) !== -1
+      );
+    })
+    .map((event) => {
+      const classCode = event[3];
+      const classDesc = event[4];
 
-    const startDate = event[8]; // of the whole term, not the actual event!
-    const endDate = event[9];
-    const startTime = event[11];
-    const endTime = event[12];
+      const section = event[5];
+      const type = event[7];
 
-    const venue = event[13];
-    const instructor = event[14];
+      const startDate = event[8]; // of the whole term, not the actual event!
+      const endDate = event[9];
+      const startTime = event[11];
+      const endTime = event[12];
 
-    const dayOfWeek = event[10];
-    const startDateActual = moment(startDate);
-    startDateActual.day(dayOfWeek);
+      const venue = event[13];
+      const instructor = event[14];
 
-    const dtStart = moment(
-      `${startDateActual.format('DD-MMM-yyyy')} ${startTime}`
-    );
-    const dtEnd = moment(`${startDateActual.format('DD-MMM-yyyy')} ${endTime}`);
-    const repeatEnd = moment(`${endDate} ${endTime}`);
+      const dayOfWeek = event[10];
+      const startDateActual = moment(startDate);
+      startDateActual.day(dayOfWeek);
 
-    return `BEGIN:VEVENT
+      const dtStart = moment(
+        `${startDateActual.format('DD-MMM-yyyy')} ${startTime}`
+      );
+      const dtEnd = moment(
+        `${startDateActual.format('DD-MMM-yyyy')} ${endTime}`
+      );
+      const repeatEnd = moment(`${endDate} ${endTime}`);
+
+      return `BEGIN:VEVENT
 SUMMARY:${classCode} (${classDesc}) ${capitalize(type)}
 DESCRIPTION:Section: ${section}\\nInstructor: ${instructor}
 LOCATION:${venue}
@@ -69,7 +79,7 @@ ACTION:DISPLAY
 DESCRIPTION:Alert before event
 END:VALARM
 END:VEVENT`;
-  });
+    });
 
   return `BEGIN:VCALENDAR
 VERSION:2.0
@@ -146,7 +156,15 @@ END:VCALENDAR`;
 }
 
 export const BOSSTimetable: React.FC = () => {
+  useEffect(() => {
+    document.title = 'SMU Shortcuts | About';
+    ReactGA.pageview(window.location.pathname);
+  }, []);
+
   const [fileContents, setFileContents] = useState<string | null>(null);
+  const [allowedModules, setAllowedModules] = useState<string[]>([]);
+
+  // Raw CSV contents
   const csvContents = useMemo<string[][] | null>(() => {
     if (fileContents === null) {
       return null;
@@ -154,11 +172,6 @@ export const BOSSTimetable: React.FC = () => {
 
     return parse(fileContents);
   }, [fileContents]);
-
-  useEffect(() => {
-    document.title = 'SMU Shortcuts | About';
-    ReactGA.pageview(window.location.pathname);
-  }, []);
 
   const handleFileChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -189,10 +202,35 @@ export const BOSSTimetable: React.FC = () => {
       return null;
     }
 
-    return new Blob([convert(csvContents)], {
+    return new Blob([convert(csvContents, allowedModules)], {
       type: 'text/calendar',
     });
-  }, [csvContents]);
+  }, [csvContents, allowedModules]);
+
+  const handleAllowedModuleToggled = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { checked, value } = e.target;
+
+      console.log(checked);
+
+      if (checked) {
+        setAllowedModules((modules) => [...modules, value]);
+      } else {
+        setAllowedModules((modules) => modules.filter((mod) => mod !== value));
+      }
+    },
+    []
+  );
+
+  useEffect(() => {
+    if (csvContents === null || allowedModules.length > 0) {
+      return;
+    }
+
+    setAllowedModules(
+      uniqBy(csvContents.slice(1), (event) => event[3]).map((event) => event[3])
+    );
+  }, [csvContents, allowedModules]);
 
   return (
     <>
@@ -207,7 +245,23 @@ export const BOSSTimetable: React.FC = () => {
         placeholder="Upload CSV here"
         onChange={handleFileChange}
       />
-      <pre>{csvContents ? convert(csvContents) : null}</pre>
+      <pre>{csvContents ? convert(csvContents, allowedModules) : null}</pre>
+
+      <fieldset>
+        <legend>Modules to export</legend>
+        {csvContents !== null &&
+          uniqBy(csvContents.slice(1), (event) => event[3]).map((event) => (
+            <label key={event[3]}>
+              <input
+                type="checkbox"
+                value={event[3]}
+                checked={allowedModules.indexOf(event[3]) !== -1}
+                onChange={handleAllowedModuleToggled}
+              />
+              {event[4]}
+            </label>
+          ))}
+      </fieldset>
       {iCalBlob !== null && (
         <a href={window.URL.createObjectURL(iCalBlob)}>Download iCal</a>
       )}
