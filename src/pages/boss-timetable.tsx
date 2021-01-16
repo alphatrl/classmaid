@@ -197,12 +197,20 @@ export const BOSSTimetable: React.FC = () => {
     []
   );
 
-  const iCalBlob = useMemo(() => {
+  // Generated ICS data, if available
+  const generatedData = useMemo(() => {
     if (csvContents === null) {
       return null;
     }
+    return convert(csvContents, allowedModules);
+  }, [csvContents, allowedModules]);
 
-    return new Blob([convert(csvContents, allowedModules)], {
+  const iCalBlob = useMemo(() => {
+    if (generatedData === null) {
+      return null;
+    }
+
+    return new Blob([generatedData], {
       type: 'text/calendar',
     });
   }, [csvContents, allowedModules]);
@@ -245,7 +253,6 @@ export const BOSSTimetable: React.FC = () => {
         placeholder="Upload CSV here"
         onChange={handleFileChange}
       />
-      <pre>{csvContents ? convert(csvContents, allowedModules) : null}</pre>
 
       <fieldset>
         <legend>Modules to export</legend>
