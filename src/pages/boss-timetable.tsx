@@ -10,6 +10,7 @@ import parse from 'csv-parse/lib/sync';
 import moment from 'moment';
 import { capitalize, uniqBy } from 'lodash';
 import parseMeetings from '../util/boss/parseMeetings';
+import generateICal, { Event } from '../util/boss/generateICal';
 
 const Header = styled.div`
   display: flex;
@@ -35,7 +36,7 @@ function convert(data: string[][], allowedModules: string[] = []) {
 
   const meetings = parseMeetings(relevantData);
 
-  const events = meetings
+  const events: Event[] = meetings
     .filter((meeting) => {
       const { classCode } = meeting;
 
@@ -66,93 +67,20 @@ function convert(data: string[][], allowedModules: string[] = []) {
       const dtEnd = moment(`${firstDate.format('DD-MMM-yyyy')} ${timeEnd}`);
       const repeatEnd = moment(`${termEnd.format('DD-MMM-yyyy')} ${timeEnd}`);
 
-      return `BEGIN:VEVENT
-SUMMARY:${classCode} (${classDesc}) ${capitalize(type)}
-DESCRIPTION:Section: ${section}\\nInstructor: ${instructor}
-LOCATION:${venue}
-DTSTART;TZID=Asia/Singapore:${dtStart.format('yyyyMMDDTHHmmss')}
-DTEND;TZID=Asia/Singapore:${dtEnd.format('yyyyMMDDTHHmmss')}
-RRULE:FREQ=WEEKLY;UNTIL=${repeatEnd.format('yyyyMMDDTHHmmss')}
-BEGIN:VALARM
-TRIGGER:-PT10M
-ACTION:DISPLAY
-DESCRIPTION:Alert before event
-END:VALARM
-END:VEVENT`;
+      return {
+        summary: `${classCode} (${classDesc}) ${capitalize(type)}`,
+        description: `Section: ${section}\\nInstructor: ${instructor}`,
+        location: venue,
+        dtStart,
+        dtEnd,
+        repeatFreq: 'weekly',
+        repeatEnd,
+        tzid: 'Asia/Singapore',
+        alarms: ['-PT10M', '-PT1H'],
+      };
     });
 
-  return `BEGIN:VCALENDAR
-VERSION:2.0
-CALSCALE:GREGORIAN
-PRODID:-//calendarserver.org//Zonal//EN
-BEGIN:VTIMEZONE
-TZID:Asia/Singapore
-BEGIN:STANDARD
-DTSTART:19010101T000000
-RDATE:19010101T000000
-TZNAME:SMT
-TZOFFSETFROM:+065525
-TZOFFSETTO:+065525
-END:STANDARD
-BEGIN:STANDARD
-DTSTART:19050601T000000
-RDATE:19050601T000000
-TZNAME:MALT
-TZOFFSETFROM:+065525
-TZOFFSETTO:+0700
-END:STANDARD
-BEGIN:STANDARD
-DTSTART:19330101T000000
-RDATE:19330101T000000
-TZNAME:MALST
-TZOFFSETFROM:+0700
-TZOFFSETTO:+0720
-END:STANDARD
-BEGIN:STANDARD
-DTSTART:19360101T000000
-RDATE:19360101T000000
-TZNAME:MALT
-TZOFFSETFROM:+0720
-TZOFFSETTO:+0720
-END:STANDARD
-BEGIN:STANDARD
-DTSTART:19410901T000000
-RDATE:19410901T000000
-TZNAME:MALT
-TZOFFSETFROM:+0720
-TZOFFSETTO:+0730
-END:STANDARD
-BEGIN:STANDARD
-DTSTART:19420216T000000
-RDATE:19420216T000000
-TZNAME:JST
-TZOFFSETFROM:+0730
-TZOFFSETTO:+0900
-END:STANDARD
-BEGIN:STANDARD
-DTSTART:19450912T000000
-RDATE:19450912T000000
-TZNAME:MALT
-TZOFFSETFROM:+0900
-TZOFFSETTO:+0730
-END:STANDARD
-BEGIN:STANDARD
-DTSTART:19650809T000000
-RDATE:19650809T000000
-TZNAME:SGT
-TZOFFSETFROM:+0730
-TZOFFSETTO:+0730
-END:STANDARD
-BEGIN:STANDARD
-DTSTART:19820101T000000
-RDATE:19820101T000000
-TZNAME:SGT
-TZOFFSETFROM:+0730
-TZOFFSETTO:+0800
-END:STANDARD
-END:VTIMEZONE
-${events.join('\n')}
-END:VCALENDAR`;
+  return generateICal(events);
 }
 
 export const BOSSTimetable: React.FC = () => {
@@ -253,8 +181,6 @@ export const BOSSTimetable: React.FC = () => {
         placeholder="Upload CSV here"
         onChange={handleFileChange}
       />
-
-      <pre>{generatedData}</pre>
 
       <fieldset>
         <legend>Modules to export</legend>
