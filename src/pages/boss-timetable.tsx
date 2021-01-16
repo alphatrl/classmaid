@@ -9,6 +9,7 @@ import { NavBar } from '../components';
 import parse from 'csv-parse/lib/sync';
 import moment from 'moment';
 import { capitalize, uniqBy } from 'lodash';
+import parseMeetings from '../util/boss/parseMeetings';
 
 const Header = styled.div`
   display: flex;
@@ -29,42 +30,41 @@ const Header = styled.div`
 `;
 
 function convert(data: string[][], allowedModules: string[] = []) {
+  // Remove CSV header
   const relevantData = data.slice(1);
 
-  const events = relevantData
-    .filter((event) => {
-      const classCode = event[3];
+  const meetings = parseMeetings(relevantData);
+
+  const events = meetings
+    .filter((meeting) => {
+      const { classCode } = meeting;
 
       return (
         allowedModules.length === 0 || allowedModules.indexOf(classCode) !== -1
       );
     })
-    .map((event) => {
-      const classCode = event[3];
-      const classDesc = event[4];
+    .map((meeting) => {
+      const {
+        classCode,
+        classDesc,
+        section,
+        type,
+        termStart,
+        termEnd,
+        timeStart,
+        timeEnd,
+        venue,
+        instructor,
+        dayOfWeek,
+      } = meeting;
 
-      const section = event[5];
-      const type = event[7];
+      // Get the first occurrence of this event
+      const firstDate = termStart.clone();
+      firstDate.day(dayOfWeek);
 
-      const startDate = event[8]; // of the whole term, not the actual event!
-      const endDate = event[9];
-      const startTime = event[11];
-      const endTime = event[12];
-
-      const venue = event[13];
-      const instructor = event[14];
-
-      const dayOfWeek = event[10];
-      const startDateActual = moment(startDate);
-      startDateActual.day(dayOfWeek);
-
-      const dtStart = moment(
-        `${startDateActual.format('DD-MMM-yyyy')} ${startTime}`
-      );
-      const dtEnd = moment(
-        `${startDateActual.format('DD-MMM-yyyy')} ${endTime}`
-      );
-      const repeatEnd = moment(`${endDate} ${endTime}`);
+      const dtStart = moment(`${firstDate.format('DD-MMM-yyyy')} ${timeStart}`);
+      const dtEnd = moment(`${firstDate.format('DD-MMM-yyyy')} ${timeEnd}`);
+      const repeatEnd = moment(`${termEnd.format('DD-MMM-yyyy')} ${timeEnd}`);
 
       return `BEGIN:VEVENT
 SUMMARY:${classCode} (${classDesc}) ${capitalize(type)}
@@ -253,6 +253,8 @@ export const BOSSTimetable: React.FC = () => {
         placeholder="Upload CSV here"
         onChange={handleFileChange}
       />
+
+      <pre>{generatedData}</pre>
 
       <fieldset>
         <legend>Modules to export</legend>
