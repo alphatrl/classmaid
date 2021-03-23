@@ -1,30 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import ReactGA from 'react-ga';
 import styled from 'styled-components';
 
-import { NavBar } from '../components';
-import SEO from '../components/SEO';
 import DefaultLayout from '../layouts/DefaultLayout';
 
-const Header = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 12px 0;
-
-  .shortcutsLogo {
-    width: 100px;
-    image-rendering: -webkit-optimize-contrast;
-  }
-
-  h1 {
-    margin: 0;
-    font-size: 1.5em;
-  }
-`;
-
-const Container = styled.main`
+const Container = styled.div`
   width: 100%;
   padding: 12px;
   border: 3px solid #2b2b2b;
@@ -124,10 +103,8 @@ export const Calendar: React.FC = () => {
           setUpcoming(upcoming);
         });
     };
-    document.title = 'SMU Shortcuts | Academic Calendar';
     const now = new Date().setHours(0, 0, 0, 0);
     getEvents();
-    ReactGA.pageview(window.location.pathname);
   }, []);
 
   const Event: React.FC<EventProps> = (props) => {
@@ -173,18 +150,7 @@ export const Calendar: React.FC = () => {
   };
 
   return (
-    <DefaultLayout>
-      <SEO title="Academic Calendar" />
-      <Header>
-        <img
-          src="/images/logo-nobg.png"
-          className="shortcutsLogo"
-          alt="smu-shortcut icon"
-        ></img>
-        <h1>Academic Calendar</h1>
-      </Header>
-      <NavBar />
-
+    <DefaultLayout title="Academic Calendar">
       <Event events={current} heading={'Ongoing Events'} />
       <Event events={upcoming} heading={'Upcoming Events'} />
     </DefaultLayout>
