@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import ReactGA from 'react-ga';
 
 import { NavBar, List } from '../components';
-import logo from '../images/logo-nobg.png';
 
 const Header = styled.div`
   display: flex;
@@ -86,7 +85,11 @@ export const Community: React.FC = () => {
   return (
     <>
       <Header>
-        <img src={logo} className="shortcutsLogo" alt="smu-shortcut icon"></img>
+        <img
+          src="/images/logo-nobg.png"
+          className="shortcutsLogo"
+          alt="smu-shortcut icon"
+        ></img>
         <h1>Guides</h1>
       </Header>
 
