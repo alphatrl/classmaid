@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import NavLink from '../NavLink';
+import NavLink from './NavLink';
 
 const NavBarContainer = styled.div`
   width: 100%;

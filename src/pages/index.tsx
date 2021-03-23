@@ -1,30 +1,12 @@
-import React, { useEffect } from 'react';
-import ReactGA from 'react-ga';
+import React from 'react';
 import styled from 'styled-components';
+import CardLink from '../components/CardLink';
+import Ticker from '../components/Ticker';
+import TodayView from '../components/TodayView';
 
-import { NavBar, Ticker, CardLink, TodayView } from '../components';
-import SEO from '../components/SEO';
 import DefaultLayout from '../layouts/DefaultLayout';
 
-const Header = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 12px 0;
-
-  .shortcutsLogo {
-    width: 100px;
-    image-rendering: -webkit-optimize-contrast;
-  }
-
-  h1 {
-    margin: 0;
-    font-size: 1.5em;
-  }
-`;
-
-const Container = styled.main`
+const Container = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -50,24 +32,8 @@ const Container = styled.main`
 `;
 
 export const Home: React.FC = () => {
-  useEffect(() => {
-    document.title = 'SMU Shortcuts';
-    ReactGA.pageview(window.location.pathname);
-  }, []);
-
   return (
     <DefaultLayout>
-      <SEO title="SMU Shortcuts" />
-      <Header>
-        <img
-          src="/images/logo-nobg.png"
-          className="shortcutsLogo"
-          alt="smu-shortcut icon"
-        ></img>
-        <h1>SMU Shortcuts</h1>
-      </Header>
-
-      <NavBar />
       <Ticker />
 
       <Container>

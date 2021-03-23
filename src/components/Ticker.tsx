@@ -41,7 +41,7 @@ const TickerMessage = styled.span`
   font-weight: 500;
 `;
 
-const Tick: React.FC = () => {
+const Ticker: React.FC = () => {
   const [ticker, setTicker] = useState([
     {
       title: 'News',
@@ -109,4 +109,4 @@ const Tick: React.FC = () => {
   );
 }
 
-export default Tick;
+export default Ticker;

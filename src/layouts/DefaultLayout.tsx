@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import Header from '../components/Header';
+import NavBar from '../components/NavBar';
+import SEO from '../components/SEO';
 
 const Wrapper = styled.div`
   width: 1200px;
@@ -19,10 +22,21 @@ const Wrapper = styled.div`
   }
 `;
 
-const DefaultLayout: React.FC = function (props) {
-  const { children } = props;
+interface Props {
+  title?: string;
+}
 
-  return <Wrapper>{children}</Wrapper>;
+const DefaultLayout: React.FC<Props> = function (props) {
+  const { title = 'SMU Shortcuts', children } = props;
+
+  return (
+    <Wrapper>
+      <Header title={title} />
+      <NavBar />
+      <SEO title={title} />
+      <main>{children}</main>
+    </Wrapper>
+  );
 };
 
 export default DefaultLayout;

@@ -1,30 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import ReactGA from 'react-ga';
 
-import { NavBar } from '../components';
 import DefaultLayout from '../layouts/DefaultLayout';
-import SEO from '../components/SEO';
 
-const Header = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 12px 0;
-
-  .shortcutsLogo {
-    width: 100px;
-    image-rendering: -webkit-optimize-contrast;
-  }
-
-  h1 {
-    margin: 0;
-    font-size: 1.5em;
-  }
-`;
-
-const Container = styled.main`
+const Container = styled.div`
   width: 100%;
   padding: 12px;
   margin: 12px 0;
@@ -54,24 +33,8 @@ const Container = styled.main`
 `;
 
 export const About: React.FC = () => {
-  useEffect(() => {
-    document.title = 'SMU Shortcuts | About';
-    ReactGA.pageview(window.location.pathname);
-  }, []);
-
   return (
-    <DefaultLayout>
-      <SEO title="About" />
-      <Header>
-        <img
-          src="/images/logo-nobg.png"
-          className="shortcutsLogo"
-          alt="smu-shortcut icon"
-        ></img>
-        <h1>About</h1>
-      </Header>
-      <NavBar />
-
+    <DefaultLayout title="About">
       <Container>
         <p>
           Providing students a quick one-click bookmarks to commonly used sites

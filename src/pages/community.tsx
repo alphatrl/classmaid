@@ -1,30 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import ReactGA from 'react-ga';
 
-import { NavBar, List } from '../components';
 import DefaultLayout from '../layouts/DefaultLayout';
-import SEO from '../components/SEO';
+import List from '../components/List';
 
-const Header = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 12px 0;
-
-  .shortcutsLogo {
-    width: 100px;
-    image-rendering: -webkit-optimize-contrast;
-  }
-
-  h1 {
-    margin: 0;
-    font-size: 1.5em;
-  }
-`;
-
-const Container = styled.main`
+const Container = styled.div`
   width: 100%;
   padding: 12px;
   border: 3px solid #2b2b2b;
@@ -85,24 +65,11 @@ export const Community: React.FC = () => {
       setLoading(false);
     };
 
-    document.title = 'SMU Shortcuts | Community';
-    ReactGA.pageview(window.location.pathname);
     load();
   }, []);
 
   return (
-    <DefaultLayout>
-      <SEO title="Community" />
-      <Header>
-        <img
-          src="/images/logo-nobg.png"
-          className="shortcutsLogo"
-          alt="smu-shortcut icon"
-        ></img>
-        <h1>Community</h1>
-      </Header>
-      <NavBar />
-
+    <DefaultLayout title="Community">
       <Container>
         {loading ? (
           <Loader />

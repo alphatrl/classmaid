@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card } from '../index';
 import styled from 'styled-components';
+import Card from './Card';
 
 interface CardProps {
   cardStyle?: Record<string, unknown>;
