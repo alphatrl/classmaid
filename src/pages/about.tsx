@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import ReactGA from 'react-ga';
 
-import logo from '../images/logo-nobg.png';
 import { NavBar } from '../components';
 
 const Header = styled.div`
@@ -61,7 +60,11 @@ export const About: React.FC = () => {
   return (
     <>
       <Header>
-        <img src={logo} className="shortcutsLogo" alt="smu-shortcut icon"></img>
+        <img
+          src="/images/logo-nobg.png"
+          className="shortcutsLogo"
+          alt="smu-shortcut icon"
+        ></img>
         <h1>About</h1>
       </Header>
       <NavBar />
