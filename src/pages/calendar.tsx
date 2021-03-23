@@ -3,6 +3,8 @@ import ReactGA from 'react-ga';
 import styled from 'styled-components';
 
 import { NavBar } from '../components';
+import SEO from '../components/SEO';
+import DefaultLayout from '../layouts/DefaultLayout';
 
 const Header = styled.div`
   display: flex;
@@ -171,7 +173,8 @@ export const Calendar: React.FC = () => {
   };
 
   return (
-    <>
+    <DefaultLayout>
+      <SEO title="Academic Calendar" />
       <Header>
         <img
           src="/images/logo-nobg.png"
@@ -184,7 +187,7 @@ export const Calendar: React.FC = () => {
 
       <Event events={current} heading={'Ongoing Events'} />
       <Event events={upcoming} heading={'Upcoming Events'} />
-    </>
+    </DefaultLayout>
   );
 };
 

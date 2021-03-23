@@ -3,6 +3,8 @@ import ReactGA from 'react-ga';
 import styled from 'styled-components';
 
 import { NavBar, Ticker, CardLink, TodayView } from '../components';
+import SEO from '../components/SEO';
+import DefaultLayout from '../layouts/DefaultLayout';
 
 const Header = styled.div`
   display: flex;
@@ -54,7 +56,8 @@ export const Home: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <DefaultLayout>
+      <SEO title="SMU Shortcuts" />
       <Header>
         <img
           src="/images/logo-nobg.png"
@@ -160,7 +163,7 @@ export const Home: React.FC = () => {
           link="https://inet.smu.edu.sg/sites/courses/Pages/Course-Offerings.aspx"
         />
       </Container>
-    </>
+    </DefaultLayout>
   );
 };
 

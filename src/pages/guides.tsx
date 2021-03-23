@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import ReactGA from 'react-ga';
 
 import { NavBar, List } from '../components';
+import DefaultLayout from '../layouts/DefaultLayout';
+import SEO from '../components/SEO';
 
 const Header = styled.div`
   display: flex;
@@ -83,7 +85,8 @@ export const Community: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <DefaultLayout>
+      <SEO title="Guides" />
       <Header>
         <img
           src="/images/logo-nobg.png"
@@ -105,7 +108,7 @@ export const Community: React.FC = () => {
           </>
         )}
       </Container>
-    </>
+    </DefaultLayout>
   );
 };
 
