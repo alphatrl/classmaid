@@ -1,6 +1,6 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import NavLink from '../NavLink';
 
 const NavBarContainer = styled.div`
   width: 100%;
@@ -31,10 +31,10 @@ const StyledLink = styled(NavLink)`
 const NavBar: React.FC = () => {
   return (
     <NavBarContainer>
-      <StyledLink to="/">
+      <StyledLink href="/">
         <span>Home</span>
       </StyledLink>
-      <StyledLink to="/about">
+      <StyledLink href="/about">
         <span>About</span>
       </StyledLink>
     </NavBarContainer>
