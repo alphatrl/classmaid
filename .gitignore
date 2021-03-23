@@ -94,3 +94,5 @@ dist/
 .vercel
 
 buildCache.json
+
+.env.local
