@@ -2,33 +2,14 @@ import React, { useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import ReactGA from 'react-ga';
 
-import logo from '../images/logo-nobg.png';
 import { useCallback } from 'react';
-import { NavBar } from '../components';
 
 import parse from 'csv-parse/lib/sync';
 import moment from 'moment';
 import { capitalize, uniqBy } from 'lodash';
 import parseMeetings from '../util/boss/parseMeetings';
 import generateICal, { Event } from '../util/boss/generateICal';
-
-const Header = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 12px 0;
-
-  .shortcutsLogo {
-    width: 100px;
-    image-rendering: -webkit-optimize-contrast;
-  }
-
-  h1 {
-    margin: 0;
-    font-size: 1.5em;
-  }
-`;
+import DefaultLayout from '../layouts/DefaultLayout';
 
 function convert(data: string[][], allowedModules: string[] = []) {
   // Remove CSV header
@@ -84,11 +65,6 @@ function convert(data: string[][], allowedModules: string[] = []) {
 }
 
 export const BOSSTimetable: React.FC = () => {
-  useEffect(() => {
-    document.title = 'SMU Shortcuts | About';
-    ReactGA.pageview(window.location.pathname);
-  }, []);
-
   const [fileContents, setFileContents] = useState<string | null>(null);
   const [allowedModules, setAllowedModules] = useState<string[]>([]);
 
@@ -169,13 +145,7 @@ export const BOSSTimetable: React.FC = () => {
   }, [csvContents, allowedModules]);
 
   return (
-    <>
-      <Header>
-        <img src={logo} className="shortcutsLogo" alt="smu-shortcut icon"></img>
-        <h1>About</h1>
-      </Header>
-      <NavBar />
-
+    <DefaultLayout title="BOSS Timetable">
       <input
         type="file"
         placeholder="Upload CSV here"
@@ -200,7 +170,7 @@ export const BOSSTimetable: React.FC = () => {
       {iCalBlob !== null && (
         <a href={window.URL.createObjectURL(iCalBlob)}>Download iCal</a>
       )}
-    </>
+    </DefaultLayout>
   );
 };
 
