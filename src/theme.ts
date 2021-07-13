@@ -1,4 +1,6 @@
-export const LIGHT_THEME = {
+import { createGlobalStyle, DefaultTheme } from 'styled-components';
+
+export const LIGHT_THEME: DefaultTheme = {
   background: {
     background: '#FAFAFA',
     gradient: ' linear-gradient(0deg, rgba(0,0,0,0.1), rgba(0,0,0,0.1))',
@@ -77,3 +79,22 @@ export const DARK_THEME = {
 
   mobileSize: '820px',
 };
+
+export const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    margin: 0;
+    background-image: ${(props) => props.theme.background.gradient},
+      url(/images/wallpapers/wallpaper-1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center; 
+`;

@@ -4,7 +4,7 @@ import React from 'react';
 import Analytics from '../components/Analytics';
 import { DataWrapper } from '../contexts/DataContext';
 import { ThemeContext } from '../contexts/ThemeContext';
-import GlobalStyle from '../GlobalStyles';
+import { GlobalStyle } from '../theme';
 
 const App: React.FC<AppProps> = function (props) {
   const { Component, pageProps } = props;
