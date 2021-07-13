@@ -51,6 +51,9 @@ const CalendarEvents: React.FC = () => {
   const today = moment();
 
   const todayEvents = useMemo(() => {
+    if (!calendarEvents) {
+      return [];
+    }
     // get currently happening events
     const midnight = moment(today).set({
       hour: 0,

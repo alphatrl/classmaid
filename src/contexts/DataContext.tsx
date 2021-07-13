@@ -19,7 +19,7 @@ import { getCurrentEvent, sortEventsByDate } from './utils';
 
 interface ContextProps {
   schoolTerms: SchoolYearProps[];
-  calendarEvents: CalendarProps;
+  calendarEvents: CalendarProps | null;
   currentEvent: CurrentEventProps | null;
   appBookmarks: AppLibraryProps;
   appLibrary: AppLibraryProps[];
@@ -87,9 +87,9 @@ export const DataWrapper: React.FC = (props) => {
   }, [schoolTerms]);
 
   /** Split Important Dates by date */
-  const calendarEvents: CalendarProps = useMemo(() => {
+  const calendarEvents: CalendarProps | null = useMemo(() => {
     if (importantDates.length === 0) {
-      return {};
+      return null;
     }
     return sortEventsByDate(importantDates);
   }, [importantDates]);
