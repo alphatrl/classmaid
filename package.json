@@ -36,12 +36,13 @@
     "firebase": "^8.7.1",
     "lodash": "^4.17.19",
     "moment-timezone": "^0.5.33",
-    "next": "^10.2.3",
+    "next": "^11.0.1",
     "next-pwa": "^5.2.21",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "^4.0.3",
-    "styled-components": "^5.2.1",
+    "readable-stream": "^3.6.0",
+    "styled-components": "^5.3.0",
     "url-loader": "^4.1.1"
   },
   "resolutions": {

@@ -12,7 +12,10 @@ module.exports = withPWA({
       use: ['@svgr/webpack', 'url-loader'],
     });
 
-    config.node.fs = 'empty';
+    config.resolve.fallback = {
+      fs: false,
+      stream: require.resolve('readable-stream'),
+    };
 
     return config;
   },
