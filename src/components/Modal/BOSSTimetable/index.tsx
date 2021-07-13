@@ -80,7 +80,7 @@ const CustomDisabledBtn = styled(DisabledPrimaryBtn)`
   align-self: flex-end;
 `;
 
-const HelperText = styled.p`
+const HelperText = styled.div`
   margin: 0;
   margin-top: 8px;
   font-size: 12px;
