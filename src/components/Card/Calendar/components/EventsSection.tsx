@@ -69,6 +69,13 @@ const EventSection: React.FC<Props> = (props) => {
 
   const eventsList = useMemo(() => {
     return dates.map((date) => {
+      if (!calendarEvents) {
+        return {
+          title: date,
+          events: [],
+        };
+      }
+
       const events = calendarEvents[date];
       return {
         title: date,

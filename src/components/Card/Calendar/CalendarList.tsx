@@ -28,6 +28,10 @@ const CalendarList: React.FC = () => {
   });
 
   const futureEventsKeys = useMemo(() => {
+    if (!calendarEvents) {
+      return [];
+    }
+
     const dateKeys = Object.keys(calendarEvents);
     return dateKeys.filter((key) => Number(key) > todayMidnight.unix());
   }, [calendarEvents, todayMidnight]);
