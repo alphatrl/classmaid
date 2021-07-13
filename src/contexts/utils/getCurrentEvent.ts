@@ -5,7 +5,7 @@ import { CurrentEventProps, SchoolYearProps } from '../../Schema';
 export default function getCurrentEvent(
   years: SchoolYearProps[]
 ): CurrentEventProps | null {
-  if (years.length === 0) {
+  if (!years || years.length === 0) {
     return null;
   }
 
