@@ -1,6 +1,6 @@
 import { isArray } from 'lodash';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 import { AppLibrary, CapacityCard, TodayCard } from '../components/Card/';
@@ -11,6 +11,7 @@ import {
   WelcomeGuide,
 } from '../components/Modal';
 import DefaultLayout from '../layouts/DefaultLayout';
+import firebase from '../utils/firebase';
 
 const Wrapper = styled.div`
   box-sizing: border-box;
@@ -40,6 +41,10 @@ export const Home: React.FC = () => {
   const isWelcomeGuide = isArray(path) && path[0] === '#welcome-guide';
   const isSchoolGuide = isArray(path) && path[0] === '#school-guide';
   const isAbout = isArray(path) && path[0] === '#about';
+
+  useEffect(() => {
+    firebase?.analytics().logEvent('Home');
+  }, []);
 
   return (
     <DefaultLayout title="Home">

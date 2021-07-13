@@ -2,10 +2,10 @@ import parse from 'csv-parse/lib/sync';
 import { capitalize, isEqual, uniqBy } from 'lodash';
 import moment from 'moment';
 import { useRouter } from 'next/router';
-import React, { useEffect, useMemo, useState } from 'react';
-import { useCallback } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 
+import firebase from '../../../utils/firebase';
 import { FilePicker } from '../../Utilities';
 import { ModalTemplate } from '../components';
 import { DisabledPrimaryBtn, PrimaryBtn } from '../styled';
@@ -158,6 +158,10 @@ const BOSSTimetable: React.FC = () => {
   // Raw CSV contents
   const csvContents = useMemo<string[][] | null>(() => {
     if (fileContents === null) {
+      firebase
+        ?.analytics()
+        .logEvent('exception', { description: 'Invalid CSV Contents' });
+
       return null;
     }
 
@@ -170,6 +174,15 @@ const BOSSTimetable: React.FC = () => {
 
     return parsedFile;
   }, [fileContents]);
+
+  useEffect(() => {
+    if (csvContents === null || allowedModules.length > 0) {
+      return;
+    }
+    setAllowedModules(
+      uniqBy(csvContents.slice(1), (event) => event[3]).map((event) => event[3])
+    );
+  }, [csvContents, allowedModules]);
 
   // Generated ICS data, if available
   const generatedData = useMemo(() => {
@@ -220,14 +233,11 @@ const BOSSTimetable: React.FC = () => {
     []
   );
 
-  useEffect(() => {
-    if (csvContents === null || allowedModules.length > 0) {
-      return;
-    }
-    setAllowedModules(
-      uniqBy(csvContents.slice(1), (event) => event[3]).map((event) => event[3])
-    );
-  }, [csvContents, allowedModules]);
+  const handleICalTrack = useCallback(() => {
+    firebase
+      ?.analytics()
+      .logEvent('download', { description: 'BOSS Timetable Export' });
+  }, []);
 
   return (
     <>
@@ -268,6 +278,7 @@ const BOSSTimetable: React.FC = () => {
         </Wrapper>
         {csvContents !== null ? (
           <CustomPrimaryBtn
+            onClick={handleICalTrack}
             href={window.URL.createObjectURL(iCalBlob)}
             download="boss_timetable_export.ics"
           >

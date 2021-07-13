@@ -3,6 +3,7 @@ import React, { useCallback } from 'react';
 import styled from 'styled-components';
 
 import { AppLibraryShortcutsProps } from '../../../../Schema';
+import firebase from '../../../../utils/firebase';
 import Icon from '../../../Icon';
 
 interface Props {
@@ -44,11 +45,13 @@ const Wrapper = styled.a`
 
 const App: React.FC<Props> = (props) => {
   const {
-    shortcut: { title, logo, type, link },
+    shortcut: { id, title, logo, type, link },
   } = props;
   const router = useRouter();
 
   const handleClick = useCallback(() => {
+    firebase?.analytics().logEvent('go_to_app', { description: id });
+
     switch (type) {
       case 'internal':
         router.push(`/${link}`);
@@ -56,7 +59,7 @@ const App: React.FC<Props> = (props) => {
       default:
         router.push(link);
     }
-  }, [type, router, link]);
+  }, [type, router, link, id]);
 
   return (
     <Wrapper onClick={handleClick}>

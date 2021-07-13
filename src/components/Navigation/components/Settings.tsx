@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { useDarkMode } from '../../../contexts/ThemeContext';
+import firebase from '../../../utils/firebase';
 import Icon from '../../Icon';
 
 const Wrapper = styled.div`
@@ -36,9 +37,18 @@ const Settings: React.FC<Props> = (props) => {
   // const { hideNavigation } = props;
   const { theme, toggleTheme } = useDarkMode();
 
+  const handleToggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark_mode' : 'light_mode';
+    firebase?.analytics().logEvent('toggle', {
+      type: 'dark_light_appearance',
+      description: `Change to ${newTheme}`,
+    });
+    toggleTheme();
+  };
+
   return (
     <Wrapper>
-      <StyledIcon onClick={toggleTheme}>
+      <StyledIcon onClick={handleToggleTheme}>
         <Icon name={theme === 'light' ? 'light_mode' : 'dark_mode'} />
       </StyledIcon>
     </Wrapper>
