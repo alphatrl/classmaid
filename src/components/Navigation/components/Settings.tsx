@@ -33,8 +33,7 @@ interface Props {
   hideNavigation?: () => void;
 }
 
-const Settings: React.FC<Props> = (props) => {
-  // const { hideNavigation } = props;
+const Settings: React.FC<Props> = () => {
   const { theme, toggleTheme } = useDarkMode();
 
   const handleToggleTheme = () => {

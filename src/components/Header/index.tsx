@@ -52,7 +52,7 @@ interface Props {
 }
 
 const Header: React.FC<Props> = (props) => {
-  const { title, showSearch = false, showNavigation } = props;
+  const { title, showNavigation } = props;
 
   return (
     <Wrapper>
