@@ -50,24 +50,24 @@ export const DataWrapper: React.FC = (props) => {
 
   /** Get school terms */
   const getSchoolTerm = async () =>
-    axios(`${process.env.SERVER_URL}` + '/sch_terms.json')
+    axios(`${process.env.SERVER_URL}` + '/SMU/school_terms.json')
       .then((response) => {
-        const terms: SchoolYearProps[] = response.data.year;
+        const terms: SchoolYearProps[] = response.data.years;
         setSchoolTerms(terms);
       })
       .catch((error) => {
-        console.log('sch terms:', error);
+        console.error('sch terms:', error);
       });
 
   /** Get important dates */
   const getImportantDates = async () =>
-    axios(`${process.env.SERVER_URL}` + '/important_dates.json')
+    axios(`${process.env.SERVER_URL}` + '/SMU/important_dates.json')
       .then((response) => {
         const dates: ImportantDateProps[] = response.data;
         setImportantDates(dates);
       })
       .catch((error) => {
-        console.log('important dates:', error);
+        console.error('important dates:', error);
       });
 
   /** Get app library */
@@ -78,7 +78,7 @@ export const DataWrapper: React.FC = (props) => {
         setAppLibrary(results);
       })
       .catch((error) => {
-        console.log('app library', error);
+        console.error('app library', error);
       });
 
   /** Get today details */
