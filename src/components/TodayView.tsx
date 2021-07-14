@@ -142,9 +142,7 @@ const TodayView: React.FC<CardProps> = (props) => {
      *  Returns an object
      */
     const getSchoolTerm = async () => {
-      const currentSchTerm = await fetch(
-        `${process.env.SERVER_URL}` + '/sch_terms.json'
-      )
+      const currentSchTerm = await fetch('/temp/sch_terms.json')
         .then((r: Response) => r.json())
         .then(async (annualYear: any) => {
           for await (const year of annualYear) {
@@ -237,9 +235,7 @@ const TodayView: React.FC<CardProps> = (props) => {
        * Return the upcoming events as an array containing objects.
        */
       const getUpcoming = async () => {
-        const upcoming = await fetch(
-          `${process.env.SERVER_URL}` + '/important_dates.json'
-        )
+        const upcoming = await fetch('/temp/important_dates.json')
           .then((r: Response) => r.json())
           .then(async (dates: any) => {
             const topEvents = [];

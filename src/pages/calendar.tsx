@@ -68,7 +68,7 @@ export const Calendar: React.FC = () => {
   useEffect(() => {
     const getEvents = async () => {
       // fetch calendar json
-      await fetch(`${process.env.SERVER_URL}/important_dates.json`)
+      await fetch(`/temp/important_dates.json`)
         .then((r: Response) => r.json())
         .then(async (response: Record<string, undefined>) => {
           const current = [];

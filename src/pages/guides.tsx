@@ -50,11 +50,9 @@ export const Community: React.FC = () => {
 
   useEffect(() => {
     const load = async () => {
-      const link = await fetch(`${process.env.SERVER_URL}/guides.json`).then(
-        (r) => {
-          return r.json();
-        }
-      );
+      const link = await fetch('/temp/guides.json').then((r) => {
+        return r.json();
+      });
       setLinks(link);
       setLoading(false);
     };
