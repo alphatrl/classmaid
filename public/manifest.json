@@ -2,19 +2,28 @@
   "name": "SMU Shortcuts",
   "short_name": "SMU Shortcuts",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
+  "background_color": "#FAFAFA",
   "description": "Quick access to your most use sites in SMU",
-  "ios": true,
   "icons": [
     {
-      "ios": "default",
-      "src": "/images/logo192.png",
-      "sizes": [192]
+      "src": "/images/logo/icon-192.png",
+      "sizes": "192x192"
     },
     {
-      "src": "/images/logo512.png",
-      "sizes": [512]
+      "src": "/images/logo/icon-512.png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/images/logo/icon-192-maskable.png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/logo/icon-512-maskable.png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ]
 }

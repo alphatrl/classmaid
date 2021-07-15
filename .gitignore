@@ -96,3 +96,11 @@ dist/
 buildCache.json
 
 .env.local
+/public/temp
+
+# next-pwa
+**/public/workbox-*.js
+**/public/workbox-*.map
+**/public/sw.js
+**/public/sw.js.map
+**/public/worker-*.js

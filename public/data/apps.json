@@ -1,0 +1,203 @@
+{
+  "resource_id": "apps",
+  "result": [
+    {
+      "uid": "school",
+      "title": "During School",
+      "shortcuts": [
+        {
+          "id": "elearn",
+          "title": "eLearn",
+          "logo": "menu_book",
+          "type" : "url",
+          "link": "https://elearn.smu.edu.sg"
+        },
+        {
+          "id": "email",
+          "title": "Email",
+          "logo": "email",
+          "type" : "url",
+          "link": "https://outlook.office.com/owa/?realm=sis.smu.edu.sg"
+        },
+        {
+          "id": "facility_booking",
+          "title": "Facility Bookings",
+          "logo": "airline_seat_individual_suite",
+          "type" : "url",
+          "link": "https://fbs.intranet.smu.edu.sg"
+        },
+        {
+          "id": "library",
+          "title": "Library",
+          "logo": "local_library",
+          "type" : "url",
+          "link": "https://library.smu.edu.sg/"
+        },
+        {
+          "id": "oasis",
+          "title": "Oasis",
+          "logo": "beach_access",
+          "type" : "url",
+          "link": "https://oasis.smu.edu.sg"
+        },
+        {
+          "id": "print",
+          "title": "Print Services",
+          "logo": "print",
+          "type" : "url",
+          "link": "https://smu.sg/print"
+        }
+      ]
+    },
+    {
+      "uid": "bidding",
+      "title": "Bidding",
+      "shortcuts": [
+        {
+          "id": "boss",
+          "title": "BOSS",
+          "logo": "account_balance",
+          "type": "url",
+          "link": "https://boss.intranet.smu.edu.sg"
+        },
+        {
+          "id": "afterclass_web",
+          "title": "AfterClass.io",
+          "logo": "public",
+          "type": "url",
+          "link": "https://afterclass.io"
+        },
+        {
+          "id": "boss_export",
+          "title": "BOSS Timetable Export",
+          "logo": "file_download",
+          "type": "internal",
+          "link": "#boss-export"
+        }
+      ]
+    },
+    {
+      "uid": "wellbeing",
+      "title": "Well-Being",
+      "shortcuts": [
+        {
+          "id": "student_wellness",
+          "title": "Student Wellness",
+          "logo": "favorite",
+          "type": "url",
+          "link": "https://www.smu.edu.sg/campus-life/student-wellness"
+        },
+        {
+          "id": "voices_SMU",
+          "title": "Voices@SMU",
+          "logo": "hearing",
+          "type": "url",
+          "link": "https://voices.smu.edu.sg/get-support#speak-to-us"
+        },
+        {
+          "id": "incident_report",
+          "title": "SMU Incident Reporting",
+          "logo": "report_problem",
+          "type": "url",
+          "link": "http://bit.ly/SMU_IR_Form"
+        }
+      ]
+    },
+    {
+      "uid": "community",
+      "title": "SMU Community",
+      "shortcuts": [
+        {
+          "id": "askSMU_telegram",
+          "title": "Ask.SMU (Invite only)",
+          "logo": "telegram",
+          "type": "url",
+          "link": "https://t.me"
+        },
+        {
+          "id": "buffet_clearers_telegram",
+          "title": "SMU Buffet Clearers",
+          "logo": "telegram",
+          "type": "url",
+          "link": "https://t.me/joinchat/DVuB8UO-_6LV1JhuML_CtA"
+        },
+        {
+          "id": "smu_cat_telegram",
+          "title": "SMU Cat",
+          "logo": "instagram",
+          "type": "url",
+          "link": "https://www.instagram.com/smu.cat/"
+        },
+        {
+          "id": "confessions_instagram",
+          "title": "SMU Confessions",
+          "logo": "instagram",
+          "type": "url",
+          "link": "https://www.instagram.com/smuconfessionspage/"
+        },
+        {
+          "id": "smu_meme_instagram",
+          "title": "Singapore Meme University",
+          "logo": "instagram",
+          "type": "url",
+          "link": "https://www.instagram.com/singaporememeuniversity/"
+        },
+        {
+          "id": "smusa_instagram",
+          "title": "SMU Students' Association",
+          "logo": "instagram",
+          "type": "url",
+          "link": "https://www.instagram.com/sgsmusa/"
+        },
+        {
+          "id": "about_us",
+          "title": "About Us",
+          "logo": "info",
+          "type": "internal",
+          "link": "#about"
+        }
+      ]
+    },
+    {
+      "uid": "utility",
+      "title": "Utilities",
+      "shortcuts": [
+        {
+          "id": "sps",
+          "title": "Subject Pool System",
+          "logo": "biotech",
+          "type": "url",
+          "link": "https://sps.intranet.smu.edu.sg"
+        },
+        {
+          "id": "ontrac",
+          "title": "onTRAC II",
+          "logo": "work",
+          "type": "url",
+          "link": "https://ontrac.smu.edu.sg"
+        },
+        {
+          "id": "noteslah_web",
+          "title": "noteslah",
+          "logo": "public",
+          "type": "url",
+          "link": "https://www.noteslah.com"
+        },
+        {
+          "id": "welcome_guide",
+          "title": "Welcome Guides",
+          "logo": "collections_bookmark",
+          "type": "url",
+          "link": "#welcome-guide"
+        },
+        {
+          "id": "school_guide",
+          "title": "School Guides",
+          "logo": "collections_bookmark",
+          "type": "internal",
+          "link": "#school-guide"
+        }
+      ]
+    }
+  ]
+}

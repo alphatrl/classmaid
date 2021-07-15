@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import Document, {
   DocumentContext,
   Head,
@@ -8,14 +10,13 @@ import Document, {
 import React from 'react';
 import { ServerStyleSheet } from 'styled-components';
 
-//@ts-ignore
-export default class MyDocument extends Document {
-  static getInitialProps(ctx: DocumentContext) {
+class MyDocument extends Document {
+  static async getInitialProps(ctx: DocumentContext) {
     const { renderPage } = ctx;
 
     const sheet = new ServerStyleSheet();
-    const page = renderPage((App) => (props) =>
-      sheet.collectStyles(<App {...props} />)
+    const page = renderPage(
+      (App) => (props) => sheet.collectStyles(<App {...props} />)
     );
 
     const styleTags = sheet.getStyleElement();
@@ -25,26 +26,40 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang="en">
         {
           <Head>
             {/*@ts-ignore*/}
             {this.props.styleTags}
 
+            <link
+              href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+              rel="preload"
+              as="style"
+            />
+            <link
+              href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+              rel="stylesheet"
+            />
+
             <meta name="apple-mobile-web-app-capable" content="yes" />
             <meta
               name="apple-mobile-web-app-status-bar-style"
-              content="black"
+              content="black-translucent
+              "
             />
 
-            <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
-            <link rel="icon" type="image/png" href="/images/favicon.png" />
             <link
-              href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
-              rel="stylesheet"
+              rel="shortcut icon"
+              type="image/svg+xml"
+              href="/images/favicon.svg"
             />
+            <link rel="icon" type="image/png" href="/images/favicon.png" />
             <link rel="manifest" href="/manifest.json" />
-            <link rel="apple-touch-icon" href="/images/logo192.png" />
+            <link
+              rel="apple-touch-icon"
+              href="/images/logo/icon-192-maskable.png"
+            />
           </Head>
         }
         <body>
@@ -55,3 +70,5 @@ export default class MyDocument extends Document {
     );
   }
 }
+
+export default MyDocument;
