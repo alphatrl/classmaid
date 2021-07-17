@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import styled from 'styled-components';
 
 import { AppLibraryShortcutsProps } from '../../../../Schema';
@@ -20,6 +20,7 @@ const Wrapper = styled.a`
   align-items: center;
   color: ${(props) => props.theme.icon.color};
   cursor: pointer;
+  text-decoration: none;
 
   p {
     margin: 0;
@@ -52,17 +53,27 @@ const App: React.FC<Props> = (props) => {
   const handleClick = useCallback(() => {
     firebase?.analytics().logEvent('go_to_app', { description: id });
 
-    switch (type) {
-      case 'internal':
-        router.push(`/${link}`);
-        break;
-      default:
-        router.push(link);
+    if (type === 'internal') {
+      router.push(`/${link}`);
     }
   }, [type, router, link, id]);
 
+  const targetType = useMemo(() => {
+    if (type == 'internal') {
+      return '_self';
+    }
+    return '_blank_shortcuts';
+  }, [type]);
+
+  const url = useMemo(() => {
+    if (type == 'internal') {
+      return undefined;
+    }
+    return link;
+  }, [link, type]);
+
   return (
-    <Wrapper onClick={handleClick}>
+    <Wrapper onClick={handleClick} href={url} target={targetType}>
       <Icon name={logo} width={30} height={30} />
       <p>{title}</p>
     </Wrapper>
