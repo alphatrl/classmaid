@@ -3,6 +3,7 @@ import React, { useMemo } from 'react';
 import styled from 'styled-components';
 
 import { useDataContext } from '../../../../../contexts/DataContext';
+import LoadingCalendar from './LoadingCalendar';
 
 const Wrapper = styled.div`
   display: flex;
@@ -52,8 +53,9 @@ const CalendarEvents: React.FC = () => {
 
   const todayEvents = useMemo(() => {
     if (!calendarEvents) {
-      return [];
+      return null;
     }
+
     // get currently happening events
     const midnight = moment(today).set({
       hour: 0,
@@ -64,6 +66,15 @@ const CalendarEvents: React.FC = () => {
     const events = calendarEvents[`${midnight.unix()}`];
     return !events ? [] : events;
   }, [calendarEvents, today]);
+
+  if (!todayEvents) {
+    return (
+      <Wrapper>
+        <SubTitle>{today.format('dddd, D MMMM')}</SubTitle>
+        <LoadingCalendar />
+      </Wrapper>
+    );
+  }
 
   const hiddenEventsCount = todayEvents.length > 3 ? todayEvents.length - 3 : 0;
 
