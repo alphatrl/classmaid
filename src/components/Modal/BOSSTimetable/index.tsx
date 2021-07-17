@@ -281,11 +281,14 @@ const BOSSTimetable: React.FC = () => {
             onClick={handleICalTrack}
             href={window.URL.createObjectURL(iCalBlob)}
             download="boss_timetable_export.ics"
+            role="button"
           >
             Download
           </CustomPrimaryBtn>
         ) : (
-          <CustomDisabledBtn>Download</CustomDisabledBtn>
+          <CustomDisabledBtn role="button" aria-disabled={true}>
+            Download
+          </CustomDisabledBtn>
         )}
       </ModalTemplate>
       <ModalOverlay onClick={closeModal} />
