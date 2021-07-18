@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { AppLibrary, CapacityCard, TodayCard } from '../components/Card/';
 import {
   About,
+  AddHomeScreen,
   BOSSTimetable,
   SchoolGuide,
   WelcomeGuide,
@@ -41,6 +42,7 @@ export const Home: React.FC = () => {
   const isWelcomeGuide = isArray(path) && path[0] === '#welcome-guide';
   const isSchoolGuide = isArray(path) && path[0] === '#school-guide';
   const isAbout = isArray(path) && path[0] === '#about';
+  const isAddHomeScreen = isArray(path) && path[0] === '#add-to-homescreen';
 
   useEffect(() => {
     firebase?.analytics().logEvent('Home');
@@ -59,6 +61,7 @@ export const Home: React.FC = () => {
       {isWelcomeGuide && <WelcomeGuide />}
       {isSchoolGuide && <SchoolGuide />}
       {isAbout && <About />}
+      {isAddHomeScreen && <AddHomeScreen />}
     </DefaultLayout>
   );
 };

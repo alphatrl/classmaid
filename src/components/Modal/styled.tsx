@@ -74,3 +74,11 @@ export const DisabledPrimaryBtn = styled.div`
   border: 2px solid ${(props) => props.theme.text300}AA;
   border-radius: 6px;
 `;
+
+export const Tab = styled.h3<{ isActive: boolean }>`
+  margin: 0;
+  margin-right: 1em;
+  padding: 0;
+  color: ${(props) =>
+    props.isActive ? props.theme.primary.blue : props.theme.text300};
+`;
