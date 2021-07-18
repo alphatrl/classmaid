@@ -40,7 +40,11 @@ const Wrapper = styled.a`
   }
 
   @media screen and (max-width: ${(props) => props.theme.mobileSize}) {
-    font-size: 0.95em;
+    font-size: 0.9rem;
+
+    .material-icons-round {
+      font-size: 24px;
+    }
   }
 `;
 
