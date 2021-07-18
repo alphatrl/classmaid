@@ -50,12 +50,12 @@ class MyDocument extends Document {
             />
             <meta name="theme-color" content="#FAFAFA" />
 
+            <link rel="icon" type="image/png" href="/images/favicon.png" />
             <link
               rel="shortcut icon"
               type="image/svg+xml"
               href="/images/favicon.svg"
             />
-            <link rel="icon" type="image/png" href="/images/favicon.png" />
             <link rel="manifest" href="/manifest.json" />
             <link
               rel="apple-touch-icon"

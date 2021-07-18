@@ -10,7 +10,7 @@ import { ModalOverlay } from '../styled';
 const Wrapper = styled.div`
   ul {
     margin: 0;
-    padding: 24;
+    padding: 0 24px;
   }
 
   li {

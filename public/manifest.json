@@ -5,6 +5,7 @@
   "scope": "/",
   "display": "standalone",
   "background_color": "#FAFAFA",
+  "theme_color": "#FAFAFA",
   "description": "Quick access to your most use sites in SMU",
   "icons": [
     {
