@@ -55,3 +55,8 @@ export interface AppLibraryProps {
 export interface CalendarProps {
   [key: string]: CalendarEventProps[];
 }
+
+export interface CustomSVG {
+  width?: number;
+  height?: number;
+}

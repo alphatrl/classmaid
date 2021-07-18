@@ -37,7 +37,7 @@ const NavBar: React.FC<Props> = (props) => {
   return (
     <Wrapper>
       <AppNav hideNavigation={hideNavigation} />
-      <Settings />
+      <Settings hideNavigation={hideNavigation} />
     </Wrapper>
   );
 };
