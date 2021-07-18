@@ -42,6 +42,8 @@ const CalendarRow = styled.div`
 `;
 
 const MoreEvents = styled.p`
+  color: ${(props) => props.theme.text600};
+  font-weight: 500;
   font-size: 0.8em;
   margin: 0;
   margin-top: 8px;
@@ -82,7 +84,11 @@ const CalendarEvents: React.FC = () => {
 
     if (todayEvents.length === 0) {
       const tomorrowEvents = calendarEvents[`${tomorrow.unix()}`];
-      const count = tomorrowEvents.length;
+      const count = tomorrowEvents?.length || 0;
+
+      if (count === 0) {
+        return <MoreEvents>There is no events tomorrow</MoreEvents>;
+      }
       return (
         <MoreEvents>
           There is {count} more {count === 1 ? 'event' : 'events'}
