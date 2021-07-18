@@ -13,16 +13,10 @@ const Title = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  h2,
-  span {
+  h2 {
     margin: 0;
     font-size: 0.9em;
     font-weight: 700;
-  }
-
-  span {
-    padding-left: 8px;
-    color: ${(props) => props.theme.text600};
   }
 `;
 
@@ -41,12 +35,21 @@ const ProgressBar = styled.div<{ percentage: number }>`
   }
 `;
 
+const Occupancy = styled.span`
+  margin: 0;
+  font-size: 0.9em;
+  font-weight: 700;
+  padding-left: 8px;
+  color: ${(props) => props.theme.text600};
+`;
+
 interface Props {
   library: LibraryOccupancyProps;
+  isLoad?: boolean;
 }
 
 const CapacityRow: React.FC<Props> = (props) => {
-  const { library } = props;
+  const { library, isLoad = true } = props;
   const percentage = Math.round(
     (library.occupancy / library.maxOccupancy) * 100
   );
@@ -55,12 +58,14 @@ const CapacityRow: React.FC<Props> = (props) => {
     <Wrapper>
       <Title>
         <h2>{library.title}</h2>
-        <span>
-          {library.occupancy}/{library.maxOccupancy}
-        </span>
+        {isLoad && (
+          <Occupancy>
+            {library.occupancy}/{library.maxOccupancy}
+          </Occupancy>
+        )}
       </Title>
       <ProgressBar percentage={percentage}>
-        <div className="filled" />
+        {isLoad && <div className="filled" />}
       </ProgressBar>
     </Wrapper>
   );

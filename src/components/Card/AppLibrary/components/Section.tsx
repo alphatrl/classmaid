@@ -29,6 +29,10 @@ const AppWrapper = styled.div`
   display: grid;
   gap: 12px;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+  @media screen and (max-width: ${(props) => props.theme.mobileSize}) {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
 `;
 
 const Section: React.FC<Props> = (props) => {

@@ -36,7 +36,19 @@ const MAX_OCCUPANCY_LKS = 1150;
 const MAX_OCCUPANCY_KGC = 300;
 
 const CapacityCard: React.FC = () => {
-  const [occupancy, setOccupancy] = useState<LibraryOccupancyProps[]>([]);
+  const [occupancy, setOccupancy] = useState<LibraryOccupancyProps[]>([
+    {
+      title: '📚 Li Ka Sheng Library',
+      occupancy: 0,
+      maxOccupancy: MAX_OCCUPANCY_LKS,
+    },
+    {
+      title: '⚖️ Kwa Geok Choo Law Library',
+      occupancy: 0,
+      maxOccupancy: MAX_OCCUPANCY_KGC,
+    },
+  ]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     const getOccupancy = async () => {
@@ -57,6 +69,7 @@ const CapacityCard: React.FC = () => {
           maxOccupancy: MAX_OCCUPANCY_KGC,
         },
       ]);
+      setIsLoaded(true);
     };
 
     getOccupancy();
@@ -65,10 +78,9 @@ const CapacityCard: React.FC = () => {
   return (
     <Wrapper>
       <h1>Capacity</h1>
-      {occupancy.length > 0 &&
-        occupancy.map((library) => (
-          <CapacityRow key={library.title} library={library} />
-        ))}
+      {occupancy.map((library) => (
+        <CapacityRow key={library.title} library={library} isLoad={isLoaded} />
+      ))}
     </Wrapper>
   );
 };

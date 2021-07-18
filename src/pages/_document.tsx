@@ -48,6 +48,7 @@ class MyDocument extends Document {
               content="black-translucent
               "
             />
+            <meta name="theme-color" content="#FAFAFA" />
 
             <link
               rel="shortcut icon"

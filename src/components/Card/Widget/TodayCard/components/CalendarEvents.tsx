@@ -1,8 +1,9 @@
 import moment from 'moment-timezone';
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import styled from 'styled-components';
 
 import { useDataContext } from '../../../../../contexts/DataContext';
+import LoadingCalendar from './LoadingCalendar';
 
 const Wrapper = styled.div`
   display: flex;
@@ -52,8 +53,9 @@ const CalendarEvents: React.FC = () => {
 
   const todayEvents = useMemo(() => {
     if (!calendarEvents) {
-      return [];
+      return null;
     }
+
     // get currently happening events
     const midnight = moment(today).set({
       hour: 0,
@@ -65,17 +67,52 @@ const CalendarEvents: React.FC = () => {
     return !events ? [] : events;
   }, [calendarEvents, today]);
 
+  const displayEvents = useCallback(() => {
+    if (!todayEvents || !calendarEvents) {
+      return null;
+    }
+
+    const tomorrow = moment(today).set({
+      day: 1,
+      hour: 0,
+      minute: 0,
+      second: 0,
+      millisecond: 0,
+    });
+
+    if (todayEvents.length === 0) {
+      const tomorrowEvents = calendarEvents[`${tomorrow.unix()}`];
+      const count = tomorrowEvents.length;
+      return (
+        <MoreEvents>
+          There is {count} more {count === 1 ? 'event' : 'events'}
+        </MoreEvents>
+      );
+    }
+
+    return todayEvents.slice(0, 3).map((calEvent, index) => (
+      <CalendarRow key={index}>
+        <h3>{calEvent.title}</h3>
+        <p>{calEvent.timeString}</p>
+      </CalendarRow>
+    ));
+  }, [calendarEvents, today, todayEvents]);
+
+  if (!todayEvents) {
+    return (
+      <Wrapper>
+        <SubTitle>{today.format('dddd, D MMMM')}</SubTitle>
+        <LoadingCalendar />
+      </Wrapper>
+    );
+  }
+
   const hiddenEventsCount = todayEvents.length > 3 ? todayEvents.length - 3 : 0;
 
   return (
     <Wrapper>
       <SubTitle>{today.format('dddd, D MMMM')}</SubTitle>
-      {todayEvents.slice(0, 3).map((event, index) => (
-        <CalendarRow key={index}>
-          <h3>{event.title}</h3>
-          <p>{event.timeString}</p>
-        </CalendarRow>
-      ))}
+      {displayEvents()}
       {hiddenEventsCount > 0 && (
         <MoreEvents>
           +{hiddenEventsCount} more {hiddenEventsCount > 1 ? 'events' : 'event'}

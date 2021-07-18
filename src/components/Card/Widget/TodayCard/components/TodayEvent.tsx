@@ -3,6 +3,7 @@ import React, { useMemo } from 'react';
 import styled from 'styled-components';
 
 import { useDataContext } from '../../../../../contexts/DataContext';
+import LoadingToday from './LoadingToday';
 
 const Wrapper = styled.div`
   display: flex;
@@ -42,7 +43,6 @@ const TodayEvent: React.FC = () => {
     if (!currentEvent) {
       return null;
     }
-
     const today = moment();
     const startDate = moment.unix(currentEvent.date_start);
     const endDate = moment.unix(currentEvent.date_end);
@@ -68,7 +68,11 @@ const TodayEvent: React.FC = () => {
   }, [currentEvent]);
 
   if (!currentEvent || !event) {
-    return null;
+    return (
+      <Wrapper>
+        <LoadingToday />
+      </Wrapper>
+    );
   }
 
   return currentEvent.type !== 'recess' && currentEvent.type !== 'vacation' ? (
