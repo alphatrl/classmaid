@@ -31,6 +31,7 @@ const Wrapper = styled.div`
   column-gap: 16px;
 
   @media screen and (max-width: ${(props) => props.theme.mobileSize}) {
+    padding: 8px;
     display: flex;
     flex-direction: column;
     overflow-y: auto;

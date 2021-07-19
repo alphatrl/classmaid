@@ -28,25 +28,26 @@ const CalendarRow = styled.div`
   p {
     font-size: 0.8em;
     margin: 0;
-    color: #ffffff;
+    color: ${(props) => props.theme.calendar.textLight};
   }
 
   h3 {
     font-weight: 600;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 2;
     display: -webkit-box;
     overflow: hidden;
-    color: #ffffff;
+    margin-bottom: 4px;
   }
 `;
 
 const MoreEvents = styled.p`
   color: ${(props) => props.theme.text600};
   font-weight: 500;
-  font-size: 0.8em;
+  font-size: 0.85em;
   margin: 0;
   margin-top: 8px;
+  line-height: 1.5;
 `;
 
 const CalendarEvents: React.FC = () => {
@@ -66,7 +67,16 @@ const CalendarEvents: React.FC = () => {
       millisecond: 0,
     });
     const events = calendarEvents[`${midnight.unix()}`];
-    return !events ? [] : events;
+
+    if (!events) {
+      return [];
+    }
+
+    // check events which are occuring right now
+    return events.filter((calEvent) => {
+      const eventEnd = moment.unix(calEvent.endDate);
+      return today.isSameOrBefore(eventEnd);
+    });
   }, [calendarEvents, today]);
 
   const displayEvents = useCallback(() => {
@@ -74,8 +84,7 @@ const CalendarEvents: React.FC = () => {
       return null;
     }
 
-    const tomorrow = moment(today).set({
-      day: 1,
+    const tomorrow = moment(today).add(1, 'day').set({
       hour: 0,
       minute: 0,
       second: 0,
@@ -86,12 +95,16 @@ const CalendarEvents: React.FC = () => {
       const tomorrowEvents = calendarEvents[`${tomorrow.unix()}`];
       const count = tomorrowEvents?.length || 0;
 
-      if (count === 0) {
-        return <MoreEvents>There is no events tomorrow</MoreEvents>;
-      }
+      const tomorrowMessage =
+        count === 0
+          ? 'There is no events tomorrow'
+          : `There is ${count} ${count === 1 ? 'event' : 'events'} tomorrow`;
+
       return (
         <MoreEvents>
-          There is {count} more {count === 1 ? 'event' : 'events'}
+          No more events today
+          <br />
+          {tomorrowMessage}
         </MoreEvents>
       );
     }

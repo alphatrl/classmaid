@@ -25,6 +25,7 @@ const Wrapper = styled.header`
   }
 
   @media screen and (max-width: ${(props) => props.theme.mobileSize}) {
+    padding: 0 16px;
     height: 56px;
   }
 `;
