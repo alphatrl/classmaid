@@ -44,15 +44,16 @@ const CalendarRow = styled.div`
   p {
     font-size: 0.8em;
     margin: 0;
-    color: #ffffff;
+    color: ${(props) => props.theme.calendar.textLight};
   }
 
   h3 {
     font-weight: 600;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 2;
     display: -webkit-box;
     overflow: hidden;
+    margin-bottom: 4px;
   }
 `;
 

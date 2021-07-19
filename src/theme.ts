@@ -25,6 +25,8 @@ export const LIGHT_THEME: DefaultTheme = {
     red: '#D74037',
     blue: '#17ACBE',
     green: '#43A047',
+    textLight: '#FFFFFF',
+    textDark: '#FFFFFF',
   },
 
   card: {
@@ -65,6 +67,8 @@ export const DARK_THEME = {
     red: '#D74037',
     blue: '#17ACBE',
     green: '#43A047',
+    textLight: '#FFFFFF',
+    textDark: '#FFFFFF',
   },
 
   card: {
