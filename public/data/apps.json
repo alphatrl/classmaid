@@ -187,7 +187,7 @@
           "id": "welcome_guide",
           "title": "Welcome Guides",
           "logo": "collections_bookmark",
-          "type": "url",
+          "type": "internal",
           "link": "#welcome-guide"
         },
         {
