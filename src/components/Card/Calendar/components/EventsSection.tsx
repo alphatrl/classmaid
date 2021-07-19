@@ -1,5 +1,5 @@
 import moment from 'moment-timezone';
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import styled from 'styled-components';
 
 import { useDataContext } from '../../../../contexts/DataContext';
@@ -44,15 +44,16 @@ const CalendarRow = styled.div`
   p {
     font-size: 0.8em;
     margin: 0;
-    color: #ffffff;
+    color: ${(props) => props.theme.calendar.textLight};
   }
 
   h3 {
     font-weight: 600;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 2;
     display: -webkit-box;
     overflow: hidden;
+    margin-bottom: 4px;
   }
 `;
 
@@ -61,6 +62,14 @@ const DailyWrapper = styled.div`
   .calendar {
     padding: 8px 0;
   }
+`;
+
+const NoEvents = styled.p`
+  color: ${(props) => props.theme.text600};
+  font-weight: 500;
+  font-size: 0.85em;
+  margin: 0;
+  margin-top: 4px;
 `;
 
 const EventSection: React.FC<Props> = (props) => {
@@ -98,17 +107,23 @@ const EventsList: React.FC<EventsListProps> = (props) => {
   const { title, events } = props;
   const date = moment.unix(Number(title));
 
+  const renderCalendarRows = useCallback(() => {
+    if (events.length === 0) {
+      return <NoEvents>No events</NoEvents>;
+    }
+
+    return events.map((event, index) => (
+      <CalendarRow key={index}>
+        <h3>{event.title}</h3>
+        <p>{event.timeString}</p>
+      </CalendarRow>
+    ));
+  }, [events]);
+
   return (
     <DailyWrapper>
       <SubTitle>{date.format('dddd, D MMMM')}</SubTitle>
-      <div className="calendar">
-        {events.map((event, index) => (
-          <CalendarRow key={index}>
-            <h3>{event.title}</h3>
-            <p>{event.timeString}</p>
-          </CalendarRow>
-        ))}
-      </div>
+      <div className="calendar">{renderCalendarRows()}</div>
     </DailyWrapper>
   );
 };

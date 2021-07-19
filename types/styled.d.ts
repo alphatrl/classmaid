@@ -27,6 +27,8 @@ declare module 'styled-components' {
       red: string;
       blue: string;
       green: string;
+      textLight: string;
+      textDark: string;
     };
 
     card: {
