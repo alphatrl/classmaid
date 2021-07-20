@@ -27,11 +27,10 @@ export default function getCurrentEvent(
           'DD-MM-YYYY',
           'Asia/Singapore'
         );
-        const endDate = moment.tz(
-          period.date_end,
-          'DD-MM-YYYY',
-          'Asia/Singapore'
-        );
+        // before the midnight of next day after endDate
+        const endDate = moment
+          .tz(period.date_end, 'DD-MM-YYYY', 'Asia/Singapore')
+          .add('day', 1);
 
         // date is between the period
         if (today.isBetween(startDate, endDate, undefined, '[)')) {
