@@ -27,6 +27,15 @@ const Wrapper = styled.header`
   @media screen and (max-width: ${(props) => props.theme.mobileSize}) {
     padding: 0 16px;
     height: 56px;
+    top: 0;
+    position: sticky;
+    z-index: 2;
+    background-color: ${(props) => props.theme.header.color};
+
+    @supports (backdrop-filter: ${(props) => props.theme.blur.blur}) {
+      background-color: ${(props) => props.theme.blur.background};
+      backdrop-filter: ${(props) => props.theme.blur.blur};
+    }
   }
 `;
 

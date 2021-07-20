@@ -14,6 +14,10 @@ declare module 'styled-components' {
       blur: string;
     };
 
+    header: {
+      color: string;
+    };
+
     primary: {
       blue: string;
     };

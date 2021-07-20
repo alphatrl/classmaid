@@ -14,20 +14,20 @@ const Wrapper = styled(CardTemplate)`
   }
 `;
 
-const Padding = styled.div`
-  padding: 2vh;
-`;
+// const Padding = styled.div`
+//   padding: 2vh;
+// `;
 
 const AppLibrary: React.FC = () => {
-  const { appBookmarks, appLibrary } = useDataContext();
+  const { appLibrary } = useDataContext();
   return (
     <Wrapper>
-      <Section
+      {/* <Section
         shortcuts={appBookmarks.shortcuts}
         isSorted={false}
         title={appBookmarks.title}
-      />
-      <Padding />
+      /> */}
+      {/* <Padding /> */}
       {appLibrary.map((library) => (
         <Section
           key={library.uid}
