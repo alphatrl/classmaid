@@ -1,15 +1,14 @@
 import { useMediaQuery } from 'beautiful-react-hooks';
-import React from 'react';
-import { useEffect } from 'react';
-import { useCallback } from 'react';
-import { useState } from 'react';
+import dynamic from 'next/dynamic';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import Header from '../components/Header';
 import { ModalOverlay } from '../components/Modal/styled';
 import NavBar from '../components/Navigation';
 import SEO from '../components/SEO';
 import { useDarkMode } from '../contexts/ThemeContext';
+
+const Header = dynamic(() => import('../components/Header'));
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -21,6 +20,10 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     flex: 1;
+  }
+
+  @media screen and (max-width: ${(props) => props.theme.mobileSize}) {
+    height: auto;
   }
 `;
 
@@ -67,7 +70,7 @@ const DefaultLayout: React.FC<Props> = function (props) {
         showNav && <NavBar hideNavigation={handleHideNavBar} />
       )}
       <main>
-        <Header title={title} showNavigation={handleShowNavBar} />
+        {isMobile && <Header title={title} showNavigation={handleShowNavBar} />}
         {children}
       </main>
       {isMobile && showNav && <ModalOverlay onClick={handleHideNavBar} />}

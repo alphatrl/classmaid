@@ -21,7 +21,9 @@ const Wrapper = styled.div`
   }
 
   @media screen and (max-width: ${(props) => props.theme.mobileSize}) {
-    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
     z-index: 6;
     width: 92px;
   }

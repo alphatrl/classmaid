@@ -7,9 +7,13 @@ export const LIGHT_THEME: DefaultTheme = {
   },
 
   blur: {
-    backgroundBackwards: 'rgba(240, 240, 240, 0.9)',
-    background: 'rgba(255, 255, 255, 0.5)',
+    backgroundBackwards: 'rgba(224, 224, 224, 0.95)',
+    background: 'rgba(250, 250, 250, 0.5)',
     blur: 'blur(2em)',
+  },
+
+  header: {
+    color: '#E6BCAE',
   },
 
   primary: {
@@ -54,6 +58,10 @@ export const DARK_THEME = {
     blur: 'blur(2em)',
   },
 
+  header: {
+    color: '#A88980',
+  },
+
   primary: {
     blue: '#329AFA',
   },
@@ -92,13 +100,14 @@ export const GlobalStyle = createGlobalStyle`
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-
-  html {
-    margin: 0;
     background-image: ${(props) => props.theme.background.gradient},
       url(/images/wallpapers/wallpaper-1.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center center; 
+    background-position: center center;
+  }
+
+  html {
+    margin: 0;
+  }
 `;

@@ -27,6 +27,10 @@ const Wrapper = styled.a`
     padding-left: 8px;
     font-weight: 600;
     font-size: 1.05em;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    overflow: hidden;
   }
 
   .material-icons-round {
