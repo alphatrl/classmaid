@@ -24,7 +24,6 @@ const WelcomeGuide = dynamic(
 
 const Wrapper = styled.div`
   box-sizing: border-box;
-  height: calc(100vh - 64px);
   padding: 16px;
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -35,7 +34,6 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-    height: calc(100vh - 56px);
   }
 `;
 
