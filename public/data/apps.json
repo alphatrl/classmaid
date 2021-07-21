@@ -9,6 +9,7 @@
           "id": "elearn",
           "title": "eLearn",
           "logo": "menu_book",
+          "color": "#0064B7",
           "type" : "url",
           "link": "https://elearn.smu.edu.sg"
         },
@@ -16,6 +17,7 @@
           "id": "email",
           "title": "Email",
           "logo": "email",
+          "color": "#006DCE",
           "type" : "url",
           "link": "https://outlook.office.com/owa/?realm=sis.smu.edu.sg"
         },
@@ -23,6 +25,7 @@
           "id": "facility_booking",
           "title": "Facility Bookings",
           "logo": "airline_seat_individual_suite",
+          "color": "#647089",
           "type" : "url",
           "link": "https://fbs.intranet.smu.edu.sg"
         },
@@ -30,6 +33,7 @@
           "id": "library",
           "title": "Library",
           "logo": "local_library",
+          "color": "#7D7D7D",
           "type" : "url",
           "link": "https://library.smu.edu.sg/"
         },
@@ -37,6 +41,7 @@
           "id": "oasis",
           "title": "Oasis",
           "logo": "beach_access",
+          "color": "#CDA339",
           "type" : "url",
           "link": "https://oasis.smu.edu.sg"
         },
@@ -44,6 +49,7 @@
           "id": "print",
           "title": "Print Services",
           "logo": "print",
+          "color": "#0C9C57",
           "type" : "url",
           "link": "https://smu.sg/print"
         }
@@ -57,6 +63,7 @@
           "id": "boss",
           "title": "BOSS",
           "logo": "account_balance",
+          "color": "#9D916D",
           "type": "url",
           "link": "https://boss.intranet.smu.edu.sg"
         },
@@ -64,6 +71,7 @@
           "id": "afterclass_web",
           "title": "AfterClass.io",
           "logo": "public",
+          "color": "#007BF3",
           "type": "url",
           "link": "https://afterclass.io"
         },
@@ -71,6 +79,7 @@
           "id": "boss_export",
           "title": "BOSS Timetable Export",
           "logo": "file_download",
+          "color": "#636363",
           "type": "internal",
           "link": "#boss-export"
         }
@@ -84,6 +93,7 @@
           "id": "student_wellness",
           "title": "Student Wellness",
           "logo": "favorite",
+          "color": "#BE3119",
           "type": "url",
           "link": "https://www.smu.edu.sg/campus-life/student-wellness"
         },
@@ -91,6 +101,7 @@
           "id": "voices_SMU",
           "title": "Voices@SMU",
           "logo": "hearing",
+          "color": "#D50A8A",
           "type": "url",
           "link": "https://voices.smu.edu.sg/get-support#speak-to-us"
         },
@@ -98,6 +109,7 @@
           "id": "incident_report",
           "title": "SMU Incident Reporting",
           "logo": "report_problem",
+          "color": "#636363",
           "type": "url",
           "link": "http://bit.ly/SMU_IR_Form"
         }
@@ -111,20 +123,23 @@
           "id": "askSMU_telegram",
           "title": "Ask.SMU (Invite only)",
           "logo": "telegram",
+          "color": "#0088CC",
           "type": "url",
           "link": "https://t.me"
         },
         {
           "id": "buffet_clearers_telegram",
           "title": "SMU Buffet Clearers",
+          "color": "#0088CC",
           "logo": "telegram",
           "type": "url",
           "link": "https://t.me/joinchat/DVuB8UO-_6LV1JhuML_CtA"
         },
         {
-          "id": "smu_cat_telegram",
+          "id": "smu_cat_instagram",
           "title": "SMU Cat",
           "logo": "instagram",
+          "color": "#DC3175",
           "type": "url",
           "link": "https://www.instagram.com/smu.cat/"
         },
@@ -132,6 +147,7 @@
           "id": "confessions_instagram",
           "title": "SMU Confessions",
           "logo": "instagram",
+          "color": "#DC3175",
           "type": "url",
           "link": "https://www.instagram.com/smuconfessionspage/"
         },
@@ -139,6 +155,7 @@
           "id": "smu_meme_instagram",
           "title": "Singapore Meme University",
           "logo": "instagram",
+          "color": "#DC3175",
           "type": "url",
           "link": "https://www.instagram.com/singaporememeuniversity/"
         },
@@ -146,15 +163,9 @@
           "id": "smusa_instagram",
           "title": "SMU Students' Association",
           "logo": "instagram",
+          "color": "#DC3175",
           "type": "url",
           "link": "https://www.instagram.com/sgsmusa/"
-        },
-        {
-          "id": "about_us",
-          "title": "About Us",
-          "logo": "info",
-          "type": "internal",
-          "link": "#about"
         }
       ]
     },
@@ -166,6 +177,7 @@
           "id": "sps",
           "title": "Subject Pool System",
           "logo": "biotech",
+          "color": "#131977",
           "type": "url",
           "link": "https://sps.intranet.smu.edu.sg"
         },
@@ -173,6 +185,7 @@
           "id": "ontrac",
           "title": "onTRAC II",
           "logo": "work",
+          "color": "#8A704C",
           "type": "url",
           "link": "https://ontrac.smu.edu.sg"
         },
@@ -180,6 +193,7 @@
           "id": "noteslah_web",
           "title": "noteslah",
           "logo": "public",
+          "color": "#131977",
           "type": "url",
           "link": "https://www.noteslah.com"
         },
@@ -187,6 +201,7 @@
           "id": "welcome_guide",
           "title": "Welcome Guides",
           "logo": "collections_bookmark",
+          "color": "#009DD9",
           "type": "internal",
           "link": "#welcome-guide"
         },
@@ -194,6 +209,7 @@
           "id": "school_guide",
           "title": "School Guides",
           "logo": "collections_bookmark",
+          "color": "#009DD9",
           "type": "internal",
           "link": "#school-guide"
         }

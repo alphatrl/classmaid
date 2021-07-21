@@ -8,10 +8,13 @@ import Section from './components/Section';
 
 const Wrapper = styled(CardTemplate)`
   overflow-y: auto;
+  min-height: 400px;
+  height: fit-content;
 
   @media screen and (max-width: ${(props) => props.theme.mobileSize}) {
     margin-top: 16px;
     overflow-y: unset;
+    min-height: 200px;
   }
 `;
 

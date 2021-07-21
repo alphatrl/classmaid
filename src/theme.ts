@@ -22,7 +22,9 @@ export const LIGHT_THEME: DefaultTheme = {
 
   icon: {
     background: '#f9f9f9',
+    colorCustom: '#FAFAFA',
     color: '#444444',
+    filter: 'initial',
   },
 
   calendar: {
@@ -68,7 +70,9 @@ export const DARK_THEME = {
 
   icon: {
     background: '#313131',
+    colorCustom: '#EEEEEE',
     color: '#EEEEEE',
+    filter: 'contrast(0.9)',
   },
 
   calendar: {
