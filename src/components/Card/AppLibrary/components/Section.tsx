@@ -6,20 +6,12 @@ import { AppLibraryShortcutsProps } from '../../../../Schema';
 import App from './App';
 
 interface Props {
-  title: string;
   isSorted?: boolean;
   shortcuts: AppLibraryShortcutsProps[];
 }
 
 const Wrapper = styled.div`
-  h2 {
-    margin: 0;
-    font-size: 1.05em;
-    font-weight: 600;
-    color: ${(props) => props.theme.text600};
-    padding-bottom: 4px;
-  }
-
+  padding-top: 12px;
   padding-bottom: 24px;
 `;
 
@@ -36,7 +28,7 @@ const AppWrapper = styled.div`
 `;
 
 const Section: React.FC<Props> = (props) => {
-  const { title, shortcuts, isSorted = true } = props;
+  const { shortcuts, isSorted = true } = props;
 
   const shortcutsSort = useMemo(
     () =>
@@ -52,7 +44,6 @@ const Section: React.FC<Props> = (props) => {
 
   return (
     <Wrapper>
-      <h2>{title}</h2>
       <AppWrapper>
         {shortcutsSort.map((shortcut) => (
           <App key={shortcut.id} shortcut={shortcut} />
