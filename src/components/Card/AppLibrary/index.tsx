@@ -41,7 +41,7 @@ const TabsWrapper = styled.div`
 
 const CustomTab = styled(Tab)`
   font-size: 1.15em;
-  font-weight: 500;
+  font-weight: 600;
   border-radius: 20px;
   margin: 0;
   display: flex;

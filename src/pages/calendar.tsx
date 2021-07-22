@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   box-sizing: border-box;
   padding: 16px;
   display: flex;
+  height: 100vh;
   // grid-template-columns: 1fr 2fr;
   // column-gap: 16px;
 

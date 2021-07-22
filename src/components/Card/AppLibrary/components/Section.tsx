@@ -24,6 +24,7 @@ const AppWrapper = styled.div`
 
   @media screen and (max-width: ${(props) => props.theme.mobileSize}) {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
   }
 `;
 

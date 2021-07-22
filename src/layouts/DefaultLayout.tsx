@@ -1,8 +1,10 @@
 import { useMediaQuery } from 'beautiful-react-hooks';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
+import wallpaper1 from '../../public/images/wallpapers/wallpaper-1.jpg';
 import { ModalOverlay } from '../components/Modal/styled';
 import NavBar from '../components/Navigation';
 import SEO from '../components/SEO';
@@ -25,6 +27,16 @@ const Wrapper = styled.div`
   @media screen and (max-width: ${(props) => props.theme.mobileSize}) {
     height: auto;
   }
+`;
+
+const ImageWrapper = styled.div`
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  z-index: -1;
+
+  filter: ${(props) => props.theme.background.gradient};
 `;
 
 interface Props {
@@ -64,6 +76,14 @@ const DefaultLayout: React.FC<Props> = function (props) {
   return (
     <Wrapper>
       <SEO title={title} />
+      <ImageWrapper>
+        <Image
+          src={wallpaper1}
+          layout="fill"
+          objectFit="cover"
+          placeholder="blur"
+        />
+      </ImageWrapper>
       {!isMobile ? (
         <NavBar hideNavigation={handleHideNavBar} />
       ) : (
