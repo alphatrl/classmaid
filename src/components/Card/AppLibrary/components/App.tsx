@@ -33,6 +33,12 @@ const AppView = styled.div<{ color?: string }>`
     font-size: 36px;
     font-weight: normal;
   }
+
+  &:hover {
+    background-color: ${(props) => props.theme.primary.blue}56;
+    color: ${(props) => props.theme.primary.blue};
+    transition: all 0.3s ease-in;
+  }
 `;
 
 const Title = styled.h1`
@@ -46,6 +52,11 @@ const Title = styled.h1`
 
   @media screen and (max-width: ${(props) => props.theme.mobileSize}) {
     font-size: 1.1rem;
+  }
+
+  ${AppView}:hover ~ & {
+    color: ${(props) => props.theme.primary.blue};
+    transition: all 0.3s ease-in;
   }
 `;
 

@@ -29,12 +29,15 @@ const TabsWrapper = styled.div`
   overflow: auto;
   box-sizing: content-box;
 
-  scrollbar-width: none;
-  ::-webkit-scrollbar {
-    display: none;
+  @media screen and (min-width: ${(props) => props.theme.mobileSize}) {
+    scrollbar-width: none;
+    ::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   @media screen and (max-width: ${(props) => props.theme.mobileSize}) {
+    padding-bottom: 12px;
     margin-right: 24px;
   }
 `;
