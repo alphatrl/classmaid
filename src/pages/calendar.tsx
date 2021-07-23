@@ -6,13 +6,14 @@ import DefaultLayout from '../layouts/DefaultLayout';
 
 const Wrapper = styled.div`
   box-sizing: border-box;
-  padding: 16px;
+  padding: 24px 16px;
   display: flex;
   height: 100vh;
   // grid-template-columns: 1fr 2fr;
   // column-gap: 16px;
 
   @media screen and (max-width: ${(props) => props.theme.mobileSize}) {
+    padding: 16px 8px;
     flex-direction: column;
     overflow-y: auto;
   }

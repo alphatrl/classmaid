@@ -116,6 +116,52 @@
       ]
     },
     {
+      "uid": "utility",
+      "title": "Utilities",
+      "shortcuts": [
+        {
+          "id": "sps",
+          "title": "Subject Pool System",
+          "logo": "biotech",
+          "color": "#131977",
+          "type": "url",
+          "link": "https://sps.intranet.smu.edu.sg"
+        },
+        {
+          "id": "ontrac",
+          "title": "onTRAC II",
+          "logo": "work",
+          "color": "#8A704C",
+          "type": "url",
+          "link": "https://ontrac.smu.edu.sg"
+        },
+        {
+          "id": "noteslah_web",
+          "title": "noteslah",
+          "logo": "public",
+          "color": "#131977",
+          "type": "url",
+          "link": "https://www.noteslah.com"
+        },
+        {
+          "id": "welcome_guide",
+          "title": "Welcome Guides",
+          "logo": "collections_bookmark",
+          "color": "#009DD9",
+          "type": "internal",
+          "link": "#welcome-guide"
+        },
+        {
+          "id": "school_guide",
+          "title": "School Guides",
+          "logo": "collections_bookmark",
+          "color": "#009DD9",
+          "type": "internal",
+          "link": "#school-guide"
+        }
+      ]
+    },
+    {
       "uid": "community",
       "title": "SMU Community",
       "shortcuts": [
@@ -170,48 +216,24 @@
       ]
     },
     {
-      "uid": "utility",
-      "title": "Utilities",
+      "uid": "smushortcuts",
+      "title": "SMU Shortcuts",
       "shortcuts": [
         {
-          "id": "sps",
-          "title": "Subject Pool System",
-          "logo": "biotech",
-          "color": "#131977",
-          "type": "url",
-          "link": "https://sps.intranet.smu.edu.sg"
-        },
-        {
-          "id": "ontrac",
-          "title": "onTRAC II",
-          "logo": "work",
-          "color": "#8A704C",
-          "type": "url",
-          "link": "https://ontrac.smu.edu.sg"
-        },
-        {
-          "id": "noteslah_web",
-          "title": "noteslah",
-          "logo": "public",
-          "color": "#131977",
-          "type": "url",
-          "link": "https://www.noteslah.com"
-        },
-        {
-          "id": "welcome_guide",
-          "title": "Welcome Guides",
-          "logo": "collections_bookmark",
-          "color": "#009DD9",
+          "id": "about_us",
+          "title": "About Us",
+          "logo": "info",
+          "color": "#636363",
           "type": "internal",
-          "link": "#welcome-guide"
+          "link": "#about"
         },
         {
-          "id": "school_guide",
-          "title": "School Guides",
-          "logo": "collections_bookmark",
-          "color": "#009DD9",
+          "id": "add_to_home_screen",
+          "title": "Add to Home Screen",
+          "logo": "inadd_to_home_screenfo",
+          "color": "#636363",
           "type": "internal",
-          "link": "#school-guide"
+          "link": "#add-to-homescreen"
         }
       ]
     }

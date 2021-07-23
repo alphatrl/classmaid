@@ -13,7 +13,7 @@ export const LIGHT_THEME: DefaultTheme = {
   },
 
   header: {
-    color: '#E6BCAE',
+    color: '#FAFAFA',
   },
 
   primary: {
@@ -61,7 +61,7 @@ export const DARK_THEME = {
   },
 
   header: {
-    color: '#A88980',
+    color: '#111111',
   },
 
   primary: {
