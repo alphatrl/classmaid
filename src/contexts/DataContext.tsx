@@ -14,19 +14,19 @@ import {
   ImportantDateProps,
   SchoolYearProps,
 } from '../Schema';
-import { APP_BOOKMARK_DEFAULT } from '../utils/appBookmarkDefaults';
+// import { APP_BOOKMARK_DEFAULT } from '../utils/appBookmarkDefaults';
 import { getCurrentEvent, sortEventsByDate } from './utils';
 
 interface ContextProps {
   schoolTerms: SchoolYearProps[];
   calendarEvents: CalendarProps | null;
   currentEvent: CurrentEventProps | null;
-  appBookmarks: AppLibraryProps;
+  // appBookmarks: AppLibraryProps;
   appLibrary: AppLibraryProps[];
 }
 
 const DataContext = createContext<ContextProps>({
-  appBookmarks: APP_BOOKMARK_DEFAULT,
+  // appBookmarks: APP_BOOKMARK_DEFAULT,
   appLibrary: [],
   schoolTerms: [],
   currentEvent: null,
@@ -35,7 +35,7 @@ const DataContext = createContext<ContextProps>({
 
 export const DataWrapper: React.FC = (props) => {
   const { children } = props;
-  const [appBookmarks] = useState<AppLibraryProps>(APP_BOOKMARK_DEFAULT);
+  // const [appBookmarks] = useState<AppLibraryProps>(APP_BOOKMARK_DEFAULT);
   const [appLibrary, setAppLibrary] = useState<AppLibraryProps[]>([]);
   const [schoolTerms, setSchoolTerms] = useState<SchoolYearProps[]>([]);
   const [importantDates, setImportantDates] = useState<ImportantDateProps[]>(
@@ -97,12 +97,11 @@ export const DataWrapper: React.FC = (props) => {
   const sharedState = useMemo(
     () => ({
       appLibrary,
-      appBookmarks,
       schoolTerms,
       calendarEvents,
       currentEvent,
     }),
-    [appBookmarks, appLibrary, calendarEvents, currentEvent, schoolTerms]
+    [appLibrary, calendarEvents, currentEvent, schoolTerms]
   );
 
   return (
