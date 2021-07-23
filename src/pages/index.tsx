@@ -25,13 +25,13 @@ const WelcomeGuide = dynamic(
 const Wrapper = styled.div`
   box-sizing: border-box;
   height: 100%;
-  padding: 16px;
+  padding: 24px 16px;
   display: grid;
   grid-template-columns: 1fr 2fr;
   column-gap: 16px;
 
   @media screen and (max-width: ${(props) => props.theme.mobileSize}) {
-    padding: 8px;
+    padding: 16px 8px;
     display: flex;
     flex-direction: column;
     overflow-y: auto;

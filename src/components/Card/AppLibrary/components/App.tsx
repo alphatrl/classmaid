@@ -11,50 +11,58 @@ interface Props {
 }
 
 const Wrapper = styled.a`
+  text-decoration: none;
+  color: ${(props) => props.theme.text900};
+  cursor: pointer;
+  margin-bottom: 12px;
+`;
+
+const AppView = styled.div<{ color?: string }>`
   padding: 0 16px;
   height: 72px;
-  background-color: ${(props) => props.theme.icon.background};
-  border-radius: 16px;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  color: ${(props) => props.theme.icon.color};
-  cursor: pointer;
-  text-decoration: none;
-
-  p {
-    margin: 0;
-    padding-left: 8px;
-    font-weight: 600;
-    font-size: 1.05em;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    display: -webkit-box;
-    overflow: hidden;
-  }
+  justify-content: center;
+  border-radius: 16px;
+  background-color: ${(props) => props.color ?? props.theme.icon.background};
+  color: ${(props) =>
+    props.color ? props.theme.icon.colorCustom : props.theme.icon.color};
+  filter: ${(props) => props.theme.icon.filter};
 
   .material-icons-round {
     font-size: 36px;
     font-weight: normal;
   }
 
-  :hover {
+  &:hover {
     background-color: ${(props) => props.theme.primary.blue}56;
     color: ${(props) => props.theme.primary.blue};
+    transition: all 0.3s ease-in;
   }
+`;
+
+const Title = styled.h1`
+  margin: 8px 0 0 4px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  overflow: hidden;
 
   @media screen and (max-width: ${(props) => props.theme.mobileSize}) {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
+  }
 
-    .material-icons-round {
-      font-size: 24px;
-    }
+  ${AppView}:hover ~ & {
+    color: ${(props) => props.theme.primary.blue};
+    transition: all 0.3s ease-in;
   }
 `;
 
 const App: React.FC<Props> = (props) => {
   const {
-    shortcut: { id, title, logo, type, link },
+    shortcut: { id, title, logo, type, link, color },
   } = props;
   const router = useRouter();
 
@@ -82,8 +90,10 @@ const App: React.FC<Props> = (props) => {
 
   return (
     <Wrapper onClick={handleClick} href={url} target={targetType}>
-      <Icon name={logo} width={30} height={30} />
-      <p>{title}</p>
+      <AppView color={color}>
+        <Icon name={logo} width={30} height={30} />
+      </AppView>
+      <Title>{title}</Title>
     </Wrapper>
   );
 };

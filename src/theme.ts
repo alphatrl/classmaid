@@ -3,7 +3,7 @@ import { createGlobalStyle, DefaultTheme } from 'styled-components';
 export const LIGHT_THEME: DefaultTheme = {
   background: {
     background: '#FAFAFA',
-    gradient: ' linear-gradient(0deg, rgba(0,0,0,0.1), rgba(0,0,0,0.1))',
+    gradient: 'brightness(0.9)',
   },
 
   blur: {
@@ -13,7 +13,7 @@ export const LIGHT_THEME: DefaultTheme = {
   },
 
   header: {
-    color: '#E6BCAE',
+    color: '#FAFAFA',
   },
 
   primary: {
@@ -22,7 +22,9 @@ export const LIGHT_THEME: DefaultTheme = {
 
   icon: {
     background: '#f9f9f9',
+    colorCustom: '#FAFAFA',
     color: '#444444',
+    filter: 'initial',
   },
 
   calendar: {
@@ -49,7 +51,7 @@ export const LIGHT_THEME: DefaultTheme = {
 export const DARK_THEME = {
   background: {
     background: '#111111',
-    gradient: ' linear-gradient(0deg, rgba(0,0,0,0.2), rgba(0,0,0,0.35))',
+    gradient: 'brightness(0.85)',
   },
 
   blur: {
@@ -59,16 +61,18 @@ export const DARK_THEME = {
   },
 
   header: {
-    color: '#A88980',
+    color: '#111111',
   },
 
   primary: {
-    blue: '#329AFA',
+    blue: '#3bb7ff',
   },
 
   icon: {
     background: '#313131',
+    colorCustom: '#EEEEEE',
     color: '#EEEEEE',
+    filter: 'contrast(0.9)',
   },
 
   calendar: {
@@ -100,11 +104,6 @@ export const GlobalStyle = createGlobalStyle`
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-image: ${(props) => props.theme.background.gradient},
-      url(/images/wallpapers/wallpaper-1.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
   }
 
   html {

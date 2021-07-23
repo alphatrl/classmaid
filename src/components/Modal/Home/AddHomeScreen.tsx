@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import React, { useMemo, useState } from 'react';
+import { useCallback } from 'react';
 import styled from 'styled-components';
 
 import { ModalTemplate } from '../components';
@@ -55,17 +56,9 @@ const AddHomeScreen: React.FC = () => {
     router.replace('/');
   };
 
-  const handlePressInfo = () => {
-    setTabActive('info');
-  };
-
-  const handlePressiOS = () => {
-    setTabActive('iOS');
-  };
-
-  const handlePressAndroid = () => {
-    setTabActive('android');
-  };
+  const handlePress = useCallback((key: string) => {
+    setTabActive(key);
+  }, []);
 
   const message = useMemo(() => {
     switch (tabActive) {
@@ -123,21 +116,21 @@ const AddHomeScreen: React.FC = () => {
           <Tab
             role="button"
             isActive={tabActive === 'info'}
-            onClick={handlePressInfo}
+            onClick={() => handlePress('info')}
           >
             About
           </Tab>
           <Tab
             role="button"
             isActive={tabActive === 'iOS'}
-            onClick={handlePressiOS}
+            onClick={() => handlePress('iOS')}
           >
             iOS
           </Tab>
           <Tab
             role="button"
             isActive={tabActive === 'android'}
-            onClick={handlePressAndroid}
+            onClick={() => handlePress('android')}
           >
             Android
           </Tab>

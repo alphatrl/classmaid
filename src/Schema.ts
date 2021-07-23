@@ -42,6 +42,7 @@ export interface AppLibraryShortcutsProps {
   id: string;
   title: string;
   logo: string;
+  color: string;
   type: string;
   link: string;
 }

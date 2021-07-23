@@ -25,6 +25,8 @@ declare module 'styled-components' {
     icon: {
       background: string;
       color: string;
+      colorCustom: string;
+      filter: string;
     };
 
     calendar: {
