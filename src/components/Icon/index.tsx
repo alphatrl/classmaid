@@ -4,6 +4,7 @@ import React, { useCallback } from 'react';
 const Telegram = dynamic(() => import('./components/telegram'));
 const Instagram = dynamic(() => import('./components/instagram'));
 const SMUShortcutIcon = dynamic(() => import('./components/smushortcut'));
+const Reddit = dynamic(() => import('./components/reddit'));
 
 interface Props {
   name: string;
@@ -22,6 +23,8 @@ const Icon: React.FC<Props> = (props) => {
         return <Instagram width={width} height={height} />;
       case 'smushortcut':
         return <SMUShortcutIcon width={width} height={height} />;
+      case 'reddit':
+        return <Reddit width={width} height={height} />;
       default:
         return <span className="material-icons-round">{name}</span>;
     }

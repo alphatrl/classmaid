@@ -212,6 +212,14 @@
           "color": "#DC3175",
           "type": "url",
           "link": "https://www.instagram.com/sgsmusa/"
+        },
+        {
+          "id": "smu_sg_reddit",
+          "title": "/r/smu_singapore",
+          "logo": "reddit",
+          "color": "#FF4500;",
+          "type": "url",
+          "link": "https://www.reddit.com/r/SMU_Singapore/"
         }
       ]
     },
