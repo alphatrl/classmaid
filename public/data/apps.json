@@ -11,7 +11,8 @@
           "logo": "menu_book",
           "color": "#0064B7",
           "type" : "url",
-          "link": "https://elearn.smu.edu.sg"
+          "link": "https://elearn.smu.edu.sg",
+          "description": "View your course materials, quizzes and assignments"
         },
         {
           "id": "email",
@@ -19,7 +20,8 @@
           "logo": "email",
           "color": "#006DCE",
           "type" : "url",
-          "link": "https://outlook.office.com/owa/?realm=sis.smu.edu.sg"
+          "link": "https://outlook.office.com/owa/?realm=smu.edu.sg",
+          "description": "Access your student email"
         },
         {
           "id": "facility_booking",
@@ -27,7 +29,8 @@
           "logo": "airline_seat_individual_suite",
           "color": "#647089",
           "type" : "url",
-          "link": "https://fbs.intranet.smu.edu.sg"
+          "link": "https://fbs.intranet.smu.edu.sg",
+          "description": "Book campus and library facilities within SMU"
         },
         {
           "id": "library",
@@ -35,7 +38,8 @@
           "logo": "local_library",
           "color": "#7D7D7D",
           "type" : "url",
-          "link": "https://library.smu.edu.sg/"
+          "link": "https://library.smu.edu.sg/",
+          "description": "Access academic resources for research and learning"
         },
         {
           "id": "oasis",
@@ -43,7 +47,8 @@
           "logo": "beach_access",
           "color": "#CDA339",
           "type" : "url",
-          "link": "https://oasis.smu.edu.sg"
+          "link": "https://oasis.smu.edu.sg",
+          "description": "Access academic-related information to financial service"
         },
         {
           "id": "print",
@@ -51,7 +56,8 @@
           "logo": "print",
           "color": "#0C9C57",
           "type" : "url",
-          "link": "https://smu.sg/print"
+          "link": "https://smu.sg/print",
+          "description": "Print your documents in school"
         }
       ]
     },
@@ -65,7 +71,9 @@
           "logo": "account_balance",
           "color": "#9D916D",
           "type": "url",
-          "link": "https://boss.intranet.smu.edu.sg"
+          "link": "https://boss.intranet.smu.edu.sg",
+          "description": "Register and bid for your courses"
+
         },
         {
           "id": "afterclass_web",
@@ -95,7 +103,8 @@
           "logo": "favorite",
           "color": "#BE3119",
           "type": "url",
-          "link": "https://www.smu.edu.sg/campus-life/student-wellness"
+          "link": "https://www.smu.edu.sg/campus-life/student-wellness",
+          "description": "Counselling services in SMU. You matter <3"
         },
         {
           "id": "voices_SMU",
@@ -103,7 +112,8 @@
           "logo": "hearing",
           "color": "#D50A8A",
           "type": "url",
-          "link": "https://voices.smu.edu.sg/get-support#speak-to-us"
+          "link": "https://voices.smu.edu.sg/get-support#speak-to-us",
+          "description": "A safe space to get your voice heard"
         },
         {
           "id": "incident_report",
@@ -111,7 +121,8 @@
           "logo": "report_problem",
           "color": "#636363",
           "type": "url",
-          "link": "http://bit.ly/SMU_IR_Form"
+          "link": "http://bit.ly/SMU_IR_Form",
+          "description": "Report (near miss) incidents"
         }
       ]
     },
@@ -125,7 +136,8 @@
           "logo": "biotech",
           "color": "#131977",
           "type": "url",
-          "link": "https://sps.intranet.smu.edu.sg"
+          "link": "https://sps.intranet.smu.edu.sg",
+          "description": "Sign-up or create research studies"
         },
         {
           "id": "ontrac",
@@ -133,7 +145,8 @@
           "logo": "work",
           "color": "#8A704C",
           "type": "url",
-          "link": "https://ontrac.smu.edu.sg"
+          "link": "https://ontrac.smu.edu.sg",
+          "description": "Manage your internship or community service"
         },
         {
           "id": "noteslah_web",

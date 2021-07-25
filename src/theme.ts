@@ -40,6 +40,11 @@ export const LIGHT_THEME: DefaultTheme = {
     background: '#FFFFFF',
   },
 
+  tooltips: {
+    background: '#313131',
+    text: '#EEEEEE',
+  },
+
   text900: '#333333',
   text600: '#666666',
   text300: '#999999',
@@ -86,6 +91,11 @@ export const DARK_THEME = {
   card: {
     overlay: 'rgba(34, 34, 34, 0.7)',
     background: '#111111',
+  },
+
+  tooltips: {
+    background: '#313131',
+    text: '#EEEEEE',
   },
 
   text900: '#FFFFFF',
