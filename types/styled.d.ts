@@ -42,6 +42,11 @@ declare module 'styled-components' {
       background: string;
     };
 
+    tooltips: {
+      background: string;
+      text: string;
+    };
+
     text900: string;
     text600: string;
     text300: string;
