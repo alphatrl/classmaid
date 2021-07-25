@@ -45,10 +45,9 @@ class MyDocument extends Document {
             <meta name="apple-mobile-web-app-capable" content="yes" />
             <meta
               name="apple-mobile-web-app-status-bar-style"
-              content="black-translucent
-              "
+              content="black-translucent"
             />
-            <meta name="theme-color" content="#FAFAFA" />
+            <meta name="theme-color" content="#111111" />
 
             <link rel="icon" type="image/png" href="/images/favicon.png" />
             <link

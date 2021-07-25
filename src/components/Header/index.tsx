@@ -25,8 +25,11 @@ const Wrapper = styled.header`
   }
 
   @media screen and (max-width: ${(props) => props.theme.mobileSize}) {
-    padding: 0 16px;
-    height: 56px;
+    padding: 0;
+    padding-top: env(safe-area-inset-top);
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+    height: calc(56px + env(safe-area-inset-top));
     top: 0;
     position: sticky;
     z-index: 2;
