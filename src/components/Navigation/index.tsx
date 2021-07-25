@@ -5,9 +5,9 @@ import AppNav from './components/AppNav';
 import Settings from './components/Settings';
 
 const Wrapper = styled.div`
-  height: 100%;
   width: 80px;
-  padding: 24px 0;
+  padding-top: max(24px, env(safe-area-inset-top));
+  padding-bottom: max(24px, env(safe-area-inset-bottom));
   box-sizing: border-box;
   background: ${(props) => props.theme.blur.backgroundBackwards};
 
@@ -25,7 +25,9 @@ const Wrapper = styled.div`
     top: 0;
     left: 0;
     z-index: 6;
-    width: 92px;
+    height: 100%;
+    width: calc(92px + env(safe-area-inset-left));
+    padding-left: env(safe-area-inset-left);
   }
 `;
 

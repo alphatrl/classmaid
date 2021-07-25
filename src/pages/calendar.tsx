@@ -6,14 +6,23 @@ import DefaultLayout from '../layouts/DefaultLayout';
 
 const Wrapper = styled.div`
   box-sizing: border-box;
-  padding: 24px 16px;
   display: flex;
-  height: 100vh;
+  height: 100%;
+
+  padding-top: 24px;
+  padding-bottom: max(24px, env(safe-area-inset-bottom));
+  padding-left: max(16px, env(safe-area-inset-left));
+  padding-right: max(16px, env(safe-area-inset-right));
+
   // grid-template-columns: 1fr 2fr;
   // column-gap: 16px;
 
   @media screen and (max-width: ${(props) => props.theme.mobileSize}) {
-    padding: 16px 8px;
+    padding-top: 16px;
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
+    padding-left: max(8px, env(safe-area-inset-left));
+    padding-right: max(8px, env(safe-area-inset-right));
+
     flex-direction: column;
     overflow-y: auto;
   }
