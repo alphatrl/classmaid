@@ -45,6 +45,7 @@ export interface AppLibraryShortcutsProps {
   color: string;
   type: string;
   link: string;
+  description?: string;
 }
 
 export interface AppLibraryProps {

@@ -23,6 +23,7 @@ interface ContextProps {
   currentEvent: CurrentEventProps | null;
   // appBookmarks: AppLibraryProps;
   appLibrary: AppLibraryProps[];
+  isMobile: boolean;
 }
 
 const DataContext = createContext<ContextProps>({
@@ -31,6 +32,7 @@ const DataContext = createContext<ContextProps>({
   schoolTerms: [],
   currentEvent: null,
   calendarEvents: {},
+  isMobile: false,
 });
 
 export const DataWrapper: React.FC = (props) => {
@@ -41,11 +43,22 @@ export const DataWrapper: React.FC = (props) => {
   const [importantDates, setImportantDates] = useState<ImportantDateProps[]>(
     []
   );
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     getSchoolTerm();
     getImportantDates();
     getAppLibrary();
+  }, []);
+
+  useEffect(() => {
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    // check if safari has touchpoint
+    setIsMobile(
+      /iphone|ipad|ipod/.test(userAgent) || // iOS or older iPadOS
+        (/mac/.test(userAgent) && navigator.maxTouchPoints > 1) || // >= iPadOS 13
+        /android/i.test(userAgent) // Android
+    );
   }, []);
 
   /** Get school terms */
@@ -100,8 +113,9 @@ export const DataWrapper: React.FC = (props) => {
       schoolTerms,
       calendarEvents,
       currentEvent,
+      isMobile,
     }),
-    [appLibrary, calendarEvents, currentEvent, schoolTerms]
+    [appLibrary, calendarEvents, currentEvent, isMobile, schoolTerms]
   );
 
   return (

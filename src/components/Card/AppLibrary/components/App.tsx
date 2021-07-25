@@ -1,68 +1,19 @@
 import { useRouter } from 'next/router';
 import React, { useCallback, useMemo } from 'react';
-import styled from 'styled-components';
 
 import { AppLibraryShortcutsProps } from '../../../../Schema';
 import firebase from '../../../../utils/firebase';
 import Icon from '../../../Icon';
+import { AppTitle, AppView, AppWrapper } from './styled';
+import ToolTips from './Tooltips';
 
 interface Props {
   shortcut: AppLibraryShortcutsProps;
 }
 
-const Wrapper = styled.a`
-  text-decoration: none;
-  color: ${(props) => props.theme.text900};
-  cursor: pointer;
-  margin-bottom: 12px;
-`;
-
-const AppView = styled.div<{ color?: string }>`
-  padding: 0 16px;
-  height: 72px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 16px;
-  background-color: ${(props) => props.color ?? props.theme.icon.background};
-  color: ${(props) =>
-    props.color ? props.theme.icon.colorCustom : props.theme.icon.color};
-  filter: ${(props) => props.theme.icon.filter};
-
-  .material-icons-round {
-    font-size: 36px;
-    font-weight: normal;
-  }
-
-  &:hover {
-    background-color: ${(props) => props.theme.primary.blue}56;
-    color: ${(props) => props.theme.primary.blue};
-    transition: all 0.3s ease-in;
-  }
-`;
-
-const Title = styled.h1`
-  margin: 8px 0 0 4px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  display: -webkit-box;
-  overflow: hidden;
-
-  @media screen and (max-width: ${(props) => props.theme.mobileSize}) {
-    font-size: 1.1rem;
-  }
-
-  ${AppView}:hover ~ & {
-    color: ${(props) => props.theme.primary.blue};
-    transition: all 0.3s ease-in;
-  }
-`;
-
 const App: React.FC<Props> = (props) => {
   const {
-    shortcut: { id, title, logo, type, link, color },
+    shortcut: { id, title, logo, type, link, color, description },
   } = props;
   const router = useRouter();
 
@@ -89,12 +40,18 @@ const App: React.FC<Props> = (props) => {
   }, [link, type]);
 
   return (
-    <Wrapper onClick={handleClick} href={url} target={targetType}>
+    <AppWrapper
+      onClick={handleClick}
+      href={url}
+      target={targetType}
+      aria-label={description ?? title}
+    >
       <AppView color={color}>
         <Icon name={logo} width={30} height={30} />
       </AppView>
-      <Title>{title}</Title>
-    </Wrapper>
+      <AppTitle>{title}</AppTitle>
+      {description && <ToolTips description={description} />}
+    </AppWrapper>
   );
 };
 

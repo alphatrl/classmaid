@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
+import { useDataContext } from '../../../contexts/DataContext';
 import { useDarkMode } from '../../../contexts/ThemeContext';
 import firebase from '../../../utils/firebase';
 import Icon from '../../Icon';
@@ -43,24 +44,15 @@ const Settings: React.FC<Props> = (props) => {
   const { hideNavigation } = props;
   const { theme, toggleTheme } = useDarkMode();
   const router = useRouter();
-  const [isMobile, setIsMobile] = useState(false);
+  const { isMobile } = useDataContext();
   const [isStandalone, setIsStandalone] = useState(false);
 
   useEffect(() => {
-    const userAgent = window.navigator.userAgent.toLowerCase();
-
     // detect standalone mode
     const customNavigator = window.navigator as CustomNavigator;
     setIsStandalone(
       ('standalone' in customNavigator && customNavigator.standalone) ||
         window.matchMedia('(display-mode: standalone)').matches
-    );
-
-    // check if safari has touchpoint
-    setIsMobile(
-      /iphone|ipad|ipod/.test(userAgent) || // iOS or older iPadOS
-        (/mac/.test(userAgent) && navigator.maxTouchPoints > 1) || // >= iPadOS 13
-        /android/i.test(userAgent) // Android
     );
   }, []);
 
