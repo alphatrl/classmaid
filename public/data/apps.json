@@ -104,7 +104,7 @@
           "color": "#BE3119",
           "type": "url",
           "link": "https://www.smu.edu.sg/campus-life/student-wellness",
-          "description": "Counselling services in SMU. You matter <3"
+          "description": "Counselling services in SMU. You matter ❤️"
         },
         {
           "id": "voices_SMU",
@@ -200,7 +200,8 @@
           "logo": "instagram",
           "color": "#DC3175",
           "type": "url",
-          "link": "https://www.instagram.com/smu.cat/"
+          "link": "https://www.instagram.com/smu.cat/",
+          "description": "🐈 🐈‍⬛"
         },
         {
           "id": "confessions_instagram",

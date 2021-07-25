@@ -89,7 +89,7 @@ export const DARK_THEME = {
   },
 
   card: {
-    overlay: 'rgba(34, 34, 34, 0.7)',
+    overlay: 'rgba(70, 70, 70, 0.8)',
     background: '#111111',
   },
 

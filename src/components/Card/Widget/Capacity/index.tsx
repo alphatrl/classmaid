@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import { useDataContext } from '../../../../contexts/DataContext';
 import { LibraryOccupancyProps } from '../../../../Schema';
 import Icon from '../../../Icon';
 import { CardTemplate } from '../../styled';
@@ -41,20 +40,17 @@ const HeaderWrapper = styled.div`
   }
 `;
 
-const StyledIcon = styled.div<{ isMobile: boolean }>`
+const StyledIcon = styled.div`
   height: 32px;
   width: 32px;
   cursor: pointer;
   background-color: unset;
   border-radius: 8px;
 
-  display: ${(props) => (props.isMobile ? 'flex' : 'none')};
+  display: flex;
   justify-content: center;
   align-items: center;
-
-  ${Wrapper}:hover & {
-    display: flex;
-  }
+  color: ${(props) => props.theme.text600};
 
   &:hover {
     background-color: ${(props) => props.theme.primary.blue}56;
@@ -80,7 +76,6 @@ const CapacityCard: React.FC = () => {
     },
   ]);
   const [isLoaded, setIsLoaded] = useState(false);
-  const { isMobile } = useDataContext();
 
   useEffect(() => {
     getOccupancy();
@@ -113,7 +108,7 @@ const CapacityCard: React.FC = () => {
     <Wrapper>
       <HeaderWrapper>
         <h1>Capacity</h1>
-        <StyledIcon role="button" onClick={getOccupancy} isMobile={isMobile}>
+        <StyledIcon role="button" onClick={getOccupancy}>
           <Icon name="refresh" />
         </StyledIcon>
       </HeaderWrapper>
