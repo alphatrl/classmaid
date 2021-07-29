@@ -11,7 +11,7 @@
 ---
 
 <p align="center">
-  <img alt="smu-shortcut promotion-image" src="./public/images/promo-image.png">
+  <img alt="smu-shortcut promotion-image" src="./promotion/promo-image.png">
 </p>
 
 ---
@@ -40,7 +40,11 @@ yarn install
 # Copy the env.example files
 cp .env.example .env
 
-# Run the app
+# Run the app (Development)
+yarn dev
+
+# Run the app (Production)
+yarn build
 yarn start
 ```
 
@@ -64,4 +68,5 @@ Created by [Amos](http://github.com/alphatrl)
 
 A huge thanks to the following contributers for their amazing work:
 
-(Work in Progress...)
+[![Duncan](https://avatars3.githubusercontent.com/u/7417870?s=80&v=4)](https://github.com/duncanleo)
+
