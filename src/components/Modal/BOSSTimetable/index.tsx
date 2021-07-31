@@ -236,7 +236,7 @@ const BOSSTimetable: React.FC = () => {
   const handleICalTrack = useCallback(() => {
     firebase
       ?.analytics()
-      .logEvent('download', { description: 'BOSS Timetable Export' });
+      .logEvent('file_download', { description: 'BOSS Timetable Export' });
   }, []);
 
   return (

@@ -1,12 +1,11 @@
 import { isArray } from 'lodash';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import { AppLibrary, CapacityCard, TodayCard } from '../components/Card/';
 import DefaultLayout from '../layouts/DefaultLayout';
-import firebase from '../utils/firebase';
 
 const About = dynamic(() => import('../components/Modal/Home/About'));
 const AddHomeScreen = dynamic(
@@ -59,10 +58,6 @@ export const Home: React.FC = () => {
   const isSchoolGuide = isArray(path) && path[0] === '#school-guide';
   const isAbout = isArray(path) && path[0] === '#about';
   const isAddHomeScreen = isArray(path) && path[0] === '#add-to-homescreen';
-
-  useEffect(() => {
-    firebase?.analytics().logEvent('Home');
-  }, []);
 
   return (
     <DefaultLayout title="Home">
