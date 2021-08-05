@@ -14,13 +14,6 @@ export const School_Guide_Links = [
     link: 'https://inet.smu.edu.sg/sites/courses/Pages/Student-Academic-Handbook.aspx',
   },
   {
-    id: 'course_offerings',
-    title: 'Course Offerings',
-    logo: 'collections_bookmark',
-    type: 'url',
-    link: 'https://inet.smu.edu.sg/sites/courses/Pages/Course-Offerings.aspx',
-  },
-  {
     id: 'boss_guide_web',
     title: 'BOSS Bidding Guidebook 2020',
     logo: 'public',

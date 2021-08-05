@@ -69,7 +69,7 @@
           "id": "boss",
           "title": "BOSS",
           "logo": "account_balance",
-          "color": "#9D916D",
+          "color": "#8A704C",
           "type": "url",
           "link": "https://boss.intranet.smu.edu.sg",
           "description": "Register and bid for your courses"
@@ -90,6 +90,24 @@
           "color": "#636363",
           "type": "internal",
           "link": "#boss-export"
+        },
+        {
+          "id": "course_offerings",
+          "title": "Course Offerings",
+          "logo": "collections_bookmark",
+          "color": "#131977",
+          "type": "url",
+          "link": "https://inet.smu.edu.sg/sites/courses/Pages/Course-Offerings.aspx",
+          "description": "See courses which are currently being offered"
+        },
+        {
+          "id": "course_sequence",
+          "title": "Course Sequence",
+          "logo": "schedule",
+          "color": "#8A704C",
+          "type": "url",
+          "link": "https://inet.smu.edu.sg/sites/courses/Pages/Course-Offerings.aspx",
+          "description": "See the suggested courses to take for your term"
         }
       ]
     },
