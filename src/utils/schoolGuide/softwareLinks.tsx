@@ -120,7 +120,7 @@ export const SOFTWARE_LINKS = [
       {
         id: 'zoom',
         title: 'Zoom',
-        link: 'https://zoom.us',
+        link: 'https://smu-sg.zoom.us',
       },
       {
         id: 'ms_teams',
