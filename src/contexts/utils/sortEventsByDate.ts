@@ -28,14 +28,24 @@ export default function sortEventsByDate(
     });
     const nextMidnight = moment(midnight).add(1, 'day');
 
-    const filteredEvents = sortedDates.filter((date) =>
-      earliestTime.isBetween(
-        moment.unix(date.startTime),
-        moment.unix(date.endTime),
-        undefined,
-        '[)'
-      )
-    );
+    const filteredEvents = sortedDates.filter((date) => {
+      const startMidnight = moment.unix(date.startTime).set({
+        hour: 0,
+        minute: 0,
+        second: 0,
+        millisecond: 0,
+      });
+
+      return (
+        midnight.isSame(startMidnight) ||
+        earliestTime.isBetween(
+          moment.unix(date.startTime),
+          moment.unix(date.endTime),
+          undefined,
+          '[)'
+        )
+      );
+    });
 
     filteredEvents.map((date) => {
       const startTime = moment.unix(date.startTime);
@@ -73,6 +83,16 @@ export default function sortEventsByDate(
             timeString: `${startTime.format(startTimeFormat)} - 11:59pm`,
             startDate: date.startTime,
             endDate: nextMidnight.unix(),
+          });
+          break;
+
+        // startTime = endTime
+        case startTime.isSame(endTime):
+          events.push({
+            title,
+            timeString: `${startTime.format(startTimeFormat)}`,
+            startDate: date.startTime,
+            endDate: date.endTime,
           });
           break;
 
