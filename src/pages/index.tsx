@@ -17,9 +17,6 @@ const BOSSTimetable = dynamic(
 const SchoolGuide = dynamic(
   () => import('../components/Modal/Home/SchoolGuide')
 );
-const WelcomeGuide = dynamic(
-  () => import('../components/Modal/Home/WelcomeGuide')
-);
 
 const Wrapper = styled.div`
   box-sizing: border-box;
@@ -54,7 +51,6 @@ export const Home: React.FC = () => {
   const router = useRouter();
   const path = router.asPath.match(/#([a-z0-9-]+)/gi);
   const isExportModal = isArray(path) && path[0] === '#boss-export';
-  const isWelcomeGuide = isArray(path) && path[0] === '#welcome-guide';
   const isSchoolGuide = isArray(path) && path[0] === '#school-guide';
   const isAbout = isArray(path) && path[0] === '#about';
   const isAddHomeScreen = isArray(path) && path[0] === '#add-to-homescreen';
@@ -69,7 +65,6 @@ export const Home: React.FC = () => {
         <AppLibrary />
       </Wrapper>
       {isExportModal && <BOSSTimetable />}
-      {isWelcomeGuide && <WelcomeGuide />}
       {isSchoolGuide && <SchoolGuide />}
       {isAbout && <About />}
       {isAddHomeScreen && <AddHomeScreen />}
