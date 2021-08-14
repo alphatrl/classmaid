@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { Modal } from '../../styled';
 import { ModalOverlay, Tab } from '../../styled';
-import { AVAILABLE_TABS, SchoolSurvival } from './components';
+import { AVAILABLE_TABS, SchoolSurvival, WelcomeGuide } from './components';
 import SoftwareGuide from './components/SoftwareGuide';
 
 const Wrapper = styled.div`
@@ -38,7 +38,12 @@ const TabsWrapper = styled.div`
 `;
 
 const ModalTemplate = styled(Modal)`
-  min-height: 90%;
+  min-height: 50%;
+  max-height: 50%;
+
+  @media screen and (max-width: ${(props) => props.theme.mobileSize}) {
+    max-height: 80%;
+  }
 `;
 
 const StudyGuide: React.FC = () => {
@@ -71,6 +76,8 @@ const StudyGuide: React.FC = () => {
     switch (tabActive) {
       case 'software':
         return <SoftwareGuide />;
+      case 'welcome':
+        return <WelcomeGuide />;
       default:
         return <SchoolSurvival />;
     }

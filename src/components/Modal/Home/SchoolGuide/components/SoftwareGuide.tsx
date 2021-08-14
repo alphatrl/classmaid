@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import {
   SOFTWARE_LINKS,
   SoftwareProp,
-} from '../../../../../utils/softwareLinks';
+} from '../../../../../utils/schoolGuide/softwareLinks';
 
 const Wrapper = styled.div`
   padding-bottom: 1em;

@@ -1,11 +1,11 @@
 import { sortBy } from 'lodash';
 import React, { useMemo } from 'react';
 
-import { School_Guide_Links } from '../../../../../utils/schoolGuide/dailyLinks';
+import { Welcome_Guide_Links } from '../../../../../utils/schoolGuide/welcomeLinks';
 
 const SchoolSurvival: React.FC = () => {
   const links = useMemo(() => {
-    return sortBy(School_Guide_Links, 'title');
+    return sortBy(Welcome_Guide_Links, 'title');
   }, []);
 
   return (
