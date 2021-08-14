@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   color: ${(props) => props.theme.text900};
 `;
 
-const Color = styled.div<{ color: string }>`
+const Color = styled.div<{ color?: string }>`
   width: 16px;
   height: 16px;
   border-radius: 4px;
@@ -29,7 +29,7 @@ const CalendarRow: React.FC<Props> = (props) => {
   const { title } = props;
   return (
     <Wrapper>
-      <Color color="" />
+      <Color />
       {title}
     </Wrapper>
   );
