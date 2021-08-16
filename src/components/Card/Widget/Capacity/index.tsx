@@ -65,7 +65,7 @@ const MAX_OCCUPANCY_KGC = 300;
 const CapacityCard: React.FC = () => {
   const [occupancy, setOccupancy] = useState<LibraryOccupancyProps[]>([
     {
-      title: '📚 Li Ka Sheng Library',
+      title: '📚 Li Ka Shing Library',
       occupancy: 0,
       maxOccupancy: MAX_OCCUPANCY_LKS,
     },
@@ -91,7 +91,7 @@ const CapacityCard: React.FC = () => {
       .then((response) => response.data);
     setOccupancy([
       {
-        title: '📚 Li Ka Sheng Library',
+        title: '📚 Li Ka Shing Library',
         occupancy: parseInt(response.lks.inside),
         maxOccupancy: MAX_OCCUPANCY_LKS,
       },
