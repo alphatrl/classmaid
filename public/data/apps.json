@@ -108,6 +108,14 @@
           "type": "url",
           "link": "https://inet.smu.edu.sg/sites/courses/Pages/Course-Offerings.aspx",
           "description": "See the suggested courses to take for your term"
+        },
+        {
+          "id": "review_my_mod",
+          "title": "ReviewMyMod",
+          "logo": "public",
+          "color": "#06e5ca",
+          "type": "url",
+          "link": "https://reviewmymod.wixsite.com/home"
         }
       ]
     },
