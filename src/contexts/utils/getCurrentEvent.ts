@@ -21,7 +21,6 @@ export default function getCurrentEvent(
       }
 
       let termStart = null;
-
       for (const period of term.periods) {
         // check if current date is within the period dates
         const startDate = moment.tz(
@@ -41,17 +40,17 @@ export default function getCurrentEvent(
 
         // date is between the period
         if (today.isBetween(startDate, endDate, undefined, '[)')) {
-          if (period.type == 'class') {
+          if (period.type == 'recess' || period.type == 'vacation') {
             return {
               type: period.type,
-              date_start: termStart.unix(),
+              date_start: startDate.unix(),
               date_end: endDate.unix(),
             };
           }
 
           return {
             type: period.type,
-            date_start: startDate.unix(),
+            date_start: termStart.unix(),
             date_end: endDate.unix(),
           };
         }
