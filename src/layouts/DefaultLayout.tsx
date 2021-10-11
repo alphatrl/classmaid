@@ -82,6 +82,7 @@ const DefaultLayout: React.FC<Props> = function (props) {
           layout="fill"
           objectFit="cover"
           placeholder="blur"
+          alt=""
         />
       </ImageWrapper>
       {!isMobile ? (

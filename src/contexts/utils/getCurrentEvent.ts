@@ -20,6 +20,7 @@ export default function getCurrentEvent(
         continue;
       }
 
+      let termStart = null;
       for (const period of term.periods) {
         // check if current date is within the period dates
         const startDate = moment.tz(
@@ -27,16 +28,29 @@ export default function getCurrentEvent(
           'DD-MM-YYYY',
           'Asia/Singapore'
         );
+
+        // update termstart to be the first period
+        if (termStart == null) {
+          termStart = startDate;
+        }
         // before the midnight of next day after endDate
         const endDate = moment
           .tz(period.date_end, 'DD-MM-YYYY', 'Asia/Singapore')
-          .add('day', 1);
+          .add(1, 'day');
 
         // date is between the period
         if (today.isBetween(startDate, endDate, undefined, '[)')) {
+          if (period.type == 'recess' || period.type == 'vacation') {
+            return {
+              type: period.type,
+              date_start: startDate.unix(),
+              date_end: endDate.unix(),
+            };
+          }
+
           return {
             type: period.type,
-            date_start: startDate.unix(),
+            date_start: termStart.unix(),
             date_end: endDate.unix(),
           };
         }
