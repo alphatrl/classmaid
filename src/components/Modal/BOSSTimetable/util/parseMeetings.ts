@@ -31,7 +31,7 @@ export default function parseMeetings(data: string[][]): Meeting[] {
     const instructor = event[14];
 
     const dayOfWeek = event[10];
-    const startDateActual = moment(startDate);
+    const startDateActual = moment(startDate, 'DD-MMM-YYYY');
     startDateActual.day(dayOfWeek);
 
     return {
@@ -39,8 +39,8 @@ export default function parseMeetings(data: string[][]): Meeting[] {
       classDesc,
       section,
       type: type as Meeting['type'],
-      termStart: moment(startDate),
-      termEnd: moment(endDate),
+      termStart: moment(startDate, 'DD-MMM-YYYY'),
+      termEnd: moment(endDate, 'DD-MMM-YYYY'),
       timeStart: startTime,
       timeEnd: endTime,
       venue,

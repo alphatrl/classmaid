@@ -95,7 +95,6 @@ const HelperText = styled.div`
 function convert(data: string[][], allowedModules: string[] = []) {
   // Remove CSV header
   const relevantData = data.slice(1);
-
   const meetings = parseMeetings(relevantData);
 
   const events: Event[] = meetings
@@ -125,9 +124,18 @@ function convert(data: string[][], allowedModules: string[] = []) {
       const firstDate = termStart.clone();
       firstDate.day(dayOfWeek);
 
-      const dtStart = moment(`${firstDate.format('DD-MMM-yyyy')} ${timeStart}`);
-      const dtEnd = moment(`${firstDate.format('DD-MMM-yyyy')} ${timeEnd}`);
-      const repeatEnd = moment(`${termEnd.format('DD-MMM-yyyy')} ${timeEnd}`);
+      const dtStart = moment(
+        `${firstDate.format('DD-MMM-yyyy')} ${timeStart}`,
+        'DD-MMM-yyyy HH:mm'
+      );
+      const dtEnd = moment(
+        `${firstDate.format('DD-MMM-yyyy')} ${timeEnd}`,
+        'DD-MMM-yyyy HH:mm'
+      );
+      const repeatEnd = moment(
+        `${termEnd.format('DD-MMM-yyyy')} ${timeEnd}`,
+        'DD-MMM-yyyy HH:mm'
+      );
 
       return {
         summary: `${classCode} (${classDesc}) ${capitalize(type)}`,
