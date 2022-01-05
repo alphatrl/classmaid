@@ -54,11 +54,12 @@ const Wrapper = styled.div`
     .content {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
+      justify-content: flex-start;
 
       label {
         color: ${(props) => props.theme.text900};
         margin-top: 4px;
+        padding-right: 1rem;
       }
     }
   }
