@@ -10,8 +10,8 @@ export interface SoftwareProp {
 
 export const SOFTWARE_LINKS = [
   {
-    id: 'notetaking',
-    name: 'Note-Taking',
+    id: 'productivity',
+    name: 'Productivity',
     links: [
       {
         id: 'ms_onenote',
@@ -27,6 +27,16 @@ export const SOFTWARE_LINKS = [
         id: 'taskade',
         title: 'Taskade',
         link: 'https://taskade.com',
+      },
+      {
+        id: 'obsidian',
+        title: 'Obsidian',
+        link: 'https://obsidian.md',
+      },
+      {
+        id: 'todoist',
+        title: 'Todoist',
+        link: 'https://todoist.com',
       },
     ],
   },

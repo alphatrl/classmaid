@@ -97,7 +97,7 @@ const CalendarEvents: React.FC = () => {
 
       const tomorrowMessage =
         count === 0
-          ? 'There is no events tomorrow'
+          ? 'There are no events tomorrow'
           : `There is ${count} ${count === 1 ? 'event' : 'events'} tomorrow`;
 
       return (
