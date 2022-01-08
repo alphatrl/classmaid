@@ -108,14 +108,6 @@
           "type": "url",
           "link": "https://inet.smu.edu.sg/sites/courses/Pages/Course-Offerings.aspx",
           "description": "See the suggested courses to take for your term"
-        },
-        {
-          "id": "review_my_mod",
-          "title": "ReviewMyMod",
-          "logo": "public",
-          "color": "#06e5ca",
-          "type": "url",
-          "link": "https://reviewmymod.wixsite.com/home"
         }
       ]
     },
@@ -228,7 +220,8 @@
           "logo": "instagram",
           "color": "#DC3175",
           "type": "url",
-          "link": "https://www.instagram.com/smuconfessionspage/"
+          "link": "https://www.instagram.com/smuconfessionspage/",
+          "description": "All's silly; NOT taken seriously!"
         },
         {
           "id": "smu_meme_instagram",
@@ -253,6 +246,15 @@
           "color": "#FF4500;",
           "type": "url",
           "link": "https://www.reddit.com/r/SMU_Singapore/"
+        },
+        {
+          "id": "smusa_feedback",
+          "title": "SMUSA Feedback Form",
+          "logo": "chat",
+          "color": "#8A704C",
+          "type": "url",
+          "link": "http://bit.ly/smusa-feedback",
+          "description": "A listening ear and a willing heart"
         }
       ]
     },
