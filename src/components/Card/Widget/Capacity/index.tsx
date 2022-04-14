@@ -59,8 +59,8 @@ const StyledIcon = styled.div`
   }
 `;
 
-const MAX_OCCUPANCY_LKS = 1150;
-const MAX_OCCUPANCY_KGC = 300;
+const MAX_OCCUPANCY_LKS = 1800;
+const MAX_OCCUPANCY_KGC = 500;
 
 const CapacityCard: React.FC = () => {
   const [occupancy, setOccupancy] = useState<LibraryOccupancyProps[]>([
