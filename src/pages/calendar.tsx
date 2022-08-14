@@ -14,9 +14,6 @@ const Wrapper = styled.div`
   padding-left: max(16px, env(safe-area-inset-left));
   padding-right: max(16px, env(safe-area-inset-right));
 
-  // grid-template-columns: 1fr 2fr;
-  // column-gap: 16px;
-
   @media screen and (max-width: ${(props) => props.theme.mobileSize}) {
     padding-top: 16px;
     padding-bottom: max(16px, env(safe-area-inset-bottom));

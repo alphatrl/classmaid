@@ -13,23 +13,19 @@ import {
   CurrentEventProps,
   ImportantDateProps,
   SchoolTermProp,
-  SchoolYearProps,
 } from '../Schema';
 import { IMPORTANT_DATES_URL, SCHOOL_TERM_URL } from './constants';
-// import { APP_BOOKMARK_DEFAULT } from '../utils/appBookmarkDefaults';
 import { getCurrentEvent, sortEventsByDate } from './utils';
 
 interface ContextProps {
   schoolTerms: SchoolTermProp[];
   calendarEvents: CalendarProps | null;
   currentEvent: CurrentEventProps | null;
-  // appBookmarks: AppLibraryProps;
   appLibrary: AppLibraryProps[];
   isMobile: boolean;
 }
 
 const DataContext = createContext<ContextProps>({
-  // appBookmarks: APP_BOOKMARK_DEFAULT,
   appLibrary: [],
   schoolTerms: [],
   currentEvent: null,
