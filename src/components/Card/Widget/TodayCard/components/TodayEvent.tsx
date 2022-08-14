@@ -82,8 +82,6 @@ const TodayEvent: React.FC = function () {
     };
   }, [currentEvent]);
 
-  console.log('event is', event);
-
   if (!currentEvent || !event) {
     return (
       <Wrapper>
