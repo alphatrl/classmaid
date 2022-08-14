@@ -1,17 +1,19 @@
 export interface SchoolYearProps {
-  label: string;
+  name: string;
   terms: SchoolTermProp[];
 }
 
 export interface SchoolTermProp {
-  type: string;
   label: string;
   periods: {
-    type: string;
     date_start: string;
     date_end: string;
+    type: SchoolPeriodType;
+    week_no?: number;
   }[];
 }
+
+export type SchoolPeriodType = 'class' | 'exam' | 'recess' | 'vacation';
 
 export interface ImportantDateProps {
   summary: string;
@@ -20,9 +22,10 @@ export interface ImportantDateProps {
 }
 
 export interface CurrentEventProps {
-  type: string;
-  date_start: number;
-  date_end: number;
+  type: SchoolPeriodType;
+  date_start: string;
+  date_end: string;
+  week_no?: number;
 }
 
 export interface CalendarEventProps {

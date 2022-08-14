@@ -1,64 +1,46 @@
-import moment from 'moment-timezone';
+import moment, { Moment } from 'moment-timezone';
 
-import { CurrentEventProps, SchoolYearProps } from '../../Schema';
+import { CurrentEventProps, SchoolTermProp } from '../../Schema';
+
+const getDateStringToMoment = function (
+  dateString: string,
+  format = 'YYYY-MM-DD'
+): Moment {
+  return moment.tz(dateString, format, 'Asia/Singapore');
+};
 
 export default function getCurrentEvent(
-  years: SchoolYearProps[]
+  terms: SchoolTermProp[]
 ): CurrentEventProps | null {
-  if (!years || years.length === 0) {
+  if (!terms || terms.length === 0) {
     return null;
   }
 
   const today = moment();
-  const allowedTerms = ['term_1', 'term_2'];
 
-  for (const year of years) {
-    for (const term of year.terms) {
-      // check if term is part of the allowed terms
-      if (!allowedTerms.includes(term.type)) {
-        // console.log('not allowed');
-        continue;
-      }
+  for (const term of terms) {
+    const periods = term.periods;
 
-      let termStart = null;
-      for (const period of term.periods) {
-        // check if current date is within the period dates
-        const startDate = moment.tz(
-          period.date_start,
-          'DD-MM-YYYY',
-          'Asia/Singapore'
-        );
+    // check if start_dates and end_dates of current term fall within today's dates
+    const termStartDateString = periods[0].date_start;
+    const termEndDateString = periods[periods.length - 1].date_end;
+    const termStart = getDateStringToMoment(termStartDateString);
+    const termEnd = getDateStringToMoment(termEndDateString);
 
-        // update termstart to be the first period
-        if (termStart == null) {
-          termStart = startDate;
-        }
-        // before the midnight of next day after endDate
-        const endDate = moment
-          .tz(period.date_end, 'DD-MM-YYYY', 'Asia/Singapore')
-          .add(1, 'day');
-
-        // date is between the period
-        if (today.isBetween(startDate, endDate, undefined, '[)')) {
-          if (period.type == 'recess' || period.type == 'vacation') {
-            return {
-              type: period.type,
-              date_start: startDate.unix(),
-              date_end: endDate.unix(),
-            };
-          }
-
-          return {
-            type: period.type,
-            date_start: termStart.unix(),
-            date_end: endDate.unix(),
-          };
-        }
-        // console.log('end of period', period.type);
-      }
-      // console.log('end of term', term.label);
+    if (!today.isBetween(termStart, termEnd, undefined, '[)')) {
+      continue;
     }
-    // console.log('end of year', year.label);
+
+    for (const period of periods) {
+      // check if fall between start_date and end_date of period
+      const periodStartDate = getDateStringToMoment(period.date_start);
+      const periodEndDate = getDateStringToMoment(period.date_end);
+
+      if (today.isBetween(periodStartDate, periodEndDate, undefined, '[)')) {
+        return period;
+      }
+    }
   }
+
   return null;
 }
