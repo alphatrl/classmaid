@@ -13,7 +13,6 @@ import {
   CurrentEventProps,
   ImportantDateProps,
   SchoolTermProp,
-  SchoolYearProps,
 } from '../Schema';
 import { IMPORTANT_DATES_URL, SCHOOL_TERM_URL } from './constants';
 // import { APP_BOOKMARK_DEFAULT } from '../utils/appBookmarkDefaults';
