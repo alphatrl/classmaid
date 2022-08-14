@@ -14,6 +14,7 @@ import {
   ImportantDateProps,
   SchoolYearProps,
 } from '../Schema';
+import { IMPORTANT_DATES_URL, SCHOOL_TERM_URL } from './constants';
 // import { APP_BOOKMARK_DEFAULT } from '../utils/appBookmarkDefaults';
 import { getCurrentEvent, sortEventsByDate } from './utils';
 
@@ -63,7 +64,7 @@ export const DataWrapper: React.FC = (props) => {
 
   /** Get school terms */
   const getSchoolTerm = async () =>
-    axios(`${process.env.SERVER_URL}` + '/SMU/school_terms.json')
+    axios(SCHOOL_TERM_URL)
       .then((response) => {
         const terms: SchoolYearProps[] = response.data.years;
         setSchoolTerms(terms);
@@ -74,7 +75,7 @@ export const DataWrapper: React.FC = (props) => {
 
   /** Get important dates */
   const getImportantDates = async () =>
-    axios(`${process.env.SERVER_URL}` + '/SMU/important_dates.json')
+    axios(IMPORTANT_DATES_URL)
       .then((response) => {
         const dates: ImportantDateProps[] = response.data;
         setImportantDates(dates);
