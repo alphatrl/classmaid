@@ -1,4 +1,4 @@
-import moment from 'moment-timezone';
+import moment, { Moment } from 'moment-timezone';
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
 
@@ -36,36 +36,53 @@ const DaysWrapper = styled.div`
   padding-bottom: 8px;
 `;
 
-const TodayEvent: React.FC = () => {
+const getDateStringToMoment = function (
+  dateString: string,
+  format = 'YYYY-MM-DD'
+): Moment {
+  return moment.tz(dateString, format, 'Asia/Singapore');
+};
+
+const TodayEvent: React.FC = function () {
   const { currentEvent } = useDataContext();
 
   const event = useMemo(() => {
     if (!currentEvent) {
       return null;
     }
+
     const today = moment();
-    const startDate = moment.unix(currentEvent.date_start);
-    const endDate = moment.unix(currentEvent.date_end);
-    const isLastDay = endDate.diff(today, 'days') === 0;
+    const startDate = getDateStringToMoment(currentEvent.date_start);
+    const endDate = getDateStringToMoment(currentEvent.date_end);
 
-    let title = currentEvent.type;
-    let days = 0;
+    const isVacation = currentEvent.type === 'vacation';
+    if (isVacation) {
+      const isLastDay = endDate.diff(today, 'days') === 0;
+      return {
+        type: currentEvent.type.toUpperCase(),
+        title: isLastDay
+          ? 'LAST DAY'
+          : `DAY ${today.diff(startDate, 'days') + 1}`,
+      };
+    }
 
-    switch (currentEvent.type) {
-      case 'recess':
-      case 'vacation':
-        days = today.diff(startDate, 'days') + 1;
-        break;
-      default:
-        title = `Week ${today.diff(startDate, 'week') + 1}`;
+    const isRecess = currentEvent.type === 'recess';
+    const isExam = currentEvent.type === 'exam';
+    let title = `Week ${currentEvent.week_no}`;
+
+    if (isRecess) {
+      title += ' (Recess)';
+    } else if (isExam) {
+      title += ' (Exam)';
     }
 
     return {
-      title: title.toUpperCase(),
-      days,
-      isLastDay,
+      type: currentEvent.type,
+      title: title,
     };
   }, [currentEvent]);
+
+  console.log('event is', event);
 
   if (!currentEvent || !event) {
     return (
@@ -75,17 +92,21 @@ const TodayEvent: React.FC = () => {
     );
   }
 
-  return currentEvent.type !== 'recess' && currentEvent.type !== 'vacation' ? (
+  if (event.type === 'VACATION') {
+    return (
+      <Wrapper>
+        <DaysWrapper>
+          <h1>{event.title}</h1>
+          <span>OF</span>
+        </DaysWrapper>
+        <h1 className="highlight">{event.type}</h1>
+      </Wrapper>
+    );
+  }
+
+  return (
     <Wrapper>
       <h1 className="highlight">{event.title}</h1>
-    </Wrapper>
-  ) : (
-    <Wrapper>
-      <DaysWrapper>
-        {!event.isLastDay ? <h1>DAY {event.days}</h1> : <h1>Last Day</h1>}
-        <span>OF</span>
-      </DaysWrapper>
-      <h1 className="highlight">{event.title.toUpperCase()}</h1>
     </Wrapper>
   );
 };
