@@ -1,4 +1,5 @@
 import moment from 'moment-timezone';
+import Link from 'next/link';
 import React, { useCallback, useMemo } from 'react';
 import styled from 'styled-components';
 
@@ -41,13 +42,23 @@ const CalendarRow = styled.div`
   }
 `;
 
-const MoreEvents = styled.p`
+const MoreEvents = styled.a`
   color: ${(props) => props.theme.text600};
   font-weight: 500;
   font-size: 0.85em;
   margin: 0;
   margin-top: 8px;
   line-height: 1.5;
+`;
+
+const UpcomingEvents = styled.a`
+  cursor: pointer;
+  color: ${(props) => props.theme.text600};
+  text-decoration: none;
+
+  :hover {
+    color: ${(props) => props.theme.primary.blue};
+  }
 `;
 
 const CalendarEvents: React.FC = () => {
@@ -102,9 +113,11 @@ const CalendarEvents: React.FC = () => {
 
       return (
         <MoreEvents>
-          No more events today
+          <span>No more events today</span>
           <br />
-          {tomorrowMessage}
+          <Link href="/calendar#upcoming" passHref>
+            <UpcomingEvents>{tomorrowMessage}</UpcomingEvents>
+          </Link>
         </MoreEvents>
       );
     }

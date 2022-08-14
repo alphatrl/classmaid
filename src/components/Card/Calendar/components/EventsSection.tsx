@@ -94,7 +94,7 @@ const EventSection: React.FC<Props> = (props) => {
   }, [calendarEvents, dates]);
 
   return (
-    <Wrapper>
+    <Wrapper id={title.toLowerCase()}>
       <h1>{title}</h1>
       {eventsList.map((day, index) => (
         <EventsList title={day.title} events={day.events} key={index} />
