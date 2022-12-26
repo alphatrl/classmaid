@@ -1,10 +1,5 @@
-const withPWA = require('next-pwa');
-
-module.exports = withPWA({
+module.exports = {
   target: 'serverless',
-  pwa: {
-    dest: 'public',
-  },
 
   webpack(config) {
     config.module.rules.push({
@@ -28,4 +23,4 @@ module.exports = withPWA({
     FIREBASE_APP_ID: process.env.FIREBASE_APP_ID,
     FIREBASE_MEASUREMENT_ID: process.env.FIREBASE_MEASUREMENT_ID,
   },
-});
+};
