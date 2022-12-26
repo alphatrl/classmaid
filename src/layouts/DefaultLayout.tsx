@@ -1,4 +1,4 @@
-import { useMediaQuery } from 'beautiful-react-hooks';
+// import { useMediaQuery } from 'beautiful-react-hooks';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import React, { useCallback, useEffect, useState } from 'react';
@@ -46,7 +46,7 @@ interface Props {
 const DefaultLayout: React.FC<Props> = function (props) {
   const { title = 'SMU Shortcuts', children } = props;
   const [showNav, setShowNav] = useState(false);
-  const isMobile = useMediaQuery('screen and (max-width: 820px)');
+  const isMobile = false;
   const { componentMounted } = useDarkMode();
 
   useEffect(() => {
