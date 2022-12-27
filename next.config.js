@@ -16,6 +16,10 @@ module.exports = {
     return config;
   },
 
+  compiler: {
+    styledComponents: true,
+  },
+
   env: {
     SMU_SCRAPER_URL: process.env.SMU_SCRAPER_URL,
     SCHOOL_SEMESTERS_URL: process.env.SCHOOL_SEMESTERS_URL,
