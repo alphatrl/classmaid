@@ -115,7 +115,7 @@ const CalendarEvents: React.FC = () => {
         <MoreEvents>
           <span>No more events today</span>
           <br />
-          <Link href="/calendar#upcoming" passHref>
+          <Link href="/calendar#upcoming" passHref legacyBehavior>
             <UpcomingEvents>{tomorrowMessage}</UpcomingEvents>
           </Link>
         </MoreEvents>

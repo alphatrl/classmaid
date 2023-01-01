@@ -14,6 +14,7 @@ class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const { renderPage } = ctx;
 
+    const initialProps = await Document.getInitialProps(ctx);
     const sheet = new ServerStyleSheet();
     const page = renderPage(
       (App) => (props) => sheet.collectStyles(<App {...props} />)
@@ -21,7 +22,7 @@ class MyDocument extends Document {
 
     const styleTags = sheet.getStyleElement();
 
-    return { ...page, styleTags };
+    return { ...initialProps, ...page, styleTags };
   }
 
   render() {

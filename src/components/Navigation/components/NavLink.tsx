@@ -14,7 +14,7 @@ const NavLink: React.FC<Props> = function (props) {
   const { href, children, className } = props;
 
   return (
-    <Link href={href} passHref>
+    <Link href={href} passHref legacyBehavior>
       <Anchor className={className}>{children}</Anchor>
     </Link>
   );
