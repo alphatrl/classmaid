@@ -20,7 +20,7 @@ const Title = styled.h1`
   margin: 0;
   color: #ffffff;
   font-weight: 600;
-  font-size: 1.5em;
+  font-size: 1.2em;
 `;
 
 const NavBar: React.FC = function () {

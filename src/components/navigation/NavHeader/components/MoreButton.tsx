@@ -23,7 +23,7 @@ const MoreButton: React.FC = function () {
   return (
     <>
       <Wrapper>
-        <Icon name="pending" height={24} width={24} />
+        <Icon name="pending" />
       </Wrapper>
     </>
   );
