@@ -1,14 +1,12 @@
 import axios from 'axios';
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
+import React from 'react';
 
 import { IMPORTANT_DATES_URL, SCHOOL_TERM_URL } from './constants';
 import { getCurrentEvent, sortEventsByDate } from './utils';
+
+interface Props {
+  children?: React.ReactNode;
+}
 
 interface ContextProps {
   schoolTerms: App.Calendar.SchoolTerm[];
@@ -18,7 +16,7 @@ interface ContextProps {
   isMobile: boolean;
 }
 
-const DataContext = createContext<ContextProps>({
+const DataContext = React.createContext<ContextProps>({
   appLibrary: [],
   schoolTerms: [],
   currentEvent: null,
@@ -26,7 +24,7 @@ const DataContext = createContext<ContextProps>({
   isMobile: false,
 });
 
-export const DataWrapper: React.FC = (props) => {
+export const DataWrapper: React.FC<Props> = (props) => {
   const { children } = props;
   // const [appBookmarks] = React.useState<AppLibraryProps>(APP_BOOKMARK_DEFAULT);
   const [appLibrary, setAppLibrary] = React.useState<
@@ -40,13 +38,13 @@ export const DataWrapper: React.FC = (props) => {
   >([]);
   const [isMobile, setIsMobile] = React.useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     getSchoolTerm();
     getImportantDates();
     getAppLibrary();
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const userAgent = window.navigator.userAgent.toLowerCase();
     // check if safari has touchpoint
     setIsMobile(
@@ -103,7 +101,7 @@ export const DataWrapper: React.FC = (props) => {
       return sortEventsByDate(importantDates);
     }, [importantDates]);
 
-  const sharedState = useMemo(
+  const sharedState = React.useMemo(
     () => ({
       appLibrary,
       schoolTerms,
@@ -120,5 +118,5 @@ export const DataWrapper: React.FC = (props) => {
 };
 
 export const useDataContext = (): ContextProps => {
-  return useContext(DataContext);
+  return React.useContext(DataContext);
 };
