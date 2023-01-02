@@ -1,14 +1,13 @@
 import { useRouter } from 'next/router';
 import React, { useCallback, useMemo } from 'react';
 
-import { AppLibraryShortcutsProps } from '../../../../Schema';
 import firebase from '../../../../utils/firebase';
 import Icon from '../../../Icon';
 import { AppTitle, AppView, AppWrapper } from './styled';
 import ToolTips from './Tooltips';
 
 interface Props {
-  shortcut: AppLibraryShortcutsProps;
+  shortcut: App.AppLibrary.LibraryItemShortcut;
 }
 
 const App: React.FC<Props> = (props) => {

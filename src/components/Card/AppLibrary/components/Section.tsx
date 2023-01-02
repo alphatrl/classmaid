@@ -1,13 +1,12 @@
 import orderBy from 'lodash/orderBy';
 import React, { useMemo } from 'react';
 
-import { AppLibraryShortcutsProps } from '../../../../Schema';
 import App from './App';
 import { SectionWrapper } from './styled';
 
 interface Props {
   isSorted?: boolean;
-  shortcuts: AppLibraryShortcutsProps[];
+  shortcuts: App.AppLibrary.LibraryItemShortcut[];
 }
 
 const Section: React.FC<Props> = (props) => {
