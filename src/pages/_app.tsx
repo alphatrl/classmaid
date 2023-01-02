@@ -3,7 +3,7 @@ import React from 'react';
 
 import { DataWrapper } from '../contexts/DataContext';
 import { ThemeContext } from '../contexts/ThemeContext';
-import { GlobalStyle } from '../theme';
+import { GlobalStyles } from '../theme';
 
 const App: React.FC<AppProps> = function (props) {
   const { Component, pageProps } = props;
@@ -11,7 +11,7 @@ const App: React.FC<AppProps> = function (props) {
   return (
     <ThemeContext>
       <DataWrapper>
-        <GlobalStyle />
+        <GlobalStyles />
         <Component {...pageProps} />
       </DataWrapper>
     </ThemeContext>
