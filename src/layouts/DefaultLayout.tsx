@@ -41,6 +41,7 @@ const ImageWrapper = styled.div`
 
 interface Props {
   title?: string;
+  children?: React.ReactNode;
 }
 
 const DefaultLayout: React.FC<Props> = function (props) {
@@ -77,13 +78,7 @@ const DefaultLayout: React.FC<Props> = function (props) {
     <Wrapper>
       <SEO title={title} />
       <ImageWrapper>
-        <Image
-          src={wallpaper1}
-          layout="fill"
-          objectFit="cover"
-          placeholder="blur"
-          alt=""
-        />
+        <Image src={wallpaper1} fill placeholder="blur" alt="" />
       </ImageWrapper>
       {!isMobile ? (
         <NavBar hideNavigation={handleHideNavBar} />
