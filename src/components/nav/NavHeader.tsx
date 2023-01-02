@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import AppNav from './components/AppNav';
+import AppNav from './AppNav';
 import Settings from './components/Settings';
 
 const Wrapper = styled.div`

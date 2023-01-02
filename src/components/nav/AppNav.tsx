@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import styled from 'styled-components';
 
-import Icon from '../../Icon';
+import Icon from '../Icon';
 import NavLink from './NavLink';
 
 interface Props {

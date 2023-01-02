@@ -6,6 +6,7 @@ import styled from 'styled-components';
 const Anchor = styled.a``;
 
 interface Props {
+  children?: React.ReactNode;
   className?: string;
   href: string;
 }

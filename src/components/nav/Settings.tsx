@@ -2,10 +2,10 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import { useDataContext } from '../../../contexts/DataContext';
-import { useDarkMode } from '../../../contexts/ThemeContext';
-import firebase from '../../../utils/firebase';
-import Icon from '../../Icon';
+import { useDataContext } from '../../contexts/DataContext';
+import { useThemeProvider } from '../../contexts/ThemeContext';
+import firebase from '../../utils/firebase';
+import Icon from '../Icon';
 
 const Wrapper = styled.div`
   display: flex;
@@ -42,7 +42,7 @@ interface CustomNavigator extends Navigator {
 
 const Settings: React.FC<Props> = (props) => {
   const { hideNavigation } = props;
-  const { theme, toggleTheme } = useDarkMode();
+  const { theme, toggleTheme } = useThemeProvider();
   const router = useRouter();
   const { isMobile } = useDataContext();
   const [isStandalone, setIsStandalone] = useState(false);
