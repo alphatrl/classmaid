@@ -26,7 +26,7 @@ const Icon: React.FC<Props> = (props) => {
       case 'reddit':
         return <Reddit width={width} height={height} />;
       default:
-        return <span className="material-icons-round">{name}</span>;
+        return <span className="material-symbols-outlined">{name}</span>;
     }
   }, [height, name, width]);
 

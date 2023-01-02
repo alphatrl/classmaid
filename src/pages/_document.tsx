@@ -34,13 +34,8 @@ class MyDocument extends Document {
             {this.props.styleTags}
 
             <link
-              href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
-              rel="preload"
-              as="style"
-            />
-            <link
-              href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
               rel="stylesheet"
+              href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0&display=swap"
             />
 
             <meta name="apple-mobile-web-app-capable" content="yes" />

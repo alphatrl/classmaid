@@ -2,10 +2,10 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import { useDataContext } from '../../../contexts/DataContext';
-import { useDarkMode } from '../../../contexts/ThemeContext';
-import firebase from '../../../utils/firebase';
-import Icon from '../../Icon';
+import { useDataContext } from '../../contexts/DataContext';
+import { useThemeProvider } from '../../contexts/ThemeContext';
+import firebase from '../../utils/firebase';
+import Icon from '../Icon';
 
 const Wrapper = styled.div`
   display: flex;
@@ -42,19 +42,9 @@ interface CustomNavigator extends Navigator {
 
 const Settings: React.FC<Props> = (props) => {
   const { hideNavigation } = props;
-  const { theme, toggleTheme } = useDarkMode();
+  const { theme, toggleTheme } = useThemeProvider();
   const router = useRouter();
   const { isMobile } = useDataContext();
-  const [isStandalone, setIsStandalone] = useState(false);
-
-  useEffect(() => {
-    // detect standalone mode
-    const customNavigator = window.navigator as CustomNavigator;
-    setIsStandalone(
-      ('standalone' in customNavigator && customNavigator.standalone) ||
-        window.matchMedia('(display-mode: standalone)').matches
-    );
-  }, []);
 
   const handleToggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark_mode' : 'light_mode';
@@ -74,11 +64,6 @@ const Settings: React.FC<Props> = (props) => {
 
   return (
     <Wrapper>
-      {isMobile && !isStandalone && (
-        <StyledIcon onClick={handleAddHomeScreen}>
-          <Icon name="add_to_home_screen" />
-        </StyledIcon>
-      )}
       <StyledIcon onClick={handleToggleTheme}>
         <Icon name={theme === 'light' ? 'light_mode' : 'dark_mode'} />
       </StyledIcon>

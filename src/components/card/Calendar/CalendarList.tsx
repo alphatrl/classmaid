@@ -3,7 +3,7 @@ import React, { useMemo } from 'react';
 import styled from 'styled-components';
 
 import { useDataContext } from '../../../contexts/DataContext';
-import { CardTemplate } from '../../Card/styled';
+import { CardTemplate } from '../styled';
 import EventSection from './components/EventsSection';
 
 const Wrapper = styled(CardTemplate)`
