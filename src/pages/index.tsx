@@ -1,22 +1,11 @@
-import { isArray } from 'lodash';
-import dynamic from 'next/dynamic';
-import { useRouter } from 'next/router';
+// import { isArray } from 'lodash';
+// import dynamic from 'next/dynamic';
+// import { useRouter } from 'next/router';
 import React from 'react';
 import styled from 'styled-components';
 
 import { AppLibrary, CapacityCard, TodayCard } from '../components/Card/';
 import DefaultLayout from '../layouts/DefaultLayout';
-
-const About = dynamic(() => import('../components/Modal/Home/About'));
-const AddHomeScreen = dynamic(
-  () => import('../components/Modal/Home/AddHomeScreen')
-);
-const BOSSTimetable = dynamic(
-  () => import('../components/Modal/BOSSTimetable')
-);
-const SchoolGuide = dynamic(
-  () => import('../components/Modal/Home/SchoolGuide')
-);
 
 const Wrapper = styled.div`
   box-sizing: border-box;
@@ -48,13 +37,6 @@ const WidgetContainer = styled.div`
 `;
 
 export const Home: React.FC = () => {
-  const router = useRouter();
-  const path = router.asPath.match(/#([a-z0-9-]+)/gi);
-  const isExportModal = isArray(path) && path[0] === '#boss-export';
-  const isSchoolGuide = isArray(path) && path[0] === '#school-guide';
-  const isAbout = isArray(path) && path[0] === '#about';
-  const isAddHomeScreen = isArray(path) && path[0] === '#add-to-homescreen';
-
   return (
     <DefaultLayout title="Home">
       <Wrapper>
@@ -64,10 +46,6 @@ export const Home: React.FC = () => {
         </WidgetContainer>
         <AppLibrary />
       </Wrapper>
-      {isExportModal && <BOSSTimetable />}
-      {isSchoolGuide && <SchoolGuide />}
-      {isAbout && <About />}
-      {isAddHomeScreen && <AddHomeScreen />}
     </DefaultLayout>
   );
 };
