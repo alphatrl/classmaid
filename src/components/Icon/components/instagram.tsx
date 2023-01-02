@@ -1,8 +1,6 @@
 import React from 'react';
 
-import { CustomSVG } from '../../../Schema';
-
-const Instagram: React.FC<CustomSVG> = (props) => {
+const Instagram: React.FC<App.CustomSVG> = (props) => {
   const { width = 16, height = 16 } = props;
   return (
     <svg

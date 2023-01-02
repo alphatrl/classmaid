@@ -1,16 +1,10 @@
 import orderBy from 'lodash/orderBy';
 import moment from 'moment-timezone';
 
-import {
-  CalendarEventProps,
-  CalendarProps,
-  ImportantDateProps,
-} from '../../Schema';
-
 export default function sortEventsByDate(
-  dates: ImportantDateProps[]
-): CalendarProps {
-  const splitEvents: CalendarProps = {};
+  dates: App.Calendar.ImportantDate[]
+): App.Calendar.CalendarAppEvents {
+  const splitEvents: App.Calendar.CalendarAppEvents = {};
   const sortedDates = orderBy(dates, 'startTime', ['asc']);
 
   let earliestTime = moment.unix(sortedDates[0].startTime);
@@ -19,7 +13,7 @@ export default function sortEventsByDate(
   );
 
   while (earliestTime <= latestTime) {
-    const events: CalendarEventProps[] = [];
+    const events: App.Calendar.Event[] = [];
     const midnight = moment(earliestTime).set({
       hour: 0,
       minute: 0,

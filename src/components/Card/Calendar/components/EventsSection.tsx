@@ -3,7 +3,6 @@ import React, { useCallback, useMemo } from 'react';
 import styled from 'styled-components';
 
 import { useDataContext } from '../../../../contexts/DataContext';
-import { CalendarEventProps } from '../../../../Schema';
 
 interface Props {
   title: string;
@@ -12,7 +11,7 @@ interface Props {
 
 interface EventsListProps {
   title: string;
-  events: CalendarEventProps[];
+  events: App.Calendar.Event[];
 }
 
 const Wrapper = styled.div`

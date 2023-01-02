@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import { LibraryOccupancyProps } from '../../../../Schema';
 import Icon from '../../../Icon';
 import { CardTemplate } from '../../styled';
 import CapacityRow from './components/CapacityRow';
@@ -63,7 +62,7 @@ const MAX_OCCUPANCY_LKS = 1800;
 const MAX_OCCUPANCY_KGC = 500;
 
 const CapacityCard: React.FC = () => {
-  const [occupancy, setOccupancy] = useState<LibraryOccupancyProps[]>([
+  const [occupancy, setOccupancy] = useState<App.SMU.LibraryOccupancy[]>([
     {
       title: '📚 Li Ka Shing Library',
       occupancy: 0,
