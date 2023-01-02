@@ -81,6 +81,6 @@ export const ThemeContext: React.FC<Props> = function (props) {
   );
 };
 
-export const useDarkMode = (): ThemeContextProps => {
+export const useThemeProvider = (): ThemeContextProps => {
   return React.useContext(ThemeProvider);
 };

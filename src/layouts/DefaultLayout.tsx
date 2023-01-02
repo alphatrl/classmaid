@@ -1,22 +1,24 @@
-// import { useMediaQuery } from 'beautiful-react-hooks';
-import dynamic from 'next/dynamic';
-import Image from 'next/image';
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-import wallpaper1 from '../../public/images/wallpapers/wallpaper-1.jpg';
-import { ModalOverlay } from '../components/Modal/styled';
-import NavBar from '../components/Navigation';
+import NavHeader from '../components/navigation/NavHeader';
 import SEO from '../components/SEO';
-import { useDarkMode } from '../contexts/ThemeContext';
+import { useThemeProvider } from '../contexts/ThemeContext';
 
-const Header = dynamic(() => import('../components/Header'));
+// const Header = dynamic(() => import('../components/Header'));
 
 const Wrapper = styled.div`
   width: 100vw;
   height: 100vh;
+  width: 100dvw;
+  height: 100dvh;
   display: flex;
   flex-direction: row;
+  background-color: #62a8fb;
+
+  @supports (backdrop-filter: ${(props) => props.theme.blur.blur}) {
+    backdrop-filter: ${(props) => props.theme.blur.blur};
+  }
 
   main {
     display: flex;
@@ -29,46 +31,14 @@ const Wrapper = styled.div`
   }
 `;
 
-const ImageWrapper = styled.div`
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-  z-index: -1;
-
-  filter: ${(props) => props.theme.background.gradient};
-`;
-
 interface Props {
   title?: string;
   children?: React.ReactNode;
 }
 
 const DefaultLayout: React.FC<Props> = function (props) {
-  const { title = 'SMU Shortcuts', children } = props;
-  const [showNav, setShowNav] = useState(false);
-  const isMobile = false;
-  const { componentMounted } = useDarkMode();
-
-  useEffect(() => {
-    if (isMobile) {
-      setShowNav(false);
-    }
-  }, [isMobile]);
-
-  const handleShowNavBar = useCallback(() => {
-    if (!isMobile) {
-      return;
-    }
-    setShowNav(true);
-  }, [isMobile]);
-
-  const handleHideNavBar = useCallback(() => {
-    if (!isMobile) {
-      return;
-    }
-    setShowNav(false);
-  }, [isMobile]);
+  const { title = 'Classmaid', children } = props;
+  const { componentMounted } = useThemeProvider();
 
   if (!componentMounted) {
     return <div />;
@@ -77,19 +47,11 @@ const DefaultLayout: React.FC<Props> = function (props) {
   return (
     <Wrapper>
       <SEO title={title} />
-      <ImageWrapper>
-        <Image src={wallpaper1} fill placeholder="blur" alt="" />
-      </ImageWrapper>
-      {!isMobile ? (
-        <NavBar hideNavigation={handleHideNavBar} />
-      ) : (
-        showNav && <NavBar hideNavigation={handleHideNavBar} />
-      )}
+
       <main>
-        {isMobile && <Header title={title} showNavigation={handleShowNavBar} />}
+        <NavHeader />
         {children}
       </main>
-      {isMobile && showNav && <ModalOverlay onClick={handleHideNavBar} />}
     </Wrapper>
   );
 };
