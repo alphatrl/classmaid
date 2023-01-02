@@ -7,21 +7,14 @@ import React, {
   useState,
 } from 'react';
 
-import {
-  AppLibraryProps,
-  CalendarProps,
-  CurrentEventProps,
-  ImportantDateProps,
-  SchoolTermProp,
-} from '../Schema';
 import { IMPORTANT_DATES_URL, SCHOOL_TERM_URL } from './constants';
 import { getCurrentEvent, sortEventsByDate } from './utils';
 
 interface ContextProps {
-  schoolTerms: SchoolTermProp[];
-  calendarEvents: CalendarProps | null;
-  currentEvent: CurrentEventProps | null;
-  appLibrary: AppLibraryProps[];
+  schoolTerms: App.Calendar.SchoolTerm[];
+  calendarEvents: App.Calendar.CalendarAppEvents | null;
+  currentEvent: App.Calendar.CurrentEvent | null;
+  appLibrary: App.AppLibrary.LibraryItem[];
   isMobile: boolean;
 }
 
@@ -35,13 +28,17 @@ const DataContext = createContext<ContextProps>({
 
 export const DataWrapper: React.FC = (props) => {
   const { children } = props;
-  // const [appBookmarks] = useState<AppLibraryProps>(APP_BOOKMARK_DEFAULT);
-  const [appLibrary, setAppLibrary] = useState<AppLibraryProps[]>([]);
-  const [schoolTerms, setSchoolTerms] = useState<SchoolTermProp[]>([]);
-  const [importantDates, setImportantDates] = useState<ImportantDateProps[]>(
-    []
-  );
-  const [isMobile, setIsMobile] = useState(false);
+  // const [appBookmarks] = React.useState<AppLibraryProps>(APP_BOOKMARK_DEFAULT);
+  const [appLibrary, setAppLibrary] = React.useState<
+    App.AppLibrary.LibraryItem[]
+  >([]);
+  const [schoolTerms, setSchoolTerms] = React.useState<
+    App.Calendar.SchoolTerm[]
+  >([]);
+  const [importantDates, setImportantDates] = React.useState<
+    App.Calendar.ImportantDate[]
+  >([]);
+  const [isMobile, setIsMobile] = React.useState(false);
 
   useEffect(() => {
     getSchoolTerm();
@@ -63,7 +60,7 @@ export const DataWrapper: React.FC = (props) => {
   const getSchoolTerm = async () =>
     axios(SCHOOL_TERM_URL)
       .then((response) => {
-        const terms: SchoolTermProp[] = response.data.terms;
+        const terms: App.Calendar.SchoolTerm[] = response.data.terms;
         setSchoolTerms(terms);
       })
       .catch((error) => {
@@ -74,7 +71,7 @@ export const DataWrapper: React.FC = (props) => {
   const getImportantDates = async () =>
     axios(IMPORTANT_DATES_URL)
       .then((response) => {
-        const dates: ImportantDateProps[] = response.data;
+        const dates: App.Calendar.ImportantDate[] = response.data;
         setImportantDates(dates);
       })
       .catch((error) => {
@@ -85,7 +82,7 @@ export const DataWrapper: React.FC = (props) => {
   const getAppLibrary = async () =>
     axios('/data/apps.json')
       .then((response) => {
-        const results: AppLibraryProps[] = response.data.result;
+        const results: App.AppLibrary.LibraryItem[] = response.data.result;
         setAppLibrary(results);
       })
       .catch((error) => {
@@ -93,17 +90,18 @@ export const DataWrapper: React.FC = (props) => {
       });
 
   /** Get today details */
-  const currentEvent: CurrentEventProps | null = useMemo(() => {
+  const currentEvent: App.Calendar.CurrentEvent | null = React.useMemo(() => {
     return getCurrentEvent(schoolTerms);
   }, [schoolTerms]);
 
   /** Split Important Dates by date */
-  const calendarEvents: CalendarProps | null = useMemo(() => {
-    if (importantDates.length === 0) {
-      return null;
-    }
-    return sortEventsByDate(importantDates);
-  }, [importantDates]);
+  const calendarEvents: App.Calendar.CalendarAppEvents | null =
+    React.useMemo(() => {
+      if (importantDates.length === 0) {
+        return null;
+      }
+      return sortEventsByDate(importantDates);
+    }, [importantDates]);
 
   const sharedState = useMemo(
     () => ({

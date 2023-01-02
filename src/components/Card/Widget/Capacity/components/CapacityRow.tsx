@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { LibraryOccupancyProps } from '../../../../../Schema';
-
 const Wrapper = styled.div`
   margin-top: 8px;
 `;
@@ -44,7 +42,7 @@ const Occupancy = styled.span`
 `;
 
 interface Props {
-  library: LibraryOccupancyProps;
+  library: App.SMU.LibraryOccupancy;
   isLoad?: boolean;
 }
 
