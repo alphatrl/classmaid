@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import CalendarEvent from '../../../calendar/CalendarEvent';
 
 const Wrapper = styled.div`
-  background-color: #d9d9d9;
+  background-color: #e6e6e6;
   margin-top: 8px;
 
   display: flex;
@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   flex-direction: column;
 
   border-radius: 16px;
-  padding: 12px;
+  padding: 8px;
 `;
 
 interface Props {

@@ -7,23 +7,25 @@ interface Props {
 
 const Wrapper = styled.div`
   display: flex;
+  padding: 8px 0;
+  cursor: pointer;
 
   :hover {
-    background-color: ${(props) => props.theme.calendar.red}27;
-    border-radius: 0 12px 12px 0;
+    background-color: ${(props) => props.theme.calendar.red}12;
+    border-radius: 12px;
   }
 `;
 
 const Divider = styled.div`
+  margin: 0 12px;
+  background-color: ${(props) => props.theme.calendar.red};
+
   width: 4px;
   height: 100%;
-  background-color: ${(props) => props.theme.calendar.red};
   border-radius: 4px;
 `;
 
 const TextWrapper = styled.div`
-  margin-left: 4px;
-  padding: 4px 0;
   width: 100%;
   display: flex;
   flex-direction: column;
