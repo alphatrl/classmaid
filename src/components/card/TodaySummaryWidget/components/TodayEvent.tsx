@@ -1,31 +1,21 @@
-import moment, { Moment } from 'moment-timezone';
-import React, { useMemo } from 'react';
+import moment from 'moment-timezone';
+import React from 'react';
 import styled from 'styled-components';
 
-import { useDataContext } from '../../../../../contexts/DataContext';
-import LoadingToday from './LoadingToday';
+import { useDataContext } from '../../../../contexts/DataContext';
+import { getDateStringToMoment } from '../utils/getDateStringToMoment';
+import TodayEventLoading from './TodayEventLoading';
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding-bottom: 16px;
   color: ${(props) => props.theme.text900};
 
   h1 {
     margin: 0;
-    font-size: 2.6rem;
+    font-size: 2.25rem;
     font-weight: 00;
     line-height: 96%;
-  }
-
-  span {
-    font-weight: 600;
-    padding: 0 8px;
-    font-size: 1.5em;
-  }
-
-  .highlight {
-    color: ${(props) => props.theme.primary.blue};
   }
 `;
 
@@ -34,20 +24,23 @@ const DaysWrapper = styled.div`
   flex-direction: row;
   align-items: flex-end;
   padding-bottom: 8px;
+
+  span {
+    font-weight: 600;
+    padding: 0 8px;
+    font-size: 1.5em;
+  }
 `;
 
-const getDateStringToMoment = function (
-  dateString: string,
-  format = 'YYYY-MM-DD'
-): Moment {
-  return moment.tz(dateString, format, 'Asia/Singapore');
-};
+const HighlightText = styled.h1`
+  color: ${(props) => props.theme.primary.blue};
+`;
 
 const TodayEvent: React.FC = function () {
   const { currentEvent } = useDataContext();
 
-  const event = useMemo(() => {
-    if (!currentEvent) {
+  const event = React.useMemo(() => {
+    if (currentEvent == null) {
       return null;
     }
 
@@ -82,29 +75,29 @@ const TodayEvent: React.FC = function () {
     };
   }, [currentEvent]);
 
-  if (!currentEvent || !event) {
+  if (event == null) {
     return (
       <Wrapper>
-        <LoadingToday />
+        <TodayEventLoading />
       </Wrapper>
     );
   }
 
-  if (event.type === 'VACATION') {
+  if (event?.type === 'VACATION') {
     return (
       <Wrapper>
         <DaysWrapper>
-          <h1>{event.title}</h1>
+          <h1>{event?.title}</h1>
           <span>OF</span>
         </DaysWrapper>
-        <h1 className="highlight">{event.type}</h1>
+        <HighlightText>{event?.type}</HighlightText>
       </Wrapper>
     );
   }
 
   return (
     <Wrapper>
-      <h1 className="highlight">{event.title}</h1>
+      <HighlightText>{event?.title}</HighlightText>
     </Wrapper>
   );
 };
