@@ -15,7 +15,7 @@ const CalendarInformation = styled.div`
   }
 `;
 
-const TodayCard: React.FC = () => {
+const TodayCard: React.FC = function () {
   return (
     <Wrapper>
       <TodayEvent />
