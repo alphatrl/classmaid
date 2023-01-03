@@ -28,9 +28,6 @@ const Calendar: React.FC<Props> = function (props) {
       {trimmedEvents.map((calEvent, index) => (
         <CalendarEvent key={index} calendarEvent={calEvent} />
       ))}
-      {/* {trimmedEvents.map((calEvent, index) => (
-        <CalendarEvent key={index} calendarEvent={calEvent} />
-      ))} */}
     </Wrapper>
   );
 };
