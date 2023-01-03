@@ -2,7 +2,7 @@ import React from 'react';
 import ContentLoader from 'react-content-loader';
 import { useTheme } from 'styled-components';
 
-const LoadingToday: React.FC = () => {
+const TodayEventLoading: React.FC = function () {
   const theme = useTheme();
   return (
     <ContentLoader
@@ -17,4 +17,4 @@ const LoadingToday: React.FC = () => {
   );
 };
 
-export default LoadingToday;
+export default TodayEventLoading;
