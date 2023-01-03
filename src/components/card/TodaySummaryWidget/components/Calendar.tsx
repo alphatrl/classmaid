@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import useMediaQuery from '../../../../hooks/useMediaQuery';
+import { DESKTOP_WIDTH_SIZE_L } from '../../../../themes/size';
 import CalendarEvent from '../../../calendar/CalendarEvent';
 
 const Wrapper = styled.div`
@@ -21,7 +23,18 @@ interface Props {
 
 const Calendar: React.FC<Props> = function (props) {
   const { events } = props;
-  const trimmedEvents = events.length > 3 ? events.slice(0, 3) : events;
+  const isDesktopLSize = useMediaQuery(`(max-width: ${DESKTOP_WIDTH_SIZE_L})`);
+
+  const maxNumOfEvents = React.useMemo(() => {
+    if (isDesktopLSize) {
+      return 4;
+    }
+
+    return 3;
+  }, [isDesktopLSize]);
+
+  const trimmedEvents =
+    events.length > 3 ? events.slice(0, maxNumOfEvents) : events;
 
   return (
     <Wrapper>
