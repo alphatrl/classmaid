@@ -10,19 +10,23 @@ const ContentWrapper = styled.div`
 `;
 
 const Wrapper = styled.div`
-  width: 1035px;
+  width: 1050px;
   display: flex;
   flex-wrap: wrap;
 
   padding-top: 40px;
   padding-bottom: 64px;
 
+  @media screen and (max-width: 1100px) {
+    width: 900px;
+  }
+
   @media screen and (max-width: 1000px) {
     width: 800px;
   }
 `;
 
-export const Home: React.FC = () => {
+export const Home: React.FC = function () {
   return (
     <DefaultLayout title="SMU">
       <ContentWrapper>
