@@ -1,13 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import useMediaQuery from '../../hooks/useMediaQuery';
+import { MOBILE_WIDTH_SIZE } from '../../themes/size';
+
 interface Props {
   calendarEvent: App.Calendar.Event;
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ isMobile?: boolean }>`
   display: flex;
-  padding: 8px 0;
+  padding: ${(props) => (props.isMobile ? 4 : 8)}px 0;
   cursor: pointer;
 
   :hover {
@@ -52,9 +55,10 @@ const Subtitle = styled.p`
 
 const CalendarEvent: React.FC<Props> = function (props) {
   const { calendarEvent } = props;
+  const isMobile = useMediaQuery(`(max-width: ${MOBILE_WIDTH_SIZE})`);
 
   return (
-    <Wrapper>
+    <Wrapper isMobile={isMobile}>
       <Divider />
       <TextWrapper>
         <Title>{calendarEvent.title}</Title>
