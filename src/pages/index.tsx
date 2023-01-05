@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import AppLibrary from '../components/card/AppLibrary';
 
 import TodaySummaryWidget from '../components/card/TodaySummary';
 import DefaultLayout from '../layouts/DefaultLayout';
@@ -44,6 +45,7 @@ export const Home: React.FC = function () {
       <ContentWrapper>
         <Wrapper>
           <TodaySummaryWidget />
+          <AppLibrary />
         </Wrapper>
       </ContentWrapper>
     </DefaultLayout>

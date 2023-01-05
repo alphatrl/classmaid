@@ -2,110 +2,51 @@ import React, { useCallback, useMemo, useState } from 'react';
 import styled from 'styled-components';
 
 import { useDataContext } from '../../../contexts/DataContext';
-import { Tab } from '../../Modal/styled';
+import useMediaQuery from '../../../hooks/useMediaQuery';
+import {
+  DESKTOP_WIDTH_SIZE_M,
+  DESKTOP_WIDTH_SIZE_S,
+  MOBILE_WIDTH_SIZE_L,
+  MOBILE_WIDTH_SIZE_S,
+  WIDGET_L_WIDTH_SIZE_L,
+  WIDGET_L_WIDTH_SIZE_S,
+  WIDGET_S_WIDTH_SIZE_L,
+  WIDGET_S_WIDTH_SIZE_S,
+} from '../../../themes/size';
 import { CardTemplate } from '../styled';
-import Section from './components/Section';
 
-const Wrapper = styled(CardTemplate)`
-  overflow-y: auto;
-  min-height: 400px;
-  height: fit-content;
+const Card = styled(CardTemplate)``;
 
-  @media screen and (max-width: ${(props) => props.theme.mobileSize}) {
-    margin-top: 16px;
-    overflow-y: unset;
-    min-height: 200px;
-  }
-`;
+const AppLibrary: React.FC = function () {
+  const isMobileSizeS = useMediaQuery(`(max-width: ${MOBILE_WIDTH_SIZE_S})`);
+  const isMobileSizeL = useMediaQuery(`(max-width: ${MOBILE_WIDTH_SIZE_L})`);
+  const isDesktopSSize = useMediaQuery(`(max-width: ${DESKTOP_WIDTH_SIZE_S})`);
+  const isDesktopMSize = useMediaQuery(`(max-width: ${DESKTOP_WIDTH_SIZE_M})`);
 
-const TabsStyled = styled.div`
-  display: grid;
-  grid-template-columns: auto auto;
-`;
+  const widgetHeight = isMobileSizeL
+    ? WIDGET_S_WIDTH_SIZE_S
+    : WIDGET_S_WIDTH_SIZE_L;
 
-const TabsWrapper = styled.div`
-  display: flex;
-  margin-right: 16px;
-  overflow: auto;
-  box-sizing: content-box;
-
-  @media screen and (min-width: ${(props) => props.theme.mobileSize}) {
-    scrollbar-width: none;
-    ::-webkit-scrollbar {
-      display: none;
-    }
-  }
-
-  @media screen and (max-width: ${(props) => props.theme.mobileSize}) {
-    padding-bottom: 12px;
-    margin-right: 24px;
-  }
-`;
-
-const CustomTab = styled(Tab)`
-  font-size: 1.15em;
-  font-weight: 600;
-  border-radius: 20px;
-  margin: 0;
-  display: flex;
-  margin-right: 24px;
-  white-space: nowrap;
-  align-items: center;
-  height: 24px;
-`;
-
-const AppLibrary: React.FC = () => {
-  const { appLibrary } = useDataContext();
-  const [tabActive, setTabActive] = useState<string | null>(null);
-
-  const handleTabClick = useCallback((key: string) => {
-    setTabActive(key);
-  }, []);
-
-  const titleList = useMemo(() => {
-    const titles = appLibrary.map((app) => ({
-      uid: app.uid,
-      title: app.title,
-    }));
-
-    if (titles.length > 0) {
-      setTabActive(titles[0].uid);
+  const widgetWidth = React.useMemo(() => {
+    if (isMobileSizeL) {
+      return WIDGET_S_WIDTH_SIZE_S;
     }
 
-    return titles;
-  }, [appLibrary]);
-
-  const currentLibrary = useMemo(() => {
-    if (!tabActive) {
-      return null;
+    if (isMobileSizeS || isDesktopSSize) {
+      return WIDGET_S_WIDTH_SIZE_L;
     }
 
-    return appLibrary.find((library) => tabActive === library.uid);
-  }, [appLibrary, tabActive]);
+    if (isDesktopMSize) {
+      return WIDGET_L_WIDTH_SIZE_S;
+    }
+
+    return WIDGET_L_WIDTH_SIZE_L;
+  }, [isMobileSizeS, isMobileSizeL, isDesktopSSize, isDesktopMSize]);
 
   return (
-    <Wrapper>
-      <TabsStyled>
-        <TabsWrapper>
-          {titleList.map((title) => (
-            <CustomTab
-              key={title.uid}
-              role="button"
-              isActive={tabActive === title.uid}
-              onClick={() => handleTabClick(title.uid)}
-            >
-              {title.title}
-            </CustomTab>
-          ))}
-        </TabsWrapper>
-      </TabsStyled>
-      {currentLibrary && (
-        <Section
-          key={currentLibrary.uid}
-          shortcuts={currentLibrary.shortcuts}
-        />
-      )}
-    </Wrapper>
+    <Card width={widgetWidth} height={widgetHeight}>
+      sd
+    </Card>
   );
 };
 
