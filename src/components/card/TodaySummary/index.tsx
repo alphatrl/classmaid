@@ -6,8 +6,8 @@ import { useDataContext } from '../../../contexts/DataContext';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import {
   MOBILE_WIDTH_SIZE,
-  WIDGET_WIDTH_SIZE_L,
-  WIDGET_WIDTH_SIZE_S,
+  WIDGET_S_WIDTH_SIZE_L,
+  WIDGET_S_WIDTH_SIZE_S,
 } from '../../../themes/size';
 import { CardTemplate } from '../styled';
 import Calendar from './components/Calendar';
@@ -24,7 +24,9 @@ const TodaySummaryWidget: React.FC = function () {
   const today = moment();
 
   const isMobileSize = useMediaQuery(`(max-width: ${MOBILE_WIDTH_SIZE})`);
-  const widgetSize = isMobileSize ? WIDGET_WIDTH_SIZE_S : WIDGET_WIDTH_SIZE_L;
+  const widgetSize = isMobileSize
+    ? WIDGET_S_WIDTH_SIZE_S
+    : WIDGET_S_WIDTH_SIZE_L;
 
   const todayEvents = React.useMemo(() => {
     if (calendarEvents == null) {
