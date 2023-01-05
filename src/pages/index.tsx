@@ -8,6 +8,7 @@ import {
   DESKTOP_WIDTH_SIZE_M,
   DESKTOP_WIDTH_SIZE_S,
   MOBILE_WIDTH_SIZE_L,
+  MOBILE_WIDTH_SIZE_S,
 } from '../themes/size';
 
 const ContentWrapper = styled.div`
@@ -17,24 +18,26 @@ const ContentWrapper = styled.div`
 `;
 
 const Wrapper = styled.div`
-  width: 1200px;
+  width: 1020px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
 
   padding-top: 40px;
   padding-bottom: 64px;
 
   @media screen and (max-width: ${DESKTOP_WIDTH_SIZE_M}) {
-    width: 950px;
+    width: 920px;
   }
 
   @media screen and (max-width: ${DESKTOP_WIDTH_SIZE_S}) {
-    width: 850px;
+    width: 700px;
   }
 
   @media screen and (max-width: ${MOBILE_WIDTH_SIZE_L}) {
     width: 90%;
+  }
+
+  @media screen and (max-width: ${MOBILE_WIDTH_SIZE_S}) {
     justify-content: center;
   }
 `;
