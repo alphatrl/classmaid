@@ -24,6 +24,7 @@ const TodaySummaryWidget: React.FC = function () {
   const today = moment();
 
   const isMobileSize = useMediaQuery(`(max-width: ${MOBILE_WIDTH_SIZE_L})`);
+
   const widgetSize = isMobileSize
     ? WIDGET_S_WIDTH_SIZE_S
     : WIDGET_S_WIDTH_SIZE_L;
@@ -41,7 +42,7 @@ const TodaySummaryWidget: React.FC = function () {
       millisecond: 0,
     });
 
-    const events = calendarEvents[`${midnight.unix()}`];
+    const events = calendarEvents[`${midnight.unix()}`] ?? [];
 
     // NOTE: (hello@amostan.me) Check for event which are currently ongoing
     return events.filter((calEvent) => {
