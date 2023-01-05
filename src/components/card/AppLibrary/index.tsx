@@ -45,7 +45,7 @@ const AppLibrary: React.FC = function () {
 
   return (
     <Card width={widgetWidth} height={widgetHeight}>
-      sd
+      Apps
     </Card>
   );
 };
