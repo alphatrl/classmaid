@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import TodaySummaryWidget from '../components/card/TodaySummaryWidget';
+import TodaySummaryWidget from '../components/card/TodaySummary';
 import DefaultLayout from '../layouts/DefaultLayout';
 import {
   DESKTOP_WIDTH_SIZE_M,
@@ -19,6 +19,7 @@ const Wrapper = styled.div`
   width: 1200px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 
   padding-top: 40px;
   padding-bottom: 64px;
