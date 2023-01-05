@@ -17,7 +17,7 @@ import { CardTemplate } from '../styled';
 
 const Card = styled(CardTemplate)``;
 
-const AppLibrary: React.FC = function () {
+const LibraryCapacities: React.FC = function () {
   const isMobileSizeS = useMediaQuery(`(max-width: ${MOBILE_WIDTH_SIZE_S})`);
   const isMobileSizeL = useMediaQuery(`(max-width: ${MOBILE_WIDTH_SIZE_L})`);
   const isDesktopSSize = useMediaQuery(`(max-width: ${DESKTOP_WIDTH_SIZE_S})`);
@@ -45,9 +45,9 @@ const AppLibrary: React.FC = function () {
 
   return (
     <Card width={widgetWidth} height={widgetHeight}>
-      sd
+      Library Capacities
     </Card>
   );
 };
 
-export default AppLibrary;
+export default LibraryCapacities;
