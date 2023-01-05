@@ -7,7 +7,7 @@ import DefaultLayout from '../layouts/DefaultLayout';
 import {
   DESKTOP_WIDTH_SIZE_M,
   DESKTOP_WIDTH_SIZE_S,
-  MOBILE_WIDTH_SIZE,
+  MOBILE_WIDTH_SIZE_L,
 } from '../themes/size';
 
 const ContentWrapper = styled.div`
@@ -26,14 +26,14 @@ const Wrapper = styled.div`
   padding-bottom: 64px;
 
   @media screen and (max-width: ${DESKTOP_WIDTH_SIZE_M}) {
-    width: 1000px;
+    width: 950px;
   }
 
   @media screen and (max-width: ${DESKTOP_WIDTH_SIZE_S}) {
-    width: 800px;
+    width: 850px;
   }
 
-  @media screen and (max-width: ${MOBILE_WIDTH_SIZE}) {
+  @media screen and (max-width: ${MOBILE_WIDTH_SIZE_L}) {
     width: 90%;
     justify-content: center;
   }

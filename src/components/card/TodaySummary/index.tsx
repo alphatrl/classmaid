@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { useDataContext } from '../../../contexts/DataContext';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import {
-  MOBILE_WIDTH_SIZE,
+  MOBILE_WIDTH_SIZE_L,
   WIDGET_S_WIDTH_SIZE_L,
   WIDGET_S_WIDTH_SIZE_S,
 } from '../../../themes/size';
@@ -23,7 +23,7 @@ const TodaySummaryWidget: React.FC = function () {
   const { calendarEvents } = useDataContext();
   const today = moment();
 
-  const isMobileSize = useMediaQuery(`(max-width: ${MOBILE_WIDTH_SIZE})`);
+  const isMobileSize = useMediaQuery(`(max-width: ${MOBILE_WIDTH_SIZE_L})`);
   const widgetSize = isMobileSize
     ? WIDGET_S_WIDTH_SIZE_S
     : WIDGET_S_WIDTH_SIZE_L;
