@@ -3,7 +3,7 @@ export const DESKTOP_WIDTH_SIZE_M = '1280px';
 export const DESKTOP_WIDTH_SIZE_L = '1440px';
 
 export const MOBILE_WIDTH_SIZE_S = '720px';
-export const MOBILE_WIDTH_SIZE_L = '820px';
+export const MOBILE_WIDTH_SIZE_L = '800px';
 
 // for square widget
 export const WIDGET_S_WIDTH_SIZE_S = 300;
