@@ -62,9 +62,7 @@ const About: React.FC = () => {
             </li>
             <li>
               Developer? Add an issue or make a pull request on&nbsp;
-              <a href="https://github.com/foldaway/smu-shortcuts">
-                Github
-              </a>
+              <a href="https://github.com/foldaway/smu-shortcuts">Github</a>
             </li>
           </ul>
         </Wrapper>
