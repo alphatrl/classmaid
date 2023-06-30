@@ -14,6 +14,7 @@ import {
   WIDGET_S_WIDTH_SIZE_S,
 } from '../../../themes/size';
 import { CardTemplate } from '../styled';
+import SearchBar from './components/SearchBar';
 
 const Card = styled(CardTemplate)``;
 
@@ -45,7 +46,7 @@ const LibraryCapacities: React.FC = function () {
 
   return (
     <Card width={widgetWidth} height={widgetHeight}>
-      Library Capacities
+      <SearchBar />
     </Card>
   );
 };
