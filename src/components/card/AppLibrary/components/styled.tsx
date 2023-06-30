@@ -3,7 +3,7 @@ import styled from 'styled-components';
 // App.tsx
 export const AppWrapper = styled.a`
   text-decoration: none;
-  color: ${(props) => props.theme.text900};
+  color: ${(props) => props.theme.textColor[50]};
   cursor: pointer;
   margin-bottom: 12px;
 `;
