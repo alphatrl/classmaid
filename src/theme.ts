@@ -44,12 +44,26 @@ export const LIGHT_THEME: DefaultTheme = {
     background: '#313131',
     text: '#EEEEEE',
   },
-
-  text900: '#333333',
-  text600: '#666666',
-  text300: '#999999',
-  textError: '#e6180b',
-
+  appColor: {
+    0: '#000000',
+    10: '#191919',
+    20: '#333333',
+    30: '#4c4c4c',
+    40: '#666666',
+    50: '#808080',
+    60: '#999999',
+    70: '#b3b3b3',
+    80: '#cccccc',
+    90: '#e6e6e6',
+    100: '#ffffff',
+  },
+  textColor: {
+    10: '#333333',
+    20: '#666666',
+    30: '#999999',
+    40: '#cccccc',
+    50: '#e5e5e5',
+  },
   mobileSize: '820px',
 };
 
@@ -93,16 +107,26 @@ export const DARK_THEME = {
     background: '#111111',
   },
 
-  tooltips: {
-    background: '#313131',
-    text: '#EEEEEE',
+  appColor: {
+    0: '#ffffff',
+    10: '#e6e6e6',
+    20: '#cccccc',
+    30: '#b3b3b3',
+    40: '#999999',
+    50: '#808080',
+    60: '#666666',
+    70: '#b3b3b3',
+    80: '#4c4c4c',
+    90: '#333333',
+    100: '#000000',
   },
-
-  text900: '#FFFFFF',
-  text600: '#DDDDDD',
-  text300: '#BBBBBB',
-  textError: '#e6180b',
-
+  textColor: {
+    10: '#e5e5e5',
+    20: '#cccccc',
+    30: '#999999',
+    40: '#666666',
+    50: '#333333',
+  },
   mobileSize: '820px',
 };
 
