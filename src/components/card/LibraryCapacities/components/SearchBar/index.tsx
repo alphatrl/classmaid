@@ -4,18 +4,15 @@ import styled from 'styled-components';
 import Icon from '../../../../Icon';
 
 const Wrapper = styled.form`
-  box-sizing: border-box;
-  width: 100%;
-  max-height: 48px;
-  height: 20%;
-  display: flex;
-  flex-direction: row;
+  grid-area: search;
+  display: grid;
   gap: 12px;
+  grid-template-columns: 1fr 64px;
+  box-sizing: border-box;
 `;
 
 const SearchInput = styled.input`
   box-sizing: border-box;
-  width: 100%;
   height: 100%;
   font-size: 1.15rem;
   color: ${(props) => props.theme.textColor[10]};
@@ -26,6 +23,10 @@ const SearchInput = styled.input`
   border-width: 2px;
   border-color: ${(props) => props.theme.appColor[90]};
 
+  &:focus {
+    outline-color: ${(props) => props.theme.primary[50]};
+  }
+
   ::placeholder {
     color: ${(props) => props.theme.appColor[50]};
   }
@@ -33,8 +34,9 @@ const SearchInput = styled.input`
 
 const SearchButton = styled.button<{ isDisabled: boolean }>`
   box-sizing: border-box;
-  width: 64px;
 
+  display: flex;
+  justify-content: center;
   border: none;
   border-radius: 16px;
   font-size: 1.15rem;
@@ -48,7 +50,7 @@ const SearchButton = styled.button<{ isDisabled: boolean }>`
   :disabled {
     cursor: default;
     color: ${(props) => props.theme.textColor[50]};
-    background-color: ${(props) => props.theme.primary[30]};
+    background-color: ${(props) => props.theme.primary[20]};
   }
 `;
 
@@ -64,17 +66,27 @@ const SearchBar: React.FC = function () {
   );
 
   const handleSubmit = React.useCallback(
-    (event: React.FormEvent<HTMLButtonElement>) => {
-      const encodeSearchTerm = encodeURI(searchText);
-      const libraryUrlString = `https://search.library.smu.edu.sg/discovery/search?vid=65SMU_INST:SMU_NUI&tab=Everything&query=any,contains,${encodeSearchTerm}&search_scope=Everything`;
-      window.open(libraryUrlString, '_blank');
+    (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
+      const libraryUrlParams = new URL(
+        'https://search.library.smu.edu.sg/discovery/search'
+      );
+      libraryUrlParams.searchParams.append('vid', '65SMU_INST:SMU_NUI');
+      libraryUrlParams.searchParams.append('tab', 'Everything');
+      libraryUrlParams.searchParams.append(
+        'query',
+        `any,contains,${searchText}`
+      );
+      libraryUrlParams.searchParams.append('search_scope', 'Everything');
+
+      window.open(libraryUrlParams, '_blank');
+      setSearchText('');
     },
     [searchText]
   );
 
   return (
-    <Wrapper>
+    <Wrapper onSubmit={handleSubmit}>
       <SearchInput
         value={searchText}
         placeholder="Search"
@@ -85,7 +97,6 @@ const SearchBar: React.FC = function () {
         aria-label="Search SMU Libraries"
         disabled={isSearchButtonDisabled}
         isDisabled={isSearchButtonDisabled}
-        onSubmit={handleSubmit}
       >
         <Icon name="search" />
       </SearchButton>
