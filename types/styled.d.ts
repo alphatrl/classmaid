@@ -18,10 +18,6 @@ declare module 'styled-components' {
       color: string;
     };
 
-    primary: {
-      blue: string;
-    };
-
     icon: {
       background: string;
       color: string;
@@ -60,7 +56,6 @@ declare module 'styled-components' {
       90: string;
       100: string;
     };
-
     textColor: {
       10: string;
       20: string;
@@ -68,6 +63,16 @@ declare module 'styled-components' {
       40: string;
       50: string;
     };
+    primary: {
+      10: string;
+      20: string;
+      30: string;
+      40: string;
+      50: string;
+    };
+    success: string;
+    warning: string;
+    error: string;
 
     mobileSize: string;
   }

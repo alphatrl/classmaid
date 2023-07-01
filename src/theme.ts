@@ -16,10 +16,6 @@ export const LIGHT_THEME: DefaultTheme = {
     color: '#FAFAFA',
   },
 
-  primary: {
-    blue: '#2B77EA',
-  },
-
   icon: {
     background: '#f9f9f9',
     colorCustom: '#FAFAFA',
@@ -64,6 +60,16 @@ export const LIGHT_THEME: DefaultTheme = {
     40: '#cccccc',
     50: '#e5e5e5',
   },
+  primary: {
+    10: '#d5e4fb',
+    20: '#aac9f7',
+    30: '#80adf2',
+    40: '#5592ee',
+    50: '#2b77ea',
+  },
+  success: '#24a148',
+  warning: '#f1c21b',
+  error: '#da1e28',
   mobileSize: '820px',
 };
 
@@ -81,10 +87,6 @@ export const DARK_THEME = {
 
   header: {
     color: '#111111',
-  },
-
-  primary: {
-    blue: '#3bb7ff',
   },
 
   icon: {
@@ -127,6 +129,16 @@ export const DARK_THEME = {
     40: '#666666',
     50: '#333333',
   },
+  primary: {
+    10: '#d8f1ff',
+    20: '#b1e2ff',
+    30: '#89d4ff',
+    40: '#62c5ff',
+    50: '#3bb7ff',
+  },
+  success: '#42be65',
+  warning: '#f1c21b',
+  error: '#fa4d56',
   mobileSize: '820px',
 };
 
