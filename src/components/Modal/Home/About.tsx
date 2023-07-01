@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   p,
   li,
   ul {
-    color: ${(props) => props.theme.text600};
+    color: ${(props) => props.theme.textColor[30]};
   }
   h3 {
     margin: 0;
@@ -32,7 +32,7 @@ const Wrapper = styled.div`
   }
 
   a {
-    color: ${(props) => props.theme.primary.blue};
+    color: ${(props) => props.theme.primary[50]};
   }
 `;
 

@@ -29,12 +29,12 @@ const StyledLink = styled(NavLink)`
   border-radius: 16px;
 
   &.active {
-    box-shadow: ${(props) => props.theme.primary.blue} 0px 0px 0px 3px;
+    box-shadow: ${(props) => props.theme.primary[50]} 0px 0px 0px 3px;
     transform: scale(1);
   }
 
   &:hover {
-    box-shadow: ${(props) => props.theme.text300}AA 0px 0px 0px 3px;
+    box-shadow: ${(props) => props.theme.appColor[90]} 0px 0px 0px 3px;
     transform: scale(1);
   }
 `;

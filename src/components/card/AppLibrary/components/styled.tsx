@@ -26,8 +26,8 @@ export const AppView = styled.div<{ color?: string }>`
   }
 
   ${AppWrapper}:hover & {
-    background-color: ${(props) => props.theme.primary.blue}56;
-    color: ${(props) => props.theme.primary.blue};
+    background-color: ${(props) => props.theme.primary[30]};
+    color: ${(props) => props.theme.primary[50]};
     transition: all 0.2s ease-in;
   }
 `;
@@ -48,7 +48,7 @@ export const AppTitle = styled.h1`
   }
 
   ${AppWrapper}:hover & {
-    color: ${(props) => props.theme.primary.blue};
+    color: ${(props) => props.theme.primary[50]};
     transition: all 0.2s ease-in;
   }
 `;

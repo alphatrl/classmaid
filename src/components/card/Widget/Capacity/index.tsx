@@ -22,7 +22,7 @@ interface LibraryCountProps {
 
 const Wrapper = styled(CardTemplate)`
   margin-top: 1em;
-  color: ${(props) => props.theme.text900};
+  color: ${(props) => props.theme.textColor[50]};
   min-width: 100px;
 `;
 
@@ -49,11 +49,11 @@ const StyledIcon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${(props) => props.theme.text600};
+  color: ${(props) => props.theme.textColor[30]};
 
   &:hover {
-    background-color: ${(props) => props.theme.primary.blue}56;
-    color: ${(props) => props.theme.primary.blue};
+    background-color: ${(props) => props.theme.primary[30]};
+    color: ${(props) => props.theme.primary[50]};
     transition: all 0.2s ease-in;
   }
 `;

@@ -22,14 +22,14 @@ const ProgressBar = styled.div<{ percentage: number }>`
   margin-top: 8px;
   width: 100%;
   height: 8px;
-  background-color: ${(props) => props.theme.primary.blue}42;
+  background-color: ${(props) => props.theme.primary[30]};
   border-radius: 4px;
 
   .filled {
     border-radius: 4px;
     height: 100%;
     width: ${(props) => props.percentage}%;
-    background-color: ${(props) => props.theme.primary.blue};
+    background-color: ${(props) => props.theme.primary[50]};
   }
 `;
 
@@ -38,7 +38,7 @@ const Occupancy = styled.span`
   font-size: 0.9em;
   font-weight: 700;
   padding-left: 8px;
-  color: ${(props) => props.theme.text600};
+  color: ${(props) => props.theme.textColor[30]};
 `;
 
 interface Props {
