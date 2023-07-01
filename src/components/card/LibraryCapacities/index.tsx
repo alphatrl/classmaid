@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { useDataContext } from '../../../contexts/DataContext';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import {
   DESKTOP_WIDTH_SIZE_M,
@@ -14,9 +13,17 @@ import {
   WIDGET_S_WIDTH_SIZE_S,
 } from '../../../themes/size';
 import { CardTemplate } from '../styled';
+import LibraryOccupancySection from './components/LibraryOccupancySection';
 import SearchBar from './components/SearchBar';
 
-const Card = styled(CardTemplate)``;
+const Card = styled(CardTemplate)`
+  display: grid;
+  gap: 16px;
+  grid-template-rows: 48px 1fr;
+  grid-template-areas:
+    'search'
+    'occupancy';
+`;
 
 const LibraryCapacities: React.FC = function () {
   const isMobileSizeS = useMediaQuery(`(max-width: ${MOBILE_WIDTH_SIZE_S})`);
@@ -47,6 +54,7 @@ const LibraryCapacities: React.FC = function () {
   return (
     <Card width={widgetWidth} height={widgetHeight}>
       <SearchBar />
+      <LibraryOccupancySection />
     </Card>
   );
 };
