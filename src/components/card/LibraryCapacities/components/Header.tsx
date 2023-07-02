@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -37,11 +36,9 @@ const Header: React.FC = function () {
     <Wrapper>
       <WidgetHeaderTitle>Library</WidgetHeaderTitle>
 
-      <Link prefetch={false} href="https://library.smu.edu.sg" passHref>
-        <ExternalLink target="_blank">
-          <Icon name="open_in_new" />
-        </ExternalLink>
-      </Link>
+      <ExternalLink href="https://library.smu.edu.sg" target="_blank">
+        <Icon name="open_in_new" />
+      </ExternalLink>
     </Wrapper>
   );
 };
