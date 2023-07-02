@@ -26,7 +26,7 @@ export const Modal = styled.div`
   overflow-y: auto;
   z-index: 6;
   box-sizing: border-box;
-  color: ${(props) => props.theme.text900};
+  color: ${(props) => props.theme.textColor[10]};
 
   h1 {
     margin: 0;
@@ -46,20 +46,20 @@ export const PrimaryBtn = styled.a`
   text-align: center;
   font-weight: 500;
   font-size: 1em;
-  color: ${(props) => props.theme.primary.blue};
+  color: ${(props) => props.theme.primary[50]};
   cursor: pointer;
   padding: 12px 16px;
-  border: 2px solid ${(props) => props.theme.primary.blue}AA;
+  border: 2px solid ${(props) => props.theme.primary[20]};
   border-radius: 6px;
   text-decoration: none;
 
   :hover {
-    background-color: ${(props) => props.theme.primary.blue}26;
+    background-color: ${(props) => props.theme.primary[10]};
   }
 
   &:disabled {
-    color: ${(props) => props.theme.text300};
-    border-color: ${(props) => props.theme.text300};
+    color: ${(props) => props.theme.textColor[50]};
+    border-color: ${(props) => props.theme.textColor[50]};
     pointer-events: none;
   }
 `;
@@ -70,8 +70,8 @@ export const DisabledPrimaryBtn = styled.div`
   font-weight: 500;
   font-size: 1em;
   padding: 12px 16px;
-  color: ${(props) => props.theme.text300};
-  border: 2px solid ${(props) => props.theme.text300}AA;
+  color: ${(props) => props.theme.textColor[50]};
+  border: 2px solid ${(props) => props.theme.textColor[50]};
   border-radius: 6px;
 `;
 
@@ -82,5 +82,5 @@ export const Tab = styled.a<{ isActive: boolean }>`
   font-weight: 500;
   cursor: pointer;
   color: ${(props) =>
-    props.isActive ? props.theme.primary.blue : props.theme.text300};
+    props.isActive ? props.theme.primary[50] : props.theme.textColor[50]};
 `;

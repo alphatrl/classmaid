@@ -60,10 +60,7 @@ export const ThemeContext: React.FC<Props> = function (props) {
   }, [theme]);
 
   const currentTheme = React.useMemo(() => {
-    if (theme === 'dark') {
-      return DARK_THEME;
-    }
-    return LIGHT_THEME;
+    return theme === 'dark' ? DARK_THEME : LIGHT_THEME;
   }, [theme]);
 
   const sharedState = React.useMemo(
@@ -73,7 +70,6 @@ export const ThemeContext: React.FC<Props> = function (props) {
 
   return (
     <ThemeProvider.Provider value={sharedState}>
-      {/* @ts-ignore */}
       <ThemeProviderDefault theme={currentTheme}>
         {children}
       </ThemeProviderDefault>
