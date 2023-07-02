@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { useDataContext } from '../../../contexts/DataContext';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import {
   DESKTOP_WIDTH_SIZE_M,
@@ -13,11 +12,18 @@ import {
   WIDGET_S_WIDTH_SIZE_L,
   WIDGET_S_WIDTH_SIZE_S,
 } from '../../../themes/size';
-import { CardTemplate } from '../styled';
+import { CardTemplate, WidgetHeaderTitle } from '../styled';
+import Header from './components/Header';
+import LibraryOccupancySection from './components/LibraryOccupancySection';
 
-const Card = styled(CardTemplate)``;
+const Card = styled(CardTemplate)`
+  padding: 0;
 
-const AppLibrary: React.FC = function () {
+  display: flex;
+  flex-direction: column;
+`;
+
+const LibraryCapacities: React.FC = function () {
   const isMobileSizeS = useMediaQuery(`(max-width: ${MOBILE_WIDTH_SIZE_S})`);
   const isMobileSizeL = useMediaQuery(`(max-width: ${MOBILE_WIDTH_SIZE_L})`);
   const isDesktopSSize = useMediaQuery(`(max-width: ${DESKTOP_WIDTH_SIZE_S})`);
@@ -45,9 +51,10 @@ const AppLibrary: React.FC = function () {
 
   return (
     <Card width={widgetWidth} height={widgetHeight}>
-      Apps
+      <Header />
+      <LibraryOccupancySection />
     </Card>
   );
 };
 
-export default AppLibrary;
+export default LibraryCapacities;

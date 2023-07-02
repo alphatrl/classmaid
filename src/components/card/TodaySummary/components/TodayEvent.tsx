@@ -9,7 +9,7 @@ import TodayEventLoading from './TodayEventLoading';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  color: ${(props) => props.theme.text900};
+  color: ${(props) => props.theme.textColor[50]};
 
   h1 {
     margin: 0;
@@ -33,7 +33,7 @@ const DaysWrapper = styled.div`
 `;
 
 const HighlightText = styled.h1`
-  color: ${(props) => props.theme.primary.blue};
+  color: ${(props) => props.theme.primary[50]};
 `;
 
 const TodayEvent: React.FC = function () {
