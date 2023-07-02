@@ -55,14 +55,13 @@ interface AppJson {
 
 export const Home: React.FC<ServerSideProps> = function (props) {
   const { appLibrary } = props;
-  console.log(appLibrary);
 
   return (
     <DefaultLayout title="SMU">
       <ContentWrapper>
         <Wrapper>
           <TodaySummaryWidget />
-          <AppLibrary appLibrary={appLibrary} />
+          <AppLibrary apps={appLibrary} />
           <LibraryCapacities />
         </Wrapper>
       </ContentWrapper>

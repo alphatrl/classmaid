@@ -3,22 +3,37 @@ import styled from 'styled-components';
 
 import useWidgetSize from '../../../hooks/useWidgetSize';
 import { CardTemplate } from '../styled';
+import AppGrid from './components/AppGrid';
 
 const Card = styled(CardTemplate)`
-  padding: 0;
-  background-color: rgba(255, 255, 255, 0.25);
+  position: relative;
+  background-color: ${(props) => `${props.theme.appColor[100]}42`};
   backdrop-filter: blur(12px) saturate(86%);
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  :hover {
+    transform: none;
+  }
 `;
 
 interface Props {
-  appLibrary: App.AppLibrary.LibraryItem[];
+  apps: App.AppLibrary.LibraryItem[];
 }
 
 const AppLibrary: React.FC<Props> = function (props) {
-  const { appLibrary } = props;
-  const widgetSize = useWidgetSize('large');
+  const { apps } = props;
 
-  return <Card width={widgetSize.width} height={widgetSize.height}></Card>;
+  const widgetSize = useWidgetSize('large');
+  const schoolApps = apps[0];
+
+  return (
+    <Card width={widgetSize.width} height={widgetSize.height}>
+      <AppGrid homeApps={schoolApps} />
+    </Card>
+  );
 };
 
 export default AppLibrary;
