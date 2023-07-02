@@ -1,3 +1,4 @@
+import type { GetServerSideProps } from 'next';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -43,18 +44,39 @@ const Wrapper = styled.div`
   }
 `;
 
-export const Home: React.FC = function () {
+interface ServerSideProps {
+  appLibrary: App.AppLibrary.LibraryItem[];
+}
+
+interface AppJson {
+  resourceId: string;
+  result: App.AppLibrary.LibraryItem[];
+}
+
+export const Home: React.FC<ServerSideProps> = function (props) {
+  const { appLibrary } = props;
+  console.log(appLibrary);
+
   return (
     <DefaultLayout title="SMU">
       <ContentWrapper>
         <Wrapper>
           <TodaySummaryWidget />
-          <AppLibrary />
+          <AppLibrary appLibrary={appLibrary} />
           <LibraryCapacities />
         </Wrapper>
       </ContentWrapper>
     </DefaultLayout>
   );
 };
+
+export const getServerSideProps: GetServerSideProps<ServerSideProps> =
+  async function () {
+    const hostUrl = process.env.HOST_URL || 'http://localhost:3000';
+    const res = await fetch(`${hostUrl}/data/apps.json`);
+    const appJson = (await res.json()) as AppJson;
+
+    return { props: { appLibrary: appJson.result } };
+  };
 
 export default Home;
