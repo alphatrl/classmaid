@@ -12,7 +12,8 @@ import {
   WIDGET_S_WIDTH_SIZE_L,
   WIDGET_S_WIDTH_SIZE_S,
 } from '../../../themes/size';
-import { CardTemplate, WidgetHeader, WidgetHeaderTitle } from '../styled';
+import { CardTemplate, WidgetHeaderTitle } from '../styled';
+import Header from './components/Header';
 import LibraryOccupancySection from './components/LibraryOccupancySection';
 
 const Card = styled(CardTemplate)`
@@ -21,8 +22,6 @@ const Card = styled(CardTemplate)`
   display: flex;
   flex-direction: column;
 `;
-
-const Header = styled(WidgetHeader)``;
 
 const LibraryCapacities: React.FC = function () {
   const isMobileSizeS = useMediaQuery(`(max-width: ${MOBILE_WIDTH_SIZE_S})`);
@@ -52,9 +51,7 @@ const LibraryCapacities: React.FC = function () {
 
   return (
     <Card width={widgetWidth} height={widgetHeight}>
-      <Header>
-        <WidgetHeaderTitle>Library</WidgetHeaderTitle>
-      </Header>
+      <Header />
       <LibraryOccupancySection />
     </Card>
   );

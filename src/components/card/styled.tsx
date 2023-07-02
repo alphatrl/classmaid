@@ -15,7 +15,7 @@ export const CardTemplate = styled.div<{ width: number; height?: number }>`
 
 export const WidgetHeader = styled.div`
   padding: 0 16px;
-  height: 56px;
+  height: 64px;
   display: flex;
   align-items: center;
   background-color: ${(props) => props.theme.appColor[90]};

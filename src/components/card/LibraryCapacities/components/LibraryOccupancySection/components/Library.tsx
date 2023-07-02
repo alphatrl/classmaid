@@ -53,23 +53,21 @@ interface Props {
 }
 
 const Library: React.FC<Props> = function (props) {
-  const { id, name, loading, maxOccupancy, occupancy } = props;
+  const { id, name, maxOccupancy, occupancy } = props;
 
   return (
     <LibraryCard gridArea={id}>
       <LibraryDataWrapper>
         <LibraryTitle>{name}</LibraryTitle>
-        {!loading && (
-          <LibraryOccupancyWrapper>
-            <ProgressCircle
-              label={`${name} Occupancy Level`}
-              progress={occupancy / maxOccupancy}
-            />
-            <LibraryOccupancyText>
-              {`${occupancy} / ${maxOccupancy}`}
-            </LibraryOccupancyText>
-          </LibraryOccupancyWrapper>
-        )}
+        <LibraryOccupancyWrapper>
+          <ProgressCircle
+            label={`${name} Occupancy Level`}
+            progress={occupancy / maxOccupancy}
+          />
+          <LibraryOccupancyText>
+            {`${occupancy} / ${maxOccupancy}`}
+          </LibraryOccupancyText>
+        </LibraryOccupancyWrapper>
       </LibraryDataWrapper>
     </LibraryCard>
   );
