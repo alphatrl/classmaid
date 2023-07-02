@@ -20,14 +20,14 @@ const ExternalLink = styled.a`
 
   align-items: center;
   border: none;
-  background-color: ${(props) => props.theme.appColor[90]};
+  background-color: unset;
 
   span {
     color: ${(props) => props.theme.appColor[10]};
   }
 
   &:hover {
-    background-color: ${(props) => props.theme.appColor[80]};
+    background-color: ${(props) => props.theme.primary[30]};
   }
 `;
 

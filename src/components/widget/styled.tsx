@@ -14,11 +14,12 @@ export const CardTemplate = styled.div<{ width: number; height?: number }>`
 `;
 
 export const WidgetHeader = styled.div`
+  box-sizing: border-box;
   padding: 0 16px;
-  height: 64px;
+  height: 56px;
   display: flex;
   align-items: center;
-  background-color: ${(props) => props.theme.appColor[90]};
+  background-color: ${(props) => props.theme.primary[20]};
 `;
 
 export const WidgetHeaderTitle = styled.h2`
