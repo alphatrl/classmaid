@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { useDataContext } from '../../../contexts/DataContext';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import {
   DESKTOP_WIDTH_SIZE_M,
@@ -14,8 +13,11 @@ import {
   WIDGET_S_WIDTH_SIZE_S,
 } from '../../../themes/size';
 import { CardTemplate } from '../styled';
+import Header from './components/Header';
 
-const Card = styled(CardTemplate)``;
+const Card = styled(CardTemplate)`
+  padding: 0;
+`;
 
 const AppLibrary: React.FC = function () {
   const isMobileSizeS = useMediaQuery(`(max-width: ${MOBILE_WIDTH_SIZE_S})`);
@@ -45,7 +47,7 @@ const AppLibrary: React.FC = function () {
 
   return (
     <Card width={widgetWidth} height={widgetHeight}>
-      Apps
+      <Header />
     </Card>
   );
 };
