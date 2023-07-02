@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import AppLibrary from '../components/card/AppLibrary';
-import LibraryCapacities from '../components/card/LibraryCapacities';
-import TodaySummaryWidget from '../components/card/TodaySummary';
+import AppLibrary from '../components/widget/AppLibrary';
+import LibraryCapacities from '../components/widget/LibraryCapacities';
+import TodaySummaryWidget from '../components/widget/TodaySummary';
 import DefaultLayout from '../layouts/DefaultLayout';
 import {
   DESKTOP_WIDTH_SIZE_M,

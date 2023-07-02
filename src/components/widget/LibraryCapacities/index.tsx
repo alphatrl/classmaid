@@ -12,7 +12,7 @@ import {
   WIDGET_S_WIDTH_SIZE_L,
   WIDGET_S_WIDTH_SIZE_S,
 } from '../../../themes/size';
-import { CardTemplate, WidgetHeaderTitle } from '../styled';
+import { CardTemplate } from '../styled';
 import Header from './components/Header';
 import LibraryOccupancySection from './components/LibraryOccupancySection';
 
