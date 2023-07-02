@@ -11,18 +11,19 @@ import Icon from '../../../Icon';
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(5, 92px);
+  grid-template-columns: repeat(5, 1fr);
   justify-content: center;
   align-items: baseline;
-  gap: 30px;
+  row-gap: 12px;
+  column-gap: 24px;
 
   @media screen and (max-width: ${DESKTOP_WIDTH_SIZE_M}) {
-    grid-template-columns: repeat(5, 80px);
-    gap: 24px;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 24px;
   }
 
   @media screen and (max-width: ${DESKTOP_WIDTH_SIZE_S}) {
-    grid-template-columns: repeat(4, 64px);
+    grid-template-columns: repeat(4, 1fr);
     column-gap: 12px;
   }
 
@@ -46,8 +47,8 @@ const GridItem = styled.a`
 `;
 
 const GridImage = styled.div<{ backgroundColor: string }>`
-  height: 72px;
-  width: 72px;
+  height: 80px;
+  width: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -77,8 +78,8 @@ const GridImage = styled.div<{ backgroundColor: string }>`
 const GridText = styled.p`
   text-align: center;
   margin: 0;
-  font-size: 1em;
-  padding-top: 12px;
+  font-size: 0.95em;
+  padding-top: 8px;
   font-weight: 500;
   color: ${(props) => props.theme.textColor[10]};
 `;
