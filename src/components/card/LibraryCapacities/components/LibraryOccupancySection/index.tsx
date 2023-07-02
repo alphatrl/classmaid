@@ -2,6 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { LibraryOccupancy } from '../../../../../pages/api/smusg/getLibrariesOccupancy';
+import {
+  DESKTOP_WIDTH_SIZE_S,
+  MOBILE_WIDTH_SIZE_L,
+} from '../../../../../themes/size';
 import Library from './components/Library';
 import {
   KGC_LIBRARY_NAME,
@@ -13,11 +17,22 @@ import {
 const Wrapper = styled.div`
   padding: 16px;
   height: 100%;
-
   display: grid;
   gap: 16px;
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas: 'lks kgc';
+
+  @media screen and (max-width: ${DESKTOP_WIDTH_SIZE_S}) {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'lks'
+      'kgc';
+  }
+
+  @media screen and (max-width: ${MOBILE_WIDTH_SIZE_L}) {
+    padding: 12px;
+    gap: 12px;
+  }
 `;
 
 const LibraryOccupancySection: React.FC = function () {
