@@ -12,18 +12,17 @@ import {
   WIDGET_S_WIDTH_SIZE_L,
   WIDGET_S_WIDTH_SIZE_S,
 } from '../../../themes/size';
-import { CardTemplate } from '../styled';
+import { CardTemplate, WidgetHeader, WidgetHeaderTitle } from '../styled';
 import LibraryOccupancySection from './components/LibraryOccupancySection';
-import SearchBar from './components/SearchBar';
 
 const Card = styled(CardTemplate)`
-  display: grid;
-  gap: 16px;
-  grid-template-rows: 48px 1fr;
-  grid-template-areas:
-    'search'
-    'occupancy';
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
 `;
+
+const Header = styled(WidgetHeader)``;
 
 const LibraryCapacities: React.FC = function () {
   const isMobileSizeS = useMediaQuery(`(max-width: ${MOBILE_WIDTH_SIZE_S})`);
@@ -53,7 +52,9 @@ const LibraryCapacities: React.FC = function () {
 
   return (
     <Card width={widgetWidth} height={widgetHeight}>
-      <SearchBar />
+      <Header>
+        <WidgetHeaderTitle>Library</WidgetHeaderTitle>
+      </Header>
       <LibraryOccupancySection />
     </Card>
   );

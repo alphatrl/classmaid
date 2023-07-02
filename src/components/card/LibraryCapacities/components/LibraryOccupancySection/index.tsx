@@ -2,10 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { LibraryOccupancy } from '../../../../../pages/api/smusg/getLibrariesOccupancy';
-import KGCCard from './components/KGCCard';
-import LKSCard from './components/LKSCard';
+import Library from './components/Library';
+import {
+  KGC_LIBRARY_NAME,
+  KGC_MAX_OCCUPANCY,
+  LKS_LIBRARY_NAME,
+  LKS_MAX_OCCUPANCY,
+} from './constants';
 
 const Wrapper = styled.div`
+  padding: 16px;
+  height: 100%;
+
   display: grid;
   gap: 16px;
   grid-template-columns: repeat(2, 1fr);
@@ -41,8 +49,21 @@ const LibraryOccupancySection: React.FC = function () {
 
   return (
     <Wrapper>
-      <LKSCard loading={isFetchingOccupancy} occupancy={lksOccupancy} />
-      <KGCCard loading={isFetchingOccupancy} occupancy={kgcOccupancy} />
+      <Library
+        id="lks"
+        name={LKS_LIBRARY_NAME}
+        loading={isFetchingOccupancy}
+        occupancy={lksOccupancy}
+        maxOccupancy={LKS_MAX_OCCUPANCY}
+      />
+
+      <Library
+        id="kgc"
+        name={KGC_LIBRARY_NAME}
+        loading={isFetchingOccupancy}
+        occupancy={kgcOccupancy}
+        maxOccupancy={KGC_MAX_OCCUPANCY}
+      />
     </Wrapper>
   );
 };
