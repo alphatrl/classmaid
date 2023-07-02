@@ -150,7 +150,8 @@ export const GlobalStyles = createGlobalStyle`
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: ${(props) => props.theme.textColor[10]}
+    color: ${(props) => props.theme.textColor[10]};
+    background-color:${(props) => props.theme.primary[30]};
   }
 
   html {

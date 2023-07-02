@@ -13,11 +13,6 @@ const Wrapper = styled.div`
   height: 100dvh;
   display: flex;
   flex-direction: row;
-  background-color: #62a8fb;
-
-  @supports (backdrop-filter: ${(props) => props.theme.blur.blur}) {
-    backdrop-filter: ${(props) => props.theme.blur.blur};
-  }
 
   main {
     display: flex;
