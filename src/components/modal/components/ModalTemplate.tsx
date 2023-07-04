@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Modal as Wrapper } from '../styled';
 
-interface Props {
+interface Props extends React.PropsWithChildren {
   title?: string;
 }
 
