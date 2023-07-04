@@ -34,10 +34,11 @@ const Wrapper = styled.div`
 
 interface Props {
   homeApps: App.AppLibrary.LibraryItem;
+  onOpenDrawer: () => void;
 }
 
 const AppGrid: React.FC<Props> = function (props) {
-  const { homeApps } = props;
+  const { homeApps, onOpenDrawer } = props;
   const theme = useTheme();
 
   const { shortcuts } = homeApps;
@@ -55,7 +56,7 @@ const AppGrid: React.FC<Props> = function (props) {
         );
       })}
 
-      <GridItemMore>
+      <GridItemMore role="button" onClick={onOpenDrawer}>
         <GridImage backgroundColor={theme.primary[50]}>
           <Icon name="apps" />
         </GridImage>

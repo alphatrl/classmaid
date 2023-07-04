@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import useWidgetSize from '../../../hooks/useWidgetSize';
 import { CardTemplate } from '../styled';
-import { AppDrawerRef } from './components/AppDrawer';
+import AppDrawer, { AppDrawerRef } from './components/AppDrawer';
 import AppGrid from './components/AppGrid';
 
 const Card = styled(CardTemplate)`
@@ -26,15 +26,19 @@ interface Props {
 
 const AppLibrary: React.FC<Props> = function (props) {
   const { apps } = props;
-  // const dialogRef = React.useRef<AppDrawerRef>(null);
+  const dialogRef = React.useRef<AppDrawerRef>(null);
 
   const widgetSize = useWidgetSize('large');
   const schoolApps = apps[0];
 
+  const handleOpenDrawer = () => {
+    dialogRef.current?.open();
+  };
+
   return (
     <Card width={widgetSize.width} height={widgetSize.height}>
-      <AppGrid homeApps={schoolApps} />
-      <AppLibrary apps={apps} />
+      <AppGrid homeApps={schoolApps} onOpenDrawer={handleOpenDrawer} />
+      <AppDrawer ref={dialogRef} apps={apps} />
     </Card>
   );
 };

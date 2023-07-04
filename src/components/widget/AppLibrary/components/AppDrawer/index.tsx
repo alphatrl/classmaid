@@ -17,23 +17,19 @@ const AppLibrary: React.FC<Props> = React.forwardRef<AppDrawerRef, Props>(
     const { apps } = props;
     const dialogRef = React.useRef<HTMLDialogElement>(null);
 
-    const handleOpen = React.useCallback(() => {
-      dialogRef.current?.showModal();
-    }, []);
-
-    const handleClose = React.useCallback(() => {
-      dialogRef.current?.close();
-    }, []);
-
     React.useImperativeHandle(
       ref,
       () => {
         return {
-          open: handleOpen,
-          close: handleClose,
+          open() {
+            dialogRef.current?.showModal();
+          },
+          close() {
+            dialogRef.current?.close();
+          },
         };
       },
-      [handleClose, handleOpen]
+      []
     );
     return <DialogWrapper ref={dialogRef}></DialogWrapper>;
   }
