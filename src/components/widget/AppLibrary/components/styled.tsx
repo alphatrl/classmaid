@@ -1,93 +1,72 @@
 import styled from 'styled-components';
 
-// App.tsx
-export const AppWrapper = styled.a`
-  text-decoration: none;
-  color: ${(props) => props.theme.textColor[50]};
-  cursor: pointer;
-  margin-bottom: 12px;
-`;
+import {
+  DESKTOP_WIDTH_SIZE_S,
+  MOBILE_WIDTH_SIZE_L,
+} from '../../../../themes/size';
 
-export const AppView = styled.div<{ color?: string }>`
-  padding: 0 16px;
-  height: 72px;
+export const GridItem = styled.a`
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  border-radius: 16px;
-  background-color: ${(props) => props.color ?? props.theme.icon.background};
-  color: ${(props) =>
-    props.color ? props.theme.icon.colorCustom : props.theme.icon.color};
-  filter: ${(props) => props.theme.icon.filter};
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.1s ease-in;
+  cursor: pointer;
 
-  .material-icons-round {
-    font-size: 36px;
-    font-weight: normal;
-  }
-
-  ${AppWrapper}:hover & {
-    background-color: ${(props) => props.theme.primary[30]};
-    color: ${(props) => props.theme.primary[50]};
-    transition: all 0.2s ease-in;
+  :hover {
+    transform: scale(1.05);
   }
 `;
 
-export const AppTitle = styled.h1`
-  margin: 8px 0 0 4px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  display: -webkit-box;
-  overflow: hidden;
+export const GridItemMore = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.2s ease-in;
+  cursor: pointer;
 
-  @media screen and (max-width: ${(props) => props.theme.mobileSize}) {
-    font-size: 1.1rem;
-    text-align: center;
-    margin: 8px 4px 0 4px;
-  }
-
-  ${AppWrapper}:hover & {
-    color: ${(props) => props.theme.primary[50]};
-    transition: all 0.2s ease-in;
+  :hover {
+    transform: scale(1.05);
   }
 `;
 
-// Section.tsx
-export const SectionWrapper = styled.div`
-  padding: 24px 0;
-  box-sizing: border-box;
-  display: grid;
-  gap: 16px;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+export const GridImage = styled.div<{ backgroundColor: string }>`
+  height: 72px;
+  width: 72px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  background-color: ${(props) => props.backgroundColor};
 
-  @media screen and (max-width: ${(props) => props.theme.mobileSize}) {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 12px;
+  span {
+    font-size: 42px;
+    color: #fff;
+  }
+
+  @media screen and (max-width: ${DESKTOP_WIDTH_SIZE_S}) {
+    height: 64px;
+    width: 64px;
+  }
+
+  @media screen and (max-width: ${MOBILE_WIDTH_SIZE_L}) {
+    height: 56px;
+    width: 56px;
+
+    span {
+      font-size: 32px;
+    }
   }
 `;
 
-// Tooltips.tsx
-export const ToolTipsWrapper = styled.span`
-  visibility: hidden;
-  padding: 4px 8px;
-  background-color: ${(props) => props.theme.tooltips.background};
-  color: ${(props) => props.theme.tooltips.text};
-  text-align: left;
-  border-radius: 8px;
-  opacity: 0;
-  font-size: 0.8em;
-
-  position: absolute;
-  z-index: 1;
-
-  ${AppWrapper}: hover & {
-    visibility: visible;
-    opacity: 1;
-    transition: all 0.2s ease-in;
-  }
-
-  @media screen and (max-width: ${(props) => props.theme.mobileSize}) {
-    text-align: center;
-  }
+export const GridText = styled.p`
+  text-align: center;
+  margin: 0;
+  font-size: 0.95em;
+  padding-top: 8px;
+  font-weight: 500;
+  color: ${(props) => props.theme.textColor[10]};
 `;

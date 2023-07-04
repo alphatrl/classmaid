@@ -4,10 +4,10 @@ import styled, { useTheme } from 'styled-components';
 import {
   DESKTOP_WIDTH_SIZE_M,
   DESKTOP_WIDTH_SIZE_S,
-  MOBILE_WIDTH_SIZE_L,
   MOBILE_WIDTH_SIZE_S,
 } from '../../../../themes/size';
 import Icon from '../../../Icon';
+import { GridImage, GridItem, GridItemMore, GridText } from './styled';
 
 const Wrapper = styled.div`
   display: grid;
@@ -32,58 +32,6 @@ const Wrapper = styled.div`
   }
 `;
 
-const GridItem = styled.a`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  transition: all 0.2s ease-in;
-  cursor: pointer;
-
-  :hover {
-    transform: scale(1.05);
-  }
-`;
-
-const GridImage = styled.div<{ backgroundColor: string }>`
-  height: 80px;
-  width: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 12px;
-  background-color: ${(props) => props.backgroundColor};
-
-  span {
-    font-size: 42px;
-    color: #fff;
-  }
-
-  @media screen and (max-width: ${DESKTOP_WIDTH_SIZE_S}) {
-    height: 64px;
-    width: 64px;
-  }
-
-  @media screen and (max-width: ${MOBILE_WIDTH_SIZE_L}) {
-    height: 56px;
-    width: 56px;
-
-    span {
-      font-size: 32px;
-    }
-  }
-`;
-
-const GridText = styled.p`
-  text-align: center;
-  margin: 0;
-  font-size: 0.95em;
-  padding-top: 8px;
-  font-weight: 500;
-  color: ${(props) => props.theme.textColor[10]};
-`;
-
 interface Props {
   homeApps: App.AppLibrary.LibraryItem;
 }
@@ -92,9 +40,11 @@ const AppGrid: React.FC<Props> = function (props) {
   const { homeApps } = props;
   const theme = useTheme();
 
+  const { shortcuts } = homeApps;
+
   return (
     <Wrapper>
-      {homeApps.shortcuts.map((shortcut) => {
+      {shortcuts.map((shortcut) => {
         return (
           <GridItem key={shortcut.id} href={shortcut.link} target="_blank">
             <GridImage backgroundColor={shortcut.color}>
@@ -105,12 +55,12 @@ const AppGrid: React.FC<Props> = function (props) {
         );
       })}
 
-      <GridItem>
+      <GridItemMore>
         <GridImage backgroundColor={theme.primary[50]}>
           <Icon name="apps" />
         </GridImage>
         <GridText>More Apps</GridText>
-      </GridItem>
+      </GridItemMore>
     </Wrapper>
   );
 };
