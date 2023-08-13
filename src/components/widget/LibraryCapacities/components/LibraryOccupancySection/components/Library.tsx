@@ -1,11 +1,13 @@
+import Image from 'next/image';
 import React from 'react';
 import styled from 'styled-components';
 
+import { LibraryData } from '../types';
 import ProgressCircle from './ProgressCircle';
 
 const LibraryCard = styled.div<{ gridArea: string }>`
-grid-area: ${(props) => props.gridArea}  
-box-sizing: border-box;
+  grid-area: ${(props) => props.gridArea}  
+  box-sizing: border-box;
   border-radius: 16px;
 
   position: relative;
@@ -13,14 +15,26 @@ box-sizing: border-box;
   backdrop-filter: blur(0px);
 `;
 
-const LibraryDataWrapper = styled.div`
+const LibraryContentWrapper = styled.div`
   box-sizing: border-box;
   position: relative;
   height: 100%;
   padding: 12px;
   background-color: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(12px) saturate(80%);
+  backdrop-filter: blur(2px) saturate(80%);
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+const LibraryImageAttribution = styled.span`
+  font-size: 0.65em;
+  color: #fafafa;
+
+  a:link {
+    color: ${(props) => props.theme.primary[50]};
+  }
 `;
 
 const LibraryTitle = styled.h1`
@@ -47,29 +61,48 @@ const LibraryOccupancyText = styled.p`
 
 interface Props {
   id: string;
-  name: string;
   loading: boolean;
   occupancy: number;
-  maxOccupancy: number;
+  library: LibraryData;
 }
 
 const Library: React.FC<Props> = function (props) {
-  const { id, name, maxOccupancy, occupancy } = props;
+  const { id, library, occupancy } = props;
+  const { name, maxOccupancy, backgroundImage } = library;
+  const {
+    fileUrl,
+    attribution: { author, license },
+  } = backgroundImage;
 
   return (
     <LibraryCard gridArea={id}>
-      <LibraryDataWrapper>
-        <LibraryTitle>{name}</LibraryTitle>
-        <LibraryOccupancyWrapper>
-          <ProgressCircle
-            label={`${name} Occupancy Level`}
-            progress={occupancy / maxOccupancy}
-          />
-          <LibraryOccupancyText>
-            {`${occupancy} / ${maxOccupancy}`}
-          </LibraryOccupancyText>
-        </LibraryOccupancyWrapper>
-      </LibraryDataWrapper>
+      <Image
+        src={fileUrl}
+        alt=""
+        fill
+        priority={true}
+        sizes="(min-width: 300px)"
+        style={{ objectFit: 'cover' }}
+      />
+      <LibraryContentWrapper>
+        <div>
+          <LibraryTitle>{name}</LibraryTitle>
+          <LibraryOccupancyWrapper>
+            <ProgressCircle
+              label={`${name} Occupancy Level`}
+              progress={occupancy / maxOccupancy}
+            />
+            <LibraryOccupancyText>
+              {`${occupancy} / ${maxOccupancy}`}
+            </LibraryOccupancyText>
+          </LibraryOccupancyWrapper>
+        </div>
+        <LibraryImageAttribution>
+          {author}, <a href={license.externalUrl}>{license.type}</a>
+          {', '}
+          {license.additional}
+        </LibraryImageAttribution>
+      </LibraryContentWrapper>
     </LibraryCard>
   );
 };

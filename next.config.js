@@ -16,6 +16,17 @@ module.exports = {
     return config;
   },
 
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'upload.wikimedia.org',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+  },
+
   compiler: {
     styledComponents: true,
   },
