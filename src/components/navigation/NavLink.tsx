@@ -1,0 +1,24 @@
+import Link from 'next/link';
+import React from 'react';
+import styled from 'styled-components';
+
+// This creates a custom component that wraps an <a> tag
+const Anchor = styled.a``;
+
+interface Props {
+  children?: React.ReactNode;
+  className?: string;
+  href: string;
+}
+
+const NavLink: React.FC<Props> = function (props) {
+  const { href, children, className } = props;
+
+  return (
+    <Link href={href} passHref legacyBehavior>
+      <Anchor className={className}>{children}</Anchor>
+    </Link>
+  );
+};
+
+export default NavLink;

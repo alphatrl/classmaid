@@ -14,6 +14,7 @@ class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const { renderPage } = ctx;
 
+    const initialProps = await Document.getInitialProps(ctx);
     const sheet = new ServerStyleSheet();
     const page = renderPage(
       (App) => (props) => sheet.collectStyles(<App {...props} />)
@@ -21,7 +22,7 @@ class MyDocument extends Document {
 
     const styleTags = sheet.getStyleElement();
 
-    return { ...page, styleTags };
+    return { ...initialProps, ...page, styleTags };
   }
 
   render() {
@@ -33,13 +34,8 @@ class MyDocument extends Document {
             {this.props.styleTags}
 
             <link
-              href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
-              rel="preload"
-              as="style"
-            />
-            <link
-              href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
               rel="stylesheet"
+              href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0&display=swap"
             />
 
             <meta name="apple-mobile-web-app-capable" content="yes" />

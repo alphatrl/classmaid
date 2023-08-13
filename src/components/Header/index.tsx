@@ -11,7 +11,7 @@ const Wrapper = styled.header`
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  color: ${(props) => props.theme.text900};
+  color: ${(props) => props.theme.textColor[10]};
 
   h1 {
     font-size: 1.75em;

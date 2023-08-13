@@ -1,14 +1,11 @@
-import React, {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
+import React from 'react';
 import { ThemeProvider as ThemeProviderDefault } from 'styled-components';
 
 import { DARK_THEME, LIGHT_THEME } from '../theme';
+
+interface Props {
+  children?: React.ReactNode;
+}
 
 interface ThemeContextProps {
   theme: string;
@@ -16,7 +13,7 @@ interface ThemeContextProps {
   componentMounted: boolean;
 }
 
-const ThemeProvider = createContext<ThemeContextProps>({
+const ThemeProvider = React.createContext<ThemeContextProps>({
   theme: 'light',
   toggleTheme: () => {
     return;
@@ -24,12 +21,12 @@ const ThemeProvider = createContext<ThemeContextProps>({
   componentMounted: false,
 });
 
-export const ThemeContext: React.FC = (props) => {
+export const ThemeContext: React.FC<Props> = function (props) {
   const { children } = props;
-  const [userPreferences, setUserPreferences] = useState('light');
-  const [componentMounted, setComponentMounted] = useState(false);
+  const [userPreferences, setUserPreferences] = React.useState('light');
+  const [componentMounted, setComponentMounted] = React.useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const localTheme = window.localStorage.getItem('theme');
     if (localTheme) {
       setUserPreferences(localTheme);
@@ -39,11 +36,11 @@ export const ThemeContext: React.FC = (props) => {
     setComponentMounted(true);
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     window.localStorage.setItem('theme', userPreferences);
   }, [userPreferences]);
 
-  const theme = useMemo(() => {
+  const theme = React.useMemo(() => {
     switch (userPreferences) {
       // case 'auto':
       //   break;
@@ -54,7 +51,7 @@ export const ThemeContext: React.FC = (props) => {
     }
   }, [userPreferences]);
 
-  const toggleTheme = useCallback(() => {
+  const toggleTheme = React.useCallback(() => {
     if (theme === 'light') {
       setUserPreferences('dark');
     } else {
@@ -62,14 +59,11 @@ export const ThemeContext: React.FC = (props) => {
     }
   }, [theme]);
 
-  const currentTheme = useMemo(() => {
-    if (theme === 'dark') {
-      return DARK_THEME;
-    }
-    return LIGHT_THEME;
+  const currentTheme = React.useMemo(() => {
+    return theme === 'dark' ? DARK_THEME : LIGHT_THEME;
   }, [theme]);
 
-  const sharedState = useMemo(
+  const sharedState = React.useMemo(
     () => ({ componentMounted, theme, toggleTheme }),
     [componentMounted, theme, toggleTheme]
   );
@@ -83,6 +77,6 @@ export const ThemeContext: React.FC = (props) => {
   );
 };
 
-export const useDarkMode = (): ThemeContextProps => {
-  return useContext(ThemeProvider);
+export const useThemeProvider = (): ThemeContextProps => {
+  return React.useContext(ThemeProvider);
 };

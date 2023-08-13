@@ -16,10 +16,6 @@ export const LIGHT_THEME: DefaultTheme = {
     color: '#FAFAFA',
   },
 
-  primary: {
-    blue: '#2B77EA',
-  },
-
   icon: {
     background: '#f9f9f9',
     colorCustom: '#FAFAFA',
@@ -44,12 +40,36 @@ export const LIGHT_THEME: DefaultTheme = {
     background: '#313131',
     text: '#EEEEEE',
   },
-
-  text900: '#333333',
-  text600: '#666666',
-  text300: '#999999',
-  textError: '#e6180b',
-
+  appColor: {
+    0: '#000000',
+    10: '#191919',
+    20: '#333333',
+    30: '#4c4c4c',
+    40: '#666666',
+    50: '#808080',
+    60: '#999999',
+    70: '#b3b3b3',
+    80: '#cccccc',
+    90: '#e6e6e6',
+    100: '#ffffff',
+  },
+  textColor: {
+    10: '#333333',
+    20: '#666666',
+    30: '#999999',
+    40: '#cccccc',
+    50: '#e5e5e5',
+  },
+  primary: {
+    10: '#d5e4fb',
+    20: '#aac9f7',
+    30: '#80adf2',
+    40: '#5592ee',
+    50: '#2b77ea',
+  },
+  success: '#24a148',
+  warning: '#f1c21b',
+  error: '#da1e28',
   mobileSize: '820px',
 };
 
@@ -67,10 +87,6 @@ export const DARK_THEME = {
 
   header: {
     color: '#111111',
-  },
-
-  primary: {
-    blue: '#3bb7ff',
   },
 
   icon: {
@@ -93,20 +109,40 @@ export const DARK_THEME = {
     background: '#111111',
   },
 
-  tooltips: {
-    background: '#313131',
-    text: '#EEEEEE',
+  appColor: {
+    0: '#ffffff',
+    10: '#e6e6e6',
+    20: '#cccccc',
+    30: '#b3b3b3',
+    40: '#999999',
+    50: '#808080',
+    60: '#666666',
+    70: '#b3b3b3',
+    80: '#4c4c4c',
+    90: '#333333',
+    100: '#000000',
   },
-
-  text900: '#FFFFFF',
-  text600: '#DDDDDD',
-  text300: '#BBBBBB',
-  textError: '#e6180b',
-
+  textColor: {
+    10: '#e5e5e5',
+    20: '#cccccc',
+    30: '#999999',
+    40: '#666666',
+    50: '#333333',
+  },
+  primary: {
+    10: '#d8f1ff',
+    20: '#b1e2ff',
+    30: '#89d4ff',
+    40: '#62c5ff',
+    50: '#3bb7ff',
+  },
+  success: '#42be65',
+  warning: '#f1c21b',
+  error: '#fa4d56',
   mobileSize: '820px',
 };
 
-export const GlobalStyle = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
   body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -114,6 +150,8 @@ export const GlobalStyle = createGlobalStyle`
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color: ${(props) => props.theme.textColor[10]};
+    background-color:${(props) => props.theme.primary[30]};
   }
 
   html {

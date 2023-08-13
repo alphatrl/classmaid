@@ -1,7 +1,5 @@
 import moment, { Moment } from 'moment-timezone';
 
-import { CurrentEventProps, SchoolTermProp } from '../../Schema';
-
 const getDateStringToMoment = function (
   dateString: string,
   format = 'YYYY-MM-DD'
@@ -10,8 +8,8 @@ const getDateStringToMoment = function (
 };
 
 export default function getCurrentEvent(
-  terms: SchoolTermProp[]
-): CurrentEventProps | null {
+  terms: App.Calendar.SchoolTerm[]
+): App.Calendar.CurrentEvent | null {
   if (!terms || terms.length === 0) {
     return null;
   }

@@ -1,75 +1,81 @@
-import { isArray } from 'lodash';
-import dynamic from 'next/dynamic';
-import { useRouter } from 'next/router';
+import type { GetServerSideProps } from 'next';
 import React from 'react';
 import styled from 'styled-components';
 
-import { AppLibrary, CapacityCard, TodayCard } from '../components/Card/';
+import AppLibrary from '../components/widget/AppLibrary';
+import LibraryCapacities from '../components/widget/LibraryCapacities';
+import TodaySummaryWidget from '../components/widget/TodaySummary';
 import DefaultLayout from '../layouts/DefaultLayout';
+import {
+  DESKTOP_WIDTH_SIZE_M,
+  DESKTOP_WIDTH_SIZE_S,
+  MOBILE_WIDTH_SIZE_L,
+  MOBILE_WIDTH_SIZE_S,
+} from '../themes/size';
 
-const About = dynamic(() => import('../components/Modal/Home/About'));
-const AddHomeScreen = dynamic(
-  () => import('../components/Modal/Home/AddHomeScreen')
-);
-const BOSSTimetable = dynamic(
-  () => import('../components/Modal/BOSSTimetable')
-);
-const SchoolGuide = dynamic(
-  () => import('../components/Modal/Home/SchoolGuide')
-);
+const ContentWrapper = styled.div`
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+`;
 
 const Wrapper = styled.div`
-  box-sizing: border-box;
-  height: 100%;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  column-gap: 16px;
+  width: 1020px;
+  display: flex;
+  flex-wrap: wrap;
 
-  padding-top: 24px;
-  padding-bottom: max(24px, env(safe-area-inset-bottom));
-  padding-left: max(16px, env(safe-area-inset-left));
-  padding-right: max(16px, env(safe-area-inset-right));
+  padding-top: 40px;
+  padding-bottom: 64px;
 
-  @media screen and (max-width: ${(props) => props.theme.mobileSize}) {
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
+  @media screen and (max-width: ${DESKTOP_WIDTH_SIZE_M}) {
+    width: 920px;
+  }
 
-    padding-top: 16px;
-    padding-bottom: max(16px, env(safe-area-inset-bottom));
-    padding-left: max(8px, env(safe-area-inset-left));
-    padding-right: max(8px, env(safe-area-inset-right));
+  @media screen and (max-width: ${DESKTOP_WIDTH_SIZE_S}) {
+    width: 700px;
+  }
+
+  @media screen and (max-width: ${MOBILE_WIDTH_SIZE_L}) {
+    width: 90%;
+  }
+
+  @media screen and (max-width: ${MOBILE_WIDTH_SIZE_S}) {
+    justify-content: center;
   }
 `;
 
-const WidgetContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+interface ServerSideProps {
+  appLibrary: App.AppLibrary.LibraryItem[];
+}
 
-export const Home: React.FC = () => {
-  const router = useRouter();
-  const path = router.asPath.match(/#([a-z0-9-]+)/gi);
-  const isExportModal = isArray(path) && path[0] === '#boss-export';
-  const isSchoolGuide = isArray(path) && path[0] === '#school-guide';
-  const isAbout = isArray(path) && path[0] === '#about';
-  const isAddHomeScreen = isArray(path) && path[0] === '#add-to-homescreen';
+interface AppJson {
+  resourceId: string;
+  result: App.AppLibrary.LibraryItem[];
+}
+
+export const Home: React.FC<ServerSideProps> = function (props) {
+  const { appLibrary } = props;
 
   return (
-    <DefaultLayout title="Home">
-      <Wrapper>
-        <WidgetContainer>
-          <TodayCard />
-          <CapacityCard />
-        </WidgetContainer>
-        <AppLibrary />
-      </Wrapper>
-      {isExportModal && <BOSSTimetable />}
-      {isSchoolGuide && <SchoolGuide />}
-      {isAbout && <About />}
-      {isAddHomeScreen && <AddHomeScreen />}
+    <DefaultLayout title="SMU">
+      <ContentWrapper>
+        <Wrapper>
+          <TodaySummaryWidget />
+          <AppLibrary apps={appLibrary} />
+          <LibraryCapacities />
+        </Wrapper>
+      </ContentWrapper>
     </DefaultLayout>
   );
 };
+
+export const getServerSideProps: GetServerSideProps<ServerSideProps> =
+  async function () {
+    const hostUrl = process.env.HOST_URL || 'http://localhost:3000';
+    const res = await fetch(`${hostUrl}/data/apps.json`);
+    const appJson = (await res.json()) as AppJson;
+
+    return { props: { appLibrary: appJson.result } };
+  };
 
 export default Home;

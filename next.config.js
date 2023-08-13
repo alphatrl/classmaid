@@ -1,11 +1,7 @@
-const withPWA = require('next-pwa');
-
-module.exports = withPWA({
-  target: 'serverless',
-  pwa: {
-    dest: 'public',
-  },
-
+/**
+ * @type {import('next').NextConfig}
+ */
+module.exports = {
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
@@ -20,6 +16,10 @@ module.exports = withPWA({
     return config;
   },
 
+  compiler: {
+    styledComponents: true,
+  },
+
   env: {
     SMU_SCRAPER_URL: process.env.SMU_SCRAPER_URL,
     SCHOOL_SEMESTERS_URL: process.env.SCHOOL_SEMESTERS_URL,
@@ -28,4 +28,4 @@ module.exports = withPWA({
     FIREBASE_APP_ID: process.env.FIREBASE_APP_ID,
     FIREBASE_MEASUREMENT_ID: process.env.FIREBASE_MEASUREMENT_ID,
   },
-});
+};
