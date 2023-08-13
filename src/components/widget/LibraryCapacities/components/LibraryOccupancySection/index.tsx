@@ -7,12 +7,8 @@ import {
   MOBILE_WIDTH_SIZE_L,
 } from '../../../../../themes/size';
 import Library from './components/Library';
-import {
-  KGC_LIBRARY_NAME,
-  KGC_MAX_OCCUPANCY,
-  LKS_LIBRARY_NAME,
-  LKS_MAX_OCCUPANCY,
-} from './constants';
+import { SMU_LIBRARIES } from './constants';
+import { LibraryNames } from './types';
 
 const Wrapper = styled.div`
   padding: 16px;
@@ -36,8 +32,10 @@ const Wrapper = styled.div`
 `;
 
 const LibraryOccupancySection: React.FC = function () {
-  const [lksOccupancy, setLksOccupancy] = React.useState(0);
-  const [kgcOccupancy, setKgcOccupancy] = React.useState(0);
+  const [currentOccupancy, setCurrentOccupancy] = React.useState({
+    lks: 0,
+    kgc: 0,
+  });
   const [isFetchingOccupancy, setFetchingOccupancy] = React.useState(true);
 
   const getLibrariesOccupancy = React.useCallback(async () => {
@@ -46,39 +44,40 @@ const LibraryOccupancySection: React.FC = function () {
     const resJson: LibraryOccupancy = await response.json();
 
     const newLksOccupancy = parseInt(resJson.lks.inside);
-    if (Number.isInteger(newLksOccupancy)) {
-      setLksOccupancy(newLksOccupancy);
-    }
-
     const newKgcOccupancy = parseInt(resJson.kgc.inside);
-    if (Number.isInteger(newKgcOccupancy)) {
-      setKgcOccupancy(newKgcOccupancy);
-    }
+    const tempOccupancyData = {
+      lks: Number.isInteger(newLksOccupancy)
+        ? newLksOccupancy
+        : currentOccupancy.lks,
+      kgc: Number.isInteger(newKgcOccupancy)
+        ? newKgcOccupancy
+        : currentOccupancy.kgc,
+    };
+
+    setCurrentOccupancy(tempOccupancyData);
 
     setFetchingOccupancy(false);
-  }, []);
+  }, [currentOccupancy.kgc, currentOccupancy.lks]);
 
   React.useEffect(() => {
     getLibrariesOccupancy();
   }, [getLibrariesOccupancy]);
 
+  const libraryKeys = Object.keys(SMU_LIBRARIES) as LibraryNames[];
+
   return (
     <Wrapper>
-      <Library
-        id="lks"
-        name={LKS_LIBRARY_NAME}
-        loading={isFetchingOccupancy}
-        occupancy={lksOccupancy}
-        maxOccupancy={LKS_MAX_OCCUPANCY}
-      />
-
-      <Library
-        id="kgc"
-        name={KGC_LIBRARY_NAME}
-        loading={isFetchingOccupancy}
-        occupancy={kgcOccupancy}
-        maxOccupancy={KGC_MAX_OCCUPANCY}
-      />
+      {libraryKeys.map((libKey) => {
+        return (
+          <Library
+            key={libKey}
+            id={libKey}
+            occupancy={currentOccupancy[libKey]}
+            library={SMU_LIBRARIES[libKey]}
+            loading={isFetchingOccupancy}
+          />
+        );
+      })}
     </Wrapper>
   );
 };
