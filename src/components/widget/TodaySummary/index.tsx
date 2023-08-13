@@ -3,12 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { useDataContext } from '../../../contexts/DataContext';
-import useMediaQuery from '../../../hooks/useMediaQuery';
-import {
-  MOBILE_WIDTH_SIZE_L,
-  WIDGET_S_WIDTH_SIZE_L,
-  WIDGET_S_WIDTH_SIZE_S,
-} from '../../../themes/size';
+import useWidgetSize from '../../../hooks/useWidgetSize';
 import { CardTemplate } from '../styled';
 import Calendar from './components/Calendar';
 import TodayEvent from './components/TodayEvent';
@@ -21,13 +16,9 @@ const Card = styled(CardTemplate)`
 
 const TodaySummaryWidget: React.FC = function () {
   const { calendarEvents } = useDataContext();
+  const widgetSize = useWidgetSize('small');
+
   const today = moment();
-
-  const isMobileSize = useMediaQuery(`(max-width: ${MOBILE_WIDTH_SIZE_L})`);
-
-  const widgetSize = isMobileSize
-    ? WIDGET_S_WIDTH_SIZE_S
-    : WIDGET_S_WIDTH_SIZE_L;
 
   const todayEvents = React.useMemo(() => {
     if (calendarEvents == null) {
@@ -52,7 +43,7 @@ const TodaySummaryWidget: React.FC = function () {
   }, [calendarEvents, today]);
 
   return (
-    <Card width={widgetSize}>
+    <Card width={widgetSize.width}>
       <TodayEvent />
       <TodaysSummary todayMoment={today} numOfEvents={todayEvents.length} />
       <Calendar events={todayEvents} />

@@ -16,8 +16,8 @@ import {
 
 const Wrapper = styled.div`
   padding: 16px;
-  height: 100%;
   display: grid;
+  flex: 1;
   gap: 16px;
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas: 'lks kgc';

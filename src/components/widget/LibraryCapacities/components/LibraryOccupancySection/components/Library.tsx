@@ -10,7 +10,7 @@ box-sizing: border-box;
 
   position: relative;
   overflow: hidden;
-  background-color: pink;
+  backdrop-filter: blur(0px);
 `;
 
 const LibraryDataWrapper = styled.div`
@@ -18,7 +18,8 @@ const LibraryDataWrapper = styled.div`
   position: relative;
   height: 100%;
   padding: 12px;
-  background-color: rgba(0, 0, 0, 0.56);
+  background-color: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(12px) saturate(80%);
   z-index: 1;
 `;
 

@@ -1,8 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
 
-import { useDataContext } from '../../../contexts/DataContext';
-import useMediaQuery from '../../../hooks/useMediaQuery';
 import {
   DESKTOP_WIDTH_SIZE_M,
   DESKTOP_WIDTH_SIZE_S,
@@ -12,12 +9,17 @@ import {
   WIDGET_L_WIDTH_SIZE_S,
   WIDGET_S_WIDTH_SIZE_L,
   WIDGET_S_WIDTH_SIZE_S,
-} from '../../../themes/size';
-import { CardTemplate } from '../styled';
+} from '../themes/size';
+import useMediaQuery from './useMediaQuery';
 
-const Card = styled(CardTemplate)``;
+type Size = 'small' | 'large';
 
-const AppLibrary: React.FC = function () {
+interface WidgetSize {
+  width: number;
+  height: number;
+}
+
+export default function useWidgetSize(size: Size): WidgetSize {
   const isMobileSizeS = useMediaQuery(`(max-width: ${MOBILE_WIDTH_SIZE_S})`);
   const isMobileSizeL = useMediaQuery(`(max-width: ${MOBILE_WIDTH_SIZE_L})`);
   const isDesktopSSize = useMediaQuery(`(max-width: ${DESKTOP_WIDTH_SIZE_S})`);
@@ -27,7 +29,11 @@ const AppLibrary: React.FC = function () {
     ? WIDGET_S_WIDTH_SIZE_S
     : WIDGET_S_WIDTH_SIZE_L;
 
-  const widgetWidth = React.useMemo(() => {
+  const windowWidth = React.useMemo(() => {
+    if (size === 'small') {
+      return widgetHeight;
+    }
+
     if (isMobileSizeL) {
       return WIDGET_S_WIDTH_SIZE_S;
     }
@@ -41,13 +47,14 @@ const AppLibrary: React.FC = function () {
     }
 
     return WIDGET_L_WIDTH_SIZE_L;
-  }, [isMobileSizeS, isMobileSizeL, isDesktopSSize, isDesktopMSize]);
+  }, [
+    isDesktopMSize,
+    isDesktopSSize,
+    isMobileSizeL,
+    isMobileSizeS,
+    size,
+    widgetHeight,
+  ]);
 
-  return (
-    <Card width={widgetWidth} height={widgetHeight}>
-      Apps
-    </Card>
-  );
-};
-
-export default AppLibrary;
+  return { width: windowWidth, height: widgetHeight };
+}
