@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   margin-top: 8px;
   font-weight: 600;
-  color: ${(props) => props.theme.text600};
+  color: ${(props) => props.theme.textColor[30]};
 
   span {
     margin: 0;

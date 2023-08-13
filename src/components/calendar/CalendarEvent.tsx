@@ -1,17 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import useMediaQuery from '../../hooks/useMediaQuery';
-import { MOBILE_WIDTH_SIZE } from '../../themes/size';
-
 interface Props {
   calendarEvent: App.Calendar.Event;
 }
 
-const Wrapper = styled.div<{ isMobile?: boolean }>`
+const Wrapper = styled.div`
   display: flex;
-  padding: ${(props) => (props.isMobile ? 4 : 8)}px 0;
   cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 8px;
 
   :hover {
     background-color: ${(props) => props.theme.calendar.red}12;
@@ -20,11 +20,11 @@ const Wrapper = styled.div<{ isMobile?: boolean }>`
 `;
 
 const Divider = styled.div`
-  margin: 0 12px;
+  margin-inline-end: 8px;
   background-color: ${(props) => props.theme.calendar.red};
 
   width: 4px;
-  height: 100%;
+  height: 75%;
   border-radius: 4px;
 `;
 
@@ -32,13 +32,14 @@ const TextWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 `;
 
 const Title = styled.h3`
   margin: 0;
   font-weight: 600;
-  font-size: 1rem;
-  color: ${(props) => props.theme.text900};
+  font-size: 0.9em;
+  color: ${(props) => props.theme.textColor[10]};
 
   // NOTE: (hello@amostan.me) This is to truncate the title into 1 line with ellipsis
   -webkit-box-orient: vertical;
@@ -49,16 +50,17 @@ const Title = styled.h3`
 
 const Subtitle = styled.p`
   margin: 0;
-  font-size: 1rem;
-  color: ${(props) => props.theme.text600};
+  margin-top: 2px;
+  font-weight: 500;
+  font-size: 0.85em;
+  color: ${(props) => props.theme.textColor[30]};
 `;
 
 const CalendarEvent: React.FC<Props> = function (props) {
   const { calendarEvent } = props;
-  const isMobile = useMediaQuery(`(max-width: ${MOBILE_WIDTH_SIZE})`);
 
   return (
-    <Wrapper isMobile={isMobile}>
+    <Wrapper>
       <Divider />
       <TextWrapper>
         <Title>{calendarEvent.title}</Title>
