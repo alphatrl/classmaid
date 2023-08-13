@@ -4,9 +4,8 @@ import styled from 'styled-components';
 import CalendarEvent from '../../../calendar/CalendarEvent';
 
 const Wrapper = styled.div`
-  background-color: #e6e6e6;
+  background-color: ${(props) => props.theme.appColor[90]};
   margin-top: 8px;
-
   display: flex;
   flex: 1;
   flex-direction: column;

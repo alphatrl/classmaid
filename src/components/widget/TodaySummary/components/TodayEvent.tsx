@@ -24,6 +24,7 @@ const DaysWrapper = styled.div`
   flex-direction: row;
   align-items: flex-end;
   padding-bottom: 8px;
+  color: ${(props) => props.theme.textColor[10]};
 
   span {
     font-weight: 600;
