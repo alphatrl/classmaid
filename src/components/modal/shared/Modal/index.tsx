@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import ModalPortal from './ModalPortal';
+import ModalPortal from '../ModalPortal';
+import CloseButton from './components/CloseButton';
 
 const OverlayWrapper = styled.div`
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100vw;
@@ -28,13 +29,32 @@ const ModalWrapper = styled.div`
   background-color: ${(props) => props.theme.appColor[100]};
 `;
 
+const HeaderWrapper = styled.div<{ showTitle: boolean }>`
+  height: 48px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: ${(props) =>
+    props.showTitle ? 'space-between' : 'flex-end'};
+
+  h1 {
+    margin: 0;
+    text-transform: capitalize;
+  }
+`;
+
 interface Props {
+  title?: string;
   isOpen: boolean;
   onClose: () => void;
 }
 
 const Modal: React.FC<React.PropsWithChildren<Props>> = function (props) {
-  const { isOpen, onClose, children } = props;
+  const { title, isOpen, onClose, children } = props;
+
+  const handleModalClicked = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+  };
 
   if (!isOpen) {
     return null;
@@ -43,7 +63,13 @@ const Modal: React.FC<React.PropsWithChildren<Props>> = function (props) {
   return (
     <ModalPortal>
       <OverlayWrapper onClick={onClose}>
-        <ModalWrapper>{children}</ModalWrapper>
+        <ModalWrapper onClick={handleModalClicked}>
+          <HeaderWrapper showTitle={title != null}>
+            {title != null && <h1>{title}</h1>}
+            <CloseButton onClose={onClose} />
+          </HeaderWrapper>
+          {children}
+        </ModalWrapper>
       </OverlayWrapper>
     </ModalPortal>
   );
