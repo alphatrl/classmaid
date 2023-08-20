@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import CalendarList from '../../screens/smu/components/widget/Calendar/CalendarList';
-import DefaultLayout from '../../layouts/DefaultLayout';
+import DefaultLayout from '../../shared/components/layouts/DefaultLayout';
 
 const Wrapper = styled.div`
   box-sizing: border-box;
