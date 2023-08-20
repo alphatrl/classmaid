@@ -206,15 +206,6 @@
           "link": "https://t.me/joinchat/DVuB8UO-_6LV1JhuML_CtA"
         },
         {
-          "id": "smu_cat_instagram",
-          "title": "SMU Cat",
-          "logo": "instagram",
-          "color": "#DC3175",
-          "type": "url",
-          "link": "https://www.instagram.com/smu.cat/",
-          "description": "🐈"
-        },
-        {
           "id": "confessions_instagram",
           "title": "SMU Confessions",
           "logo": "instagram",
