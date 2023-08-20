@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { CalendarList } from '../components/widget';
-import DefaultLayout from '../layouts/DefaultLayout';
+import CalendarList from '../../components/widget/Calendar/CalendarList';
+import DefaultLayout from '../../layouts/DefaultLayout';
 
 const Wrapper = styled.div`
   box-sizing: border-box;
