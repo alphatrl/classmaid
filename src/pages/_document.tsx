@@ -35,7 +35,7 @@ class MyDocument extends Document {
 
             <link
               rel="stylesheet"
-              href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0&display=swap"
+              href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&display=swap"
             />
 
             <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -60,6 +60,7 @@ class MyDocument extends Document {
         }
         <body>
           <Main />
+          <div id="modal-root"></div>
           <NextScript />
         </body>
       </Html>
