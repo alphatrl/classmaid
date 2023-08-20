@@ -47,6 +47,10 @@ export const GridImage = styled.div<{ backgroundColor: string }>`
     color: #fff;
   }
 
+  svg {
+    color: #fff;
+  }
+
   @media screen and (max-width: ${DESKTOP_WIDTH_SIZE_S}) {
     height: 64px;
     width: 64px;

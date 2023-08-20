@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import useWidgetSize from '../../../hooks/useWidgetSize';
-import Modal from '../../modal/shared/Modal';
 import { CardTemplate } from '../styled';
 import AppGrid from './components/AppGrid';
 import AppLibraryModal from './components/AppLibraryModal';
@@ -47,6 +46,7 @@ const AppLibrary: React.FC<Props> = function (props) {
       </Card>
       {isAppLibraryOpen && (
         <AppLibraryModal
+          apps={apps}
           isOpen={isAppLibraryOpen}
           onClose={handleCloseAppLibrary}
         />
