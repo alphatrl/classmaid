@@ -23,8 +23,9 @@ const ModalWrapper = styled.div`
   max-width: 800px;
   height: 80%;
   max-height: 800px;
+  overflow: hidden;
+  padding: 16px 0;
   border-radius: 24px;
-  padding: 16px;
   box-sizing: border-box;
   background-color: ${(props) => props.theme.appColor[100]};
 `;
@@ -34,6 +35,7 @@ const HeaderWrapper = styled.div<{ showTitle: boolean }>`
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding: 0 16px;
   justify-content: ${(props) =>
     props.showTitle ? 'space-between' : 'flex-end'};
 
