@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import {
   DESKTOP_WIDTH_SIZE_M,
   DESKTOP_WIDTH_SIZE_S,
+  MOBILE_WIDTH_SIZE_L,
   MOBILE_WIDTH_SIZE_S,
 } from '../../../../../../themes/size';
 import Icon from '../../../../../Icon';
@@ -11,12 +12,24 @@ import { GridImage, GridItem, GridText } from '../../styled';
 
 const Wrapper = styled.div`
   padding-bottom: 16px;
+
+  h2 {
+    font-size: 1.4em;
+    color: ${(props) => props.theme.textColor[10]};
+  }
+
+  @media screen and (max-width: ${MOBILE_WIDTH_SIZE_L}) {
+    h2 {
+      font-size: 1.2em;
+    }
+  }
 `;
 
 const AppWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   justify-content: center;
+  justify-items: center;
   align-items: baseline;
   row-gap: 24px;
   column-gap: 24px;
@@ -32,6 +45,7 @@ const AppWrapper = styled.div`
   }
 
   @media screen and (max-width: ${MOBILE_WIDTH_SIZE_S}) {
+    grid-template-columns: repeat(3, 1fr);
     column-gap: 8px;
   }
 `;

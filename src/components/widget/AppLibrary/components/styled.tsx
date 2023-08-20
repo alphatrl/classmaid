@@ -14,6 +14,9 @@ export const GridItem = styled.a`
   transition: all 0.1s ease-in;
   cursor: pointer;
 
+  width: 80%;
+  max-width: 120px;
+
   :hover {
     transform: scale(1.05);
   }
