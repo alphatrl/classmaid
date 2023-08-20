@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import CalendarList from '../../components/widget/Calendar/CalendarList';
+import CalendarList from '../../screens/smu/components/widget/Calendar/CalendarList';
 import DefaultLayout from '../../layouts/DefaultLayout';
 
 const Wrapper = styled.div`

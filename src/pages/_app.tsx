@@ -1,8 +1,8 @@
 import { AppProps } from 'next/app';
 import React from 'react';
 
-import { DataWrapper } from '../contexts/DataContext';
-import { ThemeContext } from '../contexts/ThemeContext';
+import { DataWrapper } from '../screens/smu/contexts/DataContext';
+import { ThemeContext } from '../shared/contexts/ThemeContext';
 import { GlobalStyles } from '../theme';
 
 const App: React.FC<AppProps> = function (props) {

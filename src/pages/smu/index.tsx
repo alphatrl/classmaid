@@ -2,16 +2,16 @@ import type { GetServerSideProps } from 'next';
 import React from 'react';
 import styled from 'styled-components';
 
-import AppLibrary from '../../components/widget/AppLibrary';
-import LibraryCapacities from '../../components/widget/LibraryCapacities';
-import TodaySummaryWidget from '../../components/widget/TodaySummary';
+import AppLibrary from '../../screens/smu/components/widget/AppLibrary';
+import LibraryCapacities from '../../screens/smu/components/widget/LibraryCapacities';
+import TodaySummaryWidget from '../../screens/smu/components/widget/TodaySummary';
 import DefaultLayout from '../../layouts/DefaultLayout';
 import {
   DESKTOP_WIDTH_SIZE_M,
   DESKTOP_WIDTH_SIZE_S,
   MOBILE_WIDTH_SIZE_L,
   MOBILE_WIDTH_SIZE_S,
-} from '../../themes/size';
+} from '../../shared/themes/size';
 
 const ContentWrapper = styled.div`
   box-sizing: border-box;
