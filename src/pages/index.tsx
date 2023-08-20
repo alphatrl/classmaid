@@ -1,81 +1,10 @@
-import type { GetServerSideProps } from 'next';
 import React from 'react';
-import styled from 'styled-components';
+import { redirect } from 'next/navigation';
 
-import AppLibrary from '../components/widget/AppLibrary';
-import LibraryCapacities from '../components/widget/LibraryCapacities';
-import TodaySummaryWidget from '../components/widget/TodaySummary';
-import DefaultLayout from '../layouts/DefaultLayout';
-import {
-  DESKTOP_WIDTH_SIZE_M,
-  DESKTOP_WIDTH_SIZE_S,
-  MOBILE_WIDTH_SIZE_L,
-  MOBILE_WIDTH_SIZE_S,
-} from '../themes/size';
-
-const ContentWrapper = styled.div`
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-`;
-
-const Wrapper = styled.div`
-  width: 1020px;
-  display: flex;
-  flex-wrap: wrap;
-
-  padding-top: 40px;
-  padding-bottom: 64px;
-
-  @media screen and (max-width: ${DESKTOP_WIDTH_SIZE_M}) {
-    width: 920px;
-  }
-
-  @media screen and (max-width: ${DESKTOP_WIDTH_SIZE_S}) {
-    width: 700px;
-  }
-
-  @media screen and (max-width: ${MOBILE_WIDTH_SIZE_L}) {
-    width: 90%;
-  }
-
-  @media screen and (max-width: ${MOBILE_WIDTH_SIZE_S}) {
-    justify-content: center;
-  }
-`;
-
-interface ServerSideProps {
-  appLibrary: App.AppLibrary.LibraryItem[];
-}
-
-interface AppJson {
-  resourceId: string;
-  result: App.AppLibrary.LibraryItem[];
-}
-
-export const Home: React.FC<ServerSideProps> = function (props) {
-  const { appLibrary } = props;
-
-  return (
-    <DefaultLayout title="SMU">
-      <ContentWrapper>
-        <Wrapper>
-          <TodaySummaryWidget />
-          <AppLibrary apps={appLibrary} />
-          <LibraryCapacities />
-        </Wrapper>
-      </ContentWrapper>
-    </DefaultLayout>
-  );
+export const ClassMaidHome: React.FC = function () {
+  // NOTE: (hello@amostan.me) Temp redirect to `/smu` page
+  // TODO: (hello@amostan.me) Build home page to select different schools
+  redirect('/smu');
 };
 
-export const getServerSideProps: GetServerSideProps<ServerSideProps> =
-  async function () {
-    const hostUrl = process.env.HOST_URL || 'http://localhost:3000';
-    const res = await fetch(`${hostUrl}/data/apps.json`);
-    const appJson = (await res.json()) as AppJson;
-
-    return { props: { appLibrary: appJson.result } };
-  };
-
-export default Home;
+export default ClassMaidHome;
