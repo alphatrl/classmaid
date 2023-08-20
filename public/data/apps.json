@@ -257,28 +257,6 @@
           "description": "A listening ear and a willing heart"
         }
       ]
-    },
-    {
-      "uid": "smushortcuts",
-      "title": "SMU Shortcuts",
-      "shortcuts": [
-        {
-          "id": "about_us",
-          "title": "About Us",
-          "logo": "info",
-          "color": "#636363",
-          "type": "internal",
-          "link": "#about"
-        },
-        {
-          "id": "add_to_home_screen",
-          "title": "Add to Home Screen",
-          "logo": "inadd_to_home_screenfo",
-          "color": "#636363",
-          "type": "internal",
-          "link": "#add-to-homescreen"
-        }
-      ]
     }
   ]
 }
