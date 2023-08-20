@@ -10,7 +10,7 @@
           "title": "eLearn",
           "logo": "menu_book",
           "color": "#0064B7",
-          "type" : "url",
+          "type": "url",
           "link": "https://elearn.smu.edu.sg",
           "description": "View your course materials, quizzes and assignments"
         },
@@ -19,7 +19,7 @@
           "title": "Email",
           "logo": "email",
           "color": "#006DCE",
-          "type" : "url",
+          "type": "url",
           "link": "https://live.smu.edu.sg",
           "description": "Access your student email"
         },
@@ -28,7 +28,7 @@
           "title": "Facility Bookings",
           "logo": "airline_seat_individual_suite",
           "color": "#647089",
-          "type" : "url",
+          "type": "url",
           "link": "https://fbs.intranet.smu.edu.sg",
           "description": "Book campus and library facilities within SMU"
         },
@@ -37,7 +37,7 @@
           "title": "Library",
           "logo": "local_library",
           "color": "#7D7D7D",
-          "type" : "url",
+          "type": "url",
           "link": "https://library.smu.edu.sg/",
           "description": "Access academic resources for research and learning"
         },
@@ -46,7 +46,7 @@
           "title": "Oasis",
           "logo": "beach_access",
           "color": "#CDA339",
-          "type" : "url",
+          "type": "url",
           "link": "https://oasis.smu.edu.sg",
           "description": "Access academic-related information to financial service"
         },
@@ -55,7 +55,7 @@
           "title": "Print Services",
           "logo": "print",
           "color": "#0C9C57",
-          "type" : "url",
+          "type": "url",
           "link": "https://smu.sg/print",
           "description": "Print your documents in school"
         }
@@ -73,7 +73,6 @@
           "type": "url",
           "link": "https://boss.intranet.smu.edu.sg",
           "description": "Register and bid for your courses"
-
         },
         {
           "id": "afterclass_web",
@@ -206,15 +205,6 @@
           "link": "https://t.me/joinchat/DVuB8UO-_6LV1JhuML_CtA"
         },
         {
-          "id": "smu_cat_instagram",
-          "title": "SMU Cat",
-          "logo": "instagram",
-          "color": "#DC3175",
-          "type": "url",
-          "link": "https://www.instagram.com/smu.cat/",
-          "description": "🐈"
-        },
-        {
           "id": "confessions_instagram",
           "title": "SMU Confessions",
           "logo": "instagram",
@@ -255,28 +245,6 @@
           "type": "url",
           "link": "http://bit.ly/smusa-feedback",
           "description": "A listening ear and a willing heart"
-        }
-      ]
-    },
-    {
-      "uid": "smushortcuts",
-      "title": "SMU Shortcuts",
-      "shortcuts": [
-        {
-          "id": "about_us",
-          "title": "About Us",
-          "logo": "info",
-          "color": "#636363",
-          "type": "internal",
-          "link": "#about"
-        },
-        {
-          "id": "add_to_home_screen",
-          "title": "Add to Home Screen",
-          "logo": "inadd_to_home_screenfo",
-          "color": "#636363",
-          "type": "internal",
-          "link": "#add-to-homescreen"
         }
       ]
     }
