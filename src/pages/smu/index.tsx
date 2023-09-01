@@ -5,13 +5,13 @@ import styled from 'styled-components';
 import AppLibrary from '../../screens/smu/components/widget/AppLibrary';
 import LibraryCapacities from '../../screens/smu/components/widget/LibraryCapacities';
 import TodaySummaryWidget from '../../screens/smu/components/widget/TodaySummary';
+import DefaultLayout from '../../shared/components/layouts/DefaultLayout';
 import {
   DESKTOP_WIDTH_SIZE_M,
   DESKTOP_WIDTH_SIZE_S,
   MOBILE_WIDTH_SIZE_L,
   MOBILE_WIDTH_SIZE_S,
 } from '../../shared/themes/size';
-import DefaultLayout from '../../shared/components/layouts/DefaultLayout';
 
 const ContentWrapper = styled.div`
   box-sizing: border-box;

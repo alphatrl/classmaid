@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import useWidgetSize from '../../../../../shared/hooks/useWidgetSize';
 import { CardTemplate } from '../styled';
 import AppGrid from './components/AppGrid';
 import AppLibraryModal from './components/AppLibraryModal';
-import useWidgetSize from '../../../../../shared/hooks/useWidgetSize';
 
 const Card = styled(CardTemplate)`
   position: relative;
