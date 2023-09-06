@@ -13,6 +13,7 @@ import styled from 'styled-components';
 import Icon from '../../../Icon';
 import MenuItem from '../../../modal/MenuItem';
 import { PopperHeader, PopperWrapper } from '../../../modal/styled';
+import AboutModal from './AboutModal';
 const Wrapper = styled.button`
   padding: 10px 12px;
   border-radius: 8px;
@@ -31,6 +32,7 @@ const Wrapper = styled.button`
 
 const MoreButton: React.FC = function () {
   const [isOpen, setIsOpen] = React.useState(false);
+  const [isAboutModalOpen, setIsAboutModalOpen] = React.useState(false);
 
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
@@ -48,6 +50,15 @@ const MoreButton: React.FC = function () {
     dismiss,
   ]);
 
+  const handleOpenAboutModal = () => {
+    console.log('hi');
+    setIsAboutModalOpen(true);
+  };
+
+  const handleCloseAboutModal = () => {
+    setIsAboutModalOpen(false);
+  };
+
   return (
     <>
       <Wrapper ref={refs.setReference} {...getReferenceProps()}>
@@ -59,9 +70,16 @@ const MoreButton: React.FC = function () {
           style={floatingStyles}
           {...getFloatingProps()}
         >
-          <PopperHeader>Settings</PopperHeader>
-          <MenuItem icon={'info'} label="About Classmaid" onClick={() => {}} />
+          <PopperHeader>More</PopperHeader>
+          <MenuItem
+            icon={'info'}
+            label="About Classmaid"
+            onClick={handleOpenAboutModal}
+          />
         </PopperWrapper>
+      )}
+      {isAboutModalOpen && (
+        <AboutModal isOpen={isAboutModalOpen} onClose={handleCloseAboutModal} />
       )}
     </>
   );

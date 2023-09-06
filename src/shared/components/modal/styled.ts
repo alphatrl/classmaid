@@ -4,14 +4,13 @@ export const PopperWrapper = styled.div`
   min-width: 250px;
   border-radius: 12px;
   padding: 12px;
-  background-color: ${(props) => `${props.theme.appColor[100]}56`};
-  backdrop-filter: blur(12px) saturate(86%);
+  background-color: ${(props) => `${props.theme.appColor[100]}`};
   box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.25);
-
-  z-index: 10;
+  z-index: 5;
 `;
 
 export const PopperHeader = styled.h1`
+  color: ${(props) => props.theme.textColor[10]};
   font-size: 1em;
   margin: 0;
   margin-bottom: 4px;
@@ -29,9 +28,11 @@ export const MenuItemWrapper = styled.button`
   background-color: unset;
   cursor: pointer;
   border-radius: 8px;
+  cursor: pointer;
+  color: ${(props) => props.theme.textColor[10]};
 
   :hover {
-    background-color: ${(props) => `${props.theme.primary[30]}`};
+    background-color: ${(props) => `${props.theme.appColor[90]}`};
   }
 `;
 

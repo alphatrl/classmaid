@@ -9,11 +9,11 @@ interface Props {
   onClick: () => void;
 }
 
-const MenuItem = function (props) {
+const MenuItem: React.FC<Props> = function (props) {
   const { icon, label, onClick } = props;
 
   return (
-    <MenuItemWrapper>
+    <MenuItemWrapper onClick={onClick}>
       <Icon name={icon} />
       <MenuItemLabel>{label}</MenuItemLabel>
     </MenuItemWrapper>
