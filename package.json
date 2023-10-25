@@ -39,7 +39,7 @@
     "firebase": "^9.15.0",
     "lodash": "^4.17.21",
     "moment-timezone": "^0.5.40",
-    "next": "^13.4.8",
+    "next": "^13.5.0",
     "react": "^18.2.0",
     "react-content-loader": "^6.2.0",
     "react-dom": "^18.2.0",
