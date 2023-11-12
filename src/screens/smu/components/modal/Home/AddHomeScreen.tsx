@@ -3,7 +3,7 @@ import React, { useMemo, useState } from 'react';
 import { useCallback } from 'react';
 import styled from 'styled-components';
 
-import { ModalTemplate } from '../components';
+import ModalTemplate from '../shared/ModalTemplate';
 import { ModalOverlay, Tab } from '../styled';
 
 const Wrapper = styled.div`

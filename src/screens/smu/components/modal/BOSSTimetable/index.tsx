@@ -5,9 +5,9 @@ import { useRouter } from 'next/router';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 
-import firebase from '../../../utils/firebase';
+import firebase from '../../../../../shared/utils/firebase';
 import { FilePicker } from '../../Utilities';
-import { ModalTemplate } from '../components';
+import ModalTemplate from '../shared/ModalTemplate';
 import { DisabledPrimaryBtn, PrimaryBtn } from '../styled';
 import { ModalOverlay } from '../styled';
 import { generateICal, parseMeetings } from './util';

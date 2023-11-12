@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import styled from 'styled-components';
 
-import { ModalTemplate } from '../components';
+import ModalTemplate from '../shared/ModalTemplate';
 import { ModalOverlay } from '../styled';
 
 const Wrapper = styled.div`
