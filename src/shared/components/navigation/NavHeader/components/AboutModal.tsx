@@ -39,7 +39,7 @@ const AboutModal: React.FC<Props> = function (props) {
   return (
     <Modal open={isOpen} onOpenChange={onClose}>
       <ModalContent>
-        <ModalTitle>About ClassMaid</ModalTitle>
+        <ModalTitle>About Classmaid</ModalTitle>
         <Wrapper>
           Providing students a quick one-click bookmarks to commonly used sites
           in schools. <br />

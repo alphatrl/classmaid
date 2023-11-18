@@ -77,6 +77,7 @@ const MoreButton: React.FC = function () {
           />
         </PopperWrapper>
       )}
+
       {isAboutModalOpen && (
         <AboutModal isOpen={isAboutModalOpen} onClose={handleCloseAboutModal} />
       )}
