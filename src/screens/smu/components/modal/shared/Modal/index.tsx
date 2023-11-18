@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { MOBILE_WIDTH_SIZE_L } from '../../../../../../shared/themes/size';
 import ModalPortal from '../ModalPortal';
 import CloseButton from './components/CloseButton';
+import useModal, { Options as ModalOptions } from './hooks/useModal';
+import { ModalContext } from './hooks/useModalContext';
 
 const OverlayWrapper = styled.div`
   position: fixed;
@@ -22,7 +24,7 @@ const OverlayWrapper = styled.div`
 const ModalWrapper = styled.div`
   width: 80%;
   max-width: 800px;
-  height: 80%;
+  // height: 80%;
   max-height: 800px;
   overflow: hidden;
   padding: 16px 0;
@@ -55,36 +57,17 @@ const HeaderWrapper = styled.div<{ showTitle: boolean }>`
   }
 `;
 
-interface Props {
-  title?: string;
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-const Modal: React.FC<React.PropsWithChildren<Props>> = function (props) {
-  const { title, isOpen, onClose, children } = props;
-
-  const handleModalClicked = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation();
-  };
-
-  if (!isOpen) {
-    return null;
-  }
+const Modal: React.FC<React.PropsWithChildren<ModalOptions>> = function (
+  props
+) {
+  const { children, ...options } = props;
+  const dialog = useModal(options);
 
   return (
-    <ModalPortal>
-      <OverlayWrapper onClick={onClose}>
-        <ModalWrapper onClick={handleModalClicked}>
-          <HeaderWrapper showTitle={title != null}>
-            {title != null && <h1>{title}</h1>}
-            <CloseButton onClose={onClose} />
-          </HeaderWrapper>
-          {children}
-        </ModalWrapper>
-      </OverlayWrapper>
-    </ModalPortal>
+    <ModalContext.Provider value={dialog}>{children}</ModalContext.Provider>
   );
 };
 
 export default Modal;
+export { default as ModalContent } from './components/ModalContent';
+export { default as ModalTrigger } from './components/ModalTrigger';
