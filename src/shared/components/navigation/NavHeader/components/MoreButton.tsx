@@ -51,7 +51,6 @@ const MoreButton: React.FC = function () {
   ]);
 
   const handleOpenAboutModal = () => {
-    console.log('hi');
     setIsAboutModalOpen(true);
   };
 

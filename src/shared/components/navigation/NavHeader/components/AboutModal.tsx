@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Modal from '../../../../../screens/smu/components/modal/shared/Modal';
+import Modal, {
+  ModalContent,
+} from '../../../../../screens/smu/components/modal/shared/Modal';
 
 interface Props {
   isOpen: boolean;
@@ -34,25 +36,27 @@ const AboutModal: React.FC<Props> = function (props) {
   const { isOpen, onClose } = props;
 
   return (
-    <Modal title="ClassMaid" isOpen={isOpen} onClose={onClose}>
-      <Wrapper>
-        Providing students a quick one-click bookmarks to commonly used sites in
-        schools. <br />
-        Designed by students for students This site is non-affiliated with any
-        MOE-related institutions.
-        <SubtitleHeader>Contribute</SubtitleHeader>
-        Want to add more sites or offer suggestions?
-        <ListWrapper>
-          <li>
-            {'Current or incoming student? Make a suggestion '}
-            <a href="https://bit.ly/30SRyIo">here</a>
-          </li>
-          <li>
-            {'Developer? Add an issue or make a pull request on '}
-            <a href="https://github.com/foldaway/smu-shortcuts">Github</a>
-          </li>
-        </ListWrapper>
-      </Wrapper>
+    <Modal open={isOpen} onOpenChange={onClose}>
+      <ModalContent>
+        <Wrapper>
+          Providing students a quick one-click bookmarks to commonly used sites
+          in schools. <br />
+          Designed by students for students This site is non-affiliated with any
+          institutions in Singapore.
+          <SubtitleHeader>Contribute</SubtitleHeader>
+          Want to add more sites or offer suggestions?
+          <ListWrapper>
+            <li>
+              {'Current or incoming student? Make a suggestion '}
+              <a href="https://bit.ly/30SRyIo">here</a>
+            </li>
+            <li>
+              {'Developer? Add an issue or make a pull request on '}
+              <a href="https://github.com/foldaway/smu-shortcuts">Github</a>
+            </li>
+          </ListWrapper>
+        </Wrapper>
+      </ModalContent>
     </Modal>
   );
 };

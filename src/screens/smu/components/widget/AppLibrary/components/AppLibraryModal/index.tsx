@@ -1,33 +1,60 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 
-import Modal from '../../../../modal/shared/Modal';
+import Icon from '../../../../../../../shared/components/Icon';
+import Modal, {
+  ModalContent,
+  ModalTitle,
+  ModalTrigger,
+} from '../../../../modal/shared/Modal';
+import { GridImage, GridItemMore, GridText } from '../styled';
 import Section from './components/Section';
 
 const Wrapper = styled.div`
-  height: calc(100% - 56px);
-  overflow-y: scroll;
   padding: 0 16px;
 `;
 
 interface Props {
   apps: App.AppLibrary.LibraryItem[];
-  isOpen: boolean;
-  onClose: () => void;
 }
 
 const AppLibraryModal: React.FC<Props> = function (props) {
-  const { apps, ...modalProps } = props;
+  const { apps } = props;
+  const theme = useTheme();
 
   return (
-    <Modal title="App Library" {...modalProps}>
-      <Wrapper>
-        {apps.map((library) => {
-          return <Section key={library.uid} library={library} />;
-        })}
-      </Wrapper>
+    <Modal>
+      <ModalTrigger asChild>
+        <GridItemMore role="button">
+          <GridImage backgroundColor={theme.appColor[50]}>
+            <Icon name="apps" />
+          </GridImage>
+          <GridText>More Apps</GridText>
+        </GridItemMore>
+      </ModalTrigger>
+
+      <ModalContent>
+        <ModalTitle>
+          <h2>App Library</h2>
+        </ModalTitle>
+        <Wrapper>
+          {apps.map((library) => {
+            return <Section key={library.uid} library={library} />;
+          })}
+        </Wrapper>
+      </ModalContent>
     </Modal>
   );
+
+  // return (
+  //   <Modal title="App Library" {...modalProps}>
+  //     <Wrapper>
+  //       {apps.map((library) => {
+  //         return <Section key={library.uid} library={library} />;
+  //       })}
+  //     </Wrapper>
+  //   </Modal>
+  // );
 };
 
 export default AppLibraryModal;

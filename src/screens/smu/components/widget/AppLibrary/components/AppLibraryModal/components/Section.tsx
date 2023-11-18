@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Icon from '../../../../../../../../shared/components/Icon';
 import {
   DESKTOP_WIDTH_SIZE_M,
   DESKTOP_WIDTH_SIZE_S,
   MOBILE_WIDTH_SIZE_L,
   MOBILE_WIDTH_SIZE_S,
 } from '../../../../../../../../shared/themes/size';
-import Icon from '../../../../../../../../shared/components/Icon';
 import { GridImage, GridItem, GridText } from '../../styled';
 
 const Wrapper = styled.div`
