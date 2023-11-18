@@ -43,16 +43,6 @@ const AppLibraryModal: React.FC<Props> = function (props) {
       </ModalContent>
     </Modal>
   );
-
-  // return (
-  //   <Modal title="App Library" {...modalProps}>
-  //     <Wrapper>
-  //       {apps.map((library) => {
-  //         return <Section key={library.uid} library={library} />;
-  //       })}
-  //     </Wrapper>
-  //   </Modal>
-  // );
 };
 
 export default AppLibraryModal;
