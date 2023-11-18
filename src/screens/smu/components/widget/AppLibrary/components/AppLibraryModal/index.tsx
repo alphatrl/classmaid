@@ -34,9 +34,7 @@ const AppLibraryModal: React.FC<Props> = function (props) {
       </ModalTrigger>
 
       <ModalContent>
-        <ModalTitle>
-          <h2>App Library</h2>
-        </ModalTitle>
+        <ModalTitle>App Library</ModalTitle>
         <Wrapper>
           {apps.map((library) => {
             return <Section key={library.uid} library={library} />;

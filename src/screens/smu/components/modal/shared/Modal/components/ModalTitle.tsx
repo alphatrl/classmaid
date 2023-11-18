@@ -15,7 +15,7 @@ const HeaderWrapper = styled.div<{ showTitle: boolean }>`
     props.showTitle ? 'space-between' : 'flex-end'};
 
   h2 {
-    font-size: 1.35em;
+    font-size: 1.5em;
     margin: 0;
     text-transform: capitalize;
     color: ${(props) => props.theme.textColor[10]};

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Modal, {
   ModalContent,
+  ModalTitle,
 } from '../../../../../screens/smu/components/modal/shared/Modal';
 
 interface Props {
@@ -38,6 +39,7 @@ const AboutModal: React.FC<Props> = function (props) {
   return (
     <Modal open={isOpen} onOpenChange={onClose}>
       <ModalContent>
+        <ModalTitle>About ClassMaid</ModalTitle>
         <Wrapper>
           Providing students a quick one-click bookmarks to commonly used sites
           in schools. <br />
