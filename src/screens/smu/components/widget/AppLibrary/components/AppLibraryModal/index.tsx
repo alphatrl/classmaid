@@ -10,9 +10,7 @@ import Modal, {
 import { GridImage, GridItemMore, GridText } from '../styled';
 import Section from './components/Section';
 
-const Wrapper = styled.div`
-  padding: 0 16px;
-`;
+const Wrapper = styled.div``;
 
 interface Props {
   apps: App.AppLibrary.LibraryItem[];

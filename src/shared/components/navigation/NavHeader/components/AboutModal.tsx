@@ -12,7 +12,6 @@ interface Props {
 }
 
 const Wrapper = styled.div`
-  padding: 0 1em;
   color: ${(props) => props.theme.textColor[10]};
   line-height: 1.5em;
   font-weight: 400;

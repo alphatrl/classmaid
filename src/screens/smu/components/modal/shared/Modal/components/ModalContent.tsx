@@ -20,7 +20,7 @@ const ModalContentWrapper = styled.div`
   width: 80%;
   max-width: 800px;
   max-height: 800px;
-  padding: 16px 0;
+  padding: 1em 1.5em;
   overflow: scroll;
   border-radius: 24px;
   box-sizing: border-box;

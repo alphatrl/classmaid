@@ -7,7 +7,7 @@ import { useModalContext } from '../hooks/useModalContext';
 
 const HeaderWrapper = styled.div<{ showTitle: boolean }>`
   min-height: 48px;
-  padding: 4px 16px;
+  padding: 4px 0px;
   display: flex;
   flex-direction: row;
   align-items: center;
