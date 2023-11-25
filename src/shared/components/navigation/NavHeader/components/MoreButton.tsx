@@ -17,6 +17,7 @@ import MenuItem from '../../../modal/MenuItem';
 import { PopperHeader, PopperWrapper } from '../../../modal/styled';
 import AboutModal from './AboutModal';
 import AddToHomeModal from './AddToHomeModal';
+
 const Wrapper = styled.button`
   padding: 10px 12px;
   border-radius: 8px;
