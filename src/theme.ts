@@ -36,10 +36,6 @@ export const LIGHT_THEME: DefaultTheme = {
     background: '#FFFFFF',
   },
 
-  tooltips: {
-    background: '#313131',
-    text: '#EEEEEE',
-  },
   appColor: {
     0: '#000000',
     10: '#191919',

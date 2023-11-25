@@ -38,11 +38,6 @@ declare module 'styled-components' {
       background: string;
     };
 
-    tooltips: {
-      background: string;
-      text: string;
-    };
-
     appColor: {
       0: string;
       10: string;
