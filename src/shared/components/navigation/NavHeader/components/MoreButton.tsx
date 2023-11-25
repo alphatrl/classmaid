@@ -10,10 +10,13 @@ import {
 import React from 'react';
 import styled from 'styled-components';
 
+import useMediaQuery from '../../../../hooks/useMediaQuery';
+import useMobileDevice from '../../../../hooks/useMobileDevice';
 import Icon from '../../../Icon';
 import MenuItem from '../../../modal/MenuItem';
 import { PopperHeader, PopperWrapper } from '../../../modal/styled';
 import AboutModal from './AboutModal';
+import AddToHomeModal from './AddToHomeModal';
 const Wrapper = styled.button`
   padding: 10px 12px;
   border-radius: 8px;
@@ -33,6 +36,11 @@ const Wrapper = styled.button`
 const MoreButton: React.FC = function () {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isAboutModalOpen, setIsAboutModalOpen] = React.useState(false);
+  const [isAddToHomeOpen, setIsAddToHomeOpen] = React.useState(false);
+
+  const { isMobile } = useMobileDevice();
+  const isStandaloneWindow = useMediaQuery('(display-mode: standalone)');
+  const shouldShowAddToHomeOptions = isMobile && !isStandaloneWindow;
 
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
@@ -58,6 +66,14 @@ const MoreButton: React.FC = function () {
     setIsAboutModalOpen(false);
   };
 
+  const handleOpenAddToHomeScreen = () => {
+    setIsAddToHomeOpen(true);
+  };
+
+  const handleCloseAddToHomeScreen = () => {
+    setIsAddToHomeOpen(false);
+  };
+
   return (
     <>
       <Wrapper ref={refs.setReference} {...getReferenceProps()}>
@@ -75,11 +91,25 @@ const MoreButton: React.FC = function () {
             label="About Classmaid"
             onClick={handleOpenAboutModal}
           />
+          {shouldShowAddToHomeOptions && (
+            <MenuItem
+              icon={'add_to_home_screen'}
+              label="Add to Home Screen"
+              onClick={handleOpenAddToHomeScreen}
+            />
+          )}
         </PopperWrapper>
       )}
 
       {isAboutModalOpen && (
         <AboutModal isOpen={isAboutModalOpen} onClose={handleCloseAboutModal} />
+      )}
+
+      {isAddToHomeOpen && (
+        <AddToHomeModal
+          isOpen={isAddToHomeOpen}
+          onClose={handleCloseAddToHomeScreen}
+        />
       )}
     </>
   );
