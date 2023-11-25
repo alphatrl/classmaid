@@ -1,13 +1,14 @@
 import React from 'react';
-import styled, { useTheme } from 'styled-components';
+import styled from 'styled-components';
 
+import Icon from '../../../../../../shared/components/Icon';
 import {
   DESKTOP_WIDTH_SIZE_M,
   DESKTOP_WIDTH_SIZE_S,
   MOBILE_WIDTH_SIZE_S,
 } from '../../../../../../shared/themes/size';
-import Icon from '../../../../../../shared/components/Icon';
-import { GridImage, GridItem, GridItemMore, GridText } from './styled';
+import AppLibraryModal from './AppLibraryModal';
+import { GridImage, GridItem, GridText } from './styled';
 
 const Wrapper = styled.div`
   display: grid;
@@ -33,13 +34,12 @@ const Wrapper = styled.div`
 `;
 
 interface Props {
+  allApps: App.AppLibrary.LibraryItem[];
   homeApps: App.AppLibrary.LibraryItem;
-  onOpenDrawer: () => void;
 }
 
 const AppGrid: React.FC<Props> = function (props) {
-  const { homeApps, onOpenDrawer } = props;
-  const theme = useTheme();
+  const { allApps, homeApps } = props;
 
   const { shortcuts } = homeApps;
 
@@ -56,12 +56,7 @@ const AppGrid: React.FC<Props> = function (props) {
         );
       })}
 
-      <GridItemMore role="button" onClick={onOpenDrawer}>
-        <GridImage backgroundColor={theme.primary[50]}>
-          <Icon name="apps" />
-        </GridImage>
-        <GridText>More Apps</GridText>
-      </GridItemMore>
+      <AppLibraryModal apps={allApps} />
     </Wrapper>
   );
 };

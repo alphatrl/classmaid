@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import useWidgetSize from '../../../../../shared/hooks/useWidgetSize';
 import { CardTemplate } from '../styled';
 import Header from './components/Header';
 import LibraryOccupancySection from './components/LibraryOccupancySection';
-import useWidgetSize from '../../../../../shared/hooks/useWidgetSize';
 
 const Card = styled(CardTemplate)`
   padding: 0;
