@@ -56,7 +56,7 @@ The data used by SMU-Shortcuts is stored in [smu-scraper](https://github.com/fol
 
 ## 🙋 Contribute
 
-If you found a bug, or if you have an idea for this app, please [file an issue here](https://github.com/foldaway/smu-shortcuts/issues). We appreaciate your feedbacks and inputs.
+If you found a bug, or if you have an idea for this app, please [file an issue here](https://github.com/alphatrl/classmaid/issues). We appreaciate your feedbacks and inputs.
 
 ## 📜 License
 

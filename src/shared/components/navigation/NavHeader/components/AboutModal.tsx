@@ -53,7 +53,7 @@ const AboutModal: React.FC<Props> = function (props) {
             </li>
             <li>
               {'Developer? Add an issue or make a pull request on '}
-              <a href="https://github.com/foldaway/smu-shortcuts">Github</a>
+              <a href="https://github.com/alphatrl/classmaid">Github</a>
             </li>
           </ListWrapper>
         </Wrapper>
