@@ -1,11 +1,11 @@
 import axios from 'axios';
 import React from 'react';
 
-import { IMPORTANT_DATES_URL, SCHOOL_TERM_URL } from '../constants';
 import {
   getCurrentEvent,
   sortEventsByDate,
 } from '../../../shared/contexts/utils';
+import { IMPORTANT_DATES_URL, SCHOOL_TERM_URL } from '../constants';
 
 interface Props {
   children?: React.ReactNode;
@@ -16,7 +16,6 @@ interface ContextProps {
   calendarEvents: App.Calendar.CalendarAppEvents | null;
   currentEvent: App.Calendar.CurrentEvent | null;
   appLibrary: App.AppLibrary.LibraryItem[];
-  isMobile: boolean;
 }
 
 const DataContext = React.createContext<ContextProps>({
@@ -24,7 +23,6 @@ const DataContext = React.createContext<ContextProps>({
   schoolTerms: [],
   currentEvent: null,
   calendarEvents: {},
-  isMobile: false,
 });
 
 export const DataWrapper: React.FC<Props> = (props) => {
@@ -38,22 +36,11 @@ export const DataWrapper: React.FC<Props> = (props) => {
   const [importantDates, setImportantDates] = React.useState<
     App.Calendar.ImportantDate[]
   >([]);
-  const [isMobile, setIsMobile] = React.useState(false);
 
   React.useEffect(() => {
     getSchoolTerm();
     getImportantDates();
     getAppLibrary();
-  }, []);
-
-  React.useEffect(() => {
-    const userAgent = window.navigator.userAgent.toLowerCase();
-    // check if safari has touchpoint
-    setIsMobile(
-      /iphone|ipad|ipod/.test(userAgent) || // iOS or older iPadOS
-        (/mac/.test(userAgent) && navigator.maxTouchPoints > 1) || // >= iPadOS 13
-        /android/i.test(userAgent) // Android
-    );
   }, []);
 
   /** Get school terms */
@@ -109,9 +96,8 @@ export const DataWrapper: React.FC<Props> = (props) => {
       schoolTerms,
       calendarEvents,
       currentEvent,
-      isMobile,
     }),
-    [appLibrary, calendarEvents, currentEvent, isMobile, schoolTerms]
+    [appLibrary, calendarEvents, currentEvent, schoolTerms]
   );
 
   return (
