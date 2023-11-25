@@ -3,10 +3,6 @@ import { ThemeProvider as ThemeProviderDefault } from 'styled-components';
 
 import { DARK_THEME, LIGHT_THEME } from '../../theme';
 
-interface Props {
-  children?: React.ReactNode;
-}
-
 interface ThemeContextProps {
   theme: string;
   toggleTheme: () => void;
@@ -21,7 +17,9 @@ const ThemeProvider = React.createContext<ThemeContextProps>({
   componentMounted: false,
 });
 
-export const ThemeContext: React.FC<Props> = function (props) {
+export const ThemeContext: React.FC<React.PropsWithChildren> = function (
+  props
+) {
   const { children } = props;
   const [userPreferences, setUserPreferences] = React.useState('light');
   const [componentMounted, setComponentMounted] = React.useState(false);

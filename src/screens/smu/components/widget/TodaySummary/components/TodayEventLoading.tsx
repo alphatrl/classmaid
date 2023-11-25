@@ -8,8 +8,8 @@ const TodayEventLoading: React.FC = function () {
     <ContentLoader
       viewBox="0 0 230 64"
       style={{ width: '100%' }}
-      backgroundColor={theme.text300}
-      foregroundColor={theme.text600}
+      backgroundColor={theme.textColor[30]}
+      foregroundColor={theme.textColor[30]}
     >
       <rect width="150" height="30" />
       <rect width="200" height="30" y="34" />

@@ -2,7 +2,7 @@ import parse from 'csv-parse/lib/sync';
 import { capitalize, isEqual, uniqBy } from 'lodash';
 import moment from 'moment';
 import { useRouter } from 'next/router';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import firebase from '../../../../../shared/utils/firebase';
@@ -41,14 +41,14 @@ const Wrapper = styled.div`
     box-sizing: border-box;
     min-height: 50px;
     padding: 8px 16px;
-    border: 2px solid ${(props) => props.theme.text300};
+    border: 2px solid ${(props) => props.theme.textColor[30]};
     margin-bottom: 16px;
 
     legend {
       float: left;
       font-size: 12px;
       font-weight: 600;
-      color: ${(props) => props.theme.text600};
+      color: ${(props) => props.theme.textColor[40]};
     }
 
     .content {
@@ -57,7 +57,7 @@ const Wrapper = styled.div`
       justify-content: flex-start;
 
       label {
-        color: ${(props) => props.theme.text900};
+        color: ${(props) => props.theme.textColor[50]};
         margin-top: 4px;
         padding-right: 1rem;
       }
@@ -69,7 +69,7 @@ const Wrapper = styled.div`
     margin-top: 8px;
     font-size: 12px;
     font-weight: 600;
-    color: ${(props) => props.theme.textError};
+    color: ${(props) => props.theme.error};
   }
 `;
 
@@ -86,7 +86,7 @@ const HelperText = styled.div`
   margin-top: 8px;
   font-size: 12px;
   font-weight: 600;
-  color: ${(props) => props.theme.text600};
+  color: ${(props) => props.theme.textColor[50]};
 
   p {
     margin: 0;
@@ -156,16 +156,16 @@ function convert(data: string[][], allowedModules: string[] = []) {
 
 const BOSSTimetable: React.FC = () => {
   const router = useRouter();
-  const [fileContents, setFileContents] = useState<string | null>(null);
-  const [errorFile, setErrorFile] = useState(false);
-  const [allowedModules, setAllowedModules] = useState<string[]>([]);
+  const [fileContents, setFileContents] = React.useState<string | null>(null);
+  const [errorFile, setErrorFile] = React.useState(false);
+  const [allowedModules, setAllowedModules] = React.useState<string[]>([]);
 
   const closeModal = () => {
     router.replace('/');
   };
 
   // Raw CSV contents
-  const csvContents = useMemo<string[][] | null>(() => {
+  const csvContents = React.useMemo<string[][] | null>(() => {
     if (fileContents === null) {
       firebase
         ?.analytics()
@@ -184,7 +184,7 @@ const BOSSTimetable: React.FC = () => {
     return parsedFile;
   }, [fileContents]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (csvContents === null || allowedModules.length > 0) {
       return;
     }
@@ -194,14 +194,14 @@ const BOSSTimetable: React.FC = () => {
   }, [csvContents, allowedModules]);
 
   // Generated ICS data, if available
-  const generatedData = useMemo(() => {
+  const generatedData = React.useMemo(() => {
     if (csvContents === null) {
       return null;
     }
     return convert(csvContents, allowedModules);
   }, [csvContents, allowedModules]);
 
-  const iCalBlob = useMemo(() => {
+  const iCalBlob = React.useMemo(() => {
     if (generatedData === null) {
       return null;
     }
@@ -210,7 +210,14 @@ const BOSSTimetable: React.FC = () => {
     });
   }, [generatedData]);
 
-  const handleFile = useCallback((files: FileList) => {
+  const hrefDownload = React.useMemo(() => {
+    if (iCalBlob == null) {
+      return '/';
+    }
+    return window.URL.createObjectURL(iCalBlob);
+  }, [iCalBlob]);
+
+  const handleFile = React.useCallback((files: FileList) => {
     setErrorFile(false);
     const file = files[0];
     const reader = new FileReader();
@@ -229,7 +236,7 @@ const BOSSTimetable: React.FC = () => {
     };
   }, []);
 
-  const handleAllowedModuleToggled = useCallback(
+  const handleAllowedModuleToggled = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const { checked, value } = e.target;
 
@@ -242,7 +249,7 @@ const BOSSTimetable: React.FC = () => {
     []
   );
 
-  const handleICalTrack = useCallback(() => {
+  const handleICalTrack = React.useCallback(() => {
     firebase
       ?.analytics()
       .logEvent('file_download', { description: 'BOSS Timetable Export' });
@@ -288,7 +295,7 @@ const BOSSTimetable: React.FC = () => {
         {csvContents !== null ? (
           <CustomPrimaryBtn
             onClick={handleICalTrack}
-            href={window.URL.createObjectURL(iCalBlob)}
+            href={hrefDownload}
             download="boss_timetable_export.ics"
             role="button"
           >

@@ -2,12 +2,12 @@ import moment from 'moment-timezone';
 import React from 'react';
 import styled from 'styled-components';
 
+import useWidgetSize from '../../../../../shared/hooks/useWidgetSize';
 import { useDataContext } from '../../../contexts/DataContext';
 import { CardTemplate } from '../styled';
 import Calendar from './components/Calendar';
 import TodayEvent from './components/TodayEvent';
 import TodaysSummary from './components/TodaysSummary';
-import useWidgetSize from '../../../../../shared/hooks/useWidgetSize';
 
 const Card = styled(CardTemplate)`
   display: flex;
