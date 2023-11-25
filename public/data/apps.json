@@ -83,14 +83,6 @@
           "link": "https://afterclass.io"
         },
         {
-          "id": "boss_export",
-          "title": "BOSS Timetable Export",
-          "logo": "file_download",
-          "color": "#636363",
-          "type": "internal",
-          "link": "#boss-export"
-        },
-        {
           "id": "course_offerings",
           "title": "Course Offerings",
           "logo": "collections_bookmark",
@@ -172,15 +164,6 @@
           "color": "#131977",
           "type": "url",
           "link": "https://www.noteslah.com"
-        },
-        {
-          "id": "school_guide",
-          "title": "School Guides",
-          "logo": "collections_bookmark",
-          "color": "#009DD9",
-          "type": "internal",
-          "link": "#school-guide",
-          "description": "The SMU survival guide"
         }
       ]
     },
