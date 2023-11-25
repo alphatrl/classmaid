@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import styled from 'styled-components';
 
-import firebase from '../../../../../shared/utils/firebase';
 import { FilePicker } from '../../Utilities';
 import ModalTemplate from '../shared/ModalTemplate';
 import { DisabledPrimaryBtn, PrimaryBtn } from '../styled';
@@ -167,10 +166,6 @@ const BOSSTimetable: React.FC = () => {
   // Raw CSV contents
   const csvContents = React.useMemo<string[][] | null>(() => {
     if (fileContents === null) {
-      firebase
-        ?.analytics()
-        .logEvent('exception', { description: 'Invalid CSV Contents' });
-
       return null;
     }
 
@@ -250,9 +245,9 @@ const BOSSTimetable: React.FC = () => {
   );
 
   const handleICalTrack = React.useCallback(() => {
-    firebase
-      ?.analytics()
-      .logEvent('file_download', { description: 'BOSS Timetable Export' });
+    // firebase
+    //   ?.analytics()
+    //   .logEvent('file_download', { description: 'BOSS Timetable Export' });
   }, []);
 
   return (
