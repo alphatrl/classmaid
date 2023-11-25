@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { WIDGET_L_WIDTH_SIZE_S } from '../../../../../shared/themes/size';
 import { CardTemplate } from '../styled';
-import TodayEvent from '../Widget/TodayCard/components/TodayEvent';
+import TodayEvent from '../TodaySummary/components/TodayEvent';
 import CalendarRow from './components/CalendarRow';
 
 const Wrapper = styled(CardTemplate)``;
@@ -17,7 +18,7 @@ const CalendarInformation = styled.div`
 
 const TodayCard: React.FC = function () {
   return (
-    <Wrapper>
+    <Wrapper width={WIDGET_L_WIDTH_SIZE_S} height={WIDGET_L_WIDTH_SIZE_S}>
       <TodayEvent />
       <CalendarInformation>
         <h1>Calendar</h1>

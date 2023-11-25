@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 
   font-weight: 500;
   font-size: 1.1em;
-  color: ${(props) => props.theme.text900};
+  color: ${(props) => props.theme.textColor[50]};
 `;
 
 const Color = styled.div<{ color?: string }>`

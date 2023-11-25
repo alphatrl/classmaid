@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import styled from 'styled-components';
 
-import Icon from '../../shared/components/Icon';
+import Icon from '../../../../shared/components/Icon';
 
 interface Props {
   handleFiles: (files: FileList) => void;
@@ -25,7 +25,7 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     font-size: 16px;
-    color: ${(props) => props.theme.text900};
+    color: ${(props) => props.theme.textColor[50]};
     overflow: hidden;
     text-overflow: ellipsis;
 
@@ -35,7 +35,7 @@ const Wrapper = styled.div`
   }
 
   .placeholder {
-    color: ${(props) => props.theme.text600};
+    color: ${(props) => props.theme.textColor[30]};
   }
 
   .material-icons-round {

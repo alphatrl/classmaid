@@ -7,10 +7,6 @@ import {
 } from '../../../shared/contexts/utils';
 import { IMPORTANT_DATES_URL, SCHOOL_TERM_URL } from '../constants';
 
-interface Props {
-  children?: React.ReactNode;
-}
-
 interface ContextProps {
   schoolTerms: App.Calendar.SchoolTerm[];
   calendarEvents: App.Calendar.CalendarAppEvents | null;
@@ -25,7 +21,7 @@ const DataContext = React.createContext<ContextProps>({
   calendarEvents: {},
 });
 
-export const DataWrapper: React.FC<Props> = (props) => {
+export const DataWrapper: React.FC<React.PropsWithChildren> = (props) => {
   const { children } = props;
   const [appLibrary, setAppLibrary] = React.useState<
     App.AppLibrary.LibraryItem[]

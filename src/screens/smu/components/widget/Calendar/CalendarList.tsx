@@ -2,6 +2,7 @@ import moment from 'moment-timezone';
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
 
+import { WIDGET_L_WIDTH_SIZE_L } from '../../../../../shared/themes/size';
 import { useDataContext } from '../../../contexts/DataContext';
 import { CardTemplate } from '../styled';
 import EventSection from './components/EventsSection';
@@ -37,7 +38,7 @@ const CalendarList: React.FC = () => {
   }, [calendarEvents, todayMidnight]);
 
   return (
-    <Wrapper>
+    <Wrapper width={WIDGET_L_WIDTH_SIZE_L} height={WIDGET_L_WIDTH_SIZE_L}>
       <EventSection title="Today" dates={[`${todayMidnight.unix()}`]} />
       <EventSection title="Upcoming" dates={futureEventsKeys} />
     </Wrapper>

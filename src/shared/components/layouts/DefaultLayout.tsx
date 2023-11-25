@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { useThemeProvider } from '../../contexts/ThemeContext';
 import NavHeader from '../navigation/NavHeader';
 import SEO from '../SEO';
-import { useThemeProvider } from '../../contexts/ThemeContext';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -25,10 +25,11 @@ const Wrapper = styled.div`
 
 interface Props {
   title?: string;
-  children?: React.ReactNode;
 }
 
-const DefaultLayout: React.FC<Props> = function (props) {
+const DefaultLayout: React.FC<React.PropsWithChildren<Props>> = function (
+  props
+) {
   const { title = 'Classmaid', children } = props;
   const { componentMounted } = useThemeProvider();
 

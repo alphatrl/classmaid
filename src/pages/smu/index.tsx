@@ -1,4 +1,4 @@
-import type { GetServerSideProps } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -53,7 +53,7 @@ interface AppJson {
   result: App.AppLibrary.LibraryItem[];
 }
 
-export const Home: React.FC<ServerSideProps> = function (props) {
+export const Home: NextPage<ServerSideProps> = function (props) {
   const { appLibrary } = props;
 
   return (

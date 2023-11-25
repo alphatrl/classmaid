@@ -21,7 +21,7 @@ const Wrapper = styled.div`
     padding-bottom: 4px;
     font-size: 1.2em;
     font-weight: 700;
-    color: ${(props) => props.theme.text900};
+    color: ${(props) => props.theme.textColor[50]};
     margin-bottom: 12px;
   }
 `;
@@ -30,7 +30,7 @@ const SubTitle = styled.h2`
   margin: 0;
   font-size: 1.05em;
   font-weight: 600;
-  color: ${(props) => props.theme.text600};
+  color: ${(props) => props.theme.textColor[30]};
 `;
 
 const CalendarRow = styled.div`
@@ -64,7 +64,7 @@ const DailyWrapper = styled.div`
 `;
 
 const NoEvents = styled.p`
-  color: ${(props) => props.theme.text600};
+  color: ${(props) => props.theme.textColor[40]};
   font-weight: 500;
   font-size: 0.85em;
   margin: 0;
