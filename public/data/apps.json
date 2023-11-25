@@ -172,15 +172,6 @@
           "color": "#131977",
           "type": "url",
           "link": "https://www.noteslah.com"
-        },
-        {
-          "id": "school_guide",
-          "title": "School Guides",
-          "logo": "collections_bookmark",
-          "color": "#009DD9",
-          "type": "internal",
-          "link": "#school-guide",
-          "description": "The SMU survival guide"
         }
       ]
     },
