@@ -31,6 +31,7 @@ const ContentWrapper = styled.div`
   @media screen and (max-width: ${MOBILE_WIDTH_SIZE_L}) {
     display: flex;
     flex-direction: column;
+    gap: 0;
   }
 `;
 
@@ -69,7 +70,8 @@ const Message = styled.p`
   }
 
   @media screen and (max-width: ${MOBILE_WIDTH_SIZE_L}) {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 `;
 
@@ -92,7 +94,8 @@ export const ClassMaidHome: NextPage = function () {
               <a href="https://classmaid.sg">Classmaid.sg</a>!
             </Message>
             <Message>
-              Click the link if you are not redirected immediately.
+              You will be redirected in 5 seconds. Click the link if you are not
+              redirected immediately.
             </Message>
           </CardTemplate>
         </MessageWrapper>
