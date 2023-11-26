@@ -11,11 +11,9 @@ interface ContextProps {
   schoolTerms: App.Calendar.SchoolTerm[];
   calendarEvents: App.Calendar.CalendarAppEvents | null;
   currentEvent: App.Calendar.CurrentEvent | null;
-  appLibrary: App.AppLibrary.LibraryItem[];
 }
 
 const DataContext = React.createContext<ContextProps>({
-  appLibrary: [],
   schoolTerms: [],
   currentEvent: null,
   calendarEvents: {},
@@ -23,9 +21,7 @@ const DataContext = React.createContext<ContextProps>({
 
 export const DataWrapper: React.FC<React.PropsWithChildren> = (props) => {
   const { children } = props;
-  const [appLibrary, setAppLibrary] = React.useState<
-    App.AppLibrary.LibraryItem[]
-  >([]);
+
   const [schoolTerms, setSchoolTerms] = React.useState<
     App.Calendar.SchoolTerm[]
   >([]);
@@ -36,7 +32,6 @@ export const DataWrapper: React.FC<React.PropsWithChildren> = (props) => {
   React.useEffect(() => {
     getSchoolTerm();
     getImportantDates();
-    getAppLibrary();
   }, []);
 
   /** Get school terms */
@@ -61,17 +56,6 @@ export const DataWrapper: React.FC<React.PropsWithChildren> = (props) => {
         console.error('important dates:', error);
       });
 
-  /** Get app library */
-  const getAppLibrary = async () =>
-    axios('/data/apps.json')
-      .then((response) => {
-        const results: App.AppLibrary.LibraryItem[] = response.data.result;
-        setAppLibrary(results);
-      })
-      .catch((error) => {
-        console.error('app library', error);
-      });
-
   /** Get today details */
   const currentEvent: App.Calendar.CurrentEvent | null = React.useMemo(() => {
     return getCurrentEvent(schoolTerms);
@@ -88,12 +72,11 @@ export const DataWrapper: React.FC<React.PropsWithChildren> = (props) => {
 
   const sharedState = React.useMemo(
     () => ({
-      appLibrary,
       schoolTerms,
       calendarEvents,
       currentEvent,
     }),
-    [appLibrary, calendarEvents, currentEvent, schoolTerms]
+    [calendarEvents, currentEvent, schoolTerms]
   );
 
   return (
