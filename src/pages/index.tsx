@@ -80,8 +80,6 @@ export const ClassMaidHome: NextPage = function () {
   const widgetSize = useWidgetSize('large');
   const redirectUrl = `${process.env.CLASSMAID_URL ?? 'http://localhost:3000'}`;
 
-  console.log(redirectUrl);
-
   React.useEffect(() => {
     const redirect = setTimeout(() => {
       router.push(redirectUrl);
