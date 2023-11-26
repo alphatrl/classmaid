@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import useWidgetSize from '../../../../../shared/hooks/useWidgetSize';
+import { APPS_LIBRARY } from '../../../../../sources/smu/appsLibrary';
 import { CardTemplate } from '../styled';
 import AppGrid from './components/AppGrid';
 
@@ -19,13 +20,8 @@ const Card = styled(CardTemplate)`
   }
 `;
 
-interface Props {
-  apps: App.AppLibrary.LibraryItem[];
-}
-
-const AppLibrary: React.FC<Props> = function (props) {
-  const { apps } = props;
-
+const AppLibrary: React.FC = function () {
+  const apps = APPS_LIBRARY;
   const widgetSize = useWidgetSize('large');
   const schoolApps = apps[0];
 
