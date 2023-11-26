@@ -1,6 +1,6 @@
 {
-  "name": "smu-shortcut",
-  "version": "3.0.4",
+  "name": "classmaid",
+  "version": "4.0.0",
   "private": true,
   "main": "index.tsx",
   "scripts": {
