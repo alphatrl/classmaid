@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -76,7 +76,19 @@ const Message = styled.p`
 `;
 
 export const ClassMaidHome: NextPage = function () {
+  const router = useRouter();
   const widgetSize = useWidgetSize('large');
+  const redirectUrl = `${process.env.CLASSMAID_URL ?? 'http://localhost:3000'}`;
+
+  console.log(redirectUrl);
+
+  React.useEffect(() => {
+    const redirect = setTimeout(() => {
+      router.push(redirectUrl);
+    }, 5000);
+
+    return () => clearTimeout(redirect);
+  }, [redirectUrl, router]);
 
   return (
     <MainWrapper>
@@ -91,7 +103,7 @@ export const ClassMaidHome: NextPage = function () {
               {
                 "Don't worry, everything you loved about SMU Shortcuts can be found in "
               }
-              <a href="https://classmaid.sg">Classmaid.sg</a>!
+              <a href={redirectUrl}>Classmaid.sg</a>!
             </Message>
             <Message>
               You will be redirected in 5 seconds. Click the link if you are not
