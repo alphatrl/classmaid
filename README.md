@@ -1,11 +1,11 @@
 <p align="center" style="background-color: #FAFAFA;">
     <img alt="smu-shortcut logo" src="./public/images/logo-nobg.png" width="100px">
-    <h1 align="center">SMU Shortcuts</h1>
+    <h1 align="center">Classmaid</h1>
 </p>
 
 <h4 align="center">
-  A one-click bookmark to commonly-used websites in SMU. </br>
-  This site is non-affliated with SMU.
+  A one-click access to commonly-used websites in educations. </br>
+  This site is non-affliated with any Singapore-based schools.
 </h4>
 
 ---
@@ -18,11 +18,11 @@
 
 ## 💻 Try it
 
-Visit [SMU Shortcuts](https://smushortcuts.netlify.app)
+Visit [Classmaid.sg](https://www.classmaid.sg)
 
 ## 🤩 Features
 
-- Bookmarks of commonly-used websites in SMU
+- Bookmarks of commonly-used websites used by schools
 - View upcoming school events
 - View current school term event
 
@@ -32,7 +32,7 @@ Run the following commands:
 
 ```bash
 # Clone the repo
-git clone https://github.com/foldaway/smu-shortcuts.git && cd smu-shortcuts
+git clone https://github.com/alphatrl/classmaid.git && cd classmaid
 
 # Install dependencies
 yarn install
