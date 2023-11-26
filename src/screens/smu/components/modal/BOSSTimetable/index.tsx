@@ -244,12 +244,6 @@ const BOSSTimetable: React.FC = () => {
     []
   );
 
-  const handleICalTrack = React.useCallback(() => {
-    // firebase
-    //   ?.analytics()
-    //   .logEvent('file_download', { description: 'BOSS Timetable Export' });
-  }, []);
-
   return (
     <>
       <ModalTemplate title="Boss Timetable Export">
@@ -289,7 +283,6 @@ const BOSSTimetable: React.FC = () => {
         </Wrapper>
         {csvContents !== null ? (
           <CustomPrimaryBtn
-            onClick={handleICalTrack}
             href={hrefDownload}
             download="boss_timetable_export.ics"
             role="button"
