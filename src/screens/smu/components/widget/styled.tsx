@@ -13,7 +13,7 @@ export const CardTemplate = styled.div<{ width: number; height?: number }>`
   height: ${(props) => (props.height != null ? props.height : props.width)}px;
 
   transition: all 0.2s ease-in;
-  :hover {
+  &:hover {
     transform: scale(1.05);
   }
 `;

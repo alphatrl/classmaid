@@ -17,7 +17,7 @@ export const GridItem = styled.a`
   width: 80%;
   max-width: 120px;
 
-  :hover {
+  &:hover {
     transform: scale(1.05);
   }
 `;
@@ -31,7 +31,7 @@ export const GridItemMore = styled.div`
   transition: all 0.2s ease-in;
   cursor: pointer;
 
-  :hover {
+  &:hover {
     transform: scale(1.05);
   }
 `;
