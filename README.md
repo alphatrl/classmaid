@@ -56,7 +56,7 @@ The data used by SMU-Shortcuts is stored in [smu-scraper](https://github.com/fol
 
 ## 🙋 Contribute
 
-If you found a bug, or if you have an idea for this app, please [file an issue here](https://github.com/alphatrl/classmaid/issues). We appreaciate your feedbacks and inputs.
+If you found a bug, or if you have an idea for this app, please [file an issue here](https://github.com/alphatrl/classmaid/issues). We appreciate your feedbacks and inputs.
 
 ## 📜 License
 
@@ -66,7 +66,7 @@ MIT License. See [LICENSE](./LICENSE) file for more information.
 
 Created by [Amos](http://github.com/alphatrl)
 
-A huge thanks to the following contributers for their amazing work:
+A huge thanks to the following contributors for their amazing work:
 
-[![Duncan](https://avatars3.githubusercontent.com/u/7417870?s=80&v=4)](https://github.com/duncanleo)
-
+[![Duncan Leo](https://avatars3.githubusercontent.com/u/7417870?s=80&v=4)](https://github.com/duncanleo)
+[![Chester How](https://avatars3.githubusercontent.com/u/9312956?s=80&v=4)](https://github.com/chesterhow)
