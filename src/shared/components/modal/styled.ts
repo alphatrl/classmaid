@@ -31,7 +31,7 @@ export const MenuItemWrapper = styled.button`
   cursor: pointer;
   color: ${(props) => props.theme.textColor[10]};
 
-  :hover {
+  &:hover {
     background-color: ${(props) => `${props.theme.appColor[90]}`};
   }
 `;

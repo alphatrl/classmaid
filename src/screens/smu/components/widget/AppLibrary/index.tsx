@@ -15,7 +15,7 @@ const Card = styled(CardTemplate)`
   align-items: center;
   justify-content: center;
 
-  :hover {
+  &:hover {
     transform: none;
   }
 `;

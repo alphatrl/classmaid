@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   align-items: center;
   padding: 0 8px;
 
-  :hover {
+  &:hover {
     background-color: ${(props) => props.theme.calendar.red}12;
     border-radius: 12px;
   }
