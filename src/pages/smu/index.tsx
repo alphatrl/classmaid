@@ -24,7 +24,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
 
-  padding-top: 40px;
+  padding-top: 36px;
   padding-bottom: 64px;
 
   @media screen and (max-width: ${DESKTOP_WIDTH_SIZE_M}) {
@@ -37,6 +37,7 @@ const Wrapper = styled.div`
 
   @media screen and (max-width: ${MOBILE_WIDTH_SIZE_L}) {
     width: 90%;
+    padding: 16px 0;
   }
 
   @media screen and (max-width: ${MOBILE_WIDTH_SIZE_S}) {

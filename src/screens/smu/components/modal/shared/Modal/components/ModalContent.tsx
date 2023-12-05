@@ -14,10 +14,14 @@ const ModalOverlay = styled(FloatingOverlay)`
   background: rgba(0, 0, 0, 0.8);
   display: grid;
   place-items: center;
+
+  // NOTE: (hello@amostan.me) This is to counter library image z-index
+  z-index: 5;
 `;
 
 const ModalContentWrapper = styled.div`
   width: 80%;
+  height: 90%;
   max-width: 800px;
   max-height: 800px;
   padding: 1em 1.5em;
