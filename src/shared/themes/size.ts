@@ -20,8 +20,8 @@ export const WIDGET_HEIGHT = 315;
 export const WIDGET_WIDTH_SQUARE = WIDGET_HEIGHT;
 export const WIDGET_WIDTH_RECTANGLE = 640;
 
-export const mobileMediaQuery = `(max-width: ${MOBILE_WIDTH}px)`;
-export const tabletMediaQuery = `(min-width: ${MOBILE_WIDTH}px) and (max-width: ${
+export const MOBILE_MEDIA_QUERY = `(max-width: ${MOBILE_WIDTH - 1}px)`;
+export const TABLET_MEDIA_QUERY = `(min-width: ${MOBILE_WIDTH}px) and (max-width: ${
   DESKTOP_WIDTH - 1
 }px)`;
-export const desktopMediaQuery = `(min-width: ${DESKTOP_WIDTH}px)`;
+export const DESKTOP_MEDIA_QUERY = `(min-width: ${DESKTOP_WIDTH}px)`;
