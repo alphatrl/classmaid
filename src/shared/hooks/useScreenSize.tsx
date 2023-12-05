@@ -1,16 +1,16 @@
 import React from 'react';
 
 import {
-  desktopMediaQuery,
-  mobileMediaQuery,
-  tabletMediaQuery,
+  DESKTOP_MEDIA_QUERY,
+  MOBILE_MEDIA_QUERY,
+  TABLET_MEDIA_QUERY,
 } from '../themes/size';
 import useMediaQuery from './useMediaQuery';
 
 export default function useScreenSize() {
-  const isMobile = useMediaQuery(mobileMediaQuery);
-  const isTablet = useMediaQuery(tabletMediaQuery);
-  const isDesktop = useMediaQuery(desktopMediaQuery);
+  const isMobile = useMediaQuery(MOBILE_MEDIA_QUERY);
+  const isTablet = useMediaQuery(TABLET_MEDIA_QUERY);
+  const isDesktop = useMediaQuery(DESKTOP_MEDIA_QUERY);
 
   const values = React.useMemo(() => {
     return {
