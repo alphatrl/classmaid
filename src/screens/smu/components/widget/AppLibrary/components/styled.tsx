@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 import {
-  DESKTOP_WIDTH_SIZE_S,
-  MOBILE_WIDTH_SIZE_L,
+  MOBILE_MEDIA_QUERY,
+  TABLET_MEDIA_QUERY,
 } from '../../../../../../shared/themes/size';
 
 export const GridItem = styled.a`
@@ -54,14 +54,9 @@ export const GridImage = styled.div<{ backgroundColor: string }>`
     color: #fff;
   }
 
-  @media screen and (max-width: ${DESKTOP_WIDTH_SIZE_S}) {
-    height: 64px;
-    width: 64px;
-  }
-
-  @media screen and (max-width: ${MOBILE_WIDTH_SIZE_L}) {
-    height: 56px;
-    width: 56px;
+  @media screen and ${TABLET_MEDIA_QUERY}, ${MOBILE_MEDIA_QUERY} {
+    height: 54px;
+    width: 54px;
 
     span {
       font-size: 32px;
@@ -76,4 +71,9 @@ export const GridText = styled.p`
   padding-top: 8px;
   font-weight: 500;
   color: ${(props) => props.theme.textColor[10]};
+
+  @media screen and ${TABLET_MEDIA_QUERY}, ${MOBILE_MEDIA_QUERY} {
+    line-height: 1.1em;
+    font-size: 0.85em;
+  }
 `;

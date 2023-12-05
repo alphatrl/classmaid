@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { useThemeProvider } from '../../contexts/ThemeContext';
+import { MOBILE_MEDIA_QUERY } from '../../themes/size';
 import NavHeader from '../navigation/NavHeader';
 import SEO from '../SEO';
 
@@ -18,7 +19,7 @@ const Wrapper = styled.div`
     flex: 1;
   }
 
-  @media screen and (max-width: ${(props) => props.theme.mobileSize}) {
+  @media screen and ${MOBILE_MEDIA_QUERY}) {
     height: auto;
   }
 `;

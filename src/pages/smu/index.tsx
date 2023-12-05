@@ -7,10 +7,8 @@ import LibraryCapacities from '../../screens/smu/components/widget/LibraryCapaci
 import TodaySummaryWidget from '../../screens/smu/components/widget/TodaySummary';
 import DefaultLayout from '../../shared/components/layouts/DefaultLayout';
 import {
-  DESKTOP_WIDTH_SIZE_M,
-  DESKTOP_WIDTH_SIZE_S,
-  MOBILE_WIDTH_SIZE_L,
-  MOBILE_WIDTH_SIZE_S,
+  MOBILE_MEDIA_QUERY,
+  TABLET_MEDIA_QUERY,
 } from '../../shared/themes/size';
 
 const ContentWrapper = styled.div`
@@ -20,27 +18,19 @@ const ContentWrapper = styled.div`
 `;
 
 const Wrapper = styled.div`
-  width: 1020px;
+  width: 1035px;
   display: flex;
   flex-wrap: wrap;
-
   padding-top: 36px;
   padding-bottom: 64px;
 
-  @media screen and (max-width: ${DESKTOP_WIDTH_SIZE_M}) {
-    width: 920px;
+  @media screen and ${TABLET_MEDIA_QUERY} {
+    width: 690px;
   }
 
-  @media screen and (max-width: ${DESKTOP_WIDTH_SIZE_S}) {
-    width: 700px;
-  }
-
-  @media screen and (max-width: ${MOBILE_WIDTH_SIZE_L}) {
-    width: 90%;
+  @media screen and ${MOBILE_MEDIA_QUERY} {
     padding: 16px 0;
-  }
-
-  @media screen and (max-width: ${MOBILE_WIDTH_SIZE_S}) {
+    width: 350px;
     justify-content: center;
   }
 `;
