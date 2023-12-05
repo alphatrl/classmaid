@@ -19,7 +19,7 @@ const Wrapper = styled.div`
     flex: 1;
   }
 
-  @media screen and ${MOBILE_MEDIA_QUERY}) {
+  @media screen and ${MOBILE_MEDIA_QUERY} {
     height: auto;
   }
 `;
