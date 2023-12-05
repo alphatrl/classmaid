@@ -3,10 +3,9 @@ import styled from 'styled-components';
 
 import Icon from '../../../../../../../../shared/components/Icon';
 import {
-  DESKTOP_WIDTH_SIZE_M,
-  DESKTOP_WIDTH_SIZE_S,
-  MOBILE_WIDTH_SIZE_L,
-  MOBILE_WIDTH_SIZE_S,
+  MOBILE_MEDIA_QUERY,
+  MOBILE_MEDIA_QUERY_S,
+  TABLET_MEDIA_QUERY,
 } from '../../../../../../../../shared/themes/size';
 import { GridImage, GridItem, GridText } from '../../styled';
 
@@ -18,7 +17,7 @@ const Wrapper = styled.div`
     color: ${(props) => props.theme.textColor[10]};
   }
 
-  @media screen and (max-width: ${MOBILE_WIDTH_SIZE_L}) {
+  @media screen and ${MOBILE_MEDIA_QUERY} {
     h2 {
       font-size: 1.2em;
     }
@@ -34,19 +33,19 @@ const AppWrapper = styled.div`
   row-gap: 24px;
   column-gap: 24px;
 
-  @media screen and (max-width: ${DESKTOP_WIDTH_SIZE_M}) {
+  @media screen and ${TABLET_MEDIA_QUERY} {
     grid-template-columns: repeat(5, 1fr);
-    column-gap: 24px;
-  }
-
-  @media screen and (max-width: ${DESKTOP_WIDTH_SIZE_S}) {
-    grid-template-columns: repeat(4, 1fr);
     column-gap: 12px;
   }
 
-  @media screen and (max-width: ${MOBILE_WIDTH_SIZE_S}) {
-    grid-template-columns: repeat(3, 1fr);
+  @media screen and ${MOBILE_MEDIA_QUERY} {
+    grid-template-columns: repeat(4, 1fr);
     column-gap: 8px;
+  }
+
+  @media screen and ${MOBILE_MEDIA_QUERY_S} {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 4px;
   }
 `;
 

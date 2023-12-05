@@ -1,16 +1,11 @@
 import React from 'react';
 
 import {
-  DESKTOP_WIDTH_SIZE_M,
-  DESKTOP_WIDTH_SIZE_S,
-  MOBILE_WIDTH_SIZE_L,
-  MOBILE_WIDTH_SIZE_S,
-  WIDGET_L_WIDTH_SIZE_L,
-  WIDGET_L_WIDTH_SIZE_S,
-  WIDGET_S_WIDTH_SIZE_L,
-  WIDGET_S_WIDTH_SIZE_S,
+  WIDGET_HEIGHT,
+  WIDGET_WIDTH_RECTANGLE,
+  WIDGET_WIDTH_SQUARE,
 } from '../themes/size';
-import useMediaQuery from './useMediaQuery';
+import useScreenSize from './useScreenSize';
 
 type Size = 'small' | 'large';
 
@@ -20,41 +15,30 @@ interface WidgetSize {
 }
 
 export default function useWidgetSize(size: Size): WidgetSize {
-  const isMobileSizeS = useMediaQuery(`(max-width: ${MOBILE_WIDTH_SIZE_S})`);
-  const isMobileSizeL = useMediaQuery(`(max-width: ${MOBILE_WIDTH_SIZE_L})`);
-  const isDesktopSSize = useMediaQuery(`(max-width: ${DESKTOP_WIDTH_SIZE_S})`);
-  const isDesktopMSize = useMediaQuery(`(max-width: ${DESKTOP_WIDTH_SIZE_M})`);
-
-  const widgetHeight = isMobileSizeL
-    ? WIDGET_S_WIDTH_SIZE_S
-    : WIDGET_S_WIDTH_SIZE_L;
+  const { isTablet, isDesktop } = useScreenSize();
 
   const windowWidth = React.useMemo(() => {
     if (size === 'small') {
-      return widgetHeight;
+      return WIDGET_WIDTH_SQUARE;
     }
 
-    if (isMobileSizeL) {
-      return WIDGET_S_WIDTH_SIZE_S;
+    if (isTablet) {
+      return WIDGET_WIDTH_SQUARE;
     }
 
-    if (isMobileSizeS || isDesktopSSize) {
-      return WIDGET_S_WIDTH_SIZE_L;
+    if (isDesktop) {
+      return WIDGET_WIDTH_RECTANGLE;
     }
 
-    if (isDesktopMSize) {
-      return WIDGET_L_WIDTH_SIZE_S;
-    }
+    return WIDGET_WIDTH_SQUARE;
+  }, [isDesktop, isTablet, size]);
 
-    return WIDGET_L_WIDTH_SIZE_L;
-  }, [
-    isDesktopMSize,
-    isDesktopSSize,
-    isMobileSizeL,
-    isMobileSizeS,
-    size,
-    widgetHeight,
-  ]);
+  const values = React.useMemo(() => {
+    return {
+      width: windowWidth,
+      height: WIDGET_HEIGHT,
+    };
+  }, [windowWidth]);
 
-  return { width: windowWidth, height: widgetHeight };
+  return values;
 }

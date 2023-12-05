@@ -7,7 +7,7 @@ import {
 import React from 'react';
 import styled from 'styled-components';
 
-import { MOBILE_WIDTH_SIZE_L } from '../../../../../../../shared/themes/size';
+import { MOBILE_MEDIA_QUERY } from '../../../../../../../shared/themes/size';
 import { useModalContext } from '../hooks/useModalContext';
 
 const ModalOverlay = styled(FloatingOverlay)`
@@ -30,7 +30,7 @@ const ModalContentWrapper = styled.div`
   box-sizing: border-box;
   background-color: ${(props) => props.theme.appColor[100]};
 
-  @media screen and (max-width: ${MOBILE_WIDTH_SIZE_L}) {
+  @media screen and ${MOBILE_MEDIA_QUERY} {
     width: 100%;
     height: 85%;
     align-self: flex-end;

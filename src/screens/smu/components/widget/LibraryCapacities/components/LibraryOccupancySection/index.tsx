@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 import { LibraryOccupancy } from '../../../../../../../pages/api/smusg/getLibrariesOccupancy';
 import {
-  DESKTOP_WIDTH_SIZE_S,
-  MOBILE_WIDTH_SIZE_L,
+  MOBILE_MEDIA_QUERY,
+  TABLET_MEDIA_QUERY,
 } from '../../../../../../../shared/themes/size';
 import Library from './components/Library';
 import { SMU_LIBRARIES } from './constants';
@@ -18,14 +18,14 @@ const Wrapper = styled.div`
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas: 'lks kgc';
 
-  @media screen and (max-width: ${DESKTOP_WIDTH_SIZE_S}) {
+  @media screen and ${TABLET_MEDIA_QUERY} {
     grid-template-columns: 1fr;
     grid-template-areas:
       'lks'
       'kgc';
   }
 
-  @media screen and (max-width: ${MOBILE_WIDTH_SIZE_L}) {
+  @media screen and (max-width: ${MOBILE_MEDIA_QUERY}) {
     padding: 12px;
     gap: 12px;
   }
