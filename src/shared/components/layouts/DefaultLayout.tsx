@@ -40,7 +40,6 @@ const DefaultLayout: React.FC<React.PropsWithChildren<Props>> = function (
   return (
     <Wrapper>
       <SEO title={title} />
-
       <main>
         <NavHeader />
         {children}

@@ -21,6 +21,7 @@ const ModalOverlay = styled(FloatingOverlay)`
 
 const ModalContentWrapper = styled.div`
   width: 80%;
+  height: 90%;
   max-width: 800px;
   max-height: 800px;
   padding: 1em 1.5em;
