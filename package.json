@@ -40,6 +40,7 @@
     "moment-timezone": "^0.5.40",
     "next": "^13.5.4",
     "react": "^18.2.0",
+    "react-calendar": "^4.7.0",
     "react-content-loader": "^6.2.0",
     "react-dom": "^18.2.0",
     "readable-stream": "^3.6.0",
