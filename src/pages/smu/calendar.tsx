@@ -1,8 +1,4 @@
-import type {
-  GetServerSideProps,
-  InferGetServerSidePropsType,
-  NextPage,
-} from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -38,7 +34,7 @@ const Wrapper = styled.div`
   }
 `;
 
-export const getServerSideProps = (async () => {
+export const getStaticProps = (async () => {
   const requestPromises = await Promise.all([
     fetch(SCHOOL_TERM_URL),
     fetch(IMPORTANT_DATES_URL),
@@ -52,13 +48,17 @@ export const getServerSideProps = (async () => {
   const currentEvent = getCurrentEvent(schoolTerms);
 
   return {
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every 60 seconds
+    revalidate: 60, // In seconds
     props: {
       currentEvent,
       schoolTerms,
       importantDates: importantDatesJson,
     },
   };
-}) satisfies GetServerSideProps<SMUCalendarServerSideProps>;
+}) satisfies GetStaticProps<SMUCalendarServerSideProps>;
 
 const SMUCalendar: NextPage<SMUCalendarServerSideProps> = function (props) {
   return (
