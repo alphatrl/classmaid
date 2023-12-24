@@ -2,38 +2,25 @@ import type { GetStaticProps, NextPage } from 'next';
 import React from 'react';
 import styled from 'styled-components';
 
-import {
-  IMPORTANT_DATES_URL,
-  SCHOOL_TERM_URL,
-} from '../../screens/smu/constants';
-import Calendar from '../../screens/smu/pages/Calendar';
+import { SmuEventsProvider } from '../../screens/smu/contexts/SmuEventsContext';
+import Calendar from '../../screens/smu/pages/calendar';
+import getSchoolTermsAndImportantDates from '../../screens/smu/utils/getSchoolTermsAndImportantDates';
 import DefaultLayout from '../../shared/components/layouts/DefaultLayout';
-import { getCurrentEvent } from '../../shared/contexts/utils';
 
 export interface SMUCalendarServerSideProps {
-  currentEvent: App.Calendar.CurrentEvent | null;
   schoolTerms: App.Calendar.SchoolTerm[];
   importantDates: App.Calendar.ImportantDate[];
 }
 
 const ContentWrapper = styled.div`
   box-sizing: border-box;
-  display: flex;
-  justify-content: center;
+  height: 100%;
+  padding: 1rem;
 `;
 
 export const getStaticProps = (async () => {
-  const requestPromises = await Promise.all([
-    fetch(SCHOOL_TERM_URL),
-    fetch(IMPORTANT_DATES_URL),
-  ]);
-
-  const schoolTermsJson = await requestPromises[0].json();
-  const importantDatesJson =
-    (await requestPromises[1].json()) as App.Calendar.ImportantDate[];
-
-  const schoolTerms = schoolTermsJson.terms as App.Calendar.SchoolTerm[];
-  const currentEvent = getCurrentEvent(schoolTerms);
+  const { schoolTerms, importantDates } =
+    await getSchoolTermsAndImportantDates();
 
   return {
     // Next.js will attempt to re-generate the page:
@@ -41,9 +28,8 @@ export const getStaticProps = (async () => {
     // - At most once every 60 seconds
     revalidate: 60, // In seconds
     props: {
-      currentEvent,
       schoolTerms,
-      importantDates: importantDatesJson,
+      importantDates,
     },
   };
 }) satisfies GetStaticProps<SMUCalendarServerSideProps>;
@@ -51,9 +37,11 @@ export const getStaticProps = (async () => {
 const SMUCalendar: NextPage<SMUCalendarServerSideProps> = function (props) {
   return (
     <DefaultLayout title="SMU">
-      <ContentWrapper>
-        <Calendar />
-      </ContentWrapper>
+      <SmuEventsProvider {...props}>
+        <ContentWrapper>
+          <Calendar />
+        </ContentWrapper>
+      </SmuEventsProvider>
     </DefaultLayout>
   );
 };
