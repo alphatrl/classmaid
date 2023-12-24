@@ -1,4 +1,5 @@
 import moment from 'moment-timezone';
+import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -12,6 +13,10 @@ import TodaysSummary from './components/TodaysSummary';
 const Card = styled(CardTemplate)`
   display: flex;
   flex-direction: column;
+`;
+
+const CardLink = styled(Link)`
+  text-decoration: none;
 `;
 
 const TodaySummaryWidget: React.FC = function () {
@@ -43,11 +48,13 @@ const TodaySummaryWidget: React.FC = function () {
   }, [calendarEvents, today]);
 
   return (
-    <Card width={widgetSize.width}>
-      <TodayEvent />
-      <TodaysSummary todayMoment={today} numOfEvents={todayEvents.length} />
-      <Calendar events={todayEvents} />
-    </Card>
+    <CardLink href="/smu/calendar">
+      <Card width={widgetSize.width}>
+        <TodayEvent />
+        <TodaysSummary todayMoment={today} numOfEvents={todayEvents.length} />
+        <Calendar events={todayEvents} />
+      </Card>
+    </CardLink>
   );
 };
 
