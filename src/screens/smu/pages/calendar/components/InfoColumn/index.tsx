@@ -1,24 +1,19 @@
 import 'react-calendar/dist/Calendar.css';
 
 import React from 'react';
-import Calendar, { MonthView } from 'react-calendar';
+import Calendar from 'react-calendar';
 import styled from 'styled-components';
 
+import { ColumnWrapper } from '../../styled';
 import { CalendarValue } from '../../types';
 
-const Wrapper = styled.div`
+const Wrapper = styled(ColumnWrapper)`
   grid-area: info;
-  box-sizing: border-box;
-  overflow: hidden;
-  padding: 16px;
-
-  border-radius: 24px;
-  background-color: ${(props) => props.theme.appColor[100]}42;
+  background-color: ${(props) => props.theme.appColor[100]}ED;
   backdrop-filter: blur(12px) saturate(86%);
-  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.25);
 `;
 
-const CalendarWrapper = styled.div`
+const ReactCalendarWrapper = styled.div`
   .react-calendar * {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
       'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
@@ -60,11 +55,11 @@ const CalendarWrapper = styled.div`
   .react-calendar__tile:enabled:focus,
   .react-calendar__tile--active:enabled:hover,
   .react-calendar__tile--active:enabled:focus {
-    background: ${(props) => props.theme.primary[30]};
+    background: ${(props) => props.theme.primary[10]};
   }
 
   .react-calendar__month-view__days__day--neighboringMonth {
-    color: ${(props) => props.theme.textColor[50]};
+    color: ${(props) => props.theme.textColor[40]};
   }
 `;
 
@@ -78,9 +73,9 @@ const InfoColumn: React.FC<Props> = function (props) {
 
   return (
     <Wrapper>
-      <CalendarWrapper>
+      <ReactCalendarWrapper>
         <Calendar value={value} onChange={onChange} />
-      </CalendarWrapper>
+      </ReactCalendarWrapper>
     </Wrapper>
   );
 };
