@@ -36,8 +36,12 @@ const HighlightText = styled.h1`
   color: ${(props) => props.theme.primary[50]};
 `;
 
-const TodayEvent: React.FC = function () {
-  const { currentEvent } = useDataContext();
+interface Props {
+  currentEvent: App.Calendar.CurrentEvent | null;
+}
+
+const TodayEvent: React.FC<Props> = function (props) {
+  const { currentEvent } = props;
 
   const event = React.useMemo(() => {
     if (currentEvent == null) {

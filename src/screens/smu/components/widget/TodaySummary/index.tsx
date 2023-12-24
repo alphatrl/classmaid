@@ -20,7 +20,7 @@ const CardLink = styled(Link)`
 `;
 
 const TodaySummaryWidget: React.FC = function () {
-  const { calendarEvents } = useDataContext();
+  const { currentEvent, calendarEvents } = useDataContext();
   const widgetSize = useWidgetSize('small');
 
   const today = moment();
@@ -50,7 +50,7 @@ const TodaySummaryWidget: React.FC = function () {
   return (
     <CardLink href="/smu/calendar">
       <Card width={widgetSize.width}>
-        <TodayEvent />
+        <TodayEvent currentEvent={currentEvent} />
         <TodaysSummary todayMoment={today} numOfEvents={todayEvents.length} />
         <Calendar events={todayEvents} />
       </Card>
