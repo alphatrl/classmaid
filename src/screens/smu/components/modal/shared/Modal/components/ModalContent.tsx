@@ -25,7 +25,7 @@ const ModalContentWrapper = styled.div`
   max-width: 800px;
   max-height: 800px;
   padding: 1em 1.5em;
-  overflow: scroll;
+  overflow-y: scroll;
   border-radius: 24px;
   box-sizing: border-box;
   background-color: ${(props) => props.theme.appColor[100]};
