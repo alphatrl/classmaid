@@ -6,7 +6,13 @@ interface Props {
   timestamp: string;
 }
 
-const Wrapper = styled.div``;
+const Wrapper = styled.h3<{ $today: boolean }>`
+  margin: 0;
+  margin-bottom: 0.4rem;
+  font-size: 1.1rem;
+  color: ${(props) =>
+    props.$today ? props.theme.calendar.red : props.theme.textColor[10]};
+`;
 
 const EventDate: React.FC<Props> = function (props) {
   const { timestamp } = props;
@@ -24,10 +30,9 @@ const EventDate: React.FC<Props> = function (props) {
     return todayMidnight.isSame(dateMoment);
   }, [dateMoment]);
 
-  const day = dateMoment.format('D MMMM, dddd');
-  const additionalInfo = dateMoment.format('ddd');
+  const title = dateMoment.format('D MMMM, dddd');
 
-  return <Wrapper>{day}</Wrapper>;
+  return <Wrapper $today={isToday}>{title}</Wrapper>;
 };
 
 export default EventDate;

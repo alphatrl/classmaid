@@ -57,6 +57,15 @@ const EventsColumn: React.FC = function () {
   return (
     <Wrapper>
       <DailyEvents timestamp={todayTimestamp} events={todayEvents} />
+      {futureEvents.map((dayEvents) => {
+        return (
+          <DailyEvents
+            key={dayEvents.timestamp}
+            timestamp={dayEvents.timestamp}
+            events={dayEvents.events}
+          />
+        );
+      })}
     </Wrapper>
   );
 };
