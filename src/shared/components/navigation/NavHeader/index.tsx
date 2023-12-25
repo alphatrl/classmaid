@@ -14,6 +14,8 @@ const Wrapper = styled.div`
   padding-right: max(16px, env(safe-area-inset-right));
   box-sizing: border-box;
   background: #0000008f;
+  backdrop-filter: blur(12px) saturate(86%);
+
   display: flex;
   align-items: center;
   justify-content: space-between;
