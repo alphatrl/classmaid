@@ -41,7 +41,7 @@ export const getStaticProps = (async () => {
 
 const SMUCalendar: NextPage<SMUCalendarServerSideProps> = function (props) {
   return (
-    <DefaultLayout title="SMU">
+    <DefaultLayout title="SMU Calendar">
       <SmuEventsProvider {...props}>
         <ContentWrapper>
           <Calendar />
