@@ -1,3 +1,5 @@
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -17,17 +19,30 @@ const Wrapper = styled.div`
   justify-content: space-between;
 `;
 
+const CustomLink = styled(Link)`
+  text-decoration: unset;
+`;
+
 const Title = styled.h1`
   margin: 0;
   color: #ffffff;
   font-weight: 600;
   font-size: 1.2em;
+  padding: 4px 0;
 `;
 
 const NavBar: React.FC = function () {
+  const { pathname } = useRouter();
+
+  // NOTE: (amos@taskade.com) Capture the first part of the path "/X" in "/X/Y"
+  const match = pathname.match(/\/[^/]+/);
+  const redirectUrl = match?.[0] ?? '/';
+
   return (
     <Wrapper>
-      <Title>Classmaid</Title>
+      <CustomLink href={redirectUrl}>
+        <Title>Classmaid</Title>
+      </CustomLink>
       <MoreButton />
     </Wrapper>
   );
