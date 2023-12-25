@@ -25,7 +25,7 @@ const Wrapper = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-  margin-top: 64px;
+  margin-top: calc(64px + env(safe-area-inset-top));
 `;
 
 interface Props {
