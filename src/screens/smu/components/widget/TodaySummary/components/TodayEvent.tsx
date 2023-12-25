@@ -2,7 +2,6 @@ import moment from 'moment-timezone';
 import React from 'react';
 import styled from 'styled-components';
 
-import { useDataContext } from '../../../../contexts/DataContext';
 import { getDateStringToMoment } from '../utils/getDateStringToMoment';
 import TodayEventLoading from './TodayEventLoading';
 

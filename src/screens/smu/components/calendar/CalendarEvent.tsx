@@ -8,7 +8,6 @@ interface Props {
 const Wrapper = styled.div`
   display: flex;
   cursor: pointer;
-  display: flex;
   flex-direction: row;
   align-items: center;
   padding: 0 8px;
