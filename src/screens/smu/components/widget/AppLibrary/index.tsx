@@ -10,6 +10,7 @@ const Card = styled(CardTemplate)`
   position: relative;
   background-color: ${(props) => `${props.theme.appColor[100]}42`};
   backdrop-filter: blur(12px) saturate(86%);
+  -webkit-backdrop-filter: blur(12px) saturate(86%);
   backface-visibility: hidden;
   display: flex;
   align-items: center;

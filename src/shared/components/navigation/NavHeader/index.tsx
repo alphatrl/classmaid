@@ -15,6 +15,7 @@ const Wrapper = styled.div`
   box-sizing: border-box;
   background: #0000008f;
   backdrop-filter: blur(12px) saturate(86%);
+  -webkit-backdrop-filter: blur(12px) saturate(86%);
 
   display: flex;
   align-items: center;
@@ -22,7 +23,7 @@ const Wrapper = styled.div`
 
   position: fixed;
   top: 0;
-  z-index: 10;
+  z-index: 2;
 `;
 
 const CustomLink = styled(Link)`

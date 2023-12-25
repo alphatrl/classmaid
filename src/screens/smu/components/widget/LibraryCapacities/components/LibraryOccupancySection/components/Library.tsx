@@ -13,6 +13,7 @@ const LibraryCard = styled.div<{ $gridArea: string }>`
   position: relative;
   overflow: hidden;
   backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
 `;
 
 const LibraryContentWrapper = styled.div`
@@ -22,6 +23,7 @@ const LibraryContentWrapper = styled.div`
   padding: 12px;
   background-color: rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(2px) saturate(80%);
+  -webkit-backdrop-filter: blur(2px) saturate(80%);
   z-index: 1;
   display: flex;
   flex-direction: column;

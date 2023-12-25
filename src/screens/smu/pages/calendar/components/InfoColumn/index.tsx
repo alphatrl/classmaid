@@ -11,6 +11,7 @@ const Wrapper = styled(ColumnWrapper)`
   grid-area: info;
   background-color: ${(props) => props.theme.appColor[100]}ED;
   backdrop-filter: blur(12px) saturate(86%);
+  -webkit-backdrop-filter: blur(12px) saturate(86%);
 `;
 
 const ReactCalendarWrapper = styled.div`
