@@ -17,6 +17,10 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  position: fixed;
+  top: 0;
+  z-index: 10;
 `;
 
 const CustomLink = styled(Link)`

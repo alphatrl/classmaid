@@ -24,6 +24,10 @@ const Wrapper = styled.div`
   }
 `;
 
+const ContentWrapper = styled.div`
+  margin-top: 64px;
+`;
+
 interface Props {
   title?: string;
 }
@@ -43,7 +47,7 @@ const DefaultLayout: React.FC<React.PropsWithChildren<Props>> = function (
       <SEO title={title} />
       <main>
         <NavHeader />
-        {children}
+        <ContentWrapper>{children}</ContentWrapper>
       </main>
     </Wrapper>
   );
