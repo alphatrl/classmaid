@@ -6,6 +6,7 @@ import { SmuEventsProvider } from '../../screens/smu/contexts/SmuEventsContext';
 import Calendar from '../../screens/smu/pages/calendar';
 import getSchoolTermsAndImportantDates from '../../screens/smu/utils/getSchoolTermsAndImportantDates';
 import DefaultLayout from '../../shared/components/layouts/DefaultLayout';
+import { MOBILE_MEDIA_QUERY } from '../../shared/themes/size';
 
 export interface SMUCalendarServerSideProps {
   schoolTerms: App.Calendar.SchoolTerm[];
@@ -14,8 +15,12 @@ export interface SMUCalendarServerSideProps {
 
 const ContentWrapper = styled.div`
   box-sizing: border-box;
-  height: 100%;
+  height: calc(100% - 64px);
   padding: 1rem;
+
+  @media screen and ${MOBILE_MEDIA_QUERY} {
+    height: 100%;
+  }
 `;
 
 export const getStaticProps = (async () => {

@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { MOBILE_MEDIA_QUERY } from '../../../../../../../../../shared/themes/size';
+
 interface Props {
   event: App.Calendar.Event;
 }
@@ -48,6 +50,10 @@ const EventTitle = styled.h4`
   -webkit-line-clamp: 1;
   display: -webkit-box;
   overflow: hidden;
+
+  @media screen and ${MOBILE_MEDIA_QUERY} {
+    -webkit-line-clamp: 2;
+  }
 `;
 
 const EventTimings = styled.p`

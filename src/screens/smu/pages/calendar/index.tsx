@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import useScreenSize from '../../../../shared/hooks/useScreenSize';
 import useWidgetSize from '../../../../shared/hooks/useWidgetSize';
 import { MOBILE_MEDIA_QUERY } from '../../../../shared/themes/size';
 import EventsColumn from './components/EventsColumn';
@@ -17,17 +18,20 @@ const Wrapper = styled.div<{ $infoColumnWidth: number }>`
 
   @media screen and ${MOBILE_MEDIA_QUERY} {
     justify-content: center;
+    grid-template-areas: 'events';
+    grid-template-columns: 1fr;
   }
 `;
 
 const Calendar: React.FC = function () {
   const widgetSize = useWidgetSize('small');
+  const { isMobile } = useScreenSize();
 
   const [value, onValueChange] = React.useState<CalendarValue>(new Date());
 
   return (
     <Wrapper $infoColumnWidth={widgetSize.width}>
-      <InfoColumn value={value} onChange={onValueChange} />
+      {!isMobile && <InfoColumn value={value} onChange={handleValueSelected} />}
       <EventsColumn />
     </Wrapper>
   );
