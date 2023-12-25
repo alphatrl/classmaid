@@ -23,7 +23,7 @@ const DailyEvents: React.FC<Props> = function (props) {
   const { timestamp, events } = props;
 
   return (
-    <Wrapper>
+    <Wrapper id={timestamp}>
       <EventDate timestamp={timestamp} />
       <EventsWrapper>
         {events.map((item, index) => {

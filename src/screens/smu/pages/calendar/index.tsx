@@ -1,3 +1,5 @@
+import moment from 'moment-timezone';
+import { useRouter } from 'next/router';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -27,7 +29,25 @@ const Calendar: React.FC = function () {
   const widgetSize = useWidgetSize('small');
   const { isMobile } = useScreenSize();
 
+  const { push, pathname } = useRouter();
   const [value, onValueChange] = React.useState<CalendarValue>(new Date());
+
+  const handleValueSelected = React.useCallback(
+    (newValue: CalendarValue) => {
+      onValueChange(newValue);
+      if (newValue == null) {
+        return;
+      }
+
+      if (Array.isArray(newValue)) {
+        return;
+      }
+
+      const newDateTimestamp = moment(newValue).unix();
+      push(`${pathname}#${newDateTimestamp}`);
+    },
+    [pathname, push]
+  );
 
   return (
     <Wrapper $infoColumnWidth={widgetSize.width}>
