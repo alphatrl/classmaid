@@ -1,3 +1,5 @@
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -12,9 +14,20 @@ const Wrapper = styled.div`
   padding-right: max(16px, env(safe-area-inset-right));
   box-sizing: border-box;
   background: #0000008f;
+  backdrop-filter: blur(12px) saturate(86%);
+  -webkit-backdrop-filter: blur(12px) saturate(86%);
+
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  position: fixed;
+  top: 0;
+  z-index: 2;
+`;
+
+const CustomLink = styled(Link)`
+  text-decoration: unset;
 `;
 
 const Title = styled.h1`
@@ -22,12 +35,21 @@ const Title = styled.h1`
   color: #ffffff;
   font-weight: 600;
   font-size: 1.2em;
+  padding: 4px 0;
 `;
 
 const NavBar: React.FC = function () {
+  const { pathname } = useRouter();
+
+  // NOTE: (amos@taskade.com) Capture the first part of the path "/X" in "/X/Y"
+  const match = pathname.match(/\/[^/]+/);
+  const redirectUrl = match?.[0] ?? '/';
+
   return (
     <Wrapper>
-      <Title>Classmaid</Title>
+      <CustomLink href={redirectUrl}>
+        <Title>Classmaid</Title>
+      </CustomLink>
       <MoreButton />
     </Wrapper>
   );

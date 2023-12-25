@@ -15,7 +15,8 @@ export interface SMUCalendarServerSideProps {
 
 const ContentWrapper = styled.div`
   box-sizing: border-box;
-  height: calc(100% - 64px);
+  height: calc(100vh - 64px);
+  height: calc(100dvh - 64px);
   padding: 1rem;
 
   @media screen and ${MOBILE_MEDIA_QUERY} {

@@ -10,6 +10,7 @@ const Wrapper = styled(ColumnWrapper)`
   grid-area: events;
   background-color: ${(props) => props.theme.appColor[100]}BF;
   backdrop-filter: blur(12px) saturate(86%);
+  -webkit-backdrop-filter: blur(12px) saturate(86%);
 `;
 
 const EventsColumn: React.FC = function () {
