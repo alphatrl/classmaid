@@ -64,7 +64,7 @@ const Section: React.FC<Props> = function (props) {
         {shortcuts.map((shortcut) => {
           return (
             <GridItem key={shortcut.id} href={shortcut.link} target="_blank">
-              <GridImage backgroundColor={shortcut.color}>
+              <GridImage $backgroundColor={shortcut.color}>
                 <Icon name={shortcut.logo} height={32} width={32} />
               </GridImage>
               <GridText>{shortcut.title}</GridText>

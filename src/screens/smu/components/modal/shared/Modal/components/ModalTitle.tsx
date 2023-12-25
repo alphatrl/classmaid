@@ -5,14 +5,14 @@ import styled from 'styled-components';
 import Icon from '../../../../../../../shared/components/Icon';
 import { useModalContext } from '../hooks/useModalContext';
 
-const HeaderWrapper = styled.div<{ showTitle: boolean }>`
+const HeaderWrapper = styled.div<{ $showTitle: boolean }>`
   min-height: 48px;
   padding: 4px 0px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: ${(props) =>
-    props.showTitle ? 'space-between' : 'flex-end'};
+    props.$showTitle ? 'space-between' : 'flex-end'};
 
   h2 {
     font-size: 1.5em;
@@ -63,7 +63,7 @@ const ModalHeading = React.forwardRef<
   }, [id, setLabelId]);
 
   return (
-    <HeaderWrapper showTitle={children != null}>
+    <HeaderWrapper $showTitle={children != null}>
       <h2 {...props} ref={ref} id={id}>
         {children}
       </h2>

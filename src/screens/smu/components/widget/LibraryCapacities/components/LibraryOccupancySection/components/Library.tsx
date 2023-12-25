@@ -5,8 +5,8 @@ import styled from 'styled-components';
 import { LibraryData } from '../types';
 import ProgressCircle from './ProgressCircle';
 
-const LibraryCard = styled.div<{ gridArea: string }>`
-  grid-area: ${(props) => props.gridArea}  
+const LibraryCard = styled.div<{ $gridArea: string }>`
+  grid-area: ${(props) => props.$gridArea}  
   box-sizing: border-box;
   border-radius: 16px;
 
@@ -75,7 +75,7 @@ const Library: React.FC<Props> = function (props) {
   } = backgroundImage;
 
   return (
-    <LibraryCard gridArea={id}>
+    <LibraryCard $gridArea={id}>
       <Image
         src={fileUrl}
         alt=""

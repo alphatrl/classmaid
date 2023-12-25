@@ -1,16 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { MOBILE_MEDIA_QUERY } from '../../../../../../../../../shared/themes/size';
+
 interface Props {
-  calendarEvent: App.Calendar.Event;
+  event: App.Calendar.Event;
 }
 
 const Wrapper = styled.div`
+  box-sizing: border-box;
   display: flex;
-  cursor: pointer;
   flex-direction: row;
   align-items: center;
-  padding: 0 8px;
+  padding: 8px;
 
   &:hover {
     background-color: ${(props) => props.theme.calendar.red}12;
@@ -18,26 +20,29 @@ const Wrapper = styled.div`
   }
 `;
 
-const Divider = styled.div`
-  margin-inline-end: 8px;
+const DecorationLine = styled.div`
+  margin-inline-end: 0.5rem;
   background-color: ${(props) => props.theme.calendar.red};
 
   width: 4px;
-  height: 75%;
+  height: 85%;
   border-radius: 4px;
 `;
 
-const TextWrapper = styled.div`
-  width: 100%;
+const TextContents = styled.div`
+  box-sizing: border-box;
+
   display: flex;
+  flex: 1;
+
   flex-direction: column;
   justify-content: center;
 `;
 
-const Title = styled.h3`
+const EventTitle = styled.h4`
   margin: 0;
   font-weight: 600;
-  font-size: 0.9em;
+  font-size: 1rem;
   color: ${(props) => props.theme.textColor[10]};
 
   // NOTE: (hello@amostan.me) This is to truncate the title into 1 line with ellipsis
@@ -45,28 +50,32 @@ const Title = styled.h3`
   -webkit-line-clamp: 1;
   display: -webkit-box;
   overflow: hidden;
+
+  @media screen and ${MOBILE_MEDIA_QUERY} {
+    -webkit-line-clamp: 2;
+  }
 `;
 
-const Subtitle = styled.p`
+const EventTimings = styled.p`
   margin: 0;
   margin-top: 2px;
   font-weight: 500;
-  font-size: 0.85em;
+  font-size: 0.85rem;
   color: ${(props) => props.theme.textColor[30]};
 `;
 
-const CalendarEvent: React.FC<Props> = function (props) {
-  const { calendarEvent } = props;
+const EventItem: React.FC<Props> = function (props) {
+  const { event } = props;
 
   return (
     <Wrapper>
-      <Divider />
-      <TextWrapper>
-        <Title>{calendarEvent.title}</Title>
-        <Subtitle>{calendarEvent.timeString}</Subtitle>
-      </TextWrapper>
+      <DecorationLine />
+      <TextContents>
+        <EventTitle>{event.title}</EventTitle>
+        <EventTimings>{event.timeString}</EventTimings>
+      </TextContents>
     </Wrapper>
   );
 };
 
-export default CalendarEvent;
+export default EventItem;

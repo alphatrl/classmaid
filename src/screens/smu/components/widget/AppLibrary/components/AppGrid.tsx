@@ -45,7 +45,7 @@ const AppGrid: React.FC<Props> = function (props) {
       {shortcuts.map((shortcut) => {
         return (
           <GridItem key={shortcut.id} href={shortcut.link} target="_blank">
-            <GridImage backgroundColor={shortcut.color}>
+            <GridImage $backgroundColor={shortcut.color}>
               <Icon name={shortcut.logo} />
             </GridImage>
             <GridText>{shortcut.title}</GridText>

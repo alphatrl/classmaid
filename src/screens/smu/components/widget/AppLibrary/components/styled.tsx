@@ -36,14 +36,14 @@ export const GridItemMore = styled.div`
   }
 `;
 
-export const GridImage = styled.div<{ backgroundColor: string }>`
+export const GridImage = styled.div<{ $backgroundColor: string }>`
   height: 72px;
   width: 72px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 12px;
-  background-color: ${(props) => props.backgroundColor};
+  background-color: ${(props) => props.$backgroundColor};
 
   span {
     font-size: 42px;

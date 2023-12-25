@@ -1,4 +1,5 @@
 import moment from 'moment-timezone';
+import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -14,8 +15,12 @@ const Card = styled(CardTemplate)`
   flex-direction: column;
 `;
 
+const CardLink = styled(Link)`
+  text-decoration: none;
+`;
+
 const TodaySummaryWidget: React.FC = function () {
-  const { calendarEvents } = useDataContext();
+  const { currentEvent, calendarEvents } = useDataContext();
   const widgetSize = useWidgetSize('small');
 
   const today = moment();
@@ -43,11 +48,13 @@ const TodaySummaryWidget: React.FC = function () {
   }, [calendarEvents, today]);
 
   return (
-    <Card width={widgetSize.width}>
-      <TodayEvent />
-      <TodaysSummary todayMoment={today} numOfEvents={todayEvents.length} />
-      <Calendar events={todayEvents} />
-    </Card>
+    <CardLink href="/smu/calendar">
+      <Card width={widgetSize.width}>
+        <TodayEvent currentEvent={currentEvent} />
+        <TodaysSummary todayMoment={today} numOfEvents={todayEvents.length} />
+        <Calendar events={todayEvents} />
+      </Card>
+    </CardLink>
   );
 };
 

@@ -2,7 +2,6 @@ import moment from 'moment-timezone';
 import React from 'react';
 import styled from 'styled-components';
 
-import { useDataContext } from '../../../../contexts/DataContext';
 import { getDateStringToMoment } from '../utils/getDateStringToMoment';
 import TodayEventLoading from './TodayEventLoading';
 
@@ -14,7 +13,6 @@ const Wrapper = styled.div`
   h1 {
     margin: 0;
     font-size: 2.25rem;
-    font-weight: 00;
     line-height: 96%;
   }
 `;
@@ -37,8 +35,12 @@ const HighlightText = styled.h1`
   color: ${(props) => props.theme.primary[50]};
 `;
 
-const TodayEvent: React.FC = function () {
-  const { currentEvent } = useDataContext();
+interface Props {
+  currentEvent: App.Calendar.CurrentEvent | null;
+}
+
+const TodayEvent: React.FC<Props> = function (props) {
+  const { currentEvent } = props;
 
   const event = React.useMemo(() => {
     if (currentEvent == null) {
