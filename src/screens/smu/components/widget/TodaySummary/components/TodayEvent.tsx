@@ -1,11 +1,40 @@
 import moment from 'moment-timezone';
+import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
 
+import Icon from '../../../../../../shared/components/Icon';
 import { getDateStringToMoment } from '../utils/getDateStringToMoment';
 import TodayEventLoading from './TodayEventLoading';
 
 const Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+const CustomLink = styled(Link)`
+  text-decoration: none;
+  border-radius: 16px;
+  display: flex;
+
+  padding: 8px 8px;
+  margin-right: -8px;
+  margin-top: -8px;
+
+  width: 24px;
+  height: 24px;
+
+  &:hover {
+    background-color: ${(props) => props.theme.primary[20]};
+  }
+
+  span {
+    color: ${(props) => props.theme.primary[50]};
+  }
+`;
+
+const EventWrapper = styled.div`
   display: flex;
   flex-direction: column;
   color: ${(props) => props.theme.textColor[50]};
@@ -78,29 +107,32 @@ const TodayEvent: React.FC<Props> = function (props) {
     };
   }, [currentEvent]);
 
-  if (event == null) {
-    return (
-      <Wrapper>
-        <TodayEventLoading />
-      </Wrapper>
-    );
-  }
+  const renderContents = React.useMemo(() => {
+    if (event == null) {
+      return <TodayEventLoading />;
+    }
 
-  if (event?.type === 'VACATION') {
-    return (
-      <Wrapper>
+    if (event.type === 'VACATION') {
+      return (
         <DaysWrapper>
           <h1>{event?.title}</h1>
           <span>OF</span>
         </DaysWrapper>
-        <HighlightText>{event?.type}</HighlightText>
-      </Wrapper>
-    );
-  }
+      );
+    }
+
+    return null;
+  }, [event]);
 
   return (
     <Wrapper>
-      <HighlightText>{event?.title}</HighlightText>
+      <EventWrapper>
+        {renderContents}
+        {event?.type != null && <HighlightText>{event.type}</HighlightText>}
+      </EventWrapper>
+      <CustomLink href="/smu/calendar">
+        <Icon name="open_in_full" />
+      </CustomLink>
     </Wrapper>
   );
 };
