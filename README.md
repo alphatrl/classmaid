@@ -4,8 +4,8 @@
 </p>
 
 <h4 align="center">
-  A one-click access to commonly-used websites in educations. </br>
-  This site is non-affliated with any Singapore-based schools.
+   Your digital campus guide for schools in Singapore. </br>
+  This site is non-affiliated with any Singapore-based schools.
 </h4>
 
 ---
