@@ -6,25 +6,27 @@
   "display": "standalone",
   "background_color": "#FAFAFA",
   "theme_color": "#FAFAFA",
-  "description": "Your Personal School Assistant",
+  "description": "Your Digital Campus Guide",
   "icons": [
     {
-      "src": "/images/logo/icon-192.png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "/images/logo/icon-512.png",
-      "sizes": "512x512"
-    },
-    {
-      "src": "/images/logo/icon-192-maskable.png",
+      "src": "images/logo/icon-192x192.png",
       "sizes": "192x192",
-      "purpose": "any maskable"
+      "type": "image/png"
     },
     {
-      "src": "/images/logo/icon-512-maskable.png",
+      "src": "images/logo/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "images/logo/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "images/logo/icon-512x512.png",
       "sizes": "512x512",
-      "purpose": "any maskable"
+      "type": "image/png"
     }
   ]
 }
