@@ -1,5 +1,5 @@
 <p align="center" style="background-color: #FAFAFA;">
-    <img alt="smu-shortcut logo" src="./public/images/logo-nobg.png" width="100px">
+    <img alt="smu-shortcut logo" src="./public/images/logo/icon-192x192-nobg.png" width="100px">
     <h1 align="center">Classmaid</h1>
 </p>
 
