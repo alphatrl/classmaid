@@ -45,16 +45,30 @@ class MyDocument extends Document {
             />
             <meta name="theme-color" content="#111111" />
 
-            <link rel="icon" type="image/png" href="/images/favicon.png" />
+            <link rel="manifest" href="/manifest.json" />
+
+            <link
+              rel="icon"
+              type="image/png"
+              href="/images/favicon@16x16.png"
+              sizes="16x16"
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              href="/images/favicon@24x24.png"
+              sizes="24x24"
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              href="/images/favicon.png"
+              sizes="32x32"
+            />
             <link
               rel="shortcut icon"
               type="image/svg+xml"
               href="/images/favicon.svg"
-            />
-            <link rel="manifest" href="/manifest.json" />
-            <link
-              rel="apple-touch-icon"
-              href="/images/logo/icon-192-maskable.png"
             />
           </Head>
         }
