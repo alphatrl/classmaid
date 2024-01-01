@@ -32,7 +32,7 @@ declare namespace App {
     }
 
     interface CurrentEvent {
-      type: SchoolPeriodType;
+      type: PeriodType;
       date_start: string;
       date_end: string;
       week_no?: number;
