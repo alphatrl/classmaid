@@ -84,7 +84,7 @@ const TodayEvent: React.FC<Props> = function (props) {
     if (isVacation) {
       const isLastDay = endDate.diff(today, 'days') === 0;
       return {
-        type: currentEvent.type.toUpperCase(),
+        type: currentEvent.type,
         title: isLastDay
           ? 'LAST DAY'
           : `DAY ${today.diff(startDate, 'days') + 1}`,
@@ -112,24 +112,24 @@ const TodayEvent: React.FC<Props> = function (props) {
       return <TodayEventLoading />;
     }
 
-    if (event.type === 'VACATION') {
+    if (event.type === 'vacation') {
       return (
-        <DaysWrapper>
-          <h1>{event?.title}</h1>
-          <span>OF</span>
-        </DaysWrapper>
+        <>
+          <DaysWrapper>
+            <h1>{event?.title}</h1>
+            <span>OF</span>
+          </DaysWrapper>
+          <HighlightText>{event.type.toUpperCase()}</HighlightText>
+        </>
       );
     }
 
-    return null;
+    return <HighlightText>{event.title}</HighlightText>;
   }, [event]);
 
   return (
     <Wrapper>
-      <EventWrapper>
-        {renderContents}
-        {event?.type != null && <HighlightText>{event.type}</HighlightText>}
-      </EventWrapper>
+      <EventWrapper>{renderContents}</EventWrapper>
       <CustomLink href="/smu/calendar">
         <Icon name="open_in_full" />
       </CustomLink>
