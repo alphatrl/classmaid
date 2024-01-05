@@ -30,6 +30,8 @@ const ModalContentWrapper = styled.div`
   @media screen and ${MOBILE_MEDIA_QUERY} {
     width: 100%;
     height: 85%;
+    max-width: unset;
+    max-height: unset;
     align-self: flex-end;
     border-radius: 24px 24px 0 0;
   }
