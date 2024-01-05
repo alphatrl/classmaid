@@ -13,7 +13,7 @@ interface Props {
 }
 
 const Wrapper = styled.div`
-  padding: 0 1em;
+  padding: 1em 1.5em;
   color: ${(props) => props.theme.textColor[10]};
   line-height: 1.5em;
   font-weight: 400;
@@ -22,6 +22,7 @@ const Wrapper = styled.div`
 const OrderListWrapper = styled.ol`
   list-style-type: decimal;
   line-height: 2em;
+  padding: 0 1em;
 
   span {
     color: ${(props) => props.theme.primary[50]};
@@ -59,8 +60,10 @@ const AddToHomeModal: React.FC<Props> = function (props) {
   return (
     <Modal open={isOpen} onOpenChange={onClose}>
       <ModalContent>
-        <ModalTitle>Add Classmaid to your Home Screen</ModalTitle>
-        <Wrapper>{contents}</Wrapper>
+        <Wrapper>
+          <ModalTitle>Add Classmaid to your Home Screen</ModalTitle>
+          {contents}
+        </Wrapper>
       </ModalContent>
     </Modal>
   );

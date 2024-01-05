@@ -8,6 +8,7 @@ import {
   TABLET_MEDIA_QUERY,
 } from '../../../../../../../../shared/themes/size';
 import { GridImage, GridItem, GridText } from '../../styled';
+import AppItem from './AppItem';
 
 const Wrapper = styled.div`
   padding-bottom: 16px;
@@ -62,14 +63,7 @@ const Section: React.FC<Props> = function (props) {
       <h2>{title}</h2>
       <AppWrapper>
         {shortcuts.map((shortcut) => {
-          return (
-            <GridItem key={shortcut.id} href={shortcut.link} target="_blank">
-              <GridImage $backgroundColor={shortcut.color}>
-                <Icon name={shortcut.logo} height={32} width={32} />
-              </GridImage>
-              <GridText>{shortcut.title}</GridText>
-            </GridItem>
-          );
+          return <AppItem key={shortcut.id} shortcut={shortcut} />;
         })}
       </AppWrapper>
     </Wrapper>

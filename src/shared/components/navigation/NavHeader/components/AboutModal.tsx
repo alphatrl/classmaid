@@ -12,6 +12,7 @@ interface Props {
 }
 
 const Wrapper = styled.div`
+  padding: 1em 1.5em;
   color: ${(props) => props.theme.textColor[10]};
   line-height: 1.5em;
   font-weight: 400;
@@ -38,8 +39,8 @@ const AboutModal: React.FC<Props> = function (props) {
   return (
     <Modal open={isOpen} onOpenChange={onClose}>
       <ModalContent>
-        <ModalTitle>About Classmaid</ModalTitle>
         <Wrapper>
+          <ModalTitle>About Classmaid</ModalTitle>
           Providing students a quick one-click bookmarks to commonly used sites
           in schools. <br />
           Designed by students for students This site is non-affiliated with any
