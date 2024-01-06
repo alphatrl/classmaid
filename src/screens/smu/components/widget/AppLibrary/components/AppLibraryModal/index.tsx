@@ -10,7 +10,9 @@ import Modal, {
 import { GridImage, GridItemMore, GridText } from '../styled';
 import Section from './components/Section';
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  padding: 1em 1.5em;
+`;
 
 interface Props {
   apps: App.AppLibrary.LibraryItem[];
@@ -32,8 +34,9 @@ const AppLibraryModal: React.FC<Props> = function (props) {
       </ModalTrigger>
 
       <ModalContent>
-        <ModalTitle>App Library</ModalTitle>
         <Wrapper>
+          <ModalTitle>App Library</ModalTitle>
+
           {apps.map((library) => {
             return <Section key={library.uid} library={library} />;
           })}

@@ -21,10 +21,8 @@ const ModalOverlay = styled(FloatingOverlay)`
 
 const ModalContentWrapper = styled.div`
   width: 80%;
-  height: 90%;
   max-width: 800px;
-  max-height: 800px;
-  padding: 1em 1.5em;
+  max-height: min(90%, 800px);
   overflow-y: scroll;
   border-radius: 24px;
   box-sizing: border-box;
@@ -33,6 +31,7 @@ const ModalContentWrapper = styled.div`
   @media screen and ${MOBILE_MEDIA_QUERY} {
     width: 100%;
     height: 85%;
+    max-height: unset;
     align-self: flex-end;
     border-radius: 24px 24px 0 0;
   }

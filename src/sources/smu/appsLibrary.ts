@@ -163,6 +163,15 @@ export const APPS_LIBRARY: App.AppLibrary.LibraryItem[] = [
         type: 'url',
         link: 'https://www.noteslah.com',
       },
+      {
+        id: 'school_guide',
+        title: 'School Guides',
+        logo: 'collections_bookmark',
+        color: '#009DD9',
+        type: 'taskade',
+        link: 'https://www.taskade.com/embed/VgQGbD7TNy8eQjxm',
+        description: 'UQFCdCr4LmPnfuEA',
+      },
     ],
   },
   {
