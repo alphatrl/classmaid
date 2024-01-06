@@ -1,8 +1,7 @@
 export const TASKADE_IFRAME_PARAMS = {
   as: 'board',
   share: 'view',
-  theme: 'dark',
-  coverImageType: 'none',
+  coverImageType: 'background',
   views: 'hidden',
   copy: 'hidden',
 };
