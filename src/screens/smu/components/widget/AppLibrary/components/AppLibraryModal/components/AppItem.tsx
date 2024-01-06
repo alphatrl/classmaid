@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Icon from '../../../../../../../../shared/components/Icon';
+import useColorScheme from '../../../../../../../../shared/hooks/useColorScheme';
 import useScreenSize from '../../../../../../../../shared/hooks/useScreenSize';
 import Modal, {
   ModalContent,
@@ -21,11 +22,15 @@ const Wrapper = styled.iframe`
 const AppItem: React.FC<Props> = function (props) {
   const { shortcut } = props;
 
+  const { dark } = useColorScheme();
   const { isMobile, isTablet } = useScreenSize();
+
   let finalUrl = shortcut.link;
 
   if (shortcut.type === 'taskade') {
     const urlParams = new URLSearchParams(TASKADE_IFRAME_PARAMS);
+    urlParams.set('theme', dark ? 'dark' : 'light');
+
     if (shortcut.description != null) {
       urlParams.set('view', shortcut.description);
     }
