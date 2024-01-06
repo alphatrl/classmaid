@@ -20,17 +20,21 @@ const Wrapper = styled.iframe`
 
 const AppItem: React.FC<Props> = function (props) {
   const { shortcut } = props;
+
   const { isMobile, isTablet } = useScreenSize();
+  let finalUrl = shortcut.link;
 
   if (shortcut.type === 'taskade') {
     const urlParams = new URLSearchParams(TASKADE_IFRAME_PARAMS);
     if (shortcut.description != null) {
       urlParams.set('view', shortcut.description);
     }
+    finalUrl = `${shortcut.link}?${urlParams.toString()}`;
+  }
 
-    const rebuildUrl = `${shortcut.link}?${urlParams.toString()}`;
-    const frameHeight = isMobile ? 600 : isTablet ? 650 : 800;
-
+  // NOTE: (amos@taskade.com) Show modal only if on tablet-like screen
+  if (shortcut.type === 'taskade' && !isMobile) {
+    const frameHeight = isTablet ? 650 : 800;
     return (
       <Modal>
         <ModalTrigger asChild={true}>
@@ -43,14 +47,14 @@ const AppItem: React.FC<Props> = function (props) {
         </ModalTrigger>
 
         <ModalContent>
-          <Wrapper width="100%" height={frameHeight} src={rebuildUrl} />
+          <Wrapper width="100%" height={frameHeight} src={finalUrl} />
         </ModalContent>
       </Modal>
     );
   }
 
   return (
-    <GridItem href={shortcut.link} target="_blank">
+    <GridItem href={finalUrl} target="_blank">
       <GridImage $backgroundColor={shortcut.color}>
         <Icon name={shortcut.logo} height={32} width={32} />
       </GridImage>
