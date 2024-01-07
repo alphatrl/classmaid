@@ -1,5 +1,5 @@
 import parse from 'csv-parse/lib/sync';
-import { capitalize, isEqual, uniqBy } from 'lodash';
+import { capitalize, filter, isEqual, uniqBy } from 'lodash';
 import moment from 'moment';
 import React from 'react';
 import styled from 'styled-components';
@@ -214,8 +214,11 @@ const BOSSTimetableModal: React.FC = () => {
     if (csvContents === null || allowedModules.length > 0) {
       return;
     }
+
     setAllowedModules(
-      uniqBy(csvContents.slice(1), (event) => event[3]).map((event) => event[3])
+      uniqBy(csvContents.slice(1), (event) => event[3])
+        .filter((event) => event[6].toLowerCase() === 'enrolled')
+        .map((event) => event[3])
     );
   }, [csvContents, allowedModules]);
 
@@ -298,7 +301,10 @@ const BOSSTimetableModal: React.FC = () => {
         <fieldset>
           <legend>Modules to Export</legend>
           <div className="content">
-            {uniqBy(csvContents.slice(1), (event) => event[3]).map((event) => (
+            {filter(
+              csvContents.slice(1),
+              (event) => event[6].toLowerCase() === 'enrolled'
+            ).map((event) => (
               <label key={event[3]}>
                 <input
                   type="checkbox"
