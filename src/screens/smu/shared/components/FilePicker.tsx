@@ -14,18 +14,18 @@ const Wrapper = styled.div`
   label {
     display: inline-block;
     cursor: pointer;
-    background-color: ${(props) => props.theme.icon.background};
-    border-radius: 8px;
+    background-color: ${(props) => props.theme.appColor[90]};
+    border-radius: 16px;
     width: 50%;
     max-width: 450px;
-    padding: 12px;
+    padding: 1rem;
   }
 
   .message {
     display: flex;
     align-items: center;
     font-size: 16px;
-    color: ${(props) => props.theme.textColor[50]};
+    color: ${(props) => props.theme.textColor[10]};
     overflow: hidden;
     text-overflow: ellipsis;
 
@@ -35,11 +35,21 @@ const Wrapper = styled.div`
   }
 
   .placeholder {
-    color: ${(props) => props.theme.textColor[30]};
+    color: ${(props) => props.theme.textColor[20]};
   }
 
-  .material-icons-round {
-    padding-right: 8px;
+  span {
+    padding-right: 0.5rem;
+  }
+
+  &:hover {
+    label {
+      background-color: ${(props) => props.theme.primary[10]};
+    }
+
+    .placeholder {
+      color: ${(props) => props.theme.primary[30]};
+    }
   }
 `;
 

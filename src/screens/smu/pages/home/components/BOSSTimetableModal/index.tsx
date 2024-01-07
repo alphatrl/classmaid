@@ -1,16 +1,14 @@
 import parse from 'csv-parse/lib/sync';
 import { capitalize, isEqual, uniqBy } from 'lodash';
 import moment from 'moment';
-import { useRouter } from 'next/router';
 import React from 'react';
 import styled from 'styled-components';
 
-import { FilePicker } from '../../Utilities';
-import ModalTemplate from '../shared/ModalTemplate';
-import { DisabledPrimaryBtn, PrimaryBtn } from '../styled';
-import { ModalOverlay } from '../styled';
-import { generateICal, parseMeetings } from './util';
-import { Event } from './util/generateICal';
+import { ModalTitle } from '../../../../components/modal/shared/Modal';
+import FilePicker from '../../../../shared/components/FilePicker';
+import generateICal from './utils/generateICal';
+import { Event } from './utils/generateICal';
+import parseMeetings from './utils/parseMeetings';
 
 const CSVHeader = [
   'Course Career',
@@ -31,6 +29,9 @@ const CSVHeader = [
 ];
 
 const Wrapper = styled.div`
+  min-height: 200px;
+  padding: 1em 1.5em;
+
   fieldset {
     margin: 0;
     margin-top: 12px;
@@ -40,14 +41,14 @@ const Wrapper = styled.div`
     box-sizing: border-box;
     min-height: 50px;
     padding: 8px 16px;
-    border: 2px solid ${(props) => props.theme.textColor[30]};
+    border: 2px solid ${(props) => props.theme.appColor[90]};
     margin-bottom: 16px;
 
     legend {
       float: left;
       font-size: 12px;
       font-weight: 600;
-      color: ${(props) => props.theme.textColor[40]};
+      color: ${(props) => props.theme.textColor[20]};
     }
 
     .content {
@@ -56,7 +57,7 @@ const Wrapper = styled.div`
       justify-content: flex-start;
 
       label {
-        color: ${(props) => props.theme.textColor[50]};
+        color: ${(props) => props.theme.textColor[10]};
         margin-top: 4px;
         padding-right: 1rem;
       }
@@ -72,11 +73,45 @@ const Wrapper = styled.div`
   }
 `;
 
-const CustomPrimaryBtn = styled(PrimaryBtn)`
-  align-self: flex-end;
+const CustomPrimaryBtn = styled.a`
+  display: flex;
+  justify-content: center;
+
+  font-weight: 500;
+  font-size: 1em;
+  padding: 0.8rem;
+
+  color: #ffffff;
+  border-radius: 12px;
+  text-decoration: none;
+  border: 2px solid ${(props) => props.theme.primary[30]};
+  background-color: ${(props) => props.theme.primary[50]};
+
+  &:hover {
+    color: ${(props) => props.theme.primary[50]};
+    background-color: ${(props) => props.theme.primary[10]};
+  }
+
+  &:disabled {
+    color: ${(props) => props.theme.textColor[50]};
+    border-color: ${(props) => props.theme.textColor[50]};
+    pointer-events: none;
+  }
 `;
 
-const CustomDisabledBtn = styled(DisabledPrimaryBtn)`
+const CustomDisabledBtn = styled.button`
+  box-sizing: border-box;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1em;
+
+  width: 100%;
+  padding: 12px 16px;
+
+  color: ${(props) => props.theme.textColor[30]};
+  border: 2px solid ${(props) => props.theme.appColor[90]};
+  border-radius: 12px;
+
   align-self: flex-end;
 `;
 
@@ -85,10 +120,11 @@ const HelperText = styled.div`
   margin-top: 8px;
   font-size: 12px;
   font-weight: 600;
-  color: ${(props) => props.theme.textColor[50]};
+  color: ${(props) => props.theme.textColor[30]};
+  margin-bottom: 1rem;
 
   p {
-    margin: 0;
+    margin: 0.3em;
   }
 `;
 
@@ -153,15 +189,10 @@ function convert(data: string[][], allowedModules: string[] = []) {
   return generateICal(events);
 }
 
-const BOSSTimetable: React.FC = () => {
-  const router = useRouter();
+const BOSSTimetableModal: React.FC = () => {
   const [fileContents, setFileContents] = React.useState<string | null>(null);
   const [errorFile, setErrorFile] = React.useState(false);
   const [allowedModules, setAllowedModules] = React.useState<string[]>([]);
-
-  const closeModal = () => {
-    router.replace('/');
-  };
 
   // Raw CSV contents
   const csvContents = React.useMemo<string[][] | null>(() => {
@@ -245,59 +276,58 @@ const BOSSTimetable: React.FC = () => {
   );
 
   return (
-    <>
-      <ModalTemplate title="Boss Timetable Export">
-        <Wrapper>
-          <FilePicker handleFiles={handleFile} fileType=".csv" />
-          {errorFile && <p className="error">Invalid file</p>}
-          <HelperText>
-            <p>
-              Head over to BOSS {'>'} Plan {'&'} Bid.
-            </p>
-            <p>
-              Click the {'"'}Download class and exam timetable{'"'} link.
-            </p>
-            <p>Right click and save page as a .csv file format.</p>
-            <p>Upload the saved .csv file here.</p>
-          </HelperText>
-          {csvContents !== null && (
-            <fieldset>
-              <legend>Modules to Export</legend>
-              <div className="content">
-                {uniqBy(csvContents.slice(1), (event) => event[3]).map(
-                  (event) => (
-                    <label key={event[3]}>
-                      <input
-                        type="checkbox"
-                        value={event[3]}
-                        checked={allowedModules.indexOf(event[3]) !== -1}
-                        onChange={handleAllowedModuleToggled}
-                      />
-                      {event[4]}
-                    </label>
-                  )
-                )}
-              </div>
-            </fieldset>
-          )}
-        </Wrapper>
-        {csvContents !== null ? (
-          <CustomPrimaryBtn
-            href={hrefDownload}
-            download="boss_timetable_export.ics"
-            role="button"
-          >
-            Download
-          </CustomPrimaryBtn>
-        ) : (
-          <CustomDisabledBtn role="button" aria-disabled={true}>
-            Download
-          </CustomDisabledBtn>
-        )}
-      </ModalTemplate>
-      <ModalOverlay onClick={closeModal} />
-    </>
+    <Wrapper>
+      <ModalTitle>BOSS Timetable Export</ModalTitle>
+
+      <FilePicker handleFiles={handleFile} fileType=".csv" />
+
+      {errorFile && <p className="error">Invalid file</p>}
+
+      <HelperText>
+        <p>
+          Head over to BOSS {'>'} Plan {'&'} Bid.
+        </p>
+        <p>
+          Click the {'"'}Download class and exam timetable{'"'} link.
+        </p>
+        <p>Right click and save page as a .csv file format.</p>
+        <p>Upload the saved .csv file here.</p>
+      </HelperText>
+
+      {csvContents !== null && (
+        <fieldset>
+          <legend>Modules to Export</legend>
+          <div className="content">
+            {uniqBy(csvContents.slice(1), (event) => event[3]).map((event) => (
+              <label key={event[3]}>
+                <input
+                  type="checkbox"
+                  value={event[3]}
+                  checked={allowedModules.indexOf(event[3]) !== -1}
+                  onChange={handleAllowedModuleToggled}
+                />
+                {event[4]}
+              </label>
+            ))}
+          </div>
+        </fieldset>
+      )}
+
+      {csvContents !== null ? (
+        <CustomPrimaryBtn
+          href={hrefDownload}
+          download="boss_timetable_export.ics"
+          role="button"
+        >
+          Download
+        </CustomPrimaryBtn>
+      ) : (
+        <CustomDisabledBtn role="button" aria-disabled={true}>
+          Download
+        </CustomDisabledBtn>
+      )}
+    </Wrapper>
   );
 };
 
-export default BOSSTimetable;
+export default BOSSTimetableModal;

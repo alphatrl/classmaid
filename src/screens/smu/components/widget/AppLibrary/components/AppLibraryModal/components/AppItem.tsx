@@ -10,6 +10,7 @@ import Modal, {
 } from '../../../../../modal/shared/Modal';
 import { TASKADE_IFRAME_PARAMS } from '../../../constants';
 import { GridImage, GridItem, GridItemMore, GridText } from '../../styled';
+import useInternalApps from '../hooks/useInternalApps';
 
 interface Props {
   shortcut: App.AppLibrary.LibraryItemShortcut;
@@ -24,6 +25,7 @@ const AppItem: React.FC<Props> = function (props) {
 
   const { dark } = useColorScheme();
   const { isMobile, isTablet } = useScreenSize();
+  const { render: renderInternalApps } = useInternalApps({ shortcut });
 
   let finalUrl = shortcut.link;
 
@@ -35,6 +37,10 @@ const AppItem: React.FC<Props> = function (props) {
       urlParams.set('view', shortcut.description);
     }
     finalUrl = `${shortcut.link}?${urlParams.toString()}`;
+  }
+
+  if (shortcut.type === 'internal') {
+    return renderInternalApps();
   }
 
   // NOTE: (amos@taskade.com) Show modal only if on tablet-like screen

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import CalendarEvent from '../../../calendar/CalendarEvent';
+import CalendarEvent from './components/CalendarEvent';
 
 const Wrapper = styled.div`
   background-color: ${(props) => props.theme.appColor[90]};
