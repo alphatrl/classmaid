@@ -5,12 +5,16 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import styled from 'styled-components';
 
-import FilePicker from '../../../shared/components/FilePicker';
-import ModalTemplate from '../shared/ModalTemplate';
-import { DisabledPrimaryBtn, PrimaryBtn } from '../styled';
-import { ModalOverlay } from '../styled';
-import { generateICal, parseMeetings } from './util';
-import { Event } from './util/generateICal';
+import ModalTemplate from '../../../../components/modal/shared/ModalTemplate';
+import {
+  DisabledPrimaryBtn,
+  PrimaryBtn,
+} from '../../../../components/modal/styled';
+import { ModalOverlay } from '../../../../components/modal/styled';
+import FilePicker from '../../../../shared/components/FilePicker';
+import generateICal from './utils/generateICal';
+import { Event } from './utils/generateICal';
+import parseMeetings from './utils/parseMeetings';
 
 const CSVHeader = [
   'Course Career',
