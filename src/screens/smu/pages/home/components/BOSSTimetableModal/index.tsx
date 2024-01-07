@@ -41,14 +41,14 @@ const Wrapper = styled.div`
     box-sizing: border-box;
     min-height: 50px;
     padding: 8px 16px;
-    border: 2px solid ${(props) => props.theme.appColor[10]};
+    border: 2px solid ${(props) => props.theme.appColor[90]};
     margin-bottom: 16px;
 
     legend {
       float: left;
       font-size: 12px;
       font-weight: 600;
-      color: ${(props) => props.theme.textColor[40]};
+      color: ${(props) => props.theme.textColor[20]};
     }
 
     .content {
@@ -57,7 +57,7 @@ const Wrapper = styled.div`
       justify-content: flex-start;
 
       label {
-        color: ${(props) => props.theme.textColor[50]};
+        color: ${(props) => props.theme.textColor[10]};
         margin-top: 4px;
         padding-right: 1rem;
       }
@@ -73,19 +73,22 @@ const Wrapper = styled.div`
   }
 `;
 
-const CustomPrimaryBtn = styled.button`
-  box-sizing: border-box;
-  text-align: center;
+const CustomPrimaryBtn = styled.a`
+  display: flex;
+  justify-content: center;
+
   font-weight: 500;
   font-size: 1em;
-  color: ${(props) => props.theme.primary[50]};
-  cursor: pointer;
-  padding: 12px 16px;
-  border: 2px solid ${(props) => props.theme.primary[20]};
-  border-radius: 6px;
-  text-decoration: none;
+  padding: 0.8rem;
 
-  :hover {
+  color: #ffffff;
+  border-radius: 12px;
+  text-decoration: none;
+  border: 2px solid ${(props) => props.theme.primary[30]};
+  background-color: ${(props) => props.theme.primary[50]};
+
+  &:hover {
+    color: ${(props) => props.theme.primary[50]};
     background-color: ${(props) => props.theme.primary[10]};
   }
 
@@ -94,7 +97,6 @@ const CustomPrimaryBtn = styled.button`
     border-color: ${(props) => props.theme.textColor[50]};
     pointer-events: none;
   }
-  align-self: flex-end;
 `;
 
 const CustomDisabledBtn = styled.button`
