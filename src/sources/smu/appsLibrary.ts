@@ -81,6 +81,15 @@ export const APPS_LIBRARY: App.AppLibrary.LibraryItem[] = [
         link: 'https://afterclass.io',
       },
       {
+        id: 'boss_export',
+        title: 'BOSS Timetable Export',
+        logo: 'file_download',
+        color: '#636363',
+        type: 'internal',
+        link: 'boss-export',
+      },
+
+      {
         id: 'course_offerings',
         title: 'Course Offerings',
         logo: 'collections_bookmark',
