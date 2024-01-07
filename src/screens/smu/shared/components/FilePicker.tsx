@@ -38,8 +38,18 @@ const Wrapper = styled.div`
     color: ${(props) => props.theme.textColor[20]};
   }
 
-  .material-icons-round {
-    padding-right: 8px;
+  span {
+    padding-right: 0.5rem;
+  }
+
+  &:hover {
+    label {
+      background-color: ${(props) => props.theme.primary[10]};
+    }
+
+    .placeholder {
+      color: ${(props) => props.theme.primary[30]};
+    }
   }
 `;
 
