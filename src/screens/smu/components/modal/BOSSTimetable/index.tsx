@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import styled from 'styled-components';
 
-import { FilePicker } from '../../Utilities';
+import FilePicker from '../../../shared/components/FilePicker';
 import ModalTemplate from '../shared/ModalTemplate';
 import { DisabledPrimaryBtn, PrimaryBtn } from '../styled';
 import { ModalOverlay } from '../styled';
