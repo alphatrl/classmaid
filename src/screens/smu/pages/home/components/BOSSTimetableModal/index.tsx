@@ -214,8 +214,11 @@ const BOSSTimetableModal: React.FC = () => {
     if (csvContents === null || allowedModules.length > 0) {
       return;
     }
+
     setAllowedModules(
-      uniqBy(csvContents.slice(1), (event) => event[3]).map((event) => event[3])
+      uniqBy(csvContents.slice(1), (event) => event[3])
+        .filter((event) => event[6].toLowerCase() === 'enrolled')
+        .map((event) => event[3])
     );
   }, [csvContents, allowedModules]);
 
@@ -298,17 +301,19 @@ const BOSSTimetableModal: React.FC = () => {
         <fieldset>
           <legend>Modules to Export</legend>
           <div className="content">
-            {uniqBy(csvContents.slice(1), (event) => event[3]).map((event) => (
-              <label key={event[3]}>
-                <input
-                  type="checkbox"
-                  value={event[3]}
-                  checked={allowedModules.indexOf(event[3]) !== -1}
-                  onChange={handleAllowedModuleToggled}
-                />
-                {event[4]}
-              </label>
-            ))}
+            {uniqBy(csvContents.slice(1), (event) => event[3])
+              .filter((event) => event[6].toLowerCase() === 'enrolled')
+              .map((event) => (
+                <label key={event[3]}>
+                  <input
+                    type="checkbox"
+                    value={event[3]}
+                    checked={allowedModules.indexOf(event[3]) !== -1}
+                    onChange={handleAllowedModuleToggled}
+                  />
+                  {event[4]}
+                </label>
+              ))}
           </div>
         </fieldset>
       )}
