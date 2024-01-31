@@ -1,14 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { LibraryOccupancy } from '../../../../../../../pages/api/smusg/getLibrariesOccupancy';
 import {
   MOBILE_MEDIA_QUERY,
   TABLET_MEDIA_QUERY,
 } from '../../../../../../../shared/themes/size';
 import Library from './components/Library';
-import { SMU_LIBRARIES } from './constants';
-import { LibraryNames } from './types';
+import { KGC_LIBRARY_TEMPLATE, LKS_LIBRARY_TEMPLATE } from './constants';
+import { LibraryOccupancyAPI } from './types';
 
 const Wrapper = styled.div`
   padding: 16px;
@@ -32,48 +31,37 @@ const Wrapper = styled.div`
 `;
 
 const LibraryOccupancySection: React.FC = function () {
-  const [currentOccupancy, setCurrentOccupancy] = React.useState({
-    lks: 0,
-    kgc: 0,
-  });
   const [isFetchingOccupancy, setFetchingOccupancy] = React.useState(true);
+  const [currentOccupancy, setCurrentOccupancy] = React.useState<
+    LibraryOccupancyAPI[]
+  >([]);
 
   const getLibrariesOccupancy = React.useCallback(async () => {
     setFetchingOccupancy(true);
     const response = await fetch('/api/smusg/getLibrariesOccupancy');
-    const resJson: LibraryOccupancy = await response.json();
+    const resJson: LibraryOccupancyAPI[] = await response.json();
 
-    const newLksOccupancy = parseInt(resJson.lks.inside);
-    const newKgcOccupancy = parseInt(resJson.kgc.inside);
-    const tempOccupancyData = {
-      lks: Number.isInteger(newLksOccupancy)
-        ? newLksOccupancy
-        : currentOccupancy.lks,
-      kgc: Number.isInteger(newKgcOccupancy)
-        ? newKgcOccupancy
-        : currentOccupancy.kgc,
-    };
-
-    setCurrentOccupancy(tempOccupancyData);
-
+    setCurrentOccupancy(resJson);
     setFetchingOccupancy(false);
-  }, [currentOccupancy.kgc, currentOccupancy.lks]);
+  }, []);
 
   React.useEffect(() => {
     getLibrariesOccupancy();
   }, [getLibrariesOccupancy]);
 
-  const libraryKeys = Object.keys(SMU_LIBRARIES) as LibraryNames[];
-
   return (
     <Wrapper>
-      {libraryKeys.map((libKey) => {
+      {[LKS_LIBRARY_TEMPLATE, KGC_LIBRARY_TEMPLATE].map((template) => {
+        const key = template.key;
+        const occupancyInfo =
+          currentOccupancy.find((occupancy) => occupancy.key === key) ?? null;
+
         return (
           <Library
-            key={libKey}
-            id={libKey}
-            occupancy={currentOccupancy[libKey]}
-            library={SMU_LIBRARIES[libKey]}
+            key={key}
+            id={key}
+            template={template}
+            occupancyInfo={occupancyInfo}
             loading={isFetchingOccupancy}
           />
         );
