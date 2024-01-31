@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import styled from 'styled-components';
 
-import { LibraryData } from '../types';
+import { LibraryData, LibraryOccupancyAPI } from '../types';
 import ProgressCircle from './ProgressCircle';
 
 const LibraryCard = styled.div<{ $gridArea: string }>`
@@ -44,6 +44,7 @@ const LibraryTitle = styled.h1`
   margin-bottom: 4px;
   font-size: 1.15em;
   color: #fff;
+  text-transform: capitalize;
 `;
 
 const LibraryOccupancyWrapper = styled.div`
@@ -64,13 +65,17 @@ const LibraryOccupancyText = styled.p`
 interface Props {
   id: string;
   loading: boolean;
-  occupancy: number;
-  library: LibraryData;
+  template: LibraryData;
+  occupancyInfo?: LibraryOccupancyAPI | null;
 }
 
 const Library: React.FC<Props> = function (props) {
-  const { id, library, occupancy } = props;
-  const { name, maxOccupancy, backgroundImage } = library;
+  const { id, template, occupancyInfo, loading } = props;
+  const { name, backgroundImage } = template;
+
+  const currentOccupancy = occupancyInfo?.currentOccupancy ?? 0;
+  const maxOccupancy = occupancyInfo?.maxOccupancy ?? template.maxOccupancy;
+
   const {
     fileUrl,
     attribution: { author, license },
@@ -88,17 +93,18 @@ const Library: React.FC<Props> = function (props) {
       />
       <LibraryContentWrapper>
         <div>
-          <LibraryTitle>{name}</LibraryTitle>
+          <LibraryTitle>{name.toLowerCase()}</LibraryTitle>
           <LibraryOccupancyWrapper>
             <ProgressCircle
               label={`${name} Occupancy Level`}
-              progress={occupancy / maxOccupancy}
+              progress={currentOccupancy / maxOccupancy}
             />
             <LibraryOccupancyText>
-              {`${occupancy} / ${maxOccupancy}`}
+              {loading ? 'Loading' : `${currentOccupancy} / ${maxOccupancy}`}
             </LibraryOccupancyText>
           </LibraryOccupancyWrapper>
         </div>
+
         <LibraryImageAttribution>
           {author}, <a href={license.externalUrl}>{license.type}</a>
           {', '}
