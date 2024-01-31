@@ -28,5 +28,21 @@
       "sizes": "512x512",
       "type": "image/png"
     }
+  ],
+  "screenshots": [
+    {
+      "src": "images/marketing/screenshot_narrow.png",
+      "sizes": "393x776",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Homescreen of Classmaid"
+    },
+    {
+      "src": "images/marketing/screenshot_wide.png",
+      "sizes": "1106x795",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Homescreen of Classmaid"
+    }
   ]
 }
