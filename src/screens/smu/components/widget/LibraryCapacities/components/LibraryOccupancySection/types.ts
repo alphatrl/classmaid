@@ -27,3 +27,36 @@ export interface LibraryBackgroundImage {
     };
   };
 }
+
+export interface LibraryApiResponse {
+  success: boolean;
+  message: string;
+  payload: LibraryApiPayload;
+}
+
+export interface LibraryApiPayload {
+  zones: LibraryApiZone[];
+}
+
+export interface LibraryApiZone {
+  id: string;
+  tenantId: string;
+  locationId: string;
+  parentZoneId: string | null;
+  name: string;
+  currentOccupancy: number;
+  maxOccupancy: number;
+  zoneTypeId: number;
+  privateName: string | null;
+  showOnDashboard: boolean;
+  includeInLocationCount: boolean;
+  enterCorrectionInterval: number;
+  exitCorrectionInterval: number;
+  subscriptionId: string;
+  subscriptionShortName: string;
+  locationName: string;
+  tenantName: string;
+  alarmEnabled: boolean;
+  status: any[];
+  zoneDataTypes: string[];
+}
