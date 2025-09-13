@@ -34,7 +34,7 @@
     "@floating-ui/react": "^0.25.3",
     "@svgr/webpack": "^6.5.1",
     "@vercel/analytics": "^1.1.1",
-    "axios": "^1.2.1",
+    "axios": "^1.12.0",
     "csv-parse": "^4.16.2",
     "lodash": "^4.17.21",
     "moment-timezone": "^0.5.40",
