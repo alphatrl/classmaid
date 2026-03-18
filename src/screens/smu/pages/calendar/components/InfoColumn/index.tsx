@@ -8,7 +8,7 @@ import { ColumnWrapper } from '../../styled';
 import { CalendarValue } from '../../types';
 
 const Wrapper = styled(ColumnWrapper)`
-  grid-area: info;
+  height: 100%;
   background-color: ${(props) => props.theme.appColor[100]}ED;
   backdrop-filter: blur(12px) saturate(86%);
   -webkit-backdrop-filter: blur(12px) saturate(86%);

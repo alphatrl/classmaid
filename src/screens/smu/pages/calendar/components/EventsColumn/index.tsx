@@ -7,7 +7,7 @@ import { ColumnWrapper } from '../../styled';
 import DailyEvents from './components/DailyEvents';
 
 const Wrapper = styled(ColumnWrapper)`
-  grid-area: events;
+  height: 100%;
   background-color: ${(props) => props.theme.appColor[100]}BF;
   backdrop-filter: blur(12px) saturate(86%);
   -webkit-backdrop-filter: blur(12px) saturate(86%);
