@@ -2,18 +2,16 @@
  * @type {import('next').NextConfig}
  */
 module.exports = {
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ['@svgr/webpack', 'url-loader'],
-    });
-
-    config.resolve.fallback = {
-      fs: false,
-      stream: require.resolve('readable-stream'),
-    };
-
-    return config;
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: ['@svgr/webpack', 'url-loader'],
+        as: '*.js',
+      },
+    },
+    resolveAlias: {
+      stream: 'readable-stream',
+    },
   },
 
   images: {
