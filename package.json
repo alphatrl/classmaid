@@ -39,6 +39,7 @@
     "react-calendar": "^4.7.0",
     "react-content-loader": "^6.2.0",
     "react-dom": "^18.2.0",
+    "react-grid-layout": "^2.2.2",
     "readable-stream": "^3.6.0",
     "styled-components": "^6.0.0",
     "stylis": "^4.0.0",
