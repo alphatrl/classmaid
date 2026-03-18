@@ -1,10 +1,7 @@
 import moment from 'moment-timezone';
 import { useRouter } from 'next/router';
 import React from 'react';
-import {
-  ResponsiveGridLayout,
-  useContainerWidth,
-} from 'react-grid-layout';
+import { ResponsiveGridLayout, useContainerWidth } from 'react-grid-layout';
 import styled from 'styled-components';
 
 import useScreenSize from '../../../../shared/hooks/useScreenSize';

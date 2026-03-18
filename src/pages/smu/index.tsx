@@ -1,9 +1,6 @@
 import type { NextPage } from 'next';
 import React from 'react';
-import {
-  ResponsiveGridLayout,
-  useContainerWidth,
-} from 'react-grid-layout';
+import { ResponsiveGridLayout, useContainerWidth } from 'react-grid-layout';
 import styled from 'styled-components';
 
 import AppLibrary from '../../screens/smu/components/widget/AppLibrary';
