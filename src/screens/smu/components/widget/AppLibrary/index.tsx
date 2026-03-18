@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import useWidgetSize from '../../../../../shared/hooks/useWidgetSize';
 import { APPS_LIBRARY } from '../../../../../sources/smu/appsLibrary';
 import { CardTemplate } from '../styled';
 import AppGrid from './components/AppGrid';
@@ -23,11 +22,10 @@ const Card = styled(CardTemplate)`
 
 const AppLibrary: React.FC = function () {
   const apps = APPS_LIBRARY;
-  const widgetSize = useWidgetSize('large');
   const schoolApps = apps[0];
 
   return (
-    <Card width={widgetSize.width} height={widgetSize.height}>
+    <Card>
       <AppGrid homeApps={schoolApps} allApps={apps} />
     </Card>
   );

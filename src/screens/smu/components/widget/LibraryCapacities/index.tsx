@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import useWidgetSize from '../../../../../shared/hooks/useWidgetSize';
 import { CardTemplate } from '../styled';
 import Header from './components/Header';
 import LibraryOccupancySection from './components/LibraryOccupancySection';
@@ -14,10 +13,8 @@ const Card = styled(CardTemplate)`
 `;
 
 const LibraryCapacities: React.FC = function () {
-  const widgetSize = useWidgetSize('large');
-
   return (
-    <Card width={widgetSize.width} height={widgetSize.height}>
+    <Card>
       <Header />
       <LibraryOccupancySection />
     </Card>
