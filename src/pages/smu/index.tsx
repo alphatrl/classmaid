@@ -23,7 +23,7 @@ const GridContainer = styled.div`
 
   @media screen and (min-width: 768px) {
     max-width: 896px;
-    padding: 16px 32px;
+    padding: 16px 64px;
   }
 
   @media screen and (min-width: 1280px) {
