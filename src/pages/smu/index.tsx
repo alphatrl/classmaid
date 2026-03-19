@@ -23,7 +23,7 @@ const GridContainer = styled.div`
 
   @media screen and (min-width: 768px) {
     max-width: 896px;
-    padding: 16px 64px;
+    padding: 16px 24px;
   }
 
   @media screen and (min-width: 1280px) {
@@ -44,7 +44,11 @@ export const DashboardRowHeight: Record<Breakpoint, number> = {
   sm: 315,
 };
 
-const DashboardMargin = 16; // 16px or 1em
+const DashboardMargin = {
+  lg: 32,
+  md: 24,
+  sm: 16
+};
 
 const APP_LAYOUT = {
   lg: [
@@ -67,7 +71,7 @@ const APP_LAYOUT = {
 const DashboardGrid: React.FC = function () {
   const { width, containerRef } = useContainerWidth();
 
-  const { cols, layout } = useResponsiveLayout({
+  const { cols, layout, breakpoint } = useResponsiveLayout({
     width,
     breakpoints: {lg: 1000, md: 700, sm: 480 },
     cols: {lg: 3, md: 2, sm: 1},
@@ -80,10 +84,8 @@ const DashboardGrid: React.FC = function () {
     if (!width) return DashboardRowHeight.lg || 150; // Fallback
 
     // Safe access to margin and fallback logic
-    return (width - (cols - 1) * DashboardMargin) / cols;
-  }, [width, cols]);
-
-  console.log(cardHeight)
+    return (width - (cols - 1) * DashboardMargin[breakpoint]) / cols;
+  }, [width, cols, breakpoint]);
 
   return (
     <GridContainer ref={containerRef as React.RefObject<HTMLDivElement>}>
@@ -95,7 +97,7 @@ const DashboardGrid: React.FC = function () {
           gridConfig={{
             cols,
             rowHeight: cardHeight,
-            margin: [DashboardMargin, DashboardMargin]
+            margin: [DashboardMargin[breakpoint], DashboardMargin[breakpoint]]
           }}
         >
           <div key="today">
