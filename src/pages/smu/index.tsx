@@ -1,6 +1,11 @@
 import type { NextPage } from 'next';
 import React from 'react';
-import { Breakpoint, GridLayout as ResponsiveGridLayout, useContainerWidth, useResponsiveLayout } from 'react-grid-layout';
+import {
+  Breakpoint,
+  GridLayout as ResponsiveGridLayout,
+  useContainerWidth,
+  useResponsiveLayout,
+} from 'react-grid-layout';
 import styled from 'styled-components';
 
 import AppLibrary from '../../screens/smu/components/widget/AppLibrary';
@@ -47,7 +52,7 @@ export const DashboardRowHeight: Record<Breakpoint, number> = {
 const DashboardMargin = {
   lg: 32,
   md: 24,
-  sm: 16
+  sm: 16,
 };
 
 const APP_LAYOUT = {
@@ -73,12 +78,12 @@ const DashboardGrid: React.FC = function () {
 
   const { cols, layout, breakpoint } = useResponsiveLayout({
     width,
-    breakpoints: {lg: 1000, md: 700, sm: 480 },
-    cols: {lg: 3, md: 2, sm: 1},
-    layouts: APP_LAYOUT
-  })
+    breakpoints: { lg: 1000, md: 700, sm: 480 },
+    cols: { lg: 3, md: 2, sm: 1 },
+    layouts: APP_LAYOUT,
+  });
 
-    const cardHeight = React.useMemo(() => {
+  const cardHeight = React.useMemo(() => {
     // We want the grid items to be square, so rowHeight should equal the column width
     // Formula: (containerWidth - (cols - 1) * marginX) / cols
     if (!width) return DashboardRowHeight.lg || 150; // Fallback
@@ -97,7 +102,7 @@ const DashboardGrid: React.FC = function () {
           gridConfig={{
             cols,
             rowHeight: cardHeight,
-            margin: [DashboardMargin[breakpoint], DashboardMargin[breakpoint]]
+            margin: [DashboardMargin[breakpoint], DashboardMargin[breakpoint]],
           }}
         >
           <div key="today">
