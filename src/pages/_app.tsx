@@ -1,3 +1,6 @@
+import 'react-grid-layout/css/styles.css';
+import 'react-resizable/css/styles.css';
+
 import { Analytics } from '@vercel/analytics/react';
 import { AppProps } from 'next/app';
 import React from 'react';

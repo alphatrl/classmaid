@@ -8,7 +8,7 @@ import { ColumnWrapper } from '../../styled';
 import { CalendarValue } from '../../types';
 
 const Wrapper = styled(ColumnWrapper)`
-  grid-area: info;
+  height: 100%;
   background-color: ${(props) => props.theme.appColor[100]}ED;
   backdrop-filter: blur(12px) saturate(86%);
   -webkit-backdrop-filter: blur(12px) saturate(86%);
@@ -16,9 +16,10 @@ const Wrapper = styled(ColumnWrapper)`
 
 const ReactCalendarWrapper = styled.div`
   .react-calendar * {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-      'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-      'Helvetica Neue', sans-serif;
+    font-family:
+      -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
   }
 
   .react-calendar {

@@ -3,7 +3,6 @@ import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
 
-import useWidgetSize from '../../../../../shared/hooks/useWidgetSize';
 import { useDataContext } from '../../../contexts/DataContext';
 import { CardTemplate } from '../styled';
 import Calendar from './components/Calendar';
@@ -21,7 +20,6 @@ const CardLink = styled(Link)`
 
 const TodaySummaryWidget: React.FC = function () {
   const { currentEvent, calendarEvents } = useDataContext();
-  const widgetSize = useWidgetSize('small');
 
   const today = moment();
 
@@ -49,7 +47,7 @@ const TodaySummaryWidget: React.FC = function () {
 
   return (
     <CardLink href="/smu/calendar">
-      <Card width={widgetSize.width}>
+      <Card>
         <TodayEvent currentEvent={currentEvent} />
         <TodaysSummary todayMoment={today} numOfEvents={todayEvents.length} />
         <Calendar events={todayEvents} />
