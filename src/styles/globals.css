@@ -1,0 +1,15 @@
+@import 'tailwindcss';
+@import 'tailwindcss-safe-area';
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @apply text-gray-700 bg-sky-300 dark:text-gray-200 dark:bg-sky-300;
+}
+
+html {
+  margin: 0;
+}
