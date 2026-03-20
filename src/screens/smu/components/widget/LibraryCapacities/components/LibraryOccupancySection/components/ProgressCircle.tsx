@@ -1,26 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const Wrapper = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: -8px;
-`;
-
-const Circle = styled.circle`
-  fill: transparent;
-  stroke: ${(props) => props.theme.primary[10]};
-  stroke-linecap: round;
-`;
-
-const FilledCircle = styled(Circle)`
-  stroke: ${(props) => props.theme.primary[50]};
-  transform: rotate(-90deg);
-  transform-origin: 50% 50%;
-  transition: stroke-dashoffset 0.5s ease-out;
-`;
 
 interface Props {
   label: string;
@@ -37,7 +15,7 @@ const ProgressCircle: React.FC<Props> = function (props) {
   const offset = circumference - progress * circumference;
 
   return (
-    <Wrapper>
+    <div className="relative flex justify-center items-center -ml-2">
       <svg
         aria-label={label}
         aria-valuemax={100}
@@ -50,17 +28,26 @@ const ProgressCircle: React.FC<Props> = function (props) {
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <Circle cx="50" cy="50" r={radius} strokeWidth={strokeWidth} />
-        <FilledCircle
+        <circle
+          className="fill-transparent stroke-sky-100 dark:stroke-sky-100"
+          cx="50"
+          cy="50"
+          r={radius}
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
+        />
+        <circle
+          className="fill-transparent stroke-sky-500 dark:stroke-sky-500 -rotate-90 origin-center transition-[stroke-dashoffset] duration-500 ease-out"
           cx="50"
           cy="50"
           r={radius}
           strokeDasharray={`${circumference} ${circumference}`}
           strokeDashoffset={offset}
           strokeWidth={strokeWidth}
+          strokeLinecap="round"
         />
       </svg>
-    </Wrapper>
+    </div>
   );
 };
 
