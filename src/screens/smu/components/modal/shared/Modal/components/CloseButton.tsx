@@ -1,29 +1,7 @@
+import classnames from 'classnames';
 import React from 'react';
-import styled from 'styled-components';
 
 import Icon from '../../../../../../../shared/components/Icon';
-
-const Wrapper = styled.button`
-  width: 40px;
-  height: 40px;
-  border-width: 0;
-  background-color: unset;
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 24px;
-
-  :hover {
-    background-color: ${(props) => props.theme.appColor[90]};
-  }
-
-  span {
-    font-size: 32px;
-    color: ${(props) => props.theme.appColor[40]};
-  }
-`;
 
 interface Props {
   onClose: () => void;
@@ -33,9 +11,17 @@ const CloseButton: React.FC<Props> = function (props) {
   const { onClose } = props;
 
   return (
-    <Wrapper onClick={onClose}>
+    <button
+      onClick={onClose}
+      className={classnames(
+        'w-10 h-10 border-0 bg-transparent cursor-pointer',
+        'flex items-center justify-center rounded-3xl',
+        'hover:bg-gray-200 dark:hover:bg-gray-700',
+        '[&_span]:text-[32px] [&_span]:text-gray-500 [&_span]:dark:text-gray-400'
+      )}
+    >
       <Icon name="cancel" />
-    </Wrapper>
+    </button>
   );
 };
 

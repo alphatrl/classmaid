@@ -1,48 +1,9 @@
 import { useId } from '@floating-ui/react';
+import classnames from 'classnames';
 import React from 'react';
-import styled from 'styled-components';
 
 import Icon from '../../../../../../../shared/components/Icon';
 import { useModalContext } from '../hooks/useModalContext';
-
-const HeaderWrapper = styled.div<{ $showTitle: boolean }>`
-  min-height: 48px;
-  padding: 4px 0px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: ${(props) =>
-    props.$showTitle ? 'space-between' : 'flex-end'};
-
-  h2 {
-    font-size: 1.5em;
-    margin: 0;
-    text-transform: capitalize;
-    color: ${(props) => props.theme.textColor[10]};
-  }
-`;
-
-const CloseButtonWrapper = styled.button`
-  width: 40px;
-  height: 40px;
-  border-width: 0;
-  background-color: unset;
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 24px;
-
-  :hover {
-    background-color: ${(props) => props.theme.appColor[90]};
-  }
-
-  span {
-    font-size: 32px;
-    color: ${(props) => props.theme.appColor[40]};
-  }
-`;
 
 const ModalHeading = React.forwardRef<
   HTMLHeadingElement,
@@ -63,14 +24,32 @@ const ModalHeading = React.forwardRef<
   }, [id, setLabelId]);
 
   return (
-    <HeaderWrapper $showTitle={children != null}>
-      <h2 {...props} ref={ref} id={id}>
+    <div
+      className={classnames(
+        'min-h-12 py-1 flex flex-row items-center',
+        children != null ? 'justify-between' : 'justify-end'
+      )}
+    >
+      <h2
+        className="text-2xl font-bold m-0 capitalize text-gray-700 dark:text-gray-200"
+        {...props}
+        ref={ref}
+        id={id}
+      >
         {children}
       </h2>
-      <CloseButtonWrapper onClick={handleClose}>
+      <button
+        onClick={handleClose}
+        className={classnames(
+          'w-10 h-10 border-0 bg-transparent cursor-pointer',
+          'flex items-center justify-center rounded-3xl',
+          'hover:bg-gray-200 dark:hover:bg-gray-700',
+          '[&_span]:text-[32px] [&_span]:text-gray-500 [&_span]:dark:text-gray-400'
+        )}
+      >
         <Icon name="cancel" />
-      </CloseButtonWrapper>
-    </HeaderWrapper>
+      </button>
+    </div>
   );
 });
 
