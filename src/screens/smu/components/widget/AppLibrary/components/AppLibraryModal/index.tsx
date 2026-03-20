@@ -1,5 +1,4 @@
 import React from 'react';
-import styled, { useTheme } from 'styled-components';
 
 import Icon from '../../../../../../../shared/components/Icon';
 import Modal, {
@@ -7,12 +6,9 @@ import Modal, {
   ModalTitle,
   ModalTrigger,
 } from '../../../../modal/shared/Modal';
-import { GridImage, GridItemMore, GridText } from '../styled';
+import { GridImage, GridText } from '../styled';
+import { GridItemMore } from '../GridItemMore';
 import Section from './components/Section';
-
-const Wrapper = styled.div`
-  padding: 1em 1.5em;
-`;
 
 interface Props {
   apps: App.AppLibrary.LibraryItem[];
@@ -20,13 +16,12 @@ interface Props {
 
 const AppLibraryModal: React.FC<Props> = function (props) {
   const { apps } = props;
-  const theme = useTheme();
 
   return (
     <Modal>
       <ModalTrigger asChild={true}>
         <GridItemMore role="button">
-          <GridImage $backgroundColor={theme.appColor[50]}>
+          <GridImage $backgroundColor="#808080">
             <Icon name="apps" />
           </GridImage>
           <GridText>More Apps</GridText>
@@ -34,13 +29,13 @@ const AppLibraryModal: React.FC<Props> = function (props) {
       </ModalTrigger>
 
       <ModalContent>
-        <Wrapper>
+        <div className="px-6 py-4">
           <ModalTitle>App Library</ModalTitle>
 
           {apps.map((library) => {
             return <Section key={library.uid} library={library} />;
           })}
-        </Wrapper>
+        </div>
       </ModalContent>
     </Modal>
   );

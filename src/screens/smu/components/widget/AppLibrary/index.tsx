@@ -1,33 +1,25 @@
+import classnames from 'classnames';
 import React from 'react';
-import styled from 'styled-components';
 
 import { APPS_LIBRARY } from '../../../../../sources/smu/appsLibrary';
 import { CardTemplate } from '../styled';
 import AppGrid from './components/AppGrid';
-
-const Card = styled(CardTemplate)`
-  position: relative;
-  background-color: ${(props) => `${props.theme.appColor[100]}42`};
-  backdrop-filter: blur(12px) saturate(86%);
-  -webkit-backdrop-filter: blur(12px) saturate(86%);
-  backface-visibility: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &:hover {
-    transform: none;
-  }
-`;
 
 const AppLibrary: React.FC = function () {
   const apps = APPS_LIBRARY;
   const schoolApps = apps[0];
 
   return (
-    <Card>
+    <CardTemplate
+      className={classnames(
+        'relative backface-hidden',
+        'bg-white/25 dark:bg-black/25',
+        'backdrop-blur-md backdrop-saturate-86',
+        'flex items-center justify-center hover:scale-100'
+      )}
+    >
       <AppGrid homeApps={schoolApps} allApps={apps} />
-    </Card>
+    </CardTemplate>
   );
 };
 
