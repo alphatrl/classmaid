@@ -20,11 +20,16 @@ const CardLink = styled(Link)`
 
 const TodaySummaryWidget: React.FC = function () {
   const { currentEvent, calendarEvents } = useDataContext();
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const today = moment();
 
   const todayEvents = React.useMemo(() => {
-    if (calendarEvents == null) {
+    if (!mounted || calendarEvents == null) {
       return [];
     }
 
