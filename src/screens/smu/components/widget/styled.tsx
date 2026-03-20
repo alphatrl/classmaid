@@ -1,31 +1,49 @@
-import styled from 'styled-components';
+import classnames from 'classnames';
+import React from 'react';
 
-export const CardTemplate = styled.div`
-  box-sizing: border-box;
-  padding: 16px;
-  border-radius: 24px;
-  background-color: ${(props) => props.theme.appColor[100]};
-  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.25);
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
+interface CardTemplateProps extends React.HTMLAttributes<HTMLDivElement> {
+  className?: string;
+}
 
-  transition: all 0.2s ease-in;
-  &:hover {
-    transform: scale(1.05);
-  }
-`;
+export const CardTemplate = React.forwardRef<HTMLDivElement, CardTemplateProps>(
+  ({ className, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={classnames(
+        'box-border p-4 rounded-4xl bg-white dark:bg-black overflow-clip w-full h-full',
+        'shadow-xl',
+        'transition-all duration-200 ease-in hover:scale-105',
+        className
+      )}
+      {...props}
+    />
+  )
+);
+CardTemplate.displayName = 'CardTemplate';
 
-export const WidgetHeader = styled.div`
-  box-sizing: border-box;
-  padding: 0 16px;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  background-color: ${(props) => props.theme.primary[10]};
-`;
+interface WidgetHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
+  className?: string;
+}
 
-export const WidgetHeaderTitle = styled.h2`
-  margin: 0;
-  font-size: 1.15rem;
-`;
+export const WidgetHeader = React.forwardRef<HTMLDivElement, WidgetHeaderProps>(
+  ({ className, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={classnames(
+        'box-border px-4 h-16 flex items-center bg-sky-100 dark:bg-sky-800',
+        className
+      )}
+      {...props}
+    />
+  )
+);
+WidgetHeader.displayName = 'WidgetHeader';
+
+export function WidgetHeaderTitle({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLHeadingElement>) {
+  return (
+    <h2 className={classnames('m-0 text-lg font-bold', className)} {...props} />
+  );
+}
