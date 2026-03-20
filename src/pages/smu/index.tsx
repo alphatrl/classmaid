@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import type { NextPage } from 'next';
 import React from 'react';
 import {
@@ -6,40 +7,11 @@ import {
   useContainerWidth,
   useResponsiveLayout,
 } from 'react-grid-layout';
-import styled from 'styled-components';
 
 import AppLibrary from '../../screens/smu/components/widget/AppLibrary';
 import LibraryCapacities from '../../screens/smu/components/widget/LibraryCapacities';
 import TodaySummaryWidget from '../../screens/smu/components/widget/TodaySummary';
 import DefaultLayout from '../../shared/components/layouts/DefaultLayout';
-
-const ContentWrapper = styled.div`
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-`;
-
-const GridContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  max-width: 384px;
-  margin: 0 auto;
-  padding: 16px;
-
-  @media screen and (min-width: 768px) {
-    max-width: 896px;
-    padding: 16px 24px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    max-width: 1280px;
-    padding: 16px 160px;
-  }
-
-  .react-grid-item {
-    transition: all 0.2s ease;
-  }
-`;
 
 const STATIC = { isDraggable: false, isResizable: false };
 
@@ -93,7 +65,14 @@ const DashboardGrid: React.FC = function () {
   }, [width, cols, breakpoint]);
 
   return (
-    <GridContainer ref={containerRef as React.RefObject<HTMLDivElement>}>
+    <div
+      ref={containerRef as React.RefObject<HTMLDivElement>}
+      className={classnames(
+        'w-full h-full max-w-96 mx-auto p-4',
+        'md:max-w-4xl md:px-4',
+        'xl:max-w-7xl xl:px-12'
+      )}
+    >
       {width > 0 && (
         <ResponsiveGridLayout
           width={width}
@@ -116,16 +95,16 @@ const DashboardGrid: React.FC = function () {
           </div>
         </ResponsiveGridLayout>
       )}
-    </GridContainer>
+    </div>
   );
 };
 
 export const Home: NextPage = function () {
   return (
     <DefaultLayout title="SMU">
-      <ContentWrapper>
+      <div className="box-border flex justify-center">
         <DashboardGrid />
-      </ContentWrapper>
+      </div>
     </DefaultLayout>
   );
 };
