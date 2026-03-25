@@ -1,5 +1,5 @@
+import classnames from 'classnames';
 import React, { useCallback, useMemo, useState } from 'react';
-import styled from 'styled-components';
 
 import Icon from '../../../../shared/components/Icon';
 
@@ -10,60 +10,14 @@ interface Props {
   customPlaceholder?: string;
 }
 
-const Wrapper = styled.div`
-  label {
-    display: inline-block;
-    cursor: pointer;
-    background-color: ${(props) => props.theme.appColor[90]};
-    border-radius: 16px;
-    width: 50%;
-    max-width: 450px;
-    padding: 1rem;
-  }
-
-  .message {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    color: ${(props) => props.theme.textColor[10]};
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-    .text {
-      font-weight: 500;
-    }
-  }
-
-  .placeholder {
-    color: ${(props) => props.theme.textColor[20]};
-  }
-
-  span {
-    padding-right: 0.5rem;
-  }
-
-  &:hover {
-    label {
-      background-color: ${(props) => props.theme.primary[10]};
-    }
-
-    .placeholder {
-      color: ${(props) => props.theme.primary[30]};
-    }
-  }
-`;
-
 const FilePicker: React.FC<Props> = (props) => {
   const { customPlaceholder, fileType, handleFiles, onFailure } = props;
   const [newLabel, setNewLabel] = useState<string | null>(null);
-  const [labelClassName, setLabelClassName] = useState('');
 
   const placeholder = useMemo(() => {
     if (newLabel) {
-      setLabelClassName('message');
       return newLabel;
     }
-    setLabelClassName('message placeholder');
     return customPlaceholder
       ? customPlaceholder
       : 'Choose a file from your computer';
@@ -91,7 +45,7 @@ const FilePicker: React.FC<Props> = (props) => {
   );
 
   return (
-    <Wrapper>
+    <div>
       <input
         id="upload-file"
         type="file"
@@ -100,13 +54,29 @@ const FilePicker: React.FC<Props> = (props) => {
         hidden
         accept={fileType}
       />
-      <label htmlFor="upload-file">
-        <span className={labelClassName}>
+      <label
+        htmlFor="upload-file"
+        className={classnames(
+          'inline-block cursor-pointer rounded-2xl',
+          'bg-gray-200 dark:bg-gray-700',
+          'w-1/2 max-w-112.5 p-4',
+          'hover:bg-sky-100 dark:hover:bg-sky-100'
+        )}
+      >
+        <span
+          className={classnames(
+            'flex items-center text-base pr-2',
+            'text-gray-700 dark:text-gray-200',
+            'overflow-hidden text-ellipsis',
+            !newLabel && 'text-gray-500 dark:text-gray-300',
+            !newLabel && 'hover:text-sky-300 dark:hover:text-sky-300'
+          )}
+        >
           <Icon name="file_upload" />
-          <span className="text">{placeholder}</span>
+          <span className="font-medium pr-2">{placeholder}</span>
         </span>
       </label>
-    </Wrapper>
+    </div>
   );
 };
 
