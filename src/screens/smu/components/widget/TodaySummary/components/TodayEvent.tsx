@@ -92,11 +92,10 @@ const TodayEvent: React.FC<Props> = function (props) {
         href="/smu/calendar"
         className={classnames(
           'no-underline rounded-2xl flex p-2',
-          'hover:bg-sky-200',
-          '[&_span]:text-sky-500 [&_span]:dark:text-sky-500'
+          'hover:bg-sky-200'
         )}
       >
-        <Icon name="open_in_full" />
+        <Icon name="open_in_full" className="text-sky-500 dark:text-sky-500" />
       </Link>
     </div>
   );

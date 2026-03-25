@@ -60,13 +60,14 @@ const Library: React.FC<Props> = function (props) {
           </div>
         </div>
 
-        <span
-          className={classnames(
-            'text-[0.65em] text-gray-50',
-            '[&_a:link]:text-sky-500 [&_a:link]:dark:text-sky-500'
-          )}
-        >
-          {author}, <a href={license.externalUrl}>{license.type}</a>
+        <span className="text-[0.65em] text-gray-50">
+          {author},{' '}
+          <a
+            href={license.externalUrl}
+            className="text-sky-500 dark:text-sky-500"
+          >
+            {license.type}
+          </a>
           {', '}
           {license.additional}
         </span>

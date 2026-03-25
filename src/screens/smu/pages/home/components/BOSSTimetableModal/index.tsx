@@ -179,9 +179,7 @@ const BOSSTimetableModal: React.FC = () => {
   );
 
   return (
-    <div
-      className="min-h-50 px-6 py-4"
-    >
+    <div className="min-h-50 px-6 py-4">
       <ModalTitle>BOSS Timetable Export</ModalTitle>
 
       <FilePicker handleFiles={handleFile} fileType=".csv" />
@@ -195,17 +193,17 @@ const BOSSTimetableModal: React.FC = () => {
       <div
         className={classnames(
           'm-0 mt-2 text-xs font-semibold mb-4',
-          'text-gray-400 dark:text-gray-400 [&_p]:m-[0.3em]'
+          'text-gray-400 dark:text-gray-400'
         )}
       >
-        <p>
+        <p className="m-1">
           Head over to BOSS {'>'} Plan {'&'} Bid.
         </p>
-        <p>
+        <p className="m-1">
           Click the {'"'}Download class and exam timetable{'"'} link.
         </p>
-        <p>Right click and save page as a .csv file format.</p>
-        <p>Upload the saved .csv file here.</p>
+        <p className="m-1">Right click and save page as a .csv file format.</p>
+        <p className="m-1">Upload the saved .csv file here.</p>
       </div>
 
       {csvContents !== null && (

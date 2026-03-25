@@ -11,10 +11,10 @@ const TodaysSummary: React.FC<Props> = function (props) {
   const todayDate = todayMoment.format('dddd, D MMMM');
 
   return (
-    <div className="mt-1 font-semibold text-gray-400 dark:text-gray-400 [&_span]:m-0">
-      <span>{todayDate}</span>
-      <span>{` · ${numOfEvents} `}</span>
-      <span>{numOfEvents === 1 ? 'event' : 'events'}</span>
+    <div className="mt-1 font-semibold text-gray-400 dark:text-gray-400">
+      <span className="m-0">{todayDate}</span>
+      <span className="m-0">{` · ${numOfEvents} `}</span>
+      <span className="m-0">{numOfEvents === 1 ? 'event' : 'events'}</span>
     </div>
   );
 };

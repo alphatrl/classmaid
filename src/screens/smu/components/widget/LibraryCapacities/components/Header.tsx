@@ -15,11 +15,10 @@ const Header: React.FC = function () {
         className={classnames(
           'cursor-pointer no-underline rounded-2xl',
           'flex p-2 -mr-2 items-center border-none bg-transparent',
-          '[&_span]:text-sky-500 [&_span]:dark:text-sky-500',
           'hover:bg-sky-200 dark:hover:bg-sky-200'
         )}
       >
-        <Icon name="open_in_new" />
+        <Icon name="open_in_new" className="text-sky-500 dark:text-sky-500" />
       </a>
     </WidgetHeader>
   );
