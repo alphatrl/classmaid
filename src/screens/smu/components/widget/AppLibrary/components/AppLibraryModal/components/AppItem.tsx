@@ -48,7 +48,7 @@ const AppItem: React.FC<Props> = function (props) {
         <ModalTrigger asChild={true}>
           <GridItemMore>
             <GridImage $backgroundColor={shortcut.color}>
-              <Icon name={shortcut.logo} height={32} width={32} />
+              <Icon name={shortcut.logo} height={32} width={32} size={32} />
             </GridImage>
             <GridText>More Apps</GridText>
           </GridItemMore>
@@ -77,7 +77,7 @@ const AppItem: React.FC<Props> = function (props) {
       )}
     >
       <GridImage $backgroundColor={shortcut.color}>
-        <Icon name={shortcut.logo} height={32} width={32} />
+        <Icon name={shortcut.logo} height={32} width={32} size={32} />
       </GridImage>
       <GridText>{shortcut.title}</GridText>
     </a>

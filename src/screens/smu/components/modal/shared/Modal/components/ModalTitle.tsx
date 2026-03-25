@@ -43,11 +43,14 @@ const ModalHeading = React.forwardRef<
         className={classnames(
           'w-10 h-10 border-0 bg-transparent cursor-pointer',
           'flex items-center justify-center rounded-3xl',
-          'hover:bg-gray-200 dark:hover:bg-gray-700',
-          '[&_span]:text-[32px] [&_span]:text-gray-500 [&_span]:dark:text-gray-400'
+          'hover:bg-gray-200 dark:hover:bg-gray-700'
         )}
       >
-        <Icon name="cancel" />
+        <Icon
+          name="cancel"
+          size={32}
+          className="text-gray-500 dark:text-gray-400"
+        />
       </button>
     </div>
   );

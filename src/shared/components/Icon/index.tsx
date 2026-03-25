@@ -8,12 +8,14 @@ const Reddit = dynamic(() => import('./components/reddit'));
 
 interface Props {
   name: string;
+  className?: string;
+  size?: number;
   width?: number;
   height?: number;
 }
 
 const Icon: React.FC<Props> = (props) => {
-  const { name, width = 16, height = 16 } = props;
+  const { name, className, size, width = 16, height = 16 } = props;
 
   const getIcon = useCallback(() => {
     switch (name) {
@@ -26,9 +28,20 @@ const Icon: React.FC<Props> = (props) => {
       case 'reddit':
         return <Reddit width={width} height={height} />;
       default:
-        return <span className="material-symbols-rounded">{name}</span>;
+        return (
+          <span
+            className={
+              className
+                ? `material-symbols-rounded ${className}`
+                : 'material-symbols-rounded'
+            }
+            style={size ? { fontSize: size } : undefined}
+          >
+            {name}
+          </span>
+        );
     }
-  }, [height, name, width]);
+  }, [className, height, name, size, width]);
 
   return getIcon();
 };
