@@ -1,5 +1,5 @@
+import classnames from 'classnames';
 import React from 'react';
-import styled from 'styled-components';
 
 import Modal, {
   ModalContent,
@@ -11,53 +11,48 @@ interface Props {
   onClose: () => void;
 }
 
-const Wrapper = styled.div`
-  padding: 1em 1.5em;
-  color: ${(props) => props.theme.textColor[10]};
-  line-height: 1.5em;
-  font-weight: 400;
-`;
-
-const SubtitleHeader = styled.h3`
-  font-size: 1.2em;
-  margin-top: 1.5em;
-  margin-bottom: 0.5em;
-  color: ${(props) => props.theme.textColor[20]};
-`;
-
-const ListWrapper = styled.ul`
-  margin: 4px 0;
-
-  a {
-    color: ${(props) => props.theme.primary[50]};
-  }
-`;
-
 const AboutModal: React.FC<Props> = function (props) {
   const { isOpen, onClose } = props;
 
   return (
     <Modal open={isOpen} onOpenChange={onClose}>
       <ModalContent>
-        <Wrapper>
+        <div
+          className={classnames(
+            'px-6 py-4 leading-6 font-normal',
+            'text-gray-700 dark:text-gray-200'
+          )}
+        >
           <ModalTitle>About Classmaid</ModalTitle>
           Providing students a quick one-click bookmarks to commonly used sites
           in schools. <br />
           Designed by students for students This site is non-affiliated with any
           institutions in Singapore.
-          <SubtitleHeader>Contribute</SubtitleHeader>
+          <h3 className="text-[1.2em] mt-6 mb-2 text-gray-500 dark:text-gray-300">
+            Contribute
+          </h3>
           Want to add more sites or offer suggestions?
-          <ListWrapper>
+          <ul className="my-1">
             <li>
               {'Current or incoming student? Make a suggestion '}
-              <a href="https://bit.ly/30SRyIo">here</a>
+              <a
+                href="https://bit.ly/30SRyIo"
+                className="text-sky-500 dark:text-sky-500"
+              >
+                here
+              </a>
             </li>
             <li>
               {'Developer? Add an issue or make a pull request on '}
-              <a href="https://github.com/alphatrl/classmaid">Github</a>
+              <a
+                href="https://github.com/alphatrl/classmaid"
+                className="text-sky-500 dark:text-sky-500"
+              >
+                Github
+              </a>
             </li>
-          </ListWrapper>
-        </Wrapper>
+          </ul>
+        </div>
       </ModalContent>
     </Modal>
   );

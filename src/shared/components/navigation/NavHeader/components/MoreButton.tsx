@@ -7,8 +7,8 @@ import {
   useHover,
   useInteractions,
 } from '@floating-ui/react';
+import classnames from 'classnames';
 import React from 'react';
-import styled from 'styled-components';
 
 import useMediaQuery from '../../../../hooks/useMediaQuery';
 import useMobileDevice from '../../../../hooks/useMobileDevice';
@@ -17,22 +17,6 @@ import MenuItem from '../../../modal/MenuItem';
 import { PopperHeader, PopperWrapper } from '../../../modal/styled';
 import AboutModal from './AboutModal';
 import AddToHomeModal from './AddToHomeModal';
-
-const Wrapper = styled.button`
-  padding: 10px 12px;
-  border-radius: 8px;
-  background-color: unset;
-  border: unset;
-  color: #ffffff;
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-
-  :hover {
-    background-color: #00000030;
-  }
-`;
 
 const MoreButton: React.FC = function () {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -77,11 +61,19 @@ const MoreButton: React.FC = function () {
 
   return (
     <>
-      <Wrapper ref={refs.setReference} {...getReferenceProps()}>
+      <button
+        ref={refs.setReference}
+        className={classnames(
+          'py-2.5 px-3 rounded-lg bg-transparent border-none',
+          'text-white cursor-pointer flex items-center hover:bg-black/20'
+        )}
+        {...getReferenceProps()}
+      >
         <Icon name="pending" />
-      </Wrapper>
+      </button>
       {isOpen && (
         <PopperWrapper
+          // eslint-disable-next-line react-hooks/refs
           ref={refs.setFloating}
           style={floatingStyles}
           {...getFloatingProps()}
