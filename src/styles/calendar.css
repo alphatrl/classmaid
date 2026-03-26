@@ -1,0 +1,60 @@
+/* Style overrides for react-calendar (third-party) */
+
+.calendar-wrapper .react-calendar * {
+  font-family: inherit;
+}
+
+.calendar-wrapper .react-calendar {
+  @apply bg-transparent border-none;
+}
+
+.calendar-wrapper .react-calendar button {
+  @apply rounded-xl;
+}
+
+.calendar-wrapper .react-calendar__navigation {
+  @apply hidden;
+}
+
+.calendar-wrapper .react-calendar__tile--now abbr {
+  @apply font-semibold text-sky-500;
+}
+
+.calendar-wrapper .react-calendar__tile--now {
+  @apply bg-transparent;
+}
+
+.calendar-wrapper .react-calendar__tile--now:hover {
+  @apply bg-transparent;
+}
+
+.calendar-wrapper .react-calendar__month-view__days__day--weekend {
+  @apply text-gray-700;
+}
+
+.dark .calendar-wrapper .react-calendar__month-view__days__day--weekend {
+  @apply text-gray-200;
+}
+
+.calendar-wrapper .react-calendar__tile--active {
+  @apply bg-sky-300 text-sky-500;
+}
+
+.dark .calendar-wrapper .react-calendar__tile--active {
+  @apply bg-sky-300;
+}
+
+.calendar-wrapper .react-calendar__tile:enabled:hover,
+.calendar-wrapper .react-calendar__tile:enabled:focus,
+.calendar-wrapper .react-calendar__tile--active:enabled:hover,
+.calendar-wrapper .react-calendar__tile--active:enabled:focus {
+  @apply bg-sky-100;
+}
+
+.calendar-wrapper .react-calendar__month-view__days__day--neighboringMonth {
+  @apply text-gray-300;
+}
+
+.dark .calendar-wrapper .react-calendar__month-view__days__day--neighboringMonth {
+  @apply text-gray-500;
+}
