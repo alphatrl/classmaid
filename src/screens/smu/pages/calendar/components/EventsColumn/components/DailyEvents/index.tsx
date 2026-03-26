@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import EventDate from './components/EventDate';
 import EventItem from './components/EventItem';
@@ -9,23 +8,13 @@ interface Props {
   events: App.Calendar.Event[];
 }
 
-const Wrapper = styled.div`
-  margin-bottom: 0.6rem;
-`;
-
-const EventsWrapper = styled.div`
-  display: grid;
-  flex-direction: column;
-  grid-gap: 0.2rem;
-`;
-
 const DailyEvents: React.FC<Props> = function (props) {
   const { timestamp, events } = props;
 
   return (
-    <Wrapper id={timestamp}>
+    <div className="mb-2.5" id={timestamp}>
       <EventDate timestamp={timestamp} />
-      <EventsWrapper>
+      <div className="grid flex-col gap-0.5">
         {events.map((item, index) => {
           return (
             <EventItem
@@ -34,8 +23,8 @@ const DailyEvents: React.FC<Props> = function (props) {
             />
           );
         })}
-      </EventsWrapper>
-    </Wrapper>
+      </div>
+    </div>
   );
 };
 
