@@ -1,6 +1,6 @@
+import { resolve } from 'url';
 import Head from 'next/head';
 import React from 'react';
-import { resolve } from 'url';
 
 import config from '../../config';
 

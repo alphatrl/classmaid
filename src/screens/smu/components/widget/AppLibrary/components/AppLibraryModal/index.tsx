@@ -5,9 +5,9 @@ import Modal, {
   ModalContent,
   ModalTitle,
   ModalTrigger,
-} from '../../../../modal/shared/Modal';
-import { GridImage, GridText } from '../styled';
+} from '../../../../../../../shared/components/Modal';
 import { GridItemMore } from '../GridItemMore';
+import { GridImage, GridText } from '../styled';
 import Section from './components/Section';
 
 interface Props {

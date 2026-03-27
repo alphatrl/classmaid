@@ -4,7 +4,7 @@ import { capitalize, isEqual, uniqBy } from 'lodash';
 import moment from 'moment';
 import React from 'react';
 
-import { ModalTitle } from '../../../../components/modal/shared/Modal';
+import { ModalTitle } from '../../../../../../shared/components/Modal';
 import FilePicker from '../../../../shared/components/FilePicker';
 import generateICal from './utils/generateICal';
 import { Event } from './utils/generateICal';

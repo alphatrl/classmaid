@@ -1,10 +1,7 @@
 import classnames from 'classnames';
 import React from 'react';
 
-import Modal, {
-  ModalContent,
-  ModalTitle,
-} from '../../../../../screens/smu/components/modal/shared/Modal';
+import Modal, { ModalContent, ModalTitle } from '../../../Modal';
 
 interface Props {
   isOpen: boolean;
