@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.4.0](https://github.com/alphatrl/classmaid/compare/v4.3.3...v4.4.0) (2026-03-27)
+
+
+### Features
+
+* **styles:** Move to `tailwindcss@v4` ([#166](https://github.com/alphatrl/classmaid/issues/166)) ([26802af](https://github.com/alphatrl/classmaid/commit/26802af8d413e9f705348edbfa619e183b16e57e))
+
 ## [4.3.3](https://github.com/alphatrl/classmaid/compare/v4.3.2...v4.3.3) (2026-03-19)
 
 
