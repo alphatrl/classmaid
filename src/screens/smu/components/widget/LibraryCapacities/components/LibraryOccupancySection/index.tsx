@@ -29,7 +29,6 @@ const LibraryOccupancySection: React.FC = function () {
       className={classnames(
         'p-4 grid flex-1 gap-4 grid-cols-2',
         "[grid-template-areas:'lks_kgc']",
-        "lg:grid-cols-1 lg:[grid-template-areas:'lks'_'kgc']",
         'max-md:p-3 max-md:gap-3'
       )}
     >

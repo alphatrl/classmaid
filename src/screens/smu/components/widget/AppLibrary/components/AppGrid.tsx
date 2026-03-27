@@ -17,9 +17,9 @@ const AppGrid: React.FC<Props> = function (props) {
   return (
     <div
       className={classnames(
-        'grid grid-cols-5 justify-items-center items-baseline gap-y-3 gap-x-6',
-        'lg:grid-cols-3 lg:gap-y-1 lg:gap-x-1',
-        'max-md:grid-cols-3 max-md:gap-y-1 max-md:gap-x-1'
+        'grid grid-cols-3 justify-items-center items-baseline gap-y-3 gap-x-6',
+        'lg:grid-cols-3 ',
+        'xl:grid-cols-5'
       )}
     >
       {shortcuts.map((shortcut) => {

@@ -13,9 +13,9 @@ export function GridImage({
   return (
     <div
       className={classnames(
-        'h-18 w-18 flex justify-center items-center rounded-xl',
-        '[&_span]:text-[42px] [&_span]:text-white [&_svg]:text-white',
-        'lg:max-md:h-13.5 lg:max-md:w-13.5 lg:max-md:[&_span]:text-[32px]',
+        'flex justify-center items-center rounded-2xl',
+        'h-14 w-14 md:h-16 md:w-16',
+        '[&_span]:text-4xl [&_span]:text-white [&_svg]:text-white',
         className
       )}
       style={{ backgroundColor: $backgroundColor }}
@@ -31,9 +31,9 @@ export function GridText({
   return (
     <p
       className={classnames(
-        'text-center m-0 text-[0.95em] pt-2 font-medium',
+        'text-center m-0 text-xs pt-2 font-medium leading-tight',
         'text-gray-700 dark:text-gray-200',
-        'lg:max-md:leading-tight lg:max-md:text-[0.85em]',
+        'md:text-base',
         className
       )}
       {...props}
