@@ -6,7 +6,8 @@ import Modal, {
   ModalContent,
   ModalTrigger,
 } from '../../../../../modal/shared/Modal';
-import { GridImage, GridItemMore, GridText } from '../../styled';
+import { GridImage, GridText } from '../../styled';
+import { GridItemMore } from '../../GridItemMore';
 
 interface Props {
   shortcut: App.AppLibrary.LibraryItemShortcut;

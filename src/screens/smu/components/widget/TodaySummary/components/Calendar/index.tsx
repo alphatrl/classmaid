@@ -1,26 +1,7 @@
+import classnames from 'classnames';
 import React from 'react';
-import styled from 'styled-components';
 
 import CalendarEvent from './components/CalendarEvent';
-
-const Wrapper = styled.div`
-  background-color: ${(props) => props.theme.appColor[90]};
-  margin-top: 8px;
-  display: grid;
-  flex: 1;
-  grid-template-rows: repeat(3, minmax(auto, 1fr));
-  grid-gap: 4px;
-
-  border-radius: 16px;
-  padding: 8px;
-`;
-
-const EmptyWrapper = styled(Wrapper)`
-  display: flex;
-  flex: 1;
-  align-items: center;
-  color: ${(props) => props.theme.textColor[30]};
-`;
 
 interface Props {
   events: App.Calendar.Event[];
@@ -30,16 +11,32 @@ const Calendar: React.FC<Props> = function (props) {
   const { events } = props;
 
   if (events.length === 0) {
-    return <EmptyWrapper>No events today</EmptyWrapper>;
+    return (
+      <div
+        className={classnames(
+          'bg-gray-200 dark:bg-gray-700 mt-2',
+          'flex flex-1 items-center rounded-2xl p-2',
+          'text-gray-400 dark:text-gray-400'
+        )}
+      >
+        No events today
+      </div>
+    );
   }
 
   const trimmedEvents = events.length > 3 ? events.slice(0, 3) : events;
   return (
-    <Wrapper>
+    <div
+      className={classnames(
+        'bg-gray-200 dark:bg-gray-700 mt-2',
+        'grid flex-1 grid-rows-[repeat(3,minmax(auto,1fr))]',
+        'gap-1 rounded-3xl p-2'
+      )}
+    >
       {trimmedEvents.map((calEvent) => (
         <CalendarEvent key={calEvent.title} calendarEvent={calEvent} />
       ))}
-    </Wrapper>
+    </div>
   );
 };
 

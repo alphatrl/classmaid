@@ -232,7 +232,7 @@ export const APPS_LIBRARY: App.AppLibrary.LibraryItem[] = [
         id: 'smu_sg_reddit',
         title: '/r/smu_singapore',
         logo: 'reddit',
-        color: '#FF4500;',
+        color: '#FF4500',
         type: 'url',
         link: 'https://www.reddit.com/r/SMU_Singapore/',
       },

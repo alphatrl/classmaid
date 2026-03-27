@@ -1,11 +1,21 @@
-import styled from 'styled-components';
+import classnames from 'classnames';
+import React from 'react';
 
-export const ColumnWrapper = styled.div`
-  box-sizing: border-box;
-  overflow-y: auto;
-  padding: 16px;
+interface ColumnWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
+  className?: string;
+}
 
-  border-radius: 24px;
-  background-color: ${(props) => props.theme.appColor[100]};
-  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.25);
-`;
+export const ColumnWrapper = React.forwardRef<
+  HTMLDivElement,
+  ColumnWrapperProps
+>(({ className, ...props }, ref) =>
+  React.createElement('div', {
+    ref,
+    className: classnames(
+      'box-border overflow-y-auto p-4 rounded-3xl bg-white dark:bg-black shadow-[0px_4px_25px_rgba(0,0,0,0.25)]',
+      className
+    ),
+    ...props,
+  })
+);
+ColumnWrapper.displayName = 'ColumnWrapper';

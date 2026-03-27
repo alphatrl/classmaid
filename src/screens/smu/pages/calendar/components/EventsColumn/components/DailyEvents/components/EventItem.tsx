@@ -1,80 +1,43 @@
+import classnames from 'classnames';
 import React from 'react';
-import styled from 'styled-components';
-
-import { MOBILE_MEDIA_QUERY } from '../../../../../../../../../shared/themes/size';
 
 interface Props {
   event: App.Calendar.Event;
 }
 
-const Wrapper = styled.div`
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 8px;
-
-  &:hover {
-    background-color: ${(props) => props.theme.calendar.red}12;
-    border-radius: 12px;
-  }
-`;
-
-const DecorationLine = styled.div`
-  margin-inline-end: 0.5rem;
-  background-color: ${(props) => props.theme.calendar.red};
-
-  width: 4px;
-  height: 85%;
-  border-radius: 4px;
-`;
-
-const TextContents = styled.div`
-  box-sizing: border-box;
-
-  display: flex;
-  flex: 1;
-
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const EventTitle = styled.h4`
-  margin: 0;
-  font-weight: 600;
-  font-size: 1rem;
-  color: ${(props) => props.theme.textColor[10]};
-
-  // NOTE: (hello@amostan.me) This is to truncate the title into 1 line with ellipsis
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  display: -webkit-box;
-  overflow: hidden;
-
-  @media screen and ${MOBILE_MEDIA_QUERY} {
-    -webkit-line-clamp: 2;
-  }
-`;
-
-const EventTimings = styled.p`
-  margin: 0;
-  margin-top: 2px;
-  font-weight: 500;
-  font-size: 0.85rem;
-  color: ${(props) => props.theme.textColor[30]};
-`;
-
 const EventItem: React.FC<Props> = function (props) {
   const { event } = props;
 
   return (
-    <Wrapper>
-      <DecorationLine />
-      <TextContents>
-        <EventTitle>{event.title}</EventTitle>
-        <EventTimings>{event.timeString}</EventTimings>
-      </TextContents>
-    </Wrapper>
+    <div
+      className={classnames(
+        'box-border flex flex-row items-center p-2',
+        'hover:bg-rose-600/[0.07] hover:rounded-xl'
+      )}
+    >
+      <div className="me-2 bg-rose-600 w-1 h-[85%] rounded-sm" />
+      <div className="box-border flex flex-1 flex-col justify-center">
+        <h4
+          className={classnames(
+            'm-0 font-semibold text-base',
+            'text-gray-700 dark:text-gray-200',
+            '[-webkit-box-orient:vertical]',
+            'line-clamp-1 max-md:line-clamp-2',
+            '[display:-webkit-box] overflow-hidden'
+          )}
+        >
+          {event.title}
+        </h4>
+        <p
+          className={classnames(
+            'm-0 mt-0.5 font-medium text-sm',
+            'text-gray-400 dark:text-gray-400'
+          )}
+        >
+          {event.timeString}
+        </p>
+      </div>
+    </div>
   );
 };
 

@@ -4,38 +4,10 @@ import {
   FloatingPortal,
   useMergeRefs,
 } from '@floating-ui/react';
+import classnames from 'classnames';
 import React from 'react';
-import styled from 'styled-components';
 
-import { MOBILE_MEDIA_QUERY } from '../../../../../../../shared/themes/size';
 import { useModalContext } from '../hooks/useModalContext';
-
-const ModalOverlay = styled(FloatingOverlay)`
-  background: rgba(0, 0, 0, 0.8);
-  display: grid;
-  place-items: center;
-
-  // NOTE: (hello@amostan.me) This is to counter library image z-index
-  z-index: 5;
-`;
-
-const ModalContentWrapper = styled.div`
-  width: 80%;
-  max-width: 800px;
-  max-height: min(90%, 800px);
-  overflow-y: scroll;
-  border-radius: 24px;
-  box-sizing: border-box;
-  background-color: ${(props) => props.theme.appColor[100]};
-
-  @media screen and ${MOBILE_MEDIA_QUERY} {
-    width: 100%;
-    height: 85%;
-    max-height: unset;
-    align-self: flex-end;
-    border-radius: 24px 24px 0 0;
-  }
-`;
 
 const ModalContent = React.forwardRef<
   HTMLDivElement,
@@ -51,18 +23,25 @@ const ModalContent = React.forwardRef<
 
   return (
     <FloatingPortal>
-      <ModalOverlay>
+      <FloatingOverlay className="bg-black/80 grid place-items-center z-5">
         <FloatingFocusManager context={floatingContext}>
-          <ModalContentWrapper
+          <div
             ref={ref}
             aria-labelledby={context.labelId}
             aria-describedby={context.descriptionId}
+            className={classnames(
+              'w-4/5 max-w-200 max-h-[min(90%,800px)]',
+              'overflow-y-scroll rounded-3xl box-border',
+              'bg-white dark:bg-gray-900',
+              'max-md:w-full max-md:h-[85%] max-md:max-h-none',
+              'max-md:self-end max-md:rounded-b-none'
+            )}
             {...context.getFloatingProps(props)}
           >
             {children}
-          </ModalContentWrapper>
+          </div>
         </FloatingFocusManager>
-      </ModalOverlay>
+      </FloatingOverlay>
     </FloatingPortal>
   );
 });

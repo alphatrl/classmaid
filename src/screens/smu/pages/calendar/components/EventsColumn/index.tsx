@@ -1,17 +1,10 @@
+import classnames from 'classnames';
 import moment from 'moment-timezone';
 import React from 'react';
-import styled from 'styled-components';
 
 import { useSmuEvents } from '../../../../contexts/SmuEventsContext';
 import { ColumnWrapper } from '../../styled';
 import DailyEvents from './components/DailyEvents';
-
-const Wrapper = styled(ColumnWrapper)`
-  height: 100%;
-  background-color: ${(props) => props.theme.appColor[100]}BF;
-  backdrop-filter: blur(12px) saturate(86%);
-  -webkit-backdrop-filter: blur(12px) saturate(86%);
-`;
 
 const EventsColumn: React.FC = function () {
   const { calendarEvents } = useSmuEvents();
@@ -56,7 +49,12 @@ const EventsColumn: React.FC = function () {
   }, [calendarEvents, todayMidnight]);
 
   return (
-    <Wrapper>
+    <ColumnWrapper
+      className={classnames(
+        'h-full bg-white/75 dark:bg-black/75',
+        'backdrop-blur-md backdrop-saturate-86'
+      )}
+    >
       <DailyEvents timestamp={todayTimestamp} events={todayEvents} />
       {futureEvents.map((dayEvents) => {
         return (
@@ -67,7 +65,7 @@ const EventsColumn: React.FC = function () {
           />
         );
       })}
-    </Wrapper>
+    </ColumnWrapper>
   );
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 
+import classNames from 'classnames';
 import Icon from '../../../../../../../../shared/components/Icon';
 import useColorScheme from '../../../../../../../../shared/hooks/useColorScheme';
 import useScreenSize from '../../../../../../../../shared/hooks/useScreenSize';
@@ -9,16 +9,13 @@ import Modal, {
   ModalTrigger,
 } from '../../../../../modal/shared/Modal';
 import { TASKADE_IFRAME_PARAMS } from '../../../constants';
-import { GridImage, GridItem, GridItemMore, GridText } from '../../styled';
+import { GridImage, GridText } from '../../styled';
 import useInternalApps from '../hooks/useInternalApps';
+import { GridItemMore } from '../../GridItemMore';
 
 interface Props {
   shortcut: App.AppLibrary.LibraryItemShortcut;
 }
-
-const Wrapper = styled.iframe`
-  border-width: 0;
-`;
 
 const AppItem: React.FC<Props> = function (props) {
   const { shortcut } = props;
@@ -49,28 +46,41 @@ const AppItem: React.FC<Props> = function (props) {
     return (
       <Modal>
         <ModalTrigger asChild={true}>
-          <GridItemMore role="button">
+          <GridItemMore>
             <GridImage $backgroundColor={shortcut.color}>
-              <Icon name={shortcut.logo} height={32} width={32} />
+              <Icon name={shortcut.logo} height={32} width={32} size={32} />
             </GridImage>
             <GridText>More Apps</GridText>
           </GridItemMore>
         </ModalTrigger>
 
         <ModalContent>
-          <Wrapper width="100%" height={frameHeight} src={finalUrl} />
+          <iframe
+            className="border-0"
+            width="100%"
+            height={frameHeight}
+            src={finalUrl}
+          />
         </ModalContent>
       </Modal>
     );
   }
 
   return (
-    <GridItem href={finalUrl} target="_blank">
+    <a
+      href={finalUrl}
+      target="_blank"
+      className={classNames(
+        'flex flex-col justify-center items-center',
+        'no-underline cursor-pointer w-4/5 max-w-30',
+        'transition-all duration-100 ease-in hover:scale-105'
+      )}
+    >
       <GridImage $backgroundColor={shortcut.color}>
-        <Icon name={shortcut.logo} height={32} width={32} />
+        <Icon name={shortcut.logo} height={32} width={32} size={32} />
       </GridImage>
       <GridText>{shortcut.title}</GridText>
-    </GridItem>
+    </a>
   );
 };
 

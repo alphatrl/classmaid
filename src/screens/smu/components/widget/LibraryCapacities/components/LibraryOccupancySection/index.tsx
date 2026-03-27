@@ -1,34 +1,9 @@
+import classnames from 'classnames';
 import React from 'react';
-import styled from 'styled-components';
 
-import {
-  MOBILE_MEDIA_QUERY,
-  TABLET_MEDIA_QUERY,
-} from '../../../../../../../shared/themes/size';
 import Library from './components/Library';
 import { KGC_LIBRARY_TEMPLATE, LKS_LIBRARY_TEMPLATE } from './constants';
 import { LibraryOccupancyAPI } from './types';
-
-const Wrapper = styled.div`
-  padding: 16px;
-  display: grid;
-  flex: 1;
-  gap: 16px;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-areas: 'lks kgc';
-
-  @media screen and ${TABLET_MEDIA_QUERY} {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      'lks'
-      'kgc';
-  }
-
-  @media screen and (max-width: ${MOBILE_MEDIA_QUERY}) {
-    padding: 12px;
-    gap: 12px;
-  }
-`;
 
 const LibraryOccupancySection: React.FC = function () {
   const [isFetchingOccupancy, setFetchingOccupancy] = React.useState(true);
@@ -50,7 +25,13 @@ const LibraryOccupancySection: React.FC = function () {
   }, [getLibrariesOccupancy]);
 
   return (
-    <Wrapper>
+    <div
+      className={classnames(
+        'p-4 grid flex-1 gap-4 grid-cols-2',
+        "[grid-template-areas:'lks_kgc']",
+        'max-md:p-3 max-md:gap-3'
+      )}
+    >
       {[LKS_LIBRARY_TEMPLATE, KGC_LIBRARY_TEMPLATE].map((template) => {
         const key = template.key;
         const occupancyInfo =
@@ -66,7 +47,7 @@ const LibraryOccupancySection: React.FC = function () {
           />
         );
       })}
-    </Wrapper>
+    </div>
   );
 };
 

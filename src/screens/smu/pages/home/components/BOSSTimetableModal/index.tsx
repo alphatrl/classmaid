@@ -1,8 +1,8 @@
+import classnames from 'classnames';
 import parse from 'csv-parse/lib/sync';
 import { capitalize, isEqual, uniqBy } from 'lodash';
 import moment from 'moment';
 import React from 'react';
-import styled from 'styled-components';
 
 import { ModalTitle } from '../../../../components/modal/shared/Modal';
 import FilePicker from '../../../../shared/components/FilePicker';
@@ -27,106 +27,6 @@ const CSVHeader = [
   'Venue',
   'Instructor(s)',
 ];
-
-const Wrapper = styled.div`
-  min-height: 200px;
-  padding: 1em 1.5em;
-
-  fieldset {
-    margin: 0;
-    margin-top: 12px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 12px;
-    box-sizing: border-box;
-    min-height: 50px;
-    padding: 8px 16px;
-    border: 2px solid ${(props) => props.theme.appColor[90]};
-    margin-bottom: 16px;
-
-    legend {
-      float: left;
-      font-size: 12px;
-      font-weight: 600;
-      color: ${(props) => props.theme.textColor[20]};
-    }
-
-    .content {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-
-      label {
-        color: ${(props) => props.theme.textColor[10]};
-        margin-top: 4px;
-        padding-right: 1rem;
-      }
-    }
-  }
-
-  .error {
-    margin: 0;
-    margin-top: 8px;
-    font-size: 12px;
-    font-weight: 600;
-    color: ${(props) => props.theme.error};
-  }
-`;
-
-const CustomPrimaryBtn = styled.a`
-  display: flex;
-  justify-content: center;
-
-  font-weight: 500;
-  font-size: 1em;
-  padding: 0.8rem;
-
-  color: #ffffff;
-  border-radius: 12px;
-  text-decoration: none;
-  border: 2px solid ${(props) => props.theme.primary[30]};
-  background-color: ${(props) => props.theme.primary[50]};
-
-  &:hover {
-    color: ${(props) => props.theme.primary[50]};
-    background-color: ${(props) => props.theme.primary[10]};
-  }
-
-  &:disabled {
-    color: ${(props) => props.theme.textColor[50]};
-    border-color: ${(props) => props.theme.textColor[50]};
-    pointer-events: none;
-  }
-`;
-
-const CustomDisabledBtn = styled.button`
-  box-sizing: border-box;
-  text-align: center;
-  font-weight: 500;
-  font-size: 1em;
-
-  width: 100%;
-  padding: 12px 16px;
-
-  color: ${(props) => props.theme.textColor[30]};
-  border: 2px solid ${(props) => props.theme.appColor[90]};
-  border-radius: 12px;
-
-  align-self: flex-end;
-`;
-
-const HelperText = styled.div`
-  margin: 0;
-  margin-top: 8px;
-  font-size: 12px;
-  font-weight: 600;
-  color: ${(props) => props.theme.textColor[30]};
-  margin-bottom: 1rem;
-
-  p {
-    margin: 0.3em;
-  }
-`;
 
 function convert(data: string[][], allowedModules: string[] = []) {
   // Remove CSV header
@@ -279,32 +179,51 @@ const BOSSTimetableModal: React.FC = () => {
   );
 
   return (
-    <Wrapper>
+    <div className="min-h-50 px-6 py-4">
       <ModalTitle>BOSS Timetable Export</ModalTitle>
 
       <FilePicker handleFiles={handleFile} fileType=".csv" />
 
-      {errorFile && <p className="error">Invalid file</p>}
+      {errorFile && (
+        <p className="m-0 mt-2 text-xs font-semibold text-red-600 dark:text-red-500">
+          Invalid file
+        </p>
+      )}
 
-      <HelperText>
-        <p>
+      <div
+        className={classnames(
+          'm-0 mt-2 text-xs font-semibold mb-4',
+          'text-gray-400 dark:text-gray-400'
+        )}
+      >
+        <p className="m-1">
           Head over to BOSS {'>'} Plan {'&'} Bid.
         </p>
-        <p>
+        <p className="m-1">
           Click the {'"'}Download class and exam timetable{'"'} link.
         </p>
-        <p>Right click and save page as a .csv file format.</p>
-        <p>Upload the saved .csv file here.</p>
-      </HelperText>
+        <p className="m-1">Right click and save page as a .csv file format.</p>
+        <p className="m-1">Upload the saved .csv file here.</p>
+      </div>
 
       {csvContents !== null && (
-        <fieldset>
-          <legend>Modules to Export</legend>
-          <div className="content">
+        <fieldset
+          className={classnames(
+            'm-0 mt-3 flex flex-col rounded-xl box-border min-h-12.5',
+            'px-4 py-2 border-2 border-gray-200 dark:border-gray-700 mb-4'
+          )}
+        >
+          <legend className="float-left text-xs font-semibold text-gray-500 dark:text-gray-300">
+            Modules to Export
+          </legend>
+          <div className="flex flex-wrap justify-start">
             {uniqBy(csvContents.slice(1), (event) => event[3])
               .filter((event) => event[6].toLowerCase() === 'enrolled')
               .map((event) => (
-                <label key={event[3]}>
+                <label
+                  key={event[3]}
+                  className="text-gray-700 dark:text-gray-200 mt-1 pr-4"
+                >
                   <input
                     type="checkbox"
                     value={event[3]}
@@ -319,19 +238,36 @@ const BOSSTimetableModal: React.FC = () => {
       )}
 
       {csvContents !== null ? (
-        <CustomPrimaryBtn
+        <a
           href={hrefDownload}
           download="boss_timetable_export.ics"
           role="button"
+          className={classnames(
+            'flex justify-center font-medium text-base p-3',
+            'text-white rounded-xl no-underline',
+            'border-2 border-sky-300 dark:border-sky-300',
+            'bg-sky-500 dark:bg-sky-500',
+            'hover:text-sky-500 hover:bg-sky-100',
+            'dark:hover:text-sky-500 dark:hover:bg-sky-100'
+          )}
         >
           Download
-        </CustomPrimaryBtn>
+        </a>
       ) : (
-        <CustomDisabledBtn role="button" aria-disabled={true}>
+        <button
+          role="button"
+          aria-disabled={true}
+          className={classnames(
+            'box-border text-center font-medium text-base',
+            'w-full py-3 px-4 rounded-xl self-end',
+            'text-gray-400 dark:text-gray-400',
+            'border-2 border-gray-200 dark:border-gray-700'
+          )}
+        >
           Download
-        </CustomDisabledBtn>
+        </button>
       )}
-    </Wrapper>
+    </div>
   );
 };
 

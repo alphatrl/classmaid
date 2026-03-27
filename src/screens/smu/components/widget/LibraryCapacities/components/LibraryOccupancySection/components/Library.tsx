@@ -1,66 +1,9 @@
+import classnames from 'classnames';
 import Image from 'next/image';
 import React from 'react';
-import styled from 'styled-components';
 
 import { LibraryData, LibraryOccupancyAPI } from '../types';
 import ProgressCircle from './ProgressCircle';
-
-const LibraryCard = styled.div<{ $gridArea: string }>`
-  grid-area: ${(props) => props.$gridArea}  
-  box-sizing: border-box;
-  border-radius: 16px;
-
-  position: relative;
-  overflow: hidden;
-  backdrop-filter: blur(0px);
-  -webkit-backdrop-filter: blur(0px);
-`;
-
-const LibraryContentWrapper = styled.div`
-  box-sizing: border-box;
-  position: relative;
-  height: 100%;
-  padding: 12px;
-  background-color: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(2px) saturate(80%);
-  -webkit-backdrop-filter: blur(2px) saturate(80%);
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`;
-
-const LibraryImageAttribution = styled.span`
-  font-size: 0.65em;
-  color: #fafafa;
-
-  a:link {
-    color: ${(props) => props.theme.primary[50]};
-  }
-`;
-
-const LibraryTitle = styled.h1`
-  margin: 0;
-  margin-bottom: 4px;
-  font-size: 1.15em;
-  color: #fff;
-  text-transform: capitalize;
-`;
-
-const LibraryOccupancyWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`;
-
-const LibraryOccupancyText = styled.p`
-  margin: 0;
-  padding-left: 4px;
-
-  color: #fff;
-  font-size: 1em;
-  font-weight: 600;
-`;
 
 interface Props {
   id: string;
@@ -82,36 +25,54 @@ const Library: React.FC<Props> = function (props) {
   } = backgroundImage;
 
   return (
-    <LibraryCard $gridArea={id}>
+    <div
+      className="box-border rounded-2xl relative overflow-clip"
+      style={{ gridArea: id }}
+    >
       <Image
         src={fileUrl}
         alt=""
-        fill
+        fill={true}
         priority={true}
         sizes="(min-width: 300px)"
-        style={{ objectFit: 'cover' }}
+        className="object-cover"
       />
-      <LibraryContentWrapper>
+      {/* Backdrop blur layer — kept separate so backdrop-filter doesn't break parent overflow-clip */}
+      <div className="absolute inset-0 rounded-2xl bg-black/25 backdrop-blur-sm backdrop-saturate-80 z-1" />
+      <div
+        className={classnames(
+          'box-border relative h-full p-3 z-2',
+          'flex flex-col justify-between'
+        )}
+      >
         <div>
-          <LibraryTitle>{name.toLowerCase()}</LibraryTitle>
-          <LibraryOccupancyWrapper>
+          <h1 className="m-0 mb-1 text-[1.15em] text-white capitalize">
+            {name.toLowerCase()}
+          </h1>
+          <div className="flex flex-row items-center">
             <ProgressCircle
               label={`${name} Occupancy Level`}
               progress={currentOccupancy / maxOccupancy}
             />
-            <LibraryOccupancyText>
+            <p className="m-0 pl-1 text-white text-base font-semibold">
               {loading ? 'Loading' : `${currentOccupancy} / ${maxOccupancy}`}
-            </LibraryOccupancyText>
-          </LibraryOccupancyWrapper>
+            </p>
+          </div>
         </div>
 
-        <LibraryImageAttribution>
-          {author}, <a href={license.externalUrl}>{license.type}</a>
+        <span className="text-[0.65em] text-gray-50">
+          {author},{' '}
+          <a
+            href={license.externalUrl}
+            className="text-sky-500 dark:text-sky-500"
+          >
+            {license.type}
+          </a>
           {', '}
           {license.additional}
-        </LibraryImageAttribution>
-      </LibraryContentWrapper>
-    </LibraryCard>
+        </span>
+      </div>
+    </div>
   );
 };
 

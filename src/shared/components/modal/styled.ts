@@ -1,41 +1,57 @@
-import styled from 'styled-components';
+import classnames from 'classnames';
+import React from 'react';
 
-export const PopperWrapper = styled.div`
-  min-width: 250px;
-  border-radius: 12px;
-  padding: 12px;
-  background-color: ${(props) => `${props.theme.appColor[100]}`};
-  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.25);
-  z-index: 5;
-`;
+interface PopperWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
+  className?: string;
+}
 
-export const PopperHeader = styled.h1`
-  color: ${(props) => props.theme.textColor[10]};
-  font-size: 1em;
-  margin: 0;
-  margin-bottom: 4px;
-`;
+export const PopperWrapper = React.forwardRef<
+  HTMLDivElement,
+  PopperWrapperProps
+>(({ className, ...props }, ref) =>
+  React.createElement('div', {
+    ref,
+    className: classnames(
+      'min-w-[250px] rounded-xl p-3 bg-white dark:bg-black shadow-[0px_4px_25px_rgba(0,0,0,0.25)] z-5',
+      className
+    ),
+    ...props,
+  })
+);
+PopperWrapper.displayName = 'PopperWrapper';
 
-export const MenuItemWrapper = styled.button`
-  font-size: 1em;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  padding: 4px;
-  margin: 0 -4px;
-  border: unset;
-  border-color: unset;
-  background-color: unset;
-  cursor: pointer;
-  border-radius: 8px;
-  cursor: pointer;
-  color: ${(props) => props.theme.textColor[10]};
+export function PopperHeader({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLHeadingElement>) {
+  return React.createElement('h1', {
+    className: classnames(
+      'text-gray-700 dark:text-gray-200 text-base m-0 mb-1',
+      className
+    ),
+    ...props,
+  });
+}
 
-  &:hover {
-    background-color: ${(props) => `${props.theme.appColor[90]}`};
-  }
-`;
+export function MenuItemWrapper({
+  className,
+  ...props
+}: React.ButtonHTMLAttributes<HTMLButtonElement>) {
+  return React.createElement('button', {
+    className: classnames(
+      'text-base w-full flex items-center p-1 -mx-1 border-none bg-transparent cursor-pointer rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700',
+      className
+    ),
+    ...props,
+  });
+}
 
-export const MenuItemLabel = styled.span`
-  margin-left: 8px;
-`;
+export function MenuItemLabel({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement>) {
+  return React.createElement('span', {
+    className: classnames('ml-2', className),
+    ...props,
+  });
+}

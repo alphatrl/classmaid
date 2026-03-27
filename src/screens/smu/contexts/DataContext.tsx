@@ -29,11 +29,6 @@ export const DataWrapper: React.FC<React.PropsWithChildren> = (props) => {
     App.Calendar.ImportantDate[]
   >([]);
 
-  React.useEffect(() => {
-    getSchoolTerm();
-    getImportantDates();
-  }, []);
-
   /** Get school terms */
   const getSchoolTerm = async () =>
     axios(SCHOOL_TERM_URL)
@@ -55,6 +50,11 @@ export const DataWrapper: React.FC<React.PropsWithChildren> = (props) => {
       .catch((error) => {
         console.error('important dates:', error);
       });
+
+  React.useEffect(() => {
+    getSchoolTerm();
+    getImportantDates();
+  }, []);
 
   /** Get today details */
   const currentEvent: App.Calendar.CurrentEvent | null = React.useMemo(() => {

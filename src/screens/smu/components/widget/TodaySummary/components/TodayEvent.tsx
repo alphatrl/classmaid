@@ -1,72 +1,17 @@
+import classnames from 'classnames';
 import moment from 'moment-timezone';
 import Link from 'next/link';
 import React from 'react';
-import styled from 'styled-components';
 
 import Icon from '../../../../../../shared/components/Icon';
 import { getDateStringToMoment } from '../utils/getDateStringToMoment';
 import TodayEventLoading from './TodayEventLoading';
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
-const CustomLink = styled(Link)`
-  text-decoration: none;
-  border-radius: 16px;
-  display: flex;
-
-  padding: 8px 8px;
-  margin-right: -8px;
-  margin-top: -8px;
-
-  width: 24px;
-  height: 24px;
-
-  &:hover {
-    background-color: ${(props) => props.theme.primary[20]};
-  }
-
-  span {
-    color: ${(props) => props.theme.primary[50]};
-  }
-`;
-
-const EventWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  color: ${(props) => props.theme.textColor[50]};
-
-  h1 {
-    margin: 0;
-    font-size: 2.25rem;
-    line-height: 96%;
-  }
-`;
-
-const DaysWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  padding-bottom: 8px;
-  color: ${(props) => props.theme.textColor[10]};
-
-  span {
-    font-weight: 600;
-    padding: 0 8px;
-    font-size: 1.5em;
-  }
-`;
-
-const HighlightText = styled.h1`
-  color: ${(props) => props.theme.primary[50]};
-`;
-
 interface Props {
   currentEvent: App.Calendar.CurrentEvent | null;
 }
+
+const EventTitleClassName = 'm-0 text-4xl leading-[96%] font-bold';
 
 const TodayEvent: React.FC<Props> = function (props) {
   const { currentEvent } = props;
@@ -115,25 +60,44 @@ const TodayEvent: React.FC<Props> = function (props) {
     if (event.type === 'vacation') {
       return (
         <>
-          <DaysWrapper>
-            <h1>{event?.title}</h1>
-            <span>OF</span>
-          </DaysWrapper>
-          <HighlightText>{event.type.toUpperCase()}</HighlightText>
+          <div
+            className={classnames(
+              'flex flex-row items-end pb-2',
+              'text-gray-700 dark:text-gray-200'
+            )}
+          >
+            <h1 className={EventTitleClassName}>{event?.title}</h1>
+            <span className="font-semibold px-2 text-lg">OF</span>
+          </div>
+          <h1 className={classnames(EventTitleClassName, ' text-sky-500 ')}>
+            {event.type.toUpperCase()}
+          </h1>
         </>
       );
     }
 
-    return <HighlightText>{event.title}</HighlightText>;
+    return (
+      <h1 className={classnames(EventTitleClassName, 'text-sky-500 ')}>
+        {event.title}
+      </h1>
+    );
   }, [event]);
 
   return (
-    <Wrapper>
-      <EventWrapper>{renderContents}</EventWrapper>
-      <CustomLink href="/smu/calendar">
-        <Icon name="open_in_full" />
-      </CustomLink>
-    </Wrapper>
+    <div className="flex flex-row justify-between">
+      <div className="flex flex-col text-gray-200 dark:text-gray-700">
+        {renderContents}
+      </div>
+      <Link
+        href="/smu/calendar"
+        className={classnames(
+          'no-underline rounded-2xl flex p-2',
+          'hover:bg-sky-200'
+        )}
+      >
+        <Icon name="open_in_full" className="text-sky-500 dark:text-sky-500" />
+      </Link>
+    </div>
   );
 };
 

@@ -1,28 +1,31 @@
+import classnames from 'classnames';
 import moment from 'moment-timezone';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { ResponsiveGridLayout, useContainerWidth } from 'react-grid-layout';
-import styled from 'styled-components';
 
-import useScreenSize from '../../../../shared/hooks/useScreenSize';
-import { MOBILE_WIDTH } from '../../../../shared/themes/size';
 import EventsColumn from './components/EventsColumn';
 import InfoColumn from './components/InfoColumn';
 import { CalendarValue } from './types';
 
 const STATIC = { isDraggable: false, isResizable: false };
 
-const GridWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-
-  .react-grid-item {
-    transition: all 0.2s ease;
-  }
-`;
+const CALENDAR_LAYOUT = {
+  lg: [
+    { i: 'info', x: 0, y: 0, w: 1, h: 1, ...STATIC },
+    { i: 'events', x: 1, y: 0, w: 2, h: 1, ...STATIC },
+  ],
+  md: [
+    { i: 'info', x: 0, y: 0, w: 1, h: 1, ...STATIC },
+    { i: 'events', x: 1, y: 0, w: 2, h: 1, ...STATIC },
+  ],
+  sm: [
+    { i: 'info', x: 0, y: 1, w: 0, h: 0, ...STATIC },
+    { i: 'events', x: 0, y: 0, w: 1, h: 1, ...STATIC },
+  ],
+};
 
 const Calendar: React.FC = function () {
-  const { isMobile } = useScreenSize();
   const { width, containerRef } = useContainerWidth();
   const [containerHeight, setContainerHeight] = React.useState(0);
 
@@ -63,41 +66,34 @@ const Calendar: React.FC = function () {
   // rowHeight = container height minus vertical margins (1 row = 0 inner gaps)
   const rowHeight = containerHeight > 0 ? containerHeight - margin[1] : 0;
 
-  const layouts = isMobile
-    ? {
-        sm: [{ i: 'events', x: 0, y: 0, w: 1, h: 1, ...STATIC }],
-      }
-    : {
-        lg: [
-          { i: 'info', x: 0, y: 0, w: 1, h: 1, ...STATIC },
-          { i: 'events', x: 1, y: 0, w: 2, h: 1, ...STATIC },
-        ],
-        sm: [{ i: 'events', x: 0, y: 0, w: 1, h: 1, ...STATIC }],
-      };
-
   return (
-    <GridWrapper ref={containerRef as React.RefObject<HTMLDivElement>}>
+    <div
+      ref={containerRef as React.RefObject<HTMLDivElement>}
+      className={classnames(
+        'w-full h-full',
+        '[&_.react-grid-item]:transition-all',
+        '[&_.react-grid-item]:duration-200',
+        '[&_.react-grid-item]:ease-linear'
+      )}
+    >
       {width > 0 && rowHeight > 0 && (
         <ResponsiveGridLayout
           width={width}
-          layouts={layouts}
-          breakpoints={{ lg: MOBILE_WIDTH, sm: 0 }}
-          cols={{ lg: 3, sm: 1 }}
+          layouts={CALENDAR_LAYOUT}
+          breakpoints={{ lg: 1000, md: 735, sm: 0 }}
+          cols={{ lg: 3, md: 3, sm: 1 }}
           rowHeight={rowHeight}
           margin={margin}
-          autoSize={false}
         >
-          {!isMobile && (
-            <div key="info">
-              <InfoColumn value={value} onChange={handleValueSelected} />
-            </div>
-          )}
+          <div key="info" className="hidden md:block">
+            <InfoColumn value={value} onChange={handleValueSelected} />
+          </div>
           <div key="events">
             <EventsColumn />
           </div>
         </ResponsiveGridLayout>
       )}
-    </GridWrapper>
+    </div>
   );
 };
 

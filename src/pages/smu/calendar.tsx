@@ -1,28 +1,14 @@
 import type { GetStaticProps, NextPage } from 'next';
-import React from 'react';
-import styled from 'styled-components';
 
 import { SmuEventsProvider } from '../../screens/smu/contexts/SmuEventsContext';
 import Calendar from '../../screens/smu/pages/calendar';
 import getSchoolTermsAndImportantDates from '../../screens/smu/utils/getSchoolTermsAndImportantDates';
 import DefaultLayout from '../../shared/components/layouts/DefaultLayout';
-import { MOBILE_MEDIA_QUERY } from '../../shared/themes/size';
 
 export interface SMUCalendarServerSideProps {
   schoolTerms: App.Calendar.SchoolTerm[];
   importantDates: App.Calendar.ImportantDate[];
 }
-
-const ContentWrapper = styled.div`
-  box-sizing: border-box;
-  height: calc(100vh - 64px);
-  height: calc(100dvh - 64px);
-  padding: 1rem;
-
-  @media screen and ${MOBILE_MEDIA_QUERY} {
-    height: 100%;
-  }
-`;
 
 export const getStaticProps = (async () => {
   const { schoolTerms, importantDates } =
@@ -44,9 +30,9 @@ const SMUCalendar: NextPage<SMUCalendarServerSideProps> = function (props) {
   return (
     <DefaultLayout title="SMU Calendar">
       <SmuEventsProvider {...props}>
-        <ContentWrapper>
+        <div className="box-border h-[calc(100dvh-64px)] p-4">
           <Calendar />
-        </ContentWrapper>
+        </div>
       </SmuEventsProvider>
     </DefaultLayout>
   );
