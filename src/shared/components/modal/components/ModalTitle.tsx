@@ -2,7 +2,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import classnames from 'classnames';
 import React from 'react';
 
-import Icon from '../../../../../../../shared/components/Icon';
+import Icon from '../../Icon';
 
 const ModalTitle = React.forwardRef<
   HTMLHeadingElement,

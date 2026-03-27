@@ -5,7 +5,7 @@ import BOSSTimetableModal from '../../../../../../pages/home/components/BOSSTime
 import Modal, {
   ModalContent,
   ModalTrigger,
-} from '../../../../../modal/shared/Modal';
+} from '../../../../../../../../shared/components/Modal';
 import { GridImage, GridText } from '../../styled';
 import { GridItemMore } from '../../GridItemMore';
 

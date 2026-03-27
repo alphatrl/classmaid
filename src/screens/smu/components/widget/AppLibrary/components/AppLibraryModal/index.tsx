@@ -4,7 +4,7 @@ import Icon from '../../../../../../../shared/components/Icon';
 import Modal, {
   ModalContent,
   ModalTitle,
-} from '../../../../modal/shared/Modal';
+} from '../../../../../../../shared/components/Modal';
 import { GridImage, GridText } from '../styled';
 import { GridItemMore } from '../GridItemMore';
 import Section from './components/Section';

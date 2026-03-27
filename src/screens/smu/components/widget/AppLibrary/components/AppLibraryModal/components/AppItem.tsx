@@ -7,7 +7,7 @@ import useScreenSize from '../../../../../../../../shared/hooks/useScreenSize';
 import Modal, {
   ModalContent,
   ModalTrigger,
-} from '../../../../../modal/shared/Modal';
+} from '../../../../../../../../shared/components/Modal';
 import { TASKADE_IFRAME_PARAMS } from '../../../constants';
 import { GridImage, GridText } from '../../styled';
 import useInternalApps from '../hooks/useInternalApps';
