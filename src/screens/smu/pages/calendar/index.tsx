@@ -66,8 +66,6 @@ const Calendar: React.FC = function () {
   // rowHeight = container height minus vertical margins (1 row = 0 inner gaps)
   const rowHeight = containerHeight > 0 ? containerHeight - margin[1] : 0;
 
-  console.log(rowHeight);
-
   return (
     <div
       ref={containerRef as React.RefObject<HTMLDivElement>}
