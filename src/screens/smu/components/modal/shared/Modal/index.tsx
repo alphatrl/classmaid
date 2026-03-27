@@ -1,16 +1,25 @@
+import * as Dialog from '@radix-ui/react-dialog';
 import React from 'react';
 
-import useModal, { Options as ModalOptions } from './hooks/useModal';
-import { ModalContext } from './hooks/useModalContext';
+interface ModalOptions {
+  initialOpen?: boolean;
+  open?: boolean;
+  onOpenChange?: (isOpen: boolean) => void;
+}
 
 const Modal: React.FC<React.PropsWithChildren<ModalOptions>> = function (
   props
 ) {
-  const { children, ...options } = props;
-  const dialog = useModal(options);
+  const { children, initialOpen = false, open, onOpenChange } = props;
 
   return (
-    <ModalContext.Provider value={dialog}>{children}</ModalContext.Provider>
+    <Dialog.Root
+      defaultOpen={initialOpen}
+      open={open}
+      onOpenChange={onOpenChange}
+    >
+      {children}
+    </Dialog.Root>
   );
 };
 
