@@ -9,7 +9,10 @@ import AboutModal from './AboutModal';
 import AddToHomeModal from './AddToHomeModal';
 
 const ItemClassName = classnames(
-  'text-base flex items-center gap-2 px-2 py-1 min-h-12'
+  'text-base flex items-center gap-2 px-2 py-0.5 min-h-12',
+  'bg-white dark:bg-gray-900 rounded-xl',
+  'cursor-pointer hover:bg-gray-300 hover:dark:bg-gray-800',
+  'outline-none'
 );
 
 const MoreButton: React.FC = function () {
@@ -54,7 +57,7 @@ const MoreButton: React.FC = function () {
             align="end"
             sideOffset={0}
             className={classnames(
-              'min-w-60 max-w-80 rounded-2xl p-2 z-10',
+              'min-w-60 max-w-80 rounded-2xl p-1 overflow-hidden z-10',
               'bg-white dark:bg-gray-900 shadow-2xl'
             )}
           >
