@@ -1,7 +1,7 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import classnames from 'classnames';
-import React from 'react';
 import classNames from 'classnames';
+import React from 'react';
 
 const ModalContent = React.forwardRef<
   HTMLDivElement,

@@ -1,3 +1,4 @@
+import * as Dialog from '@radix-ui/react-dialog';
 import React from 'react';
 
 import Icon from '../../../../../../../shared/components/Icon';
@@ -5,10 +6,9 @@ import Modal, {
   ModalContent,
   ModalTitle,
 } from '../../../../../../../shared/components/Modal';
-import { GridImage, GridText } from '../styled';
 import { GridItemMore } from '../GridItemMore';
+import { GridImage, GridText } from '../styled';
 import Section from './components/Section';
-import * as Dialog from '@radix-ui/react-dialog';
 
 interface Props {
   apps: App.AppLibrary.LibraryItem[];

@@ -1,17 +1,17 @@
+import classNames from 'classnames';
 import React from 'react';
 
-import classNames from 'classnames';
 import Icon from '../../../../../../../../shared/components/Icon';
-import useColorScheme from '../../../../../../../../shared/hooks/useColorScheme';
-import useScreenSize from '../../../../../../../../shared/hooks/useScreenSize';
 import Modal, {
   ModalContent,
   ModalTrigger,
 } from '../../../../../../../../shared/components/Modal';
+import useColorScheme from '../../../../../../../../shared/hooks/useColorScheme';
+import useScreenSize from '../../../../../../../../shared/hooks/useScreenSize';
 import { TASKADE_IFRAME_PARAMS } from '../../../constants';
+import { GridItemMore } from '../../GridItemMore';
 import { GridImage, GridText } from '../../styled';
 import useInternalApps from '../hooks/useInternalApps';
-import { GridItemMore } from '../../GridItemMore';
 
 interface Props {
   shortcut: App.AppLibrary.LibraryItemShortcut;

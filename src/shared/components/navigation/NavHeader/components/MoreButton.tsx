@@ -1,5 +1,5 @@
-import { DropdownMenu } from 'radix-ui';
 import classnames from 'classnames';
+import { DropdownMenu } from 'radix-ui';
 import React from 'react';
 
 import useMediaQuery from '../../../../hooks/useMediaQuery';

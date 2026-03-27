@@ -1,13 +1,13 @@
 import React from 'react';
 
 import Icon from '../../../../../../../../shared/components/Icon';
-import BOSSTimetableModal from '../../../../../../pages/home/components/BOSSTimetableModal';
 import Modal, {
   ModalContent,
   ModalTrigger,
 } from '../../../../../../../../shared/components/Modal';
-import { GridImage, GridText } from '../../styled';
+import BOSSTimetableModal from '../../../../../../pages/home/components/BOSSTimetableModal';
 import { GridItemMore } from '../../GridItemMore';
+import { GridImage, GridText } from '../../styled';
 
 interface Props {
   shortcut: App.AppLibrary.LibraryItemShortcut;
