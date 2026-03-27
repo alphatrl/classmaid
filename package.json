@@ -27,7 +27,6 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.25.3",
     "@svgr/webpack": "^6.5.1",
     "@tailwindcss/postcss": "^4.2.2",
     "@vercel/analytics": "^1.1.1",
