@@ -1,10 +1,10 @@
-import * as Dialog from '@radix-ui/react-dialog';
 import React from 'react';
 
 import Icon from '../../../../../../../shared/components/Icon';
 import Modal, {
   ModalContent,
   ModalTitle,
+  ModalTrigger,
 } from '../../../../../../../shared/components/Modal';
 import { GridItemMore } from '../GridItemMore';
 import { GridImage, GridText } from '../styled';
@@ -19,14 +19,14 @@ const AppLibraryModal: React.FC<Props> = function (props) {
 
   return (
     <Modal>
-      <Dialog.Trigger asChild={true}>
+      <ModalTrigger asChild={true}>
         <GridItemMore role="button">
           <GridImage $backgroundColor="#808080">
             <Icon name="apps" />
           </GridImage>
           <GridText>More Apps</GridText>
         </GridItemMore>
-      </Dialog.Trigger>
+      </ModalTrigger>
 
       <ModalContent>
         <div className="px-6 py-4">
