@@ -1,5 +1,4 @@
 import * as Dialog from '@radix-ui/react-dialog';
-import classnames from 'classnames';
 import classNames from 'classnames';
 import React from 'react';
 
@@ -19,7 +18,7 @@ const ModalContent = React.forwardRef<
       />
       <Dialog.Content
         ref={ref}
-        className={classnames(
+        className={classNames(
           'fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
           'bg-white dark:bg-gray-900 shadow-2xl',
           'w-4/5 max-w-3xl max-h-[80vh]',

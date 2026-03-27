@@ -24,6 +24,6 @@ const Modal: React.FC<React.PropsWithChildren<ModalOptions>> = function (
 };
 
 export default Modal;
+export const ModalTrigger = Dialog.Trigger;
 export { default as ModalContent } from './components/ModalContent';
 export { default as ModalTitle } from './components/ModalTitle';
-export { default as ModalTrigger } from './components/ModalTrigger';
