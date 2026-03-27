@@ -1,28 +1,13 @@
-import { useId } from '@floating-ui/react';
+import * as Dialog from '@radix-ui/react-dialog';
 import classnames from 'classnames';
 import React from 'react';
 
 import Icon from '../../../../../../../shared/components/Icon';
-import { useModalContext } from '../hooks/useModalContext';
 
-const ModalHeading = React.forwardRef<
+const ModalTitle = React.forwardRef<
   HTMLHeadingElement,
-  React.HTMLProps<HTMLHeadingElement>
->(function DialogHeading({ children, ...props }, ref) {
-  const { setLabelId, setOpen } = useModalContext();
-  const id = useId();
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  // Only sets `aria-labelledby` on the Dialog root element
-  // if this component is mounted inside it.
-  React.useLayoutEffect(() => {
-    setLabelId(id);
-    return () => setLabelId(undefined);
-  }, [id, setLabelId]);
-
+  React.ComponentPropsWithoutRef<typeof Dialog.Title>
+>(function ModalTitle({ children, ...props }, ref) {
   return (
     <div
       className={classnames(
@@ -30,31 +15,31 @@ const ModalHeading = React.forwardRef<
         children != null ? 'justify-between' : 'justify-end'
       )}
     >
-      <h2
+      <Dialog.Title
         className="text-2xl font-bold m-0 capitalize text-gray-700 dark:text-gray-200"
         {...props}
         ref={ref}
-        id={id}
       >
         {children}
-      </h2>
-      <button
-        onClick={handleClose}
-        className={classnames(
-          'w-10 h-10 border-0 bg-transparent cursor-pointer',
-          'flex items-center justify-center rounded-3xl',
-          'hover:bg-gray-200 dark:hover:bg-gray-700'
-        )}
-      >
-        <Icon
-          name="cancel"
-          size={32}
-          className="text-gray-500 dark:text-gray-400"
-        />
-      </button>
+      </Dialog.Title>
+      <Dialog.Close asChild>
+        <button
+          className={classnames(
+            'w-10 h-10 border-0 bg-transparent cursor-pointer',
+            'flex items-center justify-center rounded-3xl',
+            'hover:bg-gray-200 dark:hover:bg-gray-700'
+          )}
+        >
+          <Icon
+            name="cancel"
+            size={32}
+            className="text-gray-500 dark:text-gray-400"
+          />
+        </button>
+      </Dialog.Close>
     </div>
   );
 });
 
-ModalHeading.displayName = 'ModalHeading';
-export default ModalHeading;
+ModalTitle.displayName = 'ModalTitle';
+export default ModalTitle;
