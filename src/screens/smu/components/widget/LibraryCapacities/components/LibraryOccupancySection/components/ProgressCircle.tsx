@@ -6,7 +6,7 @@ interface Props {
 }
 
 const width = 40;
-const strokeWidth = 12;
+const strokeWidth = 10;
 const radius = 100 / 2 - strokeWidth * 2;
 const circumference = radius * 2 * Math.PI;
 
@@ -29,7 +29,7 @@ const ProgressCircle: React.FC<Props> = function (props) {
         xmlns="http://www.w3.org/2000/svg"
       >
         <circle
-          className="fill-transparent stroke-sky-100 dark:stroke-sky-100"
+          className="fill-transparent stroke-theme-200 dark:stroke-theme-300"
           cx="50"
           cy="50"
           r={radius}
@@ -37,7 +37,7 @@ const ProgressCircle: React.FC<Props> = function (props) {
           strokeLinecap="round"
         />
         <circle
-          className="fill-transparent stroke-sky-500 dark:stroke-sky-500 -rotate-90 origin-center transition-[stroke-dashoffset] duration-500 ease-out"
+          className="fill-transparent stroke-theme-500 dark:stroke-theme-600 -rotate-90 origin-center transition-[stroke-dashoffset] duration-500 ease-out"
           cx="50"
           cy="50"
           r={radius}

@@ -69,7 +69,7 @@ const TodayEvent: React.FC<Props> = function (props) {
             <h1 className={EventTitleClassName}>{event?.title}</h1>
             <span className="font-semibold px-2 text-lg">OF</span>
           </div>
-          <h1 className={classnames(EventTitleClassName, ' text-sky-500 ')}>
+          <h1 className={classnames(EventTitleClassName, 'text-theme-500 ')}>
             {event.type.toUpperCase()}
           </h1>
         </>
@@ -77,7 +77,7 @@ const TodayEvent: React.FC<Props> = function (props) {
     }
 
     return (
-      <h1 className={classnames(EventTitleClassName, 'text-sky-500 ')}>
+      <h1 className={classnames(EventTitleClassName, 'text-theme-500 ')}>
         {event.title}
       </h1>
     );
@@ -92,10 +92,13 @@ const TodayEvent: React.FC<Props> = function (props) {
         href="/smu/calendar"
         className={classnames(
           'no-underline rounded-2xl flex p-2',
-          'hover:bg-sky-200'
+          'hover:bg-theme-200'
         )}
       >
-        <Icon name="open_in_full" className="text-sky-500 dark:text-sky-500" />
+        <Icon
+          name="open_in_full"
+          className="text-theme-500 dark:text-theme-500"
+        />
       </Link>
     </div>
   );
