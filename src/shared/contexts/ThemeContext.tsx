@@ -20,17 +20,15 @@ const ThemeContext = React.createContext<ThemeContextProps>({
 export const ThemeWrapper: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
-  const [theme, setThemeState] = React.useState<Theme>(DEFAULT_THEME);
-
-  React.useEffect(() => {
-    const stored = localStorage.getItem(THEME_STORAGE_KEY);
-    if (stored && THEMES.includes(stored as Theme)) {
-      setThemeState(stored as Theme);
-      document.documentElement.setAttribute('data-theme', stored);
-    } else {
-      document.documentElement.setAttribute('data-theme', DEFAULT_THEME);
+  const [theme, setThemeState] = React.useState<Theme>(() => {
+    if (typeof window === 'undefined') {
+      return DEFAULT_THEME;
     }
-  }, []);
+    const stored = localStorage.getItem(THEME_STORAGE_KEY);
+    return stored && THEMES.includes(stored as Theme)
+      ? (stored as Theme)
+      : DEFAULT_THEME;
+  });
 
   const setTheme = React.useCallback((newTheme: Theme) => {
     setThemeState(newTheme);
