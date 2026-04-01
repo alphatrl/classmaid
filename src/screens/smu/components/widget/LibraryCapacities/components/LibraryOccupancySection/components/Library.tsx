@@ -46,7 +46,7 @@ const Library: React.FC<Props> = function (props) {
         )}
       >
         <div>
-          <h1 className="m-0 mb-1 text-[1.15em] text-white capitalize">
+          <h1 className="text-xl font-medium text-white capitalize">
             {name.toLowerCase()}
           </h1>
           <div className="flex flex-row items-center">
@@ -60,12 +60,9 @@ const Library: React.FC<Props> = function (props) {
           </div>
         </div>
 
-        <span className="text-[0.65em] text-gray-50">
+        <span className="text-xs text-gray-50">
           {author},{' '}
-          <a
-            href={license.externalUrl}
-            className="text-sky-500 dark:text-sky-500"
-          >
+          <a href={license.externalUrl} className="text-theme-500">
             {license.type}
           </a>
           {', '}

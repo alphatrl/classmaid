@@ -17,7 +17,7 @@
 }
 
 .calendar-wrapper .react-calendar__tile--now abbr {
-  @apply font-semibold text-sky-500;
+  @apply font-semibold text-theme-500;
 }
 
 .calendar-wrapper .react-calendar__tile--now {
@@ -37,18 +37,18 @@
 }
 
 .calendar-wrapper .react-calendar__tile--active {
-  @apply bg-sky-300 text-sky-500;
+  @apply bg-theme-300 text-theme-500;
 }
 
 .dark .calendar-wrapper .react-calendar__tile--active {
-  @apply bg-sky-300;
+  @apply bg-theme-300;
 }
 
 .calendar-wrapper .react-calendar__tile:enabled:hover,
 .calendar-wrapper .react-calendar__tile:enabled:focus,
 .calendar-wrapper .react-calendar__tile--active:enabled:hover,
 .calendar-wrapper .react-calendar__tile--active:enabled:focus {
-  @apply bg-sky-100;
+  @apply bg-theme-100;
 }
 
 .calendar-wrapper .react-calendar__month-view__days__day--neighboringMonth {

@@ -34,7 +34,7 @@ const AboutModal: React.FC<Props> = function (props) {
               {'Current or incoming student? Make a suggestion '}
               <a
                 href="https://bit.ly/30SRyIo"
-                className="text-sky-500 dark:text-sky-500"
+                className="text-theme-500"
               >
                 here
               </a>
@@ -43,7 +43,7 @@ const AboutModal: React.FC<Props> = function (props) {
               {'Developer? Add an issue or make a pull request on '}
               <a
                 href="https://github.com/alphatrl/classmaid"
-                className="text-sky-500 dark:text-sky-500"
+                className="text-theme-500"
               >
                 Github
               </a>

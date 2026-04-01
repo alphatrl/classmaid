@@ -2,11 +2,12 @@ import classnames from 'classnames';
 import { DropdownMenu } from 'radix-ui';
 import React from 'react';
 
-import useMediaQuery from '../../../../hooks/useMediaQuery';
-import useMobileDevice from '../../../../hooks/useMobileDevice';
-import Icon from '../../../Icon';
-import AboutModal from './AboutModal';
-import AddToHomeModal from './AddToHomeModal';
+import useMediaQuery from '../../../../../hooks/useMediaQuery';
+import useMobileDevice from '../../../../../hooks/useMobileDevice';
+import Icon from '../../../../Icon';
+import AboutModal from '../AboutModal';
+import AddToHomeModal from '../AddToHomeModal';
+import ThemeSubmenu from './components/ThemeSubmenu';
 
 const ItemClassName = classnames(
   'text-base flex items-center gap-2 px-2 py-0.5 min-h-12',
@@ -45,7 +46,7 @@ const MoreButton: React.FC = function () {
         <DropdownMenu.Trigger asChild>
           <button
             className={classnames(
-              'py-2.5 px-3 rounded-lg bg-transparent border-none',
+              'py-3 px-3 rounded-lg bg-transparent border-none',
               'text-white cursor-pointer flex items-center hover:bg-black/20'
             )}
           >
@@ -57,7 +58,7 @@ const MoreButton: React.FC = function () {
             align="end"
             sideOffset={0}
             className={classnames(
-              'min-w-60 max-w-80 rounded-2xl p-1 overflow-hidden z-10',
+              'min-w-60 max-w-80 rounded-2xl p-1.5 overflow-hidden z-10',
               'bg-white dark:bg-gray-900 shadow-2xl'
             )}
           >
@@ -78,6 +79,7 @@ const MoreButton: React.FC = function () {
                 Add to Home Screen
               </DropdownMenu.Item>
             )}
+            <ThemeSubmenu itemClassName={ItemClassName} />
           </DropdownMenu.Content>
         </DropdownMenu.Portal>
       </DropdownMenu.Root>

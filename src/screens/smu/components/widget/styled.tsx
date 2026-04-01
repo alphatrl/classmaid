@@ -30,7 +30,7 @@ export const WidgetHeader = React.forwardRef<HTMLDivElement, WidgetHeaderProps>(
     <div
       ref={ref}
       className={classnames(
-        'box-border px-4 h-16 flex items-center bg-sky-100 dark:bg-sky-800',
+        'box-border px-4 h-16 flex items-center bg-theme-100 dark:bg-theme-950',
         className
       )}
       {...props}

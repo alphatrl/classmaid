@@ -59,8 +59,8 @@ const FilePicker: React.FC<Props> = (props) => {
         className={classnames(
           'inline-block cursor-pointer rounded-2xl',
           'bg-gray-200 dark:bg-gray-700',
-          'w-1/2 max-w-112.5 p-4',
-          'hover:bg-sky-100 dark:hover:bg-sky-100'
+          'w-1/2 max-w-md p-4',
+          'hover:bg-theme-100'
         )}
       >
         <span
@@ -69,7 +69,7 @@ const FilePicker: React.FC<Props> = (props) => {
             'text-gray-700 dark:text-gray-200',
             'overflow-hidden text-ellipsis',
             !newLabel && 'text-gray-500 dark:text-gray-300',
-            !newLabel && 'hover:text-sky-300 dark:hover:text-sky-300'
+            !newLabel && 'hover:text-theme-300'
           )}
         >
           <Icon name="file_upload" />

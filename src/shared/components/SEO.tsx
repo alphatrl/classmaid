@@ -18,9 +18,7 @@ const SEO: React.FC<Props> = function (props) {
 
   return (
     <Head>
-      <title>
-        {title} | {siteMetadata.title}
-      </title>
+      <title>{`${title} | ${siteMetadata.title}`}</title>
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0, viewport-fit=cover"

@@ -245,10 +245,9 @@ const BOSSTimetableModal: React.FC = () => {
           className={classnames(
             'flex justify-center font-medium text-base p-3',
             'text-white rounded-xl no-underline',
-            'border-2 border-sky-300 dark:border-sky-300',
-            'bg-sky-500 dark:bg-sky-500',
-            'hover:text-sky-500 hover:bg-sky-100',
-            'dark:hover:text-sky-500 dark:hover:bg-sky-100'
+            'border-2 border-theme-300 bg-theme-500',
+            'hover:text-theme-500 hover:bg-theme-100',
+            'dark:hover:text-theme-500 dark:hover:bg-theme-100'
           )}
         >
           Download
