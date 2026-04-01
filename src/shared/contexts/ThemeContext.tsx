@@ -2,7 +2,7 @@ import React from 'react';
 
 const THEME_STORAGE_KEY = 'classmaid-theme';
 const THEMES = ['blue', 'red', 'emerald', 'pink'] as const;
-type Theme = (typeof THEMES)[number];
+export type Theme = (typeof THEMES)[number];
 const DEFAULT_THEME: Theme = 'blue';
 
 interface ThemeContextProps {
