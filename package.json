@@ -31,7 +31,7 @@
     "@svgr/webpack": "^6.5.1",
     "@tailwindcss/postcss": "^4.2.2",
     "@vercel/analytics": "^1.1.1",
-    "axios": "^1.2.1",
+    "axios": "^1.15.0",
     "classnames": "^2.5.1",
     "csv-parse": "^4.16.2",
     "lodash": "^4.17.23",
