@@ -37,7 +37,7 @@
     "lodash": "^4.17.23",
     "moment-timezone": "^0.5.40",
     "next": "^16.1.7",
-    "postcss": "^8.5.8",
+    "postcss": "^8.5.10",
     "radix-ui": "^1.4.3",
     "react": "^18.2.0",
     "react-calendar": "^4.7.0",
