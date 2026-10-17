@@ -39,13 +39,7 @@ export const DashboardBreakpoints: Record<Breakpoint, number> = {
   sm: 480,
 };
 
-export const DashboardCols: Record<Breakpoint, number> = {
-  lg: 4,
-  md: 4,
-  sm: 2,
-};
-
-/** Columns of the home grid. The calendar grid uses `DashboardCols`. */
+/** Columns of the home grid. The calendar grid has its own `CalendarCols`. */
 export const HomeCols: Record<Breakpoint, number> = {
   lg: 3,
   md: 4,

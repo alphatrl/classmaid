@@ -5,17 +5,21 @@ import {
   useResponsiveLayout,
 } from 'react-grid-layout';
 
+import { cn } from '@/lib/utils';
 import {
   DashboardBreakpoints,
-  DashboardCols,
   DashboardContainerClassName,
   DashboardMargin,
-  getSquareRowHeight,
 } from '@/screens/smu/pages/home/components/GridLayout/constants/dashboard';
 
 import EventsCard from './components/EventsCard';
 import InfoCard from './components/InfoCard';
-import { CalendarLayouts } from './constants/calendar';
+import {
+  CalendarCols,
+  CalendarHeightClassName,
+  CalendarLayouts,
+} from './constants/calendar';
+import { useContainerHeight } from './hooks/useContainerHeight';
 import { CalendarKey } from './types';
 
 type Props = Pick<
@@ -30,21 +34,21 @@ const GridLayout: React.FC<Props> = function ({ value, onValueChange }) {
   const { cols, layout, breakpoint } = useResponsiveLayout({
     width,
     breakpoints: DashboardBreakpoints,
-    cols: DashboardCols,
+    cols: CalendarCols,
     layouts: CalendarLayouts,
   });
 
-  const rowHeight = React.useMemo(
-    () => getSquareRowHeight(width, cols),
-    [width, cols]
+  // One row that fills the container height (not square)
+  const rowHeight = useContainerHeight(
+    containerRef as React.RefObject<HTMLDivElement | null>
   );
 
   return (
     <div
       ref={containerRef as React.RefObject<HTMLDivElement | null>}
-      className={DashboardContainerClassName}
+      className={cn(DashboardContainerClassName, CalendarHeightClassName)}
     >
-      {mounted && (
+      {mounted && rowHeight > 0 && (
         <ReactGridLayout
           width={width}
           layout={layout}
