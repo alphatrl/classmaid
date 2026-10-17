@@ -30,9 +30,7 @@ const SMUCalendar: NextPage<SMUCalendarServerSideProps> = function (props) {
   return (
     <DefaultLayout title="SMU Calendar">
       <SmuEventsProvider {...props}>
-        <div className="box-border h-[calc(100dvh-64px)] p-4">
-          <Calendar />
-        </div>
+        <Calendar />
       </SmuEventsProvider>
     </DefaultLayout>
   );
