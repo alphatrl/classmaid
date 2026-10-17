@@ -10,7 +10,7 @@ import { CalendarKey } from '../types';
  * clip. lg (1184px container) uses 4 columns, so 1 column is a 284px info
  * card. On md (736-864px container) 1 of 3 columns is only 235-277px, so
  * md uses 5 columns and the info card spans 2 (285-336px).
- * On sm only the events card is in the grid.
+ * sm does not use the grid: the month calendar is in a left drawer.
  */
 export const CalendarCols: Record<Breakpoint, number> = {
   lg: 4,
@@ -27,6 +27,7 @@ export const CalendarLayouts: ResponsiveLayouts<Breakpoint> = {
     { i: CalendarKey.INFO, x: 0, y: 0, w: 2, h: 1 },
     { i: CalendarKey.EVENTS, x: 2, y: 0, w: 3, h: 1 },
   ],
+  // Not rendered as a grid on sm (see GridLayout); kept for the hook
   sm: [{ i: CalendarKey.EVENTS, x: 0, y: 0, w: 2, h: 1 }],
 };
 
