@@ -68,7 +68,7 @@ const Calendar: React.FC = function () {
 
   return (
     <div
-      ref={containerRef as React.RefObject<HTMLDivElement>}
+      ref={containerRef as React.RefObject<HTMLDivElement | null>}
       className={classnames(
         'w-full h-full',
         '[&_.react-grid-item]:transition-all',

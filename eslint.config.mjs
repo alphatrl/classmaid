@@ -25,6 +25,11 @@ const eslintConfig = defineConfig([
         },
       ],
       'prettier/prettier': 'error',
+      // eslint-plugin-react-hooks 7.1 (via eslint-config-next 16.4) promotes these
+      // React Compiler rules to errors. Existing hooks predate them; fixing them
+      // means restructuring component state, so keep them visible as warnings.
+      'react-hooks/set-state-in-effect': 'warn',
+      'react-hooks/set-state-in-render': 'warn',
     },
   },
   globalIgnores([

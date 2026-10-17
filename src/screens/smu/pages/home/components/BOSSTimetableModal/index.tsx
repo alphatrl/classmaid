@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import parse from 'csv-parse/lib/sync';
+import { parse } from 'csv-parse/browser/esm/sync';
 import { capitalize, isEqual, uniqBy } from 'lodash';
 import moment from 'moment';
 import React from 'react';

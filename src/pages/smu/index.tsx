@@ -66,7 +66,7 @@ const DashboardGrid: React.FC = function () {
 
   return (
     <div
-      ref={containerRef as React.RefObject<HTMLDivElement>}
+      ref={containerRef as React.RefObject<HTMLDivElement | null>}
       className={classnames(
         'w-full h-full max-w-96 mx-auto p-4',
         'md:max-w-4xl md:px-4',

@@ -2,18 +2,6 @@
  * @type {import('next').NextConfig}
  */
 module.exports = {
-  turbopack: {
-    rules: {
-      '*.svg': {
-        loaders: ['@svgr/webpack', 'url-loader'],
-        as: '*.js',
-      },
-    },
-    resolveAlias: {
-      stream: 'readable-stream',
-    },
-  },
-
   images: {
     remotePatterns: [
       {

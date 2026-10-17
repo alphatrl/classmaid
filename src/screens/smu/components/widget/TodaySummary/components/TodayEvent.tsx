@@ -95,10 +95,7 @@ const TodayEvent: React.FC<Props> = function (props) {
           'hover:bg-theme-200'
         )}
       >
-        <Icon
-          name="open_in_full"
-          className="text-theme-500"
-        />
+        <Icon name="open_in_full" className="text-theme-500" />
       </Link>
     </div>
   );
