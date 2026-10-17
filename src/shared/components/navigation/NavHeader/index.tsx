@@ -3,15 +3,14 @@ import { useRouter } from 'next/router';
 import React from 'react';
 
 import { cn } from '@/lib/utils';
+import { getSectionRootPath } from '@/shared/contexts/content/state';
 
 import MoreButton from './components/MoreButton';
 
 const NavBar: React.FC = function () {
   const { pathname } = useRouter();
 
-  // NOTE: (amos@taskade.com) Capture the first part of the path "/X" in "/X/Y"
-  const match = pathname.match(/\/[^/]+/);
-  const redirectUrl = match?.[0] ?? '/';
+  const redirectUrl = getSectionRootPath(pathname);
 
   return (
     <div
