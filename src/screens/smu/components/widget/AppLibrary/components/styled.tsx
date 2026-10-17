@@ -16,7 +16,7 @@ export function GridImage({
       className={cn(
         'flex justify-center items-center rounded-2xl',
         'h-14 w-14 md:h-16 md:w-16',
-        '[&_span]:text-4xl [&_span]:text-white [&_svg]:text-white',
+        '[&_svg]:text-white',
         className
       )}
       style={{ backgroundColor: $backgroundColor }}

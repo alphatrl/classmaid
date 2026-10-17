@@ -21,7 +21,7 @@ const Header: React.FC = function () {
           'hover:bg-theme-200'
         )}
       >
-        <Icon name="open_in_new" className="text-theme-500" />
+        <Icon name="external-link" className="text-theme-500" />
       </a>
     </WidgetHeader>
   );

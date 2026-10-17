@@ -18,10 +18,6 @@ export default function Document() {
             `,
           }}
         />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0&display=swap"
-        />
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta

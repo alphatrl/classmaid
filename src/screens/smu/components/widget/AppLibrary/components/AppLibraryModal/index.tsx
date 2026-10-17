@@ -23,7 +23,7 @@ const AppLibraryModal: React.FC<Props> = function (props) {
       <ModalTrigger asChild={true}>
         <GridItemMore role="button">
           <GridImage $backgroundColor="#808080">
-            <Icon name="apps" />
+            <Icon name="layout-grid" />
           </GridImage>
           <GridText>More Apps</GridText>
         </GridItemMore>

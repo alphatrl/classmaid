@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { cn } from '@/lib/utils';
+import Icon from '@/shared/components/Icon';
 import Modal, { ModalContent, ModalTitle } from '@/shared/components/Modal';
 import useMobileDevice from '@/shared/hooks/useMobileDevice';
 
@@ -19,9 +20,10 @@ const AddToHomeModal: React.FC<Props> = function (props) {
         <ol className="list-decimal leading-8 px-4">
           <li>
             Tap{' '}
-            <span className="material-symbols-rounded text-theme-500 align-text-bottom">
-              {'ios_share'}
-            </span>
+            <Icon
+              name="share"
+              className="inline text-theme-500 align-text-bottom"
+            />
             .
           </li>
           <li>{'Select "Add to Home Screen"'}</li>
@@ -33,9 +35,10 @@ const AddToHomeModal: React.FC<Props> = function (props) {
       <ol className="list-decimal leading-8 px-4">
         <li>
           Tap on <b>More Options</b>
-          <span className="material-symbols-rounded text-theme-500 align-text-bottom">
-            {'more_vert'}
-          </span>
+          <Icon
+            name="ellipsis-vertical"
+            className="inline text-theme-500 align-text-bottom"
+          />
           .
         </li>
         <li>{'Select "Add to Home Screen"'}</li>

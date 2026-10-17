@@ -31,7 +31,7 @@ const ModalTitle = React.forwardRef<
           )}
         >
           <Icon
-            name="cancel"
+            name="circle-x"
             size={32}
             className="text-gray-500 dark:text-gray-400"
           />

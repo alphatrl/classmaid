@@ -6,7 +6,7 @@ export const APPS_LIBRARY: App.AppLibrary.LibraryItem[] = [
       {
         id: 'elearn',
         title: 'eLearn',
-        logo: 'menu_book',
+        logo: 'book-open',
         color: '#0064B7',
         type: 'url',
         link: 'https://elearn.smu.edu.sg',
@@ -15,7 +15,7 @@ export const APPS_LIBRARY: App.AppLibrary.LibraryItem[] = [
       {
         id: 'email',
         title: 'Email',
-        logo: 'email',
+        logo: 'mail',
         color: '#006DCE',
         type: 'url',
         link: 'https://live.smu.edu.sg',
@@ -24,7 +24,7 @@ export const APPS_LIBRARY: App.AppLibrary.LibraryItem[] = [
       {
         id: 'facility_booking',
         title: 'Facility Bookings',
-        logo: 'airline_seat_individual_suite',
+        logo: 'armchair',
         color: '#647089',
         type: 'url',
         link: 'https://fbs.intranet.smu.edu.sg',
@@ -33,7 +33,7 @@ export const APPS_LIBRARY: App.AppLibrary.LibraryItem[] = [
       {
         id: 'library',
         title: 'Library',
-        logo: 'local_library',
+        logo: 'library',
         color: '#7D7D7D',
         type: 'url',
         link: 'https://library.smu.edu.sg/',
@@ -42,7 +42,7 @@ export const APPS_LIBRARY: App.AppLibrary.LibraryItem[] = [
       {
         id: 'oasis',
         title: 'Oasis',
-        logo: 'beach_access',
+        logo: 'umbrella',
         color: '#CDA339',
         type: 'url',
         link: 'https://oasis.smu.edu.sg',
@@ -51,7 +51,7 @@ export const APPS_LIBRARY: App.AppLibrary.LibraryItem[] = [
       {
         id: 'print',
         title: 'Print Services',
-        logo: 'print',
+        logo: 'printer',
         color: '#0C9C57',
         type: 'url',
         link: 'https://smu.sg/print',
@@ -66,7 +66,7 @@ export const APPS_LIBRARY: App.AppLibrary.LibraryItem[] = [
       {
         id: 'boss',
         title: 'BOSS',
-        logo: 'account_balance',
+        logo: 'landmark',
         color: '#8A704C',
         type: 'url',
         link: 'https://boss.intranet.smu.edu.sg',
@@ -75,7 +75,7 @@ export const APPS_LIBRARY: App.AppLibrary.LibraryItem[] = [
       {
         id: 'afterclass_web',
         title: 'AfterClass.io',
-        logo: 'public',
+        logo: 'globe',
         color: '#007BF3',
         type: 'url',
         link: 'https://afterclass.io',
@@ -83,7 +83,7 @@ export const APPS_LIBRARY: App.AppLibrary.LibraryItem[] = [
       {
         id: 'boss_export',
         title: 'BOSS Timetable Export',
-        logo: 'file_download',
+        logo: 'download',
         color: '#636363',
         type: 'internal',
         link: 'boss-export',
@@ -92,7 +92,7 @@ export const APPS_LIBRARY: App.AppLibrary.LibraryItem[] = [
       {
         id: 'course_offerings',
         title: 'Course Offerings',
-        logo: 'collections_bookmark',
+        logo: 'bookmark',
         color: '#131977',
         type: 'url',
         link: 'https://inet.smu.edu.sg/sites/courses/Pages/Course-Offerings.aspx',
@@ -101,7 +101,7 @@ export const APPS_LIBRARY: App.AppLibrary.LibraryItem[] = [
       {
         id: 'course_sequence',
         title: 'Course Sequence',
-        logo: 'schedule',
+        logo: 'clock',
         color: '#8A704C',
         type: 'url',
         link: 'https://inet.smu.edu.sg/sites/courses/Pages/Course-Offerings.aspx',
@@ -116,7 +116,7 @@ export const APPS_LIBRARY: App.AppLibrary.LibraryItem[] = [
       {
         id: 'student_wellness',
         title: 'Student Wellness',
-        logo: 'favorite',
+        logo: 'heart',
         color: '#BE3119',
         type: 'url',
         link: 'https://www.smu.edu.sg/campus-life/student-wellness',
@@ -125,7 +125,7 @@ export const APPS_LIBRARY: App.AppLibrary.LibraryItem[] = [
       {
         id: 'voices_SMU',
         title: 'Voices@SMU',
-        logo: 'hearing',
+        logo: 'ear',
         color: '#D50A8A',
         type: 'url',
         link: 'https://voices.smu.edu.sg/get-support#speak-to-us',
@@ -134,7 +134,7 @@ export const APPS_LIBRARY: App.AppLibrary.LibraryItem[] = [
       {
         id: 'incident_report',
         title: 'SMU Incident Reporting',
-        logo: 'report_problem',
+        logo: 'triangle-alert',
         color: '#636363',
         type: 'url',
         link: 'http://bit.ly/SMU_IR_Form',
@@ -149,7 +149,7 @@ export const APPS_LIBRARY: App.AppLibrary.LibraryItem[] = [
       {
         id: 'sps',
         title: 'Subject Pool System',
-        logo: 'biotech',
+        logo: 'flask-conical',
         color: '#131977',
         type: 'url',
         link: 'https://sps.intranet.smu.edu.sg',
@@ -158,7 +158,7 @@ export const APPS_LIBRARY: App.AppLibrary.LibraryItem[] = [
       {
         id: 'ontrac',
         title: 'onTRAC II',
-        logo: 'work',
+        logo: 'briefcase',
         color: '#8A704C',
         type: 'url',
         link: 'https://ontrac.smu.edu.sg',
@@ -167,7 +167,7 @@ export const APPS_LIBRARY: App.AppLibrary.LibraryItem[] = [
       {
         id: 'noteslah_web',
         title: 'noteslah',
-        logo: 'public',
+        logo: 'globe',
         color: '#131977',
         type: 'url',
         link: 'https://www.noteslah.com',
@@ -175,7 +175,7 @@ export const APPS_LIBRARY: App.AppLibrary.LibraryItem[] = [
       {
         id: 'school_guide',
         title: 'School Guides',
-        logo: 'collections_bookmark',
+        logo: 'bookmark',
         color: '#009DD9',
         type: 'taskade',
         link: 'https://www.taskade.com/embed/VgQGbD7TNy8eQjxm',
@@ -190,7 +190,7 @@ export const APPS_LIBRARY: App.AppLibrary.LibraryItem[] = [
       {
         id: 'askSMU_telegram',
         title: 'Ask.SMU (Invite only)',
-        logo: 'telegram',
+        logo: 'send',
         color: '#0088CC',
         type: 'url',
         link: 'https://t.me',
@@ -199,7 +199,7 @@ export const APPS_LIBRARY: App.AppLibrary.LibraryItem[] = [
         id: 'buffet_clearers_telegram',
         title: 'SMU Buffet Clearers',
         color: '#0088CC',
-        logo: 'telegram',
+        logo: 'send',
         type: 'url',
         link: 'https://t.me/joinchat/DVuB8UO-_6LV1JhuML_CtA',
       },
@@ -239,7 +239,7 @@ export const APPS_LIBRARY: App.AppLibrary.LibraryItem[] = [
       {
         id: 'smusa_feedback',
         title: 'SMUSA Feedback Form',
-        logo: 'chat',
+        logo: 'message-circle',
         color: '#8A704C',
         type: 'url',
         link: 'http://bit.ly/smusa-feedback',

@@ -41,7 +41,7 @@ const useInternalApps = function (props: Props) {
         <ModalTrigger asChild={true}>
           <GridItemMore role="button">
             <GridImage $backgroundColor={shortcut.color}>
-              <Icon name={shortcut.logo} height={32} width={32} />
+              <Icon name={shortcut.logo} />
             </GridImage>
             <GridText>{shortcut.title}</GridText>
           </GridItemMore>

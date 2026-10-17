@@ -51,7 +51,7 @@ const MoreButton: React.FC = function () {
               'text-white cursor-pointer flex items-center hover:bg-black/20'
             )}
           >
-            <Icon name="pending" />
+            <Icon name="ellipsis" />
           </button>
         </DropdownMenu.Trigger>
         <DropdownMenu.Portal>
@@ -76,7 +76,7 @@ const MoreButton: React.FC = function () {
                 className={ItemClassName}
                 onSelect={handleOpenAddToHomeScreen}
               >
-                <Icon name="add_to_home_screen" />
+                <Icon name="smartphone" />
                 Add to Home Screen
               </DropdownMenu.Item>
             )}

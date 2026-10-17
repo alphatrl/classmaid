@@ -72,7 +72,7 @@ const FilePicker: React.FC<Props> = (props) => {
             !newLabel && 'hover:text-theme-300'
           )}
         >
-          <Icon name="file_upload" />
+          <Icon name="upload" />
           <span className="font-medium pr-2">{placeholder}</span>
         </span>
       </label>
