@@ -1,8 +1,8 @@
 import * as Dialog from '@radix-ui/react-dialog';
-import classnames from 'classnames';
 import React from 'react';
 
-import Icon from '../../Icon';
+import { cn } from '@/lib/utils';
+import Icon from '@/shared/components/Icon';
 
 const ModalTitle = React.forwardRef<
   HTMLHeadingElement,
@@ -10,7 +10,7 @@ const ModalTitle = React.forwardRef<
 >(function ModalTitle({ children, ...props }, ref) {
   return (
     <div
-      className={classnames(
+      className={cn(
         'min-h-12 py-1 flex flex-row items-center',
         children != null ? 'justify-between' : 'justify-end'
       )}
@@ -24,7 +24,7 @@ const ModalTitle = React.forwardRef<
       </Dialog.Title>
       <Dialog.Close asChild>
         <button
-          className={classnames(
+          className={cn(
             'w-10 h-10 border-0 bg-transparent cursor-pointer',
             'flex items-center justify-center rounded-3xl',
             'hover:bg-gray-200 dark:hover:bg-gray-700'

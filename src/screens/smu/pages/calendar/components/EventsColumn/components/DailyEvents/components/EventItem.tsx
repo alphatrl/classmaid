@@ -1,5 +1,6 @@
-import classnames from 'classnames';
 import React from 'react';
+
+import { cn } from '@/lib/utils';
 
 interface Props {
   event: App.Calendar.Event;
@@ -10,7 +11,7 @@ const EventItem: React.FC<Props> = function (props) {
 
   return (
     <div
-      className={classnames(
+      className={cn(
         'box-border flex flex-row items-center p-2',
         'hover:bg-rose-600/[0.07] hover:rounded-xl'
       )}
@@ -18,7 +19,7 @@ const EventItem: React.FC<Props> = function (props) {
       <div className="me-2 bg-rose-600 w-1 h-[85%] rounded-sm" />
       <div className="box-border flex flex-1 flex-col justify-center">
         <h4
-          className={classnames(
+          className={cn(
             'm-0 font-semibold text-base',
             'text-gray-700 dark:text-gray-200',
             '[-webkit-box-orient:vertical]',
@@ -29,7 +30,7 @@ const EventItem: React.FC<Props> = function (props) {
           {event.title}
         </h4>
         <p
-          className={classnames(
+          className={cn(
             'm-0 mt-0.5 font-medium text-sm',
             'text-gray-400 dark:text-gray-400'
           )}

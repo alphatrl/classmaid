@@ -1,11 +1,11 @@
 import React from 'react';
 
+import useMediaQuery from './useMediaQuery';
 import {
   DESKTOP_MEDIA_QUERY,
   MOBILE_MEDIA_QUERY,
   TABLET_MEDIA_QUERY,
 } from '../themes/size';
-import useMediaQuery from './useMediaQuery';
 
 export default function useScreenSize() {
   const isMobile = useMediaQuery(MOBILE_MEDIA_QUERY);

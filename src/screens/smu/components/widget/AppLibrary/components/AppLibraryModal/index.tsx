@@ -1,11 +1,12 @@
 import React from 'react';
 
-import Icon from '../../../../../../../shared/components/Icon';
+import Icon from '@/shared/components/Icon';
 import Modal, {
   ModalContent,
   ModalTitle,
   ModalTrigger,
-} from '../../../../../../../shared/components/Modal';
+} from '@/shared/components/Modal';
+
 import { GridItemMore } from '../GridItemMore';
 import { GridImage, GridText } from '../styled';
 import Section from './components/Section';

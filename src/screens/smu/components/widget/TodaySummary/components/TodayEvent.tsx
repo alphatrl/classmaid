@@ -1,11 +1,12 @@
-import classnames from 'classnames';
 import moment from 'moment-timezone';
 import Link from 'next/link';
 import React from 'react';
 
-import Icon from '../../../../../../shared/components/Icon';
-import { getDateStringToMoment } from '../utils/getDateStringToMoment';
+import { cn } from '@/lib/utils';
+import Icon from '@/shared/components/Icon';
+
 import TodayEventLoading from './TodayEventLoading';
+import { getDateStringToMoment } from '../utils/getDateStringToMoment';
 
 interface Props {
   currentEvent: App.Calendar.CurrentEvent | null;
@@ -61,7 +62,7 @@ const TodayEvent: React.FC<Props> = function (props) {
       return (
         <>
           <div
-            className={classnames(
+            className={cn(
               'flex flex-row items-end pb-2',
               'text-gray-700 dark:text-gray-200'
             )}
@@ -69,7 +70,7 @@ const TodayEvent: React.FC<Props> = function (props) {
             <h1 className={EventTitleClassName}>{event?.title}</h1>
             <span className="font-semibold px-2 text-lg">OF</span>
           </div>
-          <h1 className={classnames(EventTitleClassName, 'text-theme-500')}>
+          <h1 className={cn(EventTitleClassName, 'text-theme-500')}>
             {event.type.toUpperCase()}
           </h1>
         </>
@@ -77,7 +78,7 @@ const TodayEvent: React.FC<Props> = function (props) {
     }
 
     return (
-      <h1 className={classnames(EventTitleClassName, 'text-theme-500')}>
+      <h1 className={cn(EventTitleClassName, 'text-theme-500')}>
         {event.title}
       </h1>
     );
@@ -90,7 +91,7 @@ const TodayEvent: React.FC<Props> = function (props) {
       </div>
       <Link
         href="/smu/calendar"
-        className={classnames(
+        className={cn(
           'no-underline rounded-2xl flex p-2',
           'hover:bg-theme-200'
         )}

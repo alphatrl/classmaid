@@ -1,7 +1,8 @@
-import classnames from 'classnames';
 import React from 'react';
 
-import { APPS_LIBRARY } from '../../../../../sources/smu/appsLibrary';
+import { cn } from '@/lib/utils';
+import { APPS_LIBRARY } from '@/sources/smu/appsLibrary';
+
 import { CardTemplate } from '../styled';
 import AppGrid from './components/AppGrid';
 
@@ -11,7 +12,7 @@ const AppLibrary: React.FC = function () {
 
   return (
     <CardTemplate
-      className={classnames(
+      className={cn(
         'relative backface-hidden',
         'bg-white/25 dark:bg-black/25',
         'backdrop-blur-md backdrop-saturate-86',

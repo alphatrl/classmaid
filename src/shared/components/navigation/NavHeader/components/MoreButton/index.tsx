@@ -1,15 +1,16 @@
-import classnames from 'classnames';
 import { DropdownMenu } from 'radix-ui';
 import React from 'react';
 
-import useMediaQuery from '../../../../../hooks/useMediaQuery';
-import useMobileDevice from '../../../../../hooks/useMobileDevice';
-import Icon from '../../../../Icon';
+import { cn } from '@/lib/utils';
+import Icon from '@/shared/components/Icon';
+import useMediaQuery from '@/shared/hooks/useMediaQuery';
+import useMobileDevice from '@/shared/hooks/useMobileDevice';
+
 import AboutModal from '../AboutModal';
 import AddToHomeModal from '../AddToHomeModal';
 import ThemeSubmenu from './components/ThemeSubmenu';
 
-const ItemClassName = classnames(
+const ItemClassName = cn(
   'text-base flex items-center gap-2 px-2 py-0.5 min-h-12',
   'bg-white dark:bg-gray-900 rounded-xl',
   'cursor-pointer hover:bg-gray-300 hover:dark:bg-gray-800',
@@ -45,7 +46,7 @@ const MoreButton: React.FC = function () {
       <DropdownMenu.Root>
         <DropdownMenu.Trigger asChild>
           <button
-            className={classnames(
+            className={cn(
               'py-3 px-3 rounded-lg bg-transparent border-none',
               'text-white cursor-pointer flex items-center hover:bg-black/20'
             )}
@@ -57,7 +58,7 @@ const MoreButton: React.FC = function () {
           <DropdownMenu.Content
             align="end"
             sideOffset={0}
-            className={classnames(
+            className={cn(
               'min-w-60 max-w-80 rounded-2xl p-1.5 overflow-hidden z-10',
               'bg-white dark:bg-gray-900 shadow-2xl'
             )}

@@ -1,8 +1,8 @@
-import classnames from 'classnames';
 import React from 'react';
 
-import Modal, { ModalContent, ModalTitle } from '../../../../components/Modal';
-import useMobileDevice from '../../../../hooks/useMobileDevice';
+import { cn } from '@/lib/utils';
+import Modal, { ModalContent, ModalTitle } from '@/shared/components/Modal';
+import useMobileDevice from '@/shared/hooks/useMobileDevice';
 
 interface Props {
   isOpen: boolean;
@@ -47,7 +47,7 @@ const AddToHomeModal: React.FC<Props> = function (props) {
     <Modal open={isOpen} onOpenChange={onClose}>
       <ModalContent>
         <div
-          className={classnames(
+          className={cn(
             'px-6 py-4 leading-6 font-normal',
             'text-gray-700 dark:text-gray-200'
           )}

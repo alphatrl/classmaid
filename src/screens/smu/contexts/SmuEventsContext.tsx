@@ -1,9 +1,6 @@
 import React from 'react';
 
-import {
-  getCurrentEvent,
-  sortEventsByDate,
-} from '../../../shared/contexts/utils';
+import { getCurrentEvent, sortEventsByDate } from '@/shared/contexts/utils';
 
 interface EventsState {
   schoolTerms: App.Calendar.SchoolTerm[];

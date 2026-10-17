@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import {
   LibraryApiResponse,
   LibraryOccupancyAPI,
-} from '../../../screens/smu/components/widget/LibraryCapacities/components/LibraryOccupancySection/types';
+} from '@/screens/smu/components/widget/LibraryCapacities/components/LibraryOccupancySection/types';
 
 export default async function getLibrariesOccupancy(
   _: NextApiRequest,

@@ -1,9 +1,9 @@
-import classnames from 'classnames';
 import { DropdownMenu } from 'radix-ui';
 import React from 'react';
 
-import { Theme, useTheme } from '../../../../../../contexts/ThemeContext';
-import Icon from '../../../../../Icon';
+import { cn } from '@/lib/utils';
+import Icon from '@/shared/components/Icon';
+import { Theme, useTheme } from '@/shared/contexts/ThemeContext';
 
 const themeMeta: Record<Theme, { dot: string; label: string }> = {
   blue: { dot: 'bg-blue-500', label: 'Blue' },
@@ -29,7 +29,7 @@ const ThemeSubmenu: React.FC<Props> = function (props) {
       <DropdownMenu.Portal>
         <DropdownMenu.SubContent
           sideOffset={0}
-          className={classnames(
+          className={cn(
             'min-w-44 rounded-2xl p-1.5 overflow-hidden z-10',
             'bg-white dark:bg-gray-900 shadow-2xl'
           )}
@@ -40,9 +40,7 @@ const ThemeSubmenu: React.FC<Props> = function (props) {
               className={itemClassName}
               onSelect={() => setTheme(t)}
             >
-              <span
-                className={classnames('w-4 h-4 rounded-full', themeMeta[t].dot)}
-              />
+              <span className={cn('w-4 h-4 rounded-full', themeMeta[t].dot)} />
               {themeMeta[t].label}
               {theme === t && <Icon name="check" className="ml-auto" />}
             </DropdownMenu.Item>

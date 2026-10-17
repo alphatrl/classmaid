@@ -1,7 +1,7 @@
-import classnames from 'classnames';
 import React, { useCallback, useMemo, useState } from 'react';
 
-import Icon from '../../../../shared/components/Icon';
+import { cn } from '@/lib/utils';
+import Icon from '@/shared/components/Icon';
 
 interface Props {
   handleFiles: (files: FileList) => void;
@@ -56,7 +56,7 @@ const FilePicker: React.FC<Props> = (props) => {
       />
       <label
         htmlFor="upload-file"
-        className={classnames(
+        className={cn(
           'inline-block cursor-pointer rounded-2xl',
           'bg-gray-200 dark:bg-gray-700',
           'w-1/2 max-w-md p-4',
@@ -64,7 +64,7 @@ const FilePicker: React.FC<Props> = (props) => {
         )}
       >
         <span
-          className={classnames(
+          className={cn(
             'flex items-center text-base pr-2',
             'text-gray-700 dark:text-gray-200',
             'overflow-hidden text-ellipsis',

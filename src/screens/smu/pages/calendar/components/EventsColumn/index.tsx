@@ -1,9 +1,10 @@
-import classnames from 'classnames';
 import moment from 'moment-timezone';
 import React from 'react';
 
-import { useSmuEvents } from '../../../../contexts/SmuEventsContext';
-import { ColumnWrapper } from '../../styled';
+import { cn } from '@/lib/utils';
+import { useSmuEvents } from '@/screens/smu/contexts/SmuEventsContext';
+import { ColumnWrapper } from '@/screens/smu/pages/calendar/styled';
+
 import DailyEvents from './components/DailyEvents';
 
 const EventsColumn: React.FC = function () {
@@ -50,7 +51,7 @@ const EventsColumn: React.FC = function () {
 
   return (
     <ColumnWrapper
-      className={classnames(
+      className={cn(
         'h-full bg-white/75 dark:bg-black/75',
         'backdrop-blur-md backdrop-saturate-86'
       )}

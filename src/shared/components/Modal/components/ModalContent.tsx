@@ -1,6 +1,7 @@
 import * as Dialog from '@radix-ui/react-dialog';
-import classNames from 'classnames';
 import React from 'react';
+
+import { cn } from '@/lib/utils';
 
 const ModalContent = React.forwardRef<
   HTMLDivElement,
@@ -11,14 +12,11 @@ const ModalContent = React.forwardRef<
   return (
     <Dialog.Portal>
       <Dialog.Overlay
-        className={classNames(
-          'fixed inset-0 bg-black/70',
-          'ease-in-out duration-300'
-        )}
+        className={cn('fixed inset-0 bg-black/70', 'ease-in-out duration-300')}
       />
       <Dialog.Content
         ref={ref}
-        className={classNames(
+        className={cn(
           'fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
           'bg-white dark:bg-gray-900 shadow-2xl',
           'w-4/5 max-w-3xl max-h-[80vh]',

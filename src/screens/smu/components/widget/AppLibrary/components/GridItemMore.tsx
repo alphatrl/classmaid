@@ -1,5 +1,6 @@
-import classNames from 'classnames';
 import React from 'react';
+
+import { cn } from '@/lib/utils';
 
 export function GridItemMore({
   className,
@@ -7,7 +8,7 @@ export function GridItemMore({
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={classNames(
+      className={cn(
         'flex flex-col justify-center items-center',
         'no-underline cursor-pointer',
         'transition-all duration-200 ease-in hover:scale-105',

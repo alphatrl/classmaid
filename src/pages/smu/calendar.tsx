@@ -1,9 +1,9 @@
 import type { GetStaticProps, NextPage } from 'next';
 
-import { SmuEventsProvider } from '../../screens/smu/contexts/SmuEventsContext';
-import Calendar from '../../screens/smu/pages/calendar';
-import getSchoolTermsAndImportantDates from '../../screens/smu/utils/getSchoolTermsAndImportantDates';
-import DefaultLayout from '../../shared/components/layouts/DefaultLayout';
+import { SmuEventsProvider } from '@/screens/smu/contexts/SmuEventsContext';
+import Calendar from '@/screens/smu/pages/calendar';
+import getSchoolTermsAndImportantDates from '@/screens/smu/utils/getSchoolTermsAndImportantDates';
+import DefaultLayout from '@/shared/components/layouts/DefaultLayout';
 
 export interface SMUCalendarServerSideProps {
   schoolTerms: App.Calendar.SchoolTerm[];
