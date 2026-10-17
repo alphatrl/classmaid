@@ -155,7 +155,12 @@
                 },
                 "link": {
                   "type": "string",
-                  "description": "Required for url (http/https) and internal; must be absent for guides."
+                  "description": "Public URL for url bookmarks (or use linkKey), route key for internal; must be absent for guides."
+                },
+                "linkKey": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9_]+$",
+                  "description": "url bookmarks only: key of a private link in the sheet links tab (e.g. feedback forms). Resolved at request time; the bookmark is hidden if the key does not resolve."
                 },
                 "description": {
                   "type": "string"
@@ -171,13 +176,26 @@
                     }
                   },
                   "then": {
-                    "required": ["link"],
-                    "properties": {
-                      "link": {
-                        "type": "string",
-                        "pattern": "^https?://\\S+$"
+                    "oneOf": [
+                      {
+                        "required": ["link"],
+                        "not": {
+                          "required": ["linkKey"]
+                        },
+                        "properties": {
+                          "link": {
+                            "type": "string",
+                            "pattern": "^https?://\\S+$"
+                          }
+                        }
+                      },
+                      {
+                        "required": ["linkKey"],
+                        "not": {
+                          "required": ["link"]
+                        }
                       }
-                    }
+                    ]
                   }
                 },
                 {
@@ -195,6 +213,9 @@
                         "type": "string",
                         "minLength": 1
                       }
+                    },
+                    "not": {
+                      "required": ["linkKey"]
                     }
                   }
                 },
@@ -208,7 +229,14 @@
                   },
                   "then": {
                     "not": {
-                      "required": ["link"]
+                      "anyOf": [
+                        {
+                          "required": ["link"]
+                        },
+                        {
+                          "required": ["linkKey"]
+                        }
+                      ]
                     }
                   }
                 }

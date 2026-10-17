@@ -1,9 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import {
-  getSchoolContent,
-  getSchoolLinks,
-} from '../../../../lib/content/getContent';
+import { getSchoolContent } from '../../../../lib/content/getContent';
 import {
   allowMethods,
   firstQueryValue,
@@ -15,7 +12,7 @@ type SchoolResponse =
   | Content.SchoolPayload
   | Content.School
   | Content.Section[]
-  | Pick<Content.SchoolPayload, 'guides' | 'guidesStatus'>
+  | Pick<Content.SchoolPayload, 'guides' | 'sheetStatus'>
   | Content.Links
   | Content.Meta
   | { error: string };
@@ -41,24 +38,14 @@ export default async function schoolResource(
   }
 
   try {
-    // Public resources come from the bundled JSON only
+    // The profile comes from the bundled JSON only
     if (resource === 'config') {
       setCacheHeaders(res);
       res.status(200).json(toSchool(config));
       return;
     }
-    if (resource === 'bookmarks') {
-      setCacheHeaders(res);
-      res.status(200).json(config.bookmarks);
-      return;
-    }
-    if (resource === 'links') {
-      setCacheHeaders(res);
-      res.status(200).json(getSchoolLinks(config.slug) ?? {});
-      return;
-    }
 
-    // all, guides and meta include the guides sheet
+    // Everything else merges in the private sheet (guides, links, meta)
     const content = await getSchoolContent(config.slug);
     if (content == null) {
       res.status(404).json({ error: 'Unknown school' });
@@ -68,8 +55,12 @@ export default async function schoolResource(
     if (resource === 'guides') {
       res.status(200).json({
         guides: content.guides,
-        guidesStatus: content.guidesStatus,
+        sheetStatus: content.sheetStatus,
       });
+    } else if (resource === 'bookmarks') {
+      res.status(200).json(content.bookmarks);
+    } else if (resource === 'links') {
+      res.status(200).json(content.links);
     } else if (resource === 'meta') {
       res.status(200).json(content.meta);
     } else {

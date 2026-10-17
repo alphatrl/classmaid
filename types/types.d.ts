@@ -115,8 +115,13 @@ declare namespace Content {
     /** Hex background colour */
     color: string;
     type: BookmarkType;
-    /** URL for `url`, route key for `internal`, absent for `guides` */
+    /** URL for `url` (unless `linkKey` is set), route key for `internal`, absent for `guides` */
     link?: string;
+    /**
+     * `url` bookmarks only: key of a private link in the sheet `links` tab.
+     * Resolved into `link` at request time; unresolved bookmarks are omitted.
+     */
+    linkKey?: string;
     description?: string;
   }
 
@@ -160,13 +165,21 @@ declare namespace Content {
   /** Text values keyed by name */
   type Meta = Record<string, string>;
 
-  /** `unavailable` when the guides sheet could not be read and nothing is cached */
-  type GuidesStatus = 'ok' | 'unavailable';
+  /** `unavailable` when the private sheet could not be read and nothing is cached */
+  type SheetStatus = 'ok' | 'unavailable';
 
-  /** Shape of data/site.json and GET /api/content/site */
-  interface SitePayload {
+  /** Shape of data/site.json */
+  interface SiteConfig {
     links: Links;
     meta: Meta;
+  }
+
+  /** GET /api/content/site */
+  interface SitePayload {
+    /** data/site.json links merged with the sheet's global links (sheet wins) */
+    links: Links;
+    meta: Meta;
+    sheetStatus: SheetStatus;
   }
 
   /** GET /api/content/[school]/all */
@@ -174,10 +187,12 @@ declare namespace Content {
     school: School;
     bookmarks: Section[];
     guides: GuideGroup[];
-    guidesStatus: GuidesStatus;
-    /** Global links merged with the school's */
+    sheetStatus: SheetStatus;
+    /** JSON links (global, then school) merged with the sheet's (global, then school); sheet wins */
     links: Links;
-    /** Global meta, then the school's, then the guides sheet `meta` tab for the school */
+    /** JSON meta (global, then school), then the sheet `meta` tab (global, then school) */
     meta: Meta;
+    /** Ids of bookmarks dropped because their `linkKey` did not resolve */
+    omittedBookmarks: string[];
   }
 }

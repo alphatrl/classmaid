@@ -81,6 +81,40 @@ describe('validateSchoolConfig', () => {
     );
   });
 
+  it('requires exactly one of link or linkKey on url bookmarks', () => {
+    const bad = clone();
+    const [first] = bad.bookmarks as { items: Json[] }[];
+    delete first.items[0].link;
+    first.items[1].linkKey = 'some_form';
+    first.items[2].link = undefined;
+    first.items[2].linkKey = 'Bad Key';
+    first.items.push({
+      id: 'internal_with_key',
+      title: 'Internal',
+      icon: 'download',
+      color: '#000000',
+      type: 'internal',
+      link: 'boss-export',
+      linkKey: 'x',
+    });
+    const problems = problemsOf(() => validateSchoolConfig(bad));
+    expect(problems).toEqual([
+      'bookmarks[0].items[0]: url bookmarks need exactly one of link or linkKey',
+      'bookmarks[0].items[1]: url bookmarks need exactly one of link or linkKey',
+      'bookmarks[0].items[2].linkKey: must be a link key',
+      'bookmarks[0].items[6].linkKey: is only allowed on url bookmarks',
+    ]);
+  });
+
+  it('accepts a url bookmark with only a linkKey', () => {
+    const config = validateSchoolConfig(smu, 'smu');
+    const feedback = config.bookmarks
+      .flatMap((s) => s.items)
+      .find((i) => i.id === 'smusa_feedback');
+    expect(feedback).toMatchObject({ linkKey: 'smusa_feedback' });
+    expect(feedback?.link).toBeUndefined();
+  });
+
   it('checks links and meta values', () => {
     const bad = clone();
     bad.links = { library: { url: 'ftp://x' }, other: 'https://x' };

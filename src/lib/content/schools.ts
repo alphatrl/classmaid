@@ -16,7 +16,7 @@ const SCHOOLS: Content.SchoolConfig[] = Object.entries(SCHOOL_FILES).map(
   ([slug, json]) => validateSchoolConfig(json, slug)
 );
 
-const SITE: Content.SitePayload = validateSiteConfig(siteJson);
+const SITE: Content.SiteConfig = validateSiteConfig(siteJson);
 
 /** Public profile of a school (config without bookmarks, links and meta). */
 export function toSchool(config: Content.SchoolConfig): Content.School {
@@ -44,6 +44,6 @@ export function getSchoolConfig(slug: string): Content.SchoolConfig | null {
   return SCHOOLS.find((s) => s.slug === slug && s.enabled) ?? null;
 }
 
-export function getSiteConfig(): Content.SitePayload {
+export function getSiteConfig(): Content.SiteConfig {
   return SITE;
 }

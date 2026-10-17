@@ -3,7 +3,8 @@ import { describe, expect, it } from 'vitest';
 import {
   mergeScoped,
   parseGuides,
-  parseGuidesSheet,
+  parseLinks,
+  parsePrivateSheet,
   parseMeta,
   rowsToRecords,
   toBool,
@@ -93,6 +94,23 @@ describe('parseGuides', () => {
   });
 });
 
+describe('parseLinks', () => {
+  it('splits global vs school, skips incomplete rows, later keys win', () => {
+    const links = parseLinks([
+      ['School', 'Key', 'URL', 'Label'],
+      ['', 'feedback', 'https://g', 'Feedback'],
+      [' SMU ', 'smusa_feedback', 'https://s', ''],
+      ['smu', '', 'https://skipped', ''],
+      ['smu', 'nourl', '', ''],
+      ['', 'feedback', 'https://g2', ''],
+    ]);
+    expect(links.global).toEqual({ feedback: { url: 'https://g2' } });
+    expect(links.bySchool).toEqual({
+      smu: { smusa_feedback: { url: 'https://s' } },
+    });
+  });
+});
+
 describe('parseMeta', () => {
   it('splits global vs school and lowercases school slug', () => {
     const meta = parseMeta([
@@ -119,9 +137,9 @@ describe('mergeScoped', () => {
   });
 });
 
-describe('parseGuidesSheet', () => {
-  it('treats every tab as a school except meta', () => {
-    const data = parseGuidesSheet({
+describe('parsePrivateSheet', () => {
+  it('treats every tab as a school except meta and links', () => {
+    const data = parsePrivateSheet({
       ' SMU ': [guideHeader, ['G', 'clock', '', '', 'T', 'https://t', '', '']],
       nus: [guideHeader],
       meta: [
@@ -129,12 +147,20 @@ describe('parseGuidesSheet', () => {
         ['smu', 'guides_note', 'Note'],
         ['', 'guides_title', 'Guides'],
       ],
+      Links: [
+        ['school', 'key', 'url', 'label'],
+        ['', 'feedback', 'https://f', 'Feedback'],
+      ],
     });
-    expect(Object.keys(data.bySchool)).toEqual(['smu', 'nus']);
-    expect(data.bySchool.smu[0].guides).toEqual([
+    expect(Object.keys(data.guides)).toEqual(['smu', 'nus']);
+    expect(data.guides.smu[0].guides).toEqual([
       { title: 'T', link: 'https://t' },
     ]);
-    expect(data.bySchool.nus).toEqual([]);
+    expect(data.guides.nus).toEqual([]);
+    expect(data.links).toEqual({
+      global: { feedback: { url: 'https://f', label: 'Feedback' } },
+      bySchool: {},
+    });
     expect(data.meta).toEqual({
       global: { guides_title: 'Guides' },
       bySchool: { smu: { guides_note: 'Note' } },
@@ -142,9 +168,10 @@ describe('parseGuidesSheet', () => {
   });
 
   it('returns empty data for an empty spreadsheet', () => {
-    expect(parseGuidesSheet({})).toEqual({
-      bySchool: {},
+    expect(parsePrivateSheet({})).toEqual({
+      guides: {},
       meta: { global: {}, bySchool: {} },
+      links: { global: {}, bySchool: {} },
     });
   });
 });

@@ -265,7 +265,7 @@
           "icon": "message-circle",
           "color": "#8A704C",
           "type": "url",
-          "link": "http://bit.ly/smusa-feedback",
+          "linkKey": "smusa_feedback",
           "description": "A listening ear and a willing heart"
         }
       ]

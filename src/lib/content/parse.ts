@@ -1,9 +1,9 @@
 /**
- * Pure parsers turning the guides spreadsheet into typed content.
- * No I/O: see sheets.ts for fetching and guides.ts for caching.
+ * Pure parsers turning the private spreadsheet into typed content.
+ * No I/O: see sheets.ts for fetching and privateContent.ts for caching.
  */
 
-import type { GuidesData, Scoped, SheetRows, SheetValues } from './types';
+import type { PrivateSheetData, Scoped, SheetRows, SheetValues } from './types';
 
 const TRUE_VALUES = ['true', 'yes', '1', 'y'];
 const FALSE_VALUES = ['false', 'no', '0', 'n'];
@@ -49,6 +49,20 @@ export function parseMeta(rows: SheetRows): Scoped<Content.Meta> {
     const school = slugOf(r.school);
     if (school) (result.bySchool[school] ??= {})[r.key] = r.value ?? '';
     else result.global[r.key] = r.value ?? '';
+  }
+  return result;
+}
+
+/** `school, key, url, label`; rows without key or url are skipped, later keys win. */
+export function parseLinks(rows: SheetRows): Scoped<Content.Links> {
+  const result: Scoped<Content.Links> = { global: {}, bySchool: {} };
+  for (const r of rowsToRecords(rows)) {
+    if (!r.key || !r.url) continue;
+    const link: Content.Link = { url: r.url };
+    if (r.label) link.label = r.label;
+    const school = slugOf(r.school);
+    if (school) (result.bySchool[school] ??= {})[r.key] = link;
+    else result.global[r.key] = link;
   }
   return result;
 }
@@ -99,23 +113,27 @@ export function mergeScoped<T extends object>(
   return { ...scoped.global, ...scoped.bySchool[slugOf(slug)] };
 }
 
-/** Name of the optional tab holding guide-related text (`school, key, value`). */
-export const GUIDES_META_TAB = 'meta';
+/** Reserved tab names; every other tab is a school slug. */
+export const META_TAB = 'meta';
+export const LINKS_TAB = 'links';
 
 /**
- * Parses the guides spreadsheet: every tab is a school slug except `meta`
- * (and `_`-prefixed tabs, which the client already skips).
+ * Parses the private spreadsheet: `meta` (`school, key, value`) and `links`
+ * (`school, key, url, label`) are reserved; every other tab is a school's
+ * guides. `_`-prefixed tabs are ignored (the client already skips them).
  */
-export function parseGuidesSheet(values: SheetValues): GuidesData {
-  const data: GuidesData = {
-    bySchool: {},
+export function parsePrivateSheet(values: SheetValues): PrivateSheetData {
+  const data: PrivateSheetData = {
+    guides: {},
     meta: { global: {}, bySchool: {} },
+    links: { global: {}, bySchool: {} },
   };
   for (const [tab, rows] of Object.entries(values)) {
     const slug = slugOf(tab);
     if (!slug || slug.startsWith('_')) continue;
-    if (slug === GUIDES_META_TAB) data.meta = parseMeta(rows);
-    else data.bySchool[slug] = parseGuides(rows);
+    if (slug === META_TAB) data.meta = parseMeta(rows);
+    else if (slug === LINKS_TAB) data.links = parseLinks(rows);
+    else data.guides[slug] = parseGuides(rows);
   }
   return data;
 }

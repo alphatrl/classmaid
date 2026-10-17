@@ -7,6 +7,7 @@
 const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const HEX_RE = /^#[0-9a-fA-F]{6}$/;
 const ICON_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const KEY_RE = /^[a-z0-9_]+$/;
 const DOMAIN_RE = /^(?:[a-z0-9-]+\.)+[a-z]{2,}$/i;
 const BOOKMARK_TYPES: Content.BookmarkType[] = ['url', 'internal', 'guides'];
 
@@ -126,7 +127,16 @@ function checkBookmarks(c: Checker, value: unknown) {
       if (!item) return;
       c.onlyKeys(
         item,
-        ['id', 'title', 'icon', 'color', 'type', 'link', 'description'],
+        [
+          'id',
+          'title',
+          'icon',
+          'color',
+          'type',
+          'link',
+          'linkKey',
+          'description',
+        ],
         ip
       );
       c.string(item.id, `${ip}.id`);
@@ -147,11 +157,22 @@ function checkBookmarks(c: Checker, value: unknown) {
       if (!BOOKMARK_TYPES.includes(type)) {
         c.fail(`${ip}.type`, `must be one of ${BOOKMARK_TYPES.join(', ')}`);
       } else if (type === 'url') {
-        c.url(item.link, `${ip}.link`);
-      } else if (type === 'internal') {
-        c.string(item.link, `${ip}.link`);
-      } else if (item.link !== undefined) {
-        c.fail(`${ip}.link`, 'must be absent for guides');
+        // Exactly one of a public URL or a key into the private sheet links
+        if ((item.link === undefined) === (item.linkKey === undefined)) {
+          c.fail(ip, 'url bookmarks need exactly one of link or linkKey');
+        } else if (item.link !== undefined) {
+          c.url(item.link, `${ip}.link`);
+        } else {
+          c.string(item.linkKey, `${ip}.linkKey`, KEY_RE, 'must be a link key');
+        }
+      } else {
+        if (type === 'internal') c.string(item.link, `${ip}.link`);
+        else if (item.link !== undefined) {
+          c.fail(`${ip}.link`, 'must be absent for guides');
+        }
+        if (item.linkKey !== undefined) {
+          c.fail(`${ip}.linkKey`, 'is only allowed on url bookmarks');
+        }
       }
     });
   });
@@ -223,7 +244,7 @@ export function validateSchoolConfig(
 }
 
 /** Validates data/site.json. */
-export function validateSiteConfig(value: unknown): Content.SitePayload {
+export function validateSiteConfig(value: unknown): Content.SiteConfig {
   const c = new Checker();
   const obj = c.object(value, '(root)');
   if (obj) {
@@ -234,5 +255,5 @@ export function validateSiteConfig(value: unknown): Content.SitePayload {
   if (!obj || c.problems.length > 0) {
     throw new ContentValidationError('data/site.json', c.problems);
   }
-  return stripSchema<Content.SitePayload>(obj);
+  return stripSchema<Content.SiteConfig>(obj);
 }

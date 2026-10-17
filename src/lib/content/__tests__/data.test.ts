@@ -36,10 +36,16 @@ describe('data/schools', () => {
     );
   });
 
-  it('keeps guides out of the public JSON', () => {
-    schoolFiles.forEach((file) => {
-      const text = fs.readFileSync(path.join(SCHOOLS_DIR, file), 'utf8');
+  it('keeps guides and private links out of the public JSON', () => {
+    const files = [
+      ...schoolFiles.map((f) => path.join(SCHOOLS_DIR, f)),
+      path.join(DATA_DIR, 'site.json'),
+    ];
+    files.forEach((file) => {
+      const text = fs.readFileSync(file, 'utf8');
       expect(text).not.toMatch(/"guides(_note)?"\s*:/);
+      // Feedback and contact links live in the private sheet `links` tab
+      expect(text).not.toMatch(/"(feedback|contact_us|suggestion_form)"\s*:/);
     });
   });
 });

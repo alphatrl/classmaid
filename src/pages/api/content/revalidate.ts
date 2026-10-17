@@ -1,12 +1,12 @@
 import { timingSafeEqual } from 'crypto';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { refreshGuides } from '../../../lib/content/guides';
 import { allowMethods } from '../../../lib/content/http';
+import { refreshPrivateContent } from '../../../lib/content/privateContent';
 
 interface RevalidateResponse {
   revalidated: true;
-  guidesStatus: Content.GuidesStatus;
+  sheetStatus: Content.SheetStatus;
 }
 
 function getProvidedSecret(req: NextApiRequest): string | undefined {
@@ -26,7 +26,7 @@ function secretsMatch(provided: string | undefined, expected: string) {
   return a.length === b.length && timingSafeEqual(a, b);
 }
 
-/** Clears the guides cache and reloads it. Public JSON content needs a deploy. */
+/** Clears the private sheet cache and reloads it. Public JSON content needs a deploy. */
 export default async function revalidate(
   req: NextApiRequest,
   res: NextApiResponse<RevalidateResponse | { error: string }>
@@ -41,8 +41,8 @@ export default async function revalidate(
   }
 
   try {
-    const guidesStatus = await refreshGuides();
-    res.status(200).json({ revalidated: true, guidesStatus });
+    const sheetStatus = await refreshPrivateContent();
+    res.status(200).json({ revalidated: true, sheetStatus });
   } catch (error) {
     console.error('[content] revalidate failed', error);
     res.status(503).json({ error: 'Content unavailable' });
