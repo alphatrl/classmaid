@@ -1,9 +1,18 @@
-import { IMPORTANT_DATES_URL, SCHOOL_TERM_URL } from '../constants';
+import { getSchoolConfig } from '@/lib/content/schools';
 
-export default async function getSchoolTermsAndImportantDates() {
+import {
+  DEFAULT_CALENDAR_KEYS,
+  getImportantDatesUrl,
+  getSchoolTermUrl,
+} from '../constants';
+
+/** Build-time fetch of the calendar data; keys come from data/schools/<slug>.json. */
+export default async function getSchoolTermsAndImportantDates(slug = 'smu') {
+  const calendar = getSchoolConfig(slug)?.calendar ?? DEFAULT_CALENDAR_KEYS;
+
   const requestFetchPromises = await Promise.all([
-    fetch(SCHOOL_TERM_URL),
-    fetch(IMPORTANT_DATES_URL),
+    fetch(getSchoolTermUrl(calendar.semestersKey)),
+    fetch(getImportantDatesUrl(calendar.importantDatesKey)),
   ]);
 
   const schoolTermsJson = await requestFetchPromises[0].json();
