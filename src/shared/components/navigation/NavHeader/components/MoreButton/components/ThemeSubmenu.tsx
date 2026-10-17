@@ -41,10 +41,7 @@ const ThemeSubmenu: React.FC<Props> = function (props) {
               onSelect={() => setTheme(t)}
             >
               <span
-                className={classnames(
-                  'w-4 h-4 rounded-full',
-                  themeMeta[t].dot
-                )}
+                className={classnames('w-4 h-4 rounded-full', themeMeta[t].dot)}
               />
               {themeMeta[t].label}
               {theme === t && <Icon name="check" className="ml-auto" />}

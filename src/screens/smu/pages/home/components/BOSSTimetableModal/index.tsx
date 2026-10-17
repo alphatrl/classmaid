@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import parse from 'csv-parse/lib/sync';
+import { parse } from 'csv-parse/browser/esm/sync';
 import { capitalize, isEqual, uniqBy } from 'lodash';
 import moment from 'moment';
 import React from 'react';
@@ -91,36 +91,34 @@ function convert(data: string[][], allowedModules: string[] = []) {
 
 const BOSSTimetableModal: React.FC = () => {
   const [fileContents, setFileContents] = React.useState<string | null>(null);
-  const [errorFile, setErrorFile] = React.useState(false);
-  const [allowedModules, setAllowedModules] = React.useState<string[]>([]);
+  const [fileReadError, setFileReadError] = React.useState(false);
+  const [selectedModules, setSelectedModules] = React.useState<string[]>([]);
 
-  // Raw CSV contents
-  const csvContents = React.useMemo<string[][] | null>(() => {
+  const parsedFile = React.useMemo<string[][] | null>(() => {
     if (fileContents === null) {
       return null;
     }
-
-    const parsedFile = parse(fileContents);
-
-    if (!isEqual(CSVHeader, parsedFile[0])) {
-      setErrorFile(true);
-      return null;
-    }
-
-    return parsedFile;
+    return parse(fileContents);
   }, [fileContents]);
 
-  React.useEffect(() => {
-    if (csvContents === null || allowedModules.length > 0) {
-      return;
-    }
+  // Raw CSV contents, or null if the file is not a BOSS timetable export
+  const isValidHeader =
+    parsedFile !== null && isEqual(CSVHeader, parsedFile[0]);
+  const csvContents = isValidHeader ? parsedFile : null;
+  const errorFile = fileReadError || (parsedFile !== null && !isValidHeader);
 
-    setAllowedModules(
-      uniqBy(csvContents.slice(1), (event) => event[3])
-        .filter((event) => event[6].toLowerCase() === 'enrolled')
-        .map((event) => event[3])
-    );
-  }, [csvContents, allowedModules]);
+  const enrolledModules = React.useMemo(() => {
+    if (csvContents === null) {
+      return [];
+    }
+    return uniqBy(csvContents.slice(1), (event) => event[3])
+      .filter((event) => event[6].toLowerCase() === 'enrolled')
+      .map((event) => event[3]);
+  }, [csvContents]);
+
+  // An empty selection falls back to every enrolled module
+  const allowedModules =
+    selectedModules.length > 0 ? selectedModules : enrolledModules;
 
   // Generated ICS data, if available
   const generatedData = React.useMemo(() => {
@@ -147,7 +145,7 @@ const BOSSTimetableModal: React.FC = () => {
   }, [iCalBlob]);
 
   const handleFile = React.useCallback((files: FileList) => {
-    setErrorFile(false);
+    setFileReadError(false);
     const file = files[0];
     const reader = new FileReader();
     reader.readAsText(file);
@@ -161,7 +159,7 @@ const BOSSTimetableModal: React.FC = () => {
 
     reader.onerror = () => {
       console.error;
-      setErrorFile(true);
+      setFileReadError(true);
     };
   }, []);
 
@@ -170,12 +168,12 @@ const BOSSTimetableModal: React.FC = () => {
       const { checked, value } = e.target;
 
       if (checked) {
-        setAllowedModules((modules) => [...modules, value]);
+        setSelectedModules([...allowedModules, value]);
       } else {
-        setAllowedModules((modules) => modules.filter((mod) => mod !== value));
+        setSelectedModules(allowedModules.filter((mod) => mod !== value));
       }
     },
-    []
+    [allowedModules]
   );
 
   return (

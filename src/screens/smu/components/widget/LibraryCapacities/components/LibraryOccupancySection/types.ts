@@ -57,6 +57,6 @@ export interface LibraryApiZone {
   locationName: string;
   tenantName: string;
   alarmEnabled: boolean;
-  status: any[];
+  status: unknown[];
   zoneDataTypes: string[];
 }

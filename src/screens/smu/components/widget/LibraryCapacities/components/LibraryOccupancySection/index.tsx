@@ -11,18 +11,25 @@ const LibraryOccupancySection: React.FC = function () {
     LibraryOccupancyAPI[]
   >([]);
 
-  const getLibrariesOccupancy = React.useCallback(async () => {
-    setFetchingOccupancy(true);
-    const response = await fetch('/api/smusg/getLibrariesOccupancy');
-    const resJson: LibraryOccupancyAPI[] = await response.json();
-
-    setCurrentOccupancy(resJson);
-    setFetchingOccupancy(false);
-  }, []);
-
   React.useEffect(() => {
+    let ignore = false;
+
+    const getLibrariesOccupancy = async () => {
+      const response = await fetch('/api/smusg/getLibrariesOccupancy');
+      const resJson: LibraryOccupancyAPI[] = await response.json();
+
+      if (!ignore) {
+        setCurrentOccupancy(resJson);
+        setFetchingOccupancy(false);
+      }
+    };
+
     getLibrariesOccupancy();
-  }, [getLibrariesOccupancy]);
+
+    return () => {
+      ignore = true;
+    };
+  }, []);
 
   return (
     <div

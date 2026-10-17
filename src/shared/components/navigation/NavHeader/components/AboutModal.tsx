@@ -32,10 +32,7 @@ const AboutModal: React.FC<Props> = function (props) {
           <ul className="my-1">
             <li>
               {'Current or incoming student? Make a suggestion '}
-              <a
-                href="https://bit.ly/30SRyIo"
-                className="text-theme-500"
-              >
+              <a href="https://bit.ly/30SRyIo" className="text-theme-500">
                 here
               </a>
             </li>
