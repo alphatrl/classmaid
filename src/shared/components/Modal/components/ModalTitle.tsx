@@ -1,29 +1,25 @@
-import * as Dialog from '@radix-ui/react-dialog';
 import React from 'react';
 
+import { DialogClose, DialogTitle } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
 import Icon from '@/shared/components/Icon';
 
-const ModalTitle = React.forwardRef<
-  HTMLHeadingElement,
-  React.ComponentPropsWithoutRef<typeof Dialog.Title>
->(function ModalTitle({ children, ...props }, ref) {
-  return (
-    <div
-      className={cn(
-        'min-h-12 py-1 flex flex-row items-center',
-        children != null ? 'justify-between' : 'justify-end'
-      )}
-    >
-      <Dialog.Title
-        className="text-2xl font-bold m-0 capitalize text-gray-700 dark:text-gray-200"
-        {...props}
-        ref={ref}
+const ModalTitle: React.FC<React.ComponentProps<typeof DialogTitle>> =
+  function ModalTitle({ children, ...props }) {
+    return (
+      <div
+        className={cn(
+          'min-h-12 py-1 flex flex-row items-center',
+          children != null ? 'justify-between' : 'justify-end'
+        )}
       >
-        {children}
-      </Dialog.Title>
-      <Dialog.Close asChild>
-        <button
+        <DialogTitle
+          className="text-2xl font-bold m-0 capitalize text-gray-700 dark:text-gray-200"
+          {...props}
+        >
+          {children}
+        </DialogTitle>
+        <DialogClose
           className={cn(
             'w-10 h-10 border-0 bg-transparent cursor-pointer',
             'flex items-center justify-center rounded-3xl',
@@ -35,11 +31,8 @@ const ModalTitle = React.forwardRef<
             size={32}
             className="text-gray-500 dark:text-gray-400"
           />
-        </button>
-      </Dialog.Close>
-    </div>
-  );
-});
-
-ModalTitle.displayName = 'ModalTitle';
+        </DialogClose>
+      </div>
+    );
+  };
 export default ModalTitle;

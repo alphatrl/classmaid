@@ -1,5 +1,6 @@
-import * as Dialog from '@radix-ui/react-dialog';
 import React from 'react';
+
+import { Dialog, DialogTrigger } from '@/components/ui/dialog';
 
 interface ModalOptions {
   initialOpen?: boolean;
@@ -13,17 +14,13 @@ const Modal: React.FC<React.PropsWithChildren<ModalOptions>> = function (
   const { children, initialOpen = false, open, onOpenChange } = props;
 
   return (
-    <Dialog.Root
-      defaultOpen={initialOpen}
-      open={open}
-      onOpenChange={onOpenChange}
-    >
+    <Dialog defaultOpen={initialOpen} open={open} onOpenChange={onOpenChange}>
       {children}
-    </Dialog.Root>
+    </Dialog>
   );
 };
 
 export default Modal;
-export const ModalTrigger = Dialog.Trigger;
+export const ModalTrigger = DialogTrigger;
 export { default as ModalContent } from './components/ModalContent';
 export { default as ModalTitle } from './components/ModalTitle';
