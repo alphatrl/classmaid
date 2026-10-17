@@ -35,17 +35,17 @@ Run the following commands:
 git clone https://github.com/alphatrl/classmaid.git && cd classmaid
 
 # Install dependencies
-yarn install
+pnpm install
 
 # Copy the env.example files
 cp .env.example .env
 
 # Run the app (Development)
-yarn dev
+pnpm dev
 
 # Run the app (Production)
-yarn build
-yarn start
+pnpm build
+pnpm start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
