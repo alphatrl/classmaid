@@ -1,9 +1,9 @@
-import classnames from 'classnames';
 import React from 'react';
 import Calendar from 'react-calendar';
 
-import { ColumnWrapper } from '../../styled';
-import { CalendarValue } from '../../types';
+import { cn } from '@/lib/utils';
+import { ColumnWrapper } from '@/screens/smu/pages/calendar/styled';
+import { CalendarValue } from '@/screens/smu/pages/calendar/types';
 
 interface Props {
   value: CalendarValue;
@@ -15,7 +15,7 @@ const InfoColumn: React.FC<Props> = function (props) {
 
   return (
     <ColumnWrapper
-      className={classnames(
+      className={cn(
         'h-full bg-white/75 dark:bg-black/75',
         'backdrop-blur-md backdrop-saturate-86'
       )}

@@ -1,5 +1,6 @@
-import classnames from 'classnames';
 import React from 'react';
+
+import { cn } from '@/lib/utils';
 
 import NavHeader from '../navigation/NavHeader';
 import SEO from '../SEO';
@@ -15,7 +16,7 @@ const DefaultLayout: React.FC<React.PropsWithChildren<Props>> = function (
 
   return (
     <div
-      className={classnames(
+      className={cn(
         'w-full h-dvh flex flex-row',
         'md:max-lg:h-auto max-md:h-auto'
       )}

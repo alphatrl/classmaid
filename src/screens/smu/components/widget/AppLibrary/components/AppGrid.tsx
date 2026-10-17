@@ -1,5 +1,6 @@
-import classnames from 'classnames';
 import React from 'react';
+
+import { cn } from '@/lib/utils';
 
 import AppLibraryModal from './AppLibraryModal';
 import AppItem from './AppLibraryModal/components/AppItem';
@@ -16,7 +17,7 @@ const AppGrid: React.FC<Props> = function (props) {
 
   return (
     <div
-      className={classnames(
+      className={cn(
         'grid grid-cols-3 justify-items-center items-baseline gap-y-3 gap-x-6',
         'lg:grid-cols-3 ',
         'xl:grid-cols-5'

@@ -1,13 +1,13 @@
 import React from 'react';
 
-import Icon from '../../../../../../../../shared/components/Icon';
-import Modal, {
-  ModalContent,
-  ModalTrigger,
-} from '../../../../../../../../shared/components/Modal';
-import BOSSTimetableModal from '../../../../../../pages/home/components/BOSSTimetableModal';
-import { GridItemMore } from '../../GridItemMore';
-import { GridImage, GridText } from '../../styled';
+import { GridItemMore } from '@/screens/smu/components/widget/AppLibrary/components/GridItemMore';
+import {
+  GridImage,
+  GridText,
+} from '@/screens/smu/components/widget/AppLibrary/components/styled';
+import BOSSTimetableModal from '@/screens/smu/pages/home/components/BOSSTimetableModal';
+import Icon from '@/shared/components/Icon';
+import Modal, { ModalContent, ModalTrigger } from '@/shared/components/Modal';
 
 interface Props {
   shortcut: App.AppLibrary.LibraryItemShortcut;
@@ -41,7 +41,7 @@ const useInternalApps = function (props: Props) {
         <ModalTrigger asChild={true}>
           <GridItemMore role="button">
             <GridImage $backgroundColor={shortcut.color}>
-              <Icon name={shortcut.logo} height={32} width={32} />
+              <Icon name={shortcut.logo} />
             </GridImage>
             <GridText>{shortcut.title}</GridText>
           </GridItemMore>

@@ -1,5 +1,6 @@
-import classnames from 'classnames';
 import React from 'react';
+
+import { cn } from '@/lib/utils';
 
 import CalendarEvent from './components/CalendarEvent';
 
@@ -13,7 +14,7 @@ const Calendar: React.FC<Props> = function (props) {
   if (events.length === 0) {
     return (
       <div
-        className={classnames(
+        className={cn(
           'bg-gray-200 dark:bg-gray-700 mt-2',
           'flex flex-1 items-center rounded-2xl p-2',
           'text-gray-400 dark:text-gray-400'
@@ -27,7 +28,7 @@ const Calendar: React.FC<Props> = function (props) {
   const trimmedEvents = events.length > 3 ? events.slice(0, 3) : events;
   return (
     <div
-      className={classnames(
+      className={cn(
         'bg-gray-200 dark:bg-gray-700 mt-2',
         'grid flex-1 grid-rows-[repeat(3,minmax(auto,1fr))]',
         'gap-1 rounded-3xl p-2'

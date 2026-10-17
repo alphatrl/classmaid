@@ -1,11 +1,12 @@
 import React from 'react';
 
-import Icon from '../../../../../../../shared/components/Icon';
+import Icon from '@/shared/components/Icon';
 import Modal, {
   ModalContent,
   ModalTitle,
   ModalTrigger,
-} from '../../../../../../../shared/components/Modal';
+} from '@/shared/components/Modal';
+
 import { GridItemMore } from '../GridItemMore';
 import { GridImage, GridText } from '../styled';
 import Section from './components/Section';
@@ -22,7 +23,7 @@ const AppLibraryModal: React.FC<Props> = function (props) {
       <ModalTrigger asChild={true}>
         <GridItemMore role="button">
           <GridImage $backgroundColor="#808080">
-            <Icon name="apps" />
+            <Icon name="layout-grid" />
           </GridImage>
           <GridText>More Apps</GridText>
         </GridItemMore>

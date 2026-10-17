@@ -15,12 +15,22 @@ const eslintConfig = defineConfig([
       prettier: prettierPlugin,
       import: importPlugin,
     },
+    settings: {
+      'import/internal-regex': '^@/',
+    },
     rules: {
       'no-unused-vars': 'warn',
       'react/prop-types': 'off',
       'import/order': [
         'warn',
         {
+          groups: [
+            'builtin',
+            'external',
+            'internal',
+            ['parent', 'sibling', 'index'],
+          ],
+          'newlines-between': 'always',
           alphabetize: { order: 'asc', caseInsensitive: true },
         },
       ],

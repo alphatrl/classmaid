@@ -1,24 +1,26 @@
-import * as Dialog from '@radix-ui/react-dialog';
-import classNames from 'classnames';
+import { Dialog as DialogPrimitive } from 'radix-ui';
 import React from 'react';
+
+import { DialogOverlay, DialogPortal } from '@/components/ui/dialog';
+import { cn } from '@/lib/utils';
 
 const ModalContent = React.forwardRef<
   HTMLDivElement,
-  React.ComponentPropsWithoutRef<typeof Dialog.Content>
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
 >((props, ref) => {
   const { children, className, ...rest } = props;
 
   return (
-    <Dialog.Portal>
-      <Dialog.Overlay
-        className={classNames(
-          'fixed inset-0 bg-black/70',
-          'ease-in-out duration-300'
+    <DialogPortal>
+      <DialogOverlay
+        className={cn(
+          'z-auto bg-black/70 ease-in-out duration-300',
+          'data-[state=open]:animate-none! data-[state=closed]:animate-none!'
         )}
       />
-      <Dialog.Content
+      <DialogPrimitive.Content
         ref={ref}
-        className={classNames(
+        className={cn(
           'fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
           'bg-white dark:bg-gray-900 shadow-2xl',
           'w-4/5 max-w-3xl max-h-[80vh]',
@@ -33,8 +35,8 @@ const ModalContent = React.forwardRef<
         <div className="max-h-[inherit] overflow-y-auto overscroll-contain">
           {children}
         </div>
-      </Dialog.Content>
-    </Dialog.Portal>
+      </DialogPrimitive.Content>
+    </DialogPortal>
   );
 });
 

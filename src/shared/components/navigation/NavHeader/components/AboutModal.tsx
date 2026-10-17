@@ -1,7 +1,7 @@
-import classnames from 'classnames';
 import React from 'react';
 
-import Modal, { ModalContent, ModalTitle } from '../../../Modal';
+import { cn } from '@/lib/utils';
+import Modal, { ModalContent, ModalTitle } from '@/shared/components/Modal';
 
 interface Props {
   isOpen: boolean;
@@ -15,7 +15,7 @@ const AboutModal: React.FC<Props> = function (props) {
     <Modal open={isOpen} onOpenChange={onClose}>
       <ModalContent>
         <div
-          className={classnames(
+          className={cn(
             'px-6 py-4 leading-6 font-normal',
             'text-gray-700 dark:text-gray-200'
           )}

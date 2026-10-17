@@ -1,8 +1,9 @@
 import { resolve } from 'url';
+
 import Head from 'next/head';
 import React from 'react';
 
-import config from '../../config';
+import config from '@/config';
 
 interface Props {
   lang?: string;

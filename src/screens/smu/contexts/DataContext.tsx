@@ -1,10 +1,8 @@
 import axios from 'axios';
 import React from 'react';
 
-import {
-  getCurrentEvent,
-  sortEventsByDate,
-} from '../../../shared/contexts/utils';
+import { getCurrentEvent, sortEventsByDate } from '@/shared/contexts/utils';
+
 import { IMPORTANT_DATES_URL, SCHOOL_TERM_URL } from '../constants';
 
 interface ContextProps {

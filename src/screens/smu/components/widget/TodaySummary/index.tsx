@@ -2,7 +2,8 @@ import moment from 'moment-timezone';
 import Link from 'next/link';
 import React from 'react';
 
-import { useDataContext } from '../../../contexts/DataContext';
+import { useDataContext } from '@/screens/smu/contexts/DataContext';
+
 import { CardTemplate } from '../styled';
 import Calendar from './components/Calendar';
 import TodayEvent from './components/TodayEvent';

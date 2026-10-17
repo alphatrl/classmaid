@@ -1,8 +1,9 @@
-import classnames from 'classnames';
 import React from 'react';
 
-import Modal, { ModalContent, ModalTitle } from '../../../../components/Modal';
-import useMobileDevice from '../../../../hooks/useMobileDevice';
+import { cn } from '@/lib/utils';
+import Icon from '@/shared/components/Icon';
+import Modal, { ModalContent, ModalTitle } from '@/shared/components/Modal';
+import useMobileDevice from '@/shared/hooks/useMobileDevice';
 
 interface Props {
   isOpen: boolean;
@@ -19,9 +20,10 @@ const AddToHomeModal: React.FC<Props> = function (props) {
         <ol className="list-decimal leading-8 px-4">
           <li>
             Tap{' '}
-            <span className="material-symbols-rounded text-theme-500 align-text-bottom">
-              {'ios_share'}
-            </span>
+            <Icon
+              name="share"
+              className="inline text-theme-500 align-text-bottom"
+            />
             .
           </li>
           <li>{'Select "Add to Home Screen"'}</li>
@@ -33,9 +35,10 @@ const AddToHomeModal: React.FC<Props> = function (props) {
       <ol className="list-decimal leading-8 px-4">
         <li>
           Tap on <b>More Options</b>
-          <span className="material-symbols-rounded text-theme-500 align-text-bottom">
-            {'more_vert'}
-          </span>
+          <Icon
+            name="ellipsis-vertical"
+            className="inline text-theme-500 align-text-bottom"
+          />
           .
         </li>
         <li>{'Select "Add to Home Screen"'}</li>
@@ -47,7 +50,7 @@ const AddToHomeModal: React.FC<Props> = function (props) {
     <Modal open={isOpen} onOpenChange={onClose}>
       <ModalContent>
         <div
-          className={classnames(
+          className={cn(
             'px-6 py-4 leading-6 font-normal',
             'text-gray-700 dark:text-gray-200'
           )}

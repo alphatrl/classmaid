@@ -1,7 +1,8 @@
-import classnames from 'classnames';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
+
+import { cn } from '@/lib/utils';
 
 import MoreButton from './components/MoreButton';
 
@@ -14,7 +15,7 @@ const NavBar: React.FC = function () {
 
   return (
     <div
-      className={classnames(
+      className={cn(
         'w-full min-h-16 box-border fixed top-0 z-2',
         'pt-[max(8px,env(safe-area-inset-top))] pb-2',
         'pl-[max(16px,env(safe-area-inset-left))] pr-[max(16px,env(safe-area-inset-right))]',

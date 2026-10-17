@@ -1,11 +1,13 @@
-import classnames from 'classnames';
 import moment from 'moment-timezone';
 import Link from 'next/link';
 import React from 'react';
 
-import Icon from '../../../../../../shared/components/Icon';
-import { getDateStringToMoment } from '../utils/getDateStringToMoment';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import Icon from '@/shared/components/Icon';
+
 import TodayEventLoading from './TodayEventLoading';
+import { getDateStringToMoment } from '../utils/getDateStringToMoment';
 
 interface Props {
   currentEvent: App.Calendar.CurrentEvent | null;
@@ -61,7 +63,7 @@ const TodayEvent: React.FC<Props> = function (props) {
       return (
         <>
           <div
-            className={classnames(
+            className={cn(
               'flex flex-row items-end pb-2',
               'text-gray-700 dark:text-gray-200'
             )}
@@ -69,7 +71,7 @@ const TodayEvent: React.FC<Props> = function (props) {
             <h1 className={EventTitleClassName}>{event?.title}</h1>
             <span className="font-semibold px-2 text-lg">OF</span>
           </div>
-          <h1 className={classnames(EventTitleClassName, 'text-theme-500')}>
+          <h1 className={cn(EventTitleClassName, 'text-theme-500')}>
             {event.type.toUpperCase()}
           </h1>
         </>
@@ -77,7 +79,7 @@ const TodayEvent: React.FC<Props> = function (props) {
     }
 
     return (
-      <h1 className={classnames(EventTitleClassName, 'text-theme-500')}>
+      <h1 className={cn(EventTitleClassName, 'text-theme-500')}>
         {event.title}
       </h1>
     );
@@ -88,15 +90,21 @@ const TodayEvent: React.FC<Props> = function (props) {
       <div className="flex flex-col text-gray-200 dark:text-gray-700">
         {renderContents}
       </div>
-      <Link
-        href="/smu/calendar"
-        className={classnames(
-          'no-underline rounded-2xl flex p-2',
-          'hover:bg-theme-200'
+      <Button
+        variant="ghost"
+        size="icon"
+        asChild
+        className={cn(
+          'size-auto no-underline rounded-2xl flex p-2 transition-none',
+          'items-start justify-start',
+          'hover:bg-theme-200 dark:hover:bg-theme-200 hover:text-inherit',
+          "[&_svg:not([class*='size-'])]:size-6"
         )}
       >
-        <Icon name="open_in_full" className="text-theme-500" />
-      </Link>
+        <Link href="/smu/calendar">
+          <Icon name="maximize-2" className="text-theme-500" />
+        </Link>
+      </Button>
     </div>
   );
 };

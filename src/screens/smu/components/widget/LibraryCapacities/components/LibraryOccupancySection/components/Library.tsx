@@ -1,6 +1,7 @@
-import classnames from 'classnames';
 import Image from 'next/image';
 import React from 'react';
+
+import { cn } from '@/lib/utils';
 
 import { LibraryData, LibraryOccupancyAPI } from '../types';
 import ProgressCircle from './ProgressCircle';
@@ -40,7 +41,7 @@ const Library: React.FC<Props> = function (props) {
       {/* Backdrop blur layer — kept separate so backdrop-filter doesn't break parent overflow-clip */}
       <div className="absolute inset-0 rounded-2xl bg-black/25 backdrop-blur-sm backdrop-saturate-80 z-1" />
       <div
-        className={classnames(
+        className={cn(
           'box-border relative h-full p-3 z-2',
           'flex flex-col justify-between'
         )}

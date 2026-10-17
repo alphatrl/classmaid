@@ -1,11 +1,12 @@
-import classnames from 'classnames';
 import { parse } from 'csv-parse/browser/esm/sync';
 import { capitalize, isEqual, uniqBy } from 'lodash';
 import moment from 'moment';
 import React from 'react';
 
-import { ModalTitle } from '../../../../../../shared/components/Modal';
-import FilePicker from '../../../../shared/components/FilePicker';
+import { cn } from '@/lib/utils';
+import FilePicker from '@/screens/smu/shared/components/FilePicker';
+import { ModalTitle } from '@/shared/components/Modal';
+
 import generateICal from './utils/generateICal';
 import { Event } from './utils/generateICal';
 import parseMeetings from './utils/parseMeetings';
@@ -189,7 +190,7 @@ const BOSSTimetableModal: React.FC = () => {
       )}
 
       <div
-        className={classnames(
+        className={cn(
           'm-0 mt-2 text-xs font-semibold mb-4',
           'text-gray-400 dark:text-gray-400'
         )}
@@ -206,7 +207,7 @@ const BOSSTimetableModal: React.FC = () => {
 
       {csvContents !== null && (
         <fieldset
-          className={classnames(
+          className={cn(
             'm-0 mt-3 flex flex-col rounded-xl box-border min-h-12.5',
             'px-4 py-2 border-2 border-gray-200 dark:border-gray-700 mb-4'
           )}
@@ -240,7 +241,7 @@ const BOSSTimetableModal: React.FC = () => {
           href={hrefDownload}
           download="boss_timetable_export.ics"
           role="button"
-          className={classnames(
+          className={cn(
             'flex justify-center font-medium text-base p-3',
             'text-white rounded-xl no-underline',
             'border-2 border-theme-300 bg-theme-500',
@@ -254,7 +255,7 @@ const BOSSTimetableModal: React.FC = () => {
         <button
           role="button"
           aria-disabled={true}
-          className={classnames(
+          className={cn(
             'box-border text-center font-medium text-base',
             'w-full py-3 px-4 rounded-xl self-end',
             'text-gray-400 dark:text-gray-400',

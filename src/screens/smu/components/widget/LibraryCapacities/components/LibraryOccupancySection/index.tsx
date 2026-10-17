@@ -1,5 +1,6 @@
-import classnames from 'classnames';
 import React from 'react';
+
+import { cn } from '@/lib/utils';
 
 import Library from './components/Library';
 import { KGC_LIBRARY_TEMPLATE, LKS_LIBRARY_TEMPLATE } from './constants';
@@ -33,7 +34,7 @@ const LibraryOccupancySection: React.FC = function () {
 
   return (
     <div
-      className={classnames(
+      className={cn(
         'p-4 grid flex-1 gap-4 grid-cols-2',
         "[grid-template-areas:'lks_kgc']",
         'max-md:p-3 max-md:gap-3'

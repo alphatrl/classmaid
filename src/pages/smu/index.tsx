@@ -1,4 +1,3 @@
-import classnames from 'classnames';
 import type { NextPage } from 'next';
 import React from 'react';
 import {
@@ -8,10 +7,11 @@ import {
   useResponsiveLayout,
 } from 'react-grid-layout';
 
-import AppLibrary from '../../screens/smu/components/widget/AppLibrary';
-import LibraryCapacities from '../../screens/smu/components/widget/LibraryCapacities';
-import TodaySummaryWidget from '../../screens/smu/components/widget/TodaySummary';
-import DefaultLayout from '../../shared/components/layouts/DefaultLayout';
+import { cn } from '@/lib/utils';
+import AppLibrary from '@/screens/smu/components/widget/AppLibrary';
+import LibraryCapacities from '@/screens/smu/components/widget/LibraryCapacities';
+import TodaySummaryWidget from '@/screens/smu/components/widget/TodaySummary';
+import DefaultLayout from '@/shared/components/layouts/DefaultLayout';
 
 const STATIC = { isDraggable: false, isResizable: false };
 
@@ -67,7 +67,7 @@ const DashboardGrid: React.FC = function () {
   return (
     <div
       ref={containerRef as React.RefObject<HTMLDivElement | null>}
-      className={classnames(
+      className={cn(
         'w-full h-full max-w-96 mx-auto p-4',
         'md:max-w-4xl md:px-4',
         'xl:max-w-7xl xl:px-12'

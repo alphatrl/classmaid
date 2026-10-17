@@ -1,16 +1,17 @@
-import classNames from 'classnames';
 import React from 'react';
 
-import Icon from '../../../../../../../../shared/components/Icon';
-import Modal, {
-  ModalContent,
-  ModalTrigger,
-} from '../../../../../../../../shared/components/Modal';
-import useColorScheme from '../../../../../../../../shared/hooks/useColorScheme';
-import useScreenSize from '../../../../../../../../shared/hooks/useScreenSize';
-import { TASKADE_IFRAME_PARAMS } from '../../../constants';
-import { GridItemMore } from '../../GridItemMore';
-import { GridImage, GridText } from '../../styled';
+import { cn } from '@/lib/utils';
+import { GridItemMore } from '@/screens/smu/components/widget/AppLibrary/components/GridItemMore';
+import {
+  GridImage,
+  GridText,
+} from '@/screens/smu/components/widget/AppLibrary/components/styled';
+import { TASKADE_IFRAME_PARAMS } from '@/screens/smu/components/widget/AppLibrary/constants';
+import Icon from '@/shared/components/Icon';
+import Modal, { ModalContent, ModalTrigger } from '@/shared/components/Modal';
+import useColorScheme from '@/shared/hooks/useColorScheme';
+import useScreenSize from '@/shared/hooks/useScreenSize';
+
 import useInternalApps from '../hooks/useInternalApps';
 
 interface Props {
@@ -48,7 +49,7 @@ const AppItem: React.FC<Props> = function (props) {
         <ModalTrigger asChild={true}>
           <GridItemMore>
             <GridImage $backgroundColor={shortcut.color}>
-              <Icon name={shortcut.logo} height={32} width={32} size={32} />
+              <Icon name={shortcut.logo} size={32} />
             </GridImage>
             <GridText>More Apps</GridText>
           </GridItemMore>
@@ -70,14 +71,14 @@ const AppItem: React.FC<Props> = function (props) {
     <a
       href={finalUrl}
       target="_blank"
-      className={classNames(
+      className={cn(
         'flex flex-col justify-center items-center',
         'no-underline cursor-pointer w-4/5 max-w-30',
         'transition-all duration-100 ease-in hover:scale-105'
       )}
     >
       <GridImage $backgroundColor={shortcut.color}>
-        <Icon name={shortcut.logo} height={32} width={32} size={32} />
+        <Icon name={shortcut.logo} size={32} />
       </GridImage>
       <GridText>{shortcut.title}</GridText>
     </a>

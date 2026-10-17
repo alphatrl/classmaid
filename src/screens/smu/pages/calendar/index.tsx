@@ -1,8 +1,9 @@
-import classnames from 'classnames';
 import moment from 'moment-timezone';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { ResponsiveGridLayout, useContainerWidth } from 'react-grid-layout';
+
+import { cn } from '@/lib/utils';
 
 import EventsColumn from './components/EventsColumn';
 import InfoColumn from './components/InfoColumn';
@@ -69,7 +70,7 @@ const Calendar: React.FC = function () {
   return (
     <div
       ref={containerRef as React.RefObject<HTMLDivElement | null>}
-      className={classnames(
+      className={cn(
         'w-full h-full',
         '[&_.react-grid-item]:transition-all',
         '[&_.react-grid-item]:duration-200',

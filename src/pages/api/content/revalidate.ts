@@ -1,4 +1,5 @@
 import { timingSafeEqual } from 'crypto';
+
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { allowMethods } from '../../../lib/content/http';
