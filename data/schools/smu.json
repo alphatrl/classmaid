@@ -1,0 +1,310 @@
+{
+  "$schema": "./school.schema.json",
+  "slug": "smu",
+  "name": "Singapore Management University",
+  "shortName": "SMU",
+  "enabled": true,
+  "sso": {
+    "domain": "smu.edu.sg"
+  },
+  "lms": {
+    "name": "eLearn",
+    "url": "https://elearn.smu.edu.sg"
+  },
+  "calendar": {
+    "semestersKey": "SMU",
+    "importantDatesKey": "SMU"
+  },
+  "colors": {
+    "accent": "#3b82f6"
+  },
+  "features": ["library_occupancy", "boss_export", "calendar"],
+  "bookmarks": [
+    {
+      "id": "school",
+      "title": "During School",
+      "showOnHome": true,
+      "items": [
+        {
+          "id": "elearn",
+          "title": "eLearn",
+          "icon": "book-open",
+          "color": "#0064B7",
+          "type": "url",
+          "link": "https://elearn.smu.edu.sg",
+          "description": "View your course materials, quizzes and assignments"
+        },
+        {
+          "id": "email",
+          "title": "Email",
+          "icon": "mail",
+          "color": "#006DCE",
+          "type": "url",
+          "link": "https://live.smu.edu.sg",
+          "description": "Access your student email"
+        },
+        {
+          "id": "facility_booking",
+          "title": "Facility Bookings",
+          "icon": "armchair",
+          "color": "#647089",
+          "type": "url",
+          "link": "https://fbs.intranet.smu.edu.sg",
+          "description": "Book campus and library facilities within SMU"
+        },
+        {
+          "id": "library",
+          "title": "Library",
+          "icon": "library",
+          "color": "#7D7D7D",
+          "type": "url",
+          "link": "https://library.smu.edu.sg/",
+          "description": "Access academic resources for research and learning"
+        },
+        {
+          "id": "oasis",
+          "title": "Oasis",
+          "icon": "umbrella",
+          "color": "#CDA339",
+          "type": "url",
+          "link": "https://oasis.smu.edu.sg",
+          "description": "Access academic-related information to financial service"
+        },
+        {
+          "id": "print",
+          "title": "Print Services",
+          "icon": "printer",
+          "color": "#0C9C57",
+          "type": "url",
+          "link": "https://smu.sg/print",
+          "description": "Print your documents in school"
+        }
+      ]
+    },
+    {
+      "id": "bidding",
+      "title": "Bidding",
+      "showOnHome": false,
+      "items": [
+        {
+          "id": "boss",
+          "title": "BOSS",
+          "icon": "landmark",
+          "color": "#8A704C",
+          "type": "url",
+          "link": "https://boss.intranet.smu.edu.sg",
+          "description": "Register and bid for your courses"
+        },
+        {
+          "id": "afterclass_web",
+          "title": "AfterClass.io",
+          "icon": "globe",
+          "color": "#007BF3",
+          "type": "url",
+          "link": "https://afterclass.io"
+        },
+        {
+          "id": "boss_export",
+          "title": "BOSS Timetable Export",
+          "icon": "download",
+          "color": "#636363",
+          "type": "internal",
+          "link": "boss-export"
+        },
+        {
+          "id": "course_offerings",
+          "title": "Course Offerings",
+          "icon": "bookmark",
+          "color": "#131977",
+          "type": "url",
+          "link": "https://inet.smu.edu.sg/sites/courses/Pages/Course-Offerings.aspx",
+          "description": "See courses which are currently being offered"
+        },
+        {
+          "id": "course_sequence",
+          "title": "Course Sequence",
+          "icon": "clock",
+          "color": "#8A704C",
+          "type": "url",
+          "link": "https://inet.smu.edu.sg/sites/courses/Pages/Course-Offerings.aspx",
+          "description": "See the suggested courses to take for your term"
+        }
+      ]
+    },
+    {
+      "id": "wellbeing",
+      "title": "Well-Being",
+      "showOnHome": false,
+      "items": [
+        {
+          "id": "student_wellness",
+          "title": "Student Wellness",
+          "icon": "heart",
+          "color": "#BE3119",
+          "type": "url",
+          "link": "https://www.smu.edu.sg/campus-life/student-wellness",
+          "description": "Counselling services in SMU. You matter ❤️"
+        },
+        {
+          "id": "voices_SMU",
+          "title": "Voices@SMU",
+          "icon": "ear",
+          "color": "#D50A8A",
+          "type": "url",
+          "link": "https://voices.smu.edu.sg/get-support#speak-to-us",
+          "description": "A safe space to get your voice heard"
+        },
+        {
+          "id": "incident_report",
+          "title": "SMU Incident Reporting",
+          "icon": "triangle-alert",
+          "color": "#636363",
+          "type": "url",
+          "link": "http://bit.ly/SMU_IR_Form",
+          "description": "Report (near miss) incidents"
+        }
+      ]
+    },
+    {
+      "id": "utility",
+      "title": "Utilities",
+      "showOnHome": false,
+      "items": [
+        {
+          "id": "sps",
+          "title": "Subject Pool System",
+          "icon": "flask-conical",
+          "color": "#131977",
+          "type": "url",
+          "link": "https://sps.intranet.smu.edu.sg",
+          "description": "Sign-up or create research studies"
+        },
+        {
+          "id": "ontrac",
+          "title": "onTRAC II",
+          "icon": "briefcase",
+          "color": "#8A704C",
+          "type": "url",
+          "link": "https://ontrac.smu.edu.sg",
+          "description": "Manage your internship or community service"
+        },
+        {
+          "id": "noteslah_web",
+          "title": "noteslah",
+          "icon": "globe",
+          "color": "#131977",
+          "type": "url",
+          "link": "https://www.noteslah.com"
+        },
+        {
+          "id": "school_guide",
+          "title": "School Guides",
+          "icon": "bookmark",
+          "color": "#009DD9",
+          "type": "guides"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "title": "SMU Community",
+      "showOnHome": false,
+      "items": [
+        {
+          "id": "askSMU_telegram",
+          "title": "Ask.SMU (Invite only)",
+          "icon": "send",
+          "color": "#0088CC",
+          "type": "url",
+          "link": "https://t.me"
+        },
+        {
+          "id": "buffet_clearers_telegram",
+          "title": "SMU Buffet Clearers",
+          "icon": "send",
+          "color": "#0088CC",
+          "type": "url",
+          "link": "https://t.me/joinchat/DVuB8UO-_6LV1JhuML_CtA"
+        },
+        {
+          "id": "confessions_instagram",
+          "title": "SMU Confessions",
+          "icon": "instagram",
+          "color": "#DC3175",
+          "type": "url",
+          "link": "https://www.instagram.com/smuconfessionspage/",
+          "description": "All's silly; NOT taken seriously!"
+        },
+        {
+          "id": "smu_meme_instagram",
+          "title": "Singapore Meme University",
+          "icon": "instagram",
+          "color": "#DC3175",
+          "type": "url",
+          "link": "https://www.instagram.com/singaporememeuniversity/"
+        },
+        {
+          "id": "smusa_instagram",
+          "title": "SMU Students' Association",
+          "icon": "instagram",
+          "color": "#DC3175",
+          "type": "url",
+          "link": "https://www.instagram.com/sgsmusa/"
+        },
+        {
+          "id": "smu_sg_reddit",
+          "title": "/r/smu_singapore",
+          "icon": "reddit",
+          "color": "#FF4500",
+          "type": "url",
+          "link": "https://www.reddit.com/r/SMU_Singapore/"
+        },
+        {
+          "id": "smusa_feedback",
+          "title": "SMUSA Feedback Form",
+          "icon": "message-circle",
+          "color": "#8A704C",
+          "type": "url",
+          "link": "http://bit.ly/smusa-feedback",
+          "description": "A listening ear and a willing heart"
+        }
+      ]
+    }
+  ],
+  "links": {
+    "library": {
+      "url": "https://library.smu.edu.sg",
+      "label": "SMU Libraries"
+    },
+    "lks_image_page": {
+      "url": "https://commons.wikimedia.org/wiki/File:Singapore_Management_University_-_Li_Ka_Shing_Library.jpg",
+      "label": "Li Ka Shing Library photo"
+    },
+    "lks_image": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Singapore_Management_University_-_Li_Ka_Shing_Library.jpg/500px-Singapore_Management_University_-_Li_Ka_Shing_Library.jpg"
+    },
+    "lks_image_license": {
+      "url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "label": "CC BY-SA 4.0"
+    },
+    "kgc_image_page": {
+      "url": "https://commons.wikimedia.org/wiki/File:Kwa_Geok_Choo_Law_Library,_School_of_Law,_Singapore_Management_University,_at_night_-_20170107-01.jpg",
+      "label": "Kwa Geok Choo Library photo"
+    },
+    "kgc_image": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Kwa_Geok_Choo_Law_Library%2C_School_of_Law%2C_Singapore_Management_University%2C_at_night_-_20170107-01.jpg/960px-Kwa_Geok_Choo_Law_Library%2C_School_of_Law%2C_Singapore_Management_University%2C_at_night_-_20170107-01.jpg"
+    },
+    "kgc_image_license": {
+      "url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "label": "CC BY-SA 4.0"
+    }
+  },
+  "meta": {
+    "lks_image_author": "Hong Huazheng",
+    "lks_image_date": "10 November 2018",
+    "lks_image_license_note": "CC BY-SA 4.0 via Wikimedia Commons",
+    "kgc_image_author": "Smuconlaw",
+    "kgc_image_date": "7 January 2017",
+    "kgc_image_license_note": "CC BY-SA 4.0 via Wikimedia Commons"
+  }
+}

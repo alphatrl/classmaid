@@ -1,0 +1,23 @@
+{
+  "$schema": "./site.schema.json",
+  "links": {
+    "github": {
+      "url": "https://github.com/alphatrl/classmaid",
+      "label": "GitHub"
+    },
+    "suggestion_form": {
+      "url": "https://bit.ly/30SRyIo",
+      "label": "Make a suggestion"
+    },
+    "site_url": {
+      "url": "https://smushortcuts.netlify.app",
+      "label": "Classmaid"
+    }
+  },
+  "meta": {
+    "site_title": "Classmaid",
+    "site_description": "Classmaid provides students with a quick one-click access to commonly used websites. This site is not affiliated with any schools.",
+    "site_author": "@AlphaTRL",
+    "about_text": "Providing students a quick one-click bookmarks to commonly used sites in schools. Designed by students for students. This site is non-affiliated with any institutions in Singapore."
+  }
+}
