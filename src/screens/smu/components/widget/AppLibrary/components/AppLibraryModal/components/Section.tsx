@@ -5,12 +5,12 @@ import { cn } from '@/lib/utils';
 import AppItem from './AppItem';
 
 interface Props {
-  library: App.AppLibrary.LibraryItem;
+  section: Content.Section;
 }
 
 const Section: React.FC<Props> = function (props) {
-  const { library } = props;
-  const { title, shortcuts } = library;
+  const { section } = props;
+  const { title, items } = section;
 
   return (
     <div className="pb-4">
@@ -31,8 +31,8 @@ const Section: React.FC<Props> = function (props) {
           'max-sm:grid-cols-3 max-sm:gap-x-1'
         )}
       >
-        {shortcuts.map((shortcut) => {
-          return <AppItem key={shortcut.id} shortcut={shortcut} />;
+        {items.map((bookmark) => {
+          return <AppItem key={bookmark.id} bookmark={bookmark} />;
         })}
       </div>
     </div>
