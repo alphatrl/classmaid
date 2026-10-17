@@ -3,9 +3,9 @@
  * part of the build (no fs at runtime); invalid files throw at load time.
  * To add a school, add data/schools/<slug>.json and register it below.
  */
+import { validateSchoolConfig, validateSiteConfig } from './validate';
 import smuJson from '../../../data/schools/smu.json';
 import siteJson from '../../../data/site.json';
-import { validateSchoolConfig, validateSiteConfig } from './validate';
 
 /** Raw school JSON keyed by filename slug */
 export const SCHOOL_FILES: Record<string, unknown> = {
