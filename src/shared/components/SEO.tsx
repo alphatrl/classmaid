@@ -4,6 +4,7 @@ import Head from 'next/head';
 import React from 'react';
 
 import config from '@/config';
+import { useContent } from '@/shared/contexts/ContentContext';
 
 interface Props {
   lang?: string;
@@ -13,7 +14,15 @@ interface Props {
 
 const SEO: React.FC<Props> = function (props) {
   const { description, title } = props;
-  const { siteMetadata } = config;
+  const { meta, links } = useContent();
+  // src/config.ts is the fallback for the static HTML; the content meta
+  // overrides it once the payload resolves
+  const siteMetadata = {
+    title: meta.site_title ?? config.siteMetadata.title,
+    description: meta.site_description ?? config.siteMetadata.description,
+    author: meta.site_author ?? config.siteMetadata.author,
+    siteUrl: links.site_url?.url ?? config.siteMetadata.siteUrl,
+  };
 
   const metaDescription = description || siteMetadata.description;
 

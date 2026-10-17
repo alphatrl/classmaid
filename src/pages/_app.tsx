@@ -7,6 +7,7 @@ import { AppProps } from 'next/app';
 import React from 'react';
 
 import { DataWrapper } from '../screens/smu/contexts/DataContext';
+import { ContentWrapper } from '../shared/contexts/ContentContext';
 import { ThemeWrapper } from '../shared/contexts/ThemeContext';
 
 const App: React.FC<AppProps> = function (props) {
@@ -14,10 +15,12 @@ const App: React.FC<AppProps> = function (props) {
 
   return (
     <ThemeWrapper>
-      <DataWrapper>
-        <Component {...pageProps} />
-        <Analytics />
-      </DataWrapper>
+      <ContentWrapper>
+        <DataWrapper>
+          <Component {...pageProps} />
+          <Analytics />
+        </DataWrapper>
+      </ContentWrapper>
     </ThemeWrapper>
   );
 };

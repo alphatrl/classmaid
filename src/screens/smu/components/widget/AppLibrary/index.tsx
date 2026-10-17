@@ -1,14 +1,28 @@
 import React from 'react';
 
-import { APPS_LIBRARY } from '@/sources/smu/appsLibrary';
+import { selectHomeBookmarks } from '@/shared/contexts/content/state';
+import { useContent } from '@/shared/contexts/ContentContext';
 
-import AppGrid from './components/AppGrid';
+import AppGrid, { AppGridMessage, AppGridSkeleton } from './components/AppGrid';
 
 const AppLibrary: React.FC = function () {
-  const apps = APPS_LIBRARY;
-  const schoolApps = apps[0];
+  const { bookmarks, loading, error } = useContent();
+  const homeApps = React.useMemo(
+    () => selectHomeBookmarks(bookmarks),
+    [bookmarks]
+  );
 
-  return <AppGrid homeApps={schoolApps} allApps={apps} />;
+  if (loading) {
+    return <AppGridSkeleton />;
+  }
+
+  if (error != null || bookmarks.length === 0) {
+    return (
+      <AppGridMessage>Bookmarks are unavailable right now.</AppGridMessage>
+    );
+  }
+
+  return <AppGrid homeApps={homeApps} allApps={bookmarks} />;
 };
 
 export default AppLibrary;
