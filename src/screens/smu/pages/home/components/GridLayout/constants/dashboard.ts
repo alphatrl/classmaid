@@ -5,16 +5,21 @@ import { cn } from '@/lib/utils';
 import { DashboardKey } from '../types';
 
 /**
- * Cells are square (see `getSquareRowHeight`). The container is about
- * 1184px wide on lg (284px cells), 736-1184px on md (172-284px cells) and
- * 352px on sm (168px cells). The spans keep each widget at least about
- * 280px on its short side and fill each row.
+ * Cells are square (see `getSquareRowHeight`).
+ *
+ * - lg (container 1184px, viewport >= 1280px): 3 columns of 384px cells.
+ *   Today and apps on the first row, library on the second row, and the
+ *   last cell stays empty.
+ * - md (container 736-864px): the 3-column format gives 235-277px cells,
+ *   which clip the today card and the 3-row app grid. md uses 4 columns
+ *   and 2x2 spans instead, so each widget is at least 360px high.
+ * - sm (container 352px): the cards stack as full-width squares.
  */
 export const DashboardLayouts: ResponsiveLayouts<Breakpoint> = {
   lg: [
-    { i: DashboardKey.TODAY, x: 0, y: 0, w: 1, h: 2 },
-    { i: DashboardKey.APPS, x: 1, y: 0, w: 3, h: 1 },
-    { i: DashboardKey.LIBRARY, x: 1, y: 1, w: 3, h: 1 },
+    { i: DashboardKey.TODAY, x: 0, y: 0, w: 1, h: 1 },
+    { i: DashboardKey.APPS, x: 1, y: 0, w: 2, h: 1 },
+    { i: DashboardKey.LIBRARY, x: 0, y: 1, w: 2, h: 1 },
   ],
   md: [
     { i: DashboardKey.TODAY, x: 0, y: 0, w: 2, h: 2 },
@@ -36,6 +41,13 @@ export const DashboardBreakpoints: Record<Breakpoint, number> = {
 
 export const DashboardCols: Record<Breakpoint, number> = {
   lg: 4,
+  md: 4,
+  sm: 2,
+};
+
+/** Columns of the home grid. The calendar grid uses `DashboardCols`. */
+export const HomeCols: Record<Breakpoint, number> = {
+  lg: 3,
   md: 4,
   sm: 2,
 };

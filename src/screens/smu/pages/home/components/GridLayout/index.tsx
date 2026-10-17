@@ -10,11 +10,11 @@ import LibraryCard from './components/LibraryCard';
 import TodayCard from './components/TodayCard';
 import {
   DashboardBreakpoints,
-  DashboardCols,
   DashboardContainerClassName,
   DashboardLayouts,
   DashboardMargin,
   getSquareRowHeight,
+  HomeCols,
 } from './constants/dashboard';
 import { DashboardKey } from './types';
 
@@ -25,7 +25,7 @@ const GridLayout: React.FC = function () {
   const { cols, layout } = useResponsiveLayout({
     width,
     breakpoints: DashboardBreakpoints,
-    cols: DashboardCols,
+    cols: HomeCols,
     layouts: DashboardLayouts,
   });
 
