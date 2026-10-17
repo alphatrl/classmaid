@@ -5,14 +5,13 @@ import {
   useResponsiveLayout,
 } from 'react-grid-layout';
 
-import { cn } from '@/lib/utils';
-
 import AppsCard from './components/AppsCard';
 import LibraryCard from './components/LibraryCard';
 import TodayCard from './components/TodayCard';
 import {
   DashboardBreakpoints,
   DashboardCols,
+  DashboardContainerClassName,
   DashboardLayouts,
   DashboardMargin,
   getSquareRowHeight,
@@ -38,11 +37,7 @@ const GridLayout: React.FC = function () {
   return (
     <div
       ref={containerRef as React.RefObject<HTMLDivElement | null>}
-      className={cn(
-        'w-full h-full max-w-96 mx-auto p-4',
-        'md:max-w-4xl md:px-4',
-        'xl:max-w-7xl xl:px-12'
-      )}
+      className={DashboardContainerClassName}
     >
       {mounted && (
         <ReactGridLayout

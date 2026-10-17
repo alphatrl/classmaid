@@ -1,5 +1,7 @@
 import { Breakpoint, ResponsiveLayouts } from 'react-grid-layout';
 
+import { cn } from '@/lib/utils';
+
 import { DashboardKey } from '../types';
 
 /**
@@ -52,3 +54,10 @@ export function getSquareRowHeight(width: number, cols: number): number {
   if (!width) return DashboardFallbackRowHeight;
   return (width - (cols - 1) * DashboardMargin) / cols;
 }
+
+/** Grid container: width caps and gutters per viewport */
+export const DashboardContainerClassName = cn(
+  'w-full h-full max-w-96 mx-auto p-4',
+  'md:max-w-4xl md:px-4',
+  'xl:max-w-7xl xl:px-12'
+);
