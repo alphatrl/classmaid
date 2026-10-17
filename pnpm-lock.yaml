@@ -169,9 +169,6 @@ importers:
       '@next/eslint-plugin-next':
         specifier: ^16.4.2
         version: 16.4.2(eslint@9.39.4(jiti@2.7.0)(supports-color@7.2.0))
-      '@radix-ui/react-dialog':
-        specifier: ^1.3.1
-        version: 1.3.1(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       '@tailwindcss/postcss':
         specifier: ^4.3.3
         version: 4.3.3
@@ -220,9 +217,6 @@ importers:
       react-calendar:
         specifier: ^6.0.1
         version: 6.0.1(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
-      react-content-loader:
-        specifier: ^7.1.2
-        version: 7.1.2(react@19.3.1)
       react-dom:
         specifier: ^19.3.1
         version: 19.3.1(react@19.3.1)
@@ -3025,12 +3019,6 @@ packages:
     peerDependenciesMeta:
       '@types/react':
         optional: true
-
-  react-content-loader@7.1.2:
-    resolution: {integrity: sha512-naFG7OERUQNPKQt1QWHyBF0/y6Zmr7dOzqjs1U5yOnu4OZmcE3+b/blp40dEKa9lvYAzOuj5dvfTK1cg5YWJkA==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      react: '>=18.0.0'
 
   react-dom@19.3.1:
     resolution: {integrity: sha512-Y0bARz53lhEC1NMCASs0/j+faB/zqt3R8hpvg1e8+61ZVJ4UL0UdC4cBbXfZMcIuhrfgeILTLe+ZeBCavQPtKQ==}
@@ -6409,10 +6397,6 @@ snapshots:
       warning: 4.0.3
     optionalDependencies:
       '@types/react': 19.3.0
-
-  react-content-loader@7.1.2(react@19.3.1):
-    dependencies:
-      react: 19.3.1
 
   react-dom@19.3.1(react@19.3.1):
     dependencies:

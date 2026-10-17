@@ -1,5 +1,7 @@
 import React, { useCallback, useMemo, useState } from 'react';
 
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
 import Icon from '@/shared/components/Icon';
 
@@ -46,7 +48,7 @@ const FilePicker: React.FC<Props> = (props) => {
 
   return (
     <div>
-      <input
+      <Input
         id="upload-file"
         type="file"
         placeholder={placeholder}
@@ -54,10 +56,12 @@ const FilePicker: React.FC<Props> = (props) => {
         hidden
         accept={fileType}
       />
-      <label
+      <Label
         htmlFor="upload-file"
         className={cn(
-          'inline-block cursor-pointer rounded-2xl',
+          // neutralise shadcn Label defaults (flex, gap, text-sm, leading-none, font-medium)
+          'inline-block gap-0 text-base leading-normal font-normal',
+          'cursor-pointer rounded-2xl',
           'bg-gray-200 dark:bg-gray-700',
           'w-1/2 max-w-md p-4',
           'hover:bg-theme-100'
@@ -75,7 +79,7 @@ const FilePicker: React.FC<Props> = (props) => {
           <Icon name="upload" />
           <span className="font-medium pr-2">{placeholder}</span>
         </span>
-      </label>
+      </Label>
     </div>
   );
 };

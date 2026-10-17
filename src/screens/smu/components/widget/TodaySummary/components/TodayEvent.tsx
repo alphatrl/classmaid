@@ -2,6 +2,7 @@ import moment from 'moment-timezone';
 import Link from 'next/link';
 import React from 'react';
 
+import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Icon from '@/shared/components/Icon';
 
@@ -89,15 +90,21 @@ const TodayEvent: React.FC<Props> = function (props) {
       <div className="flex flex-col text-gray-200 dark:text-gray-700">
         {renderContents}
       </div>
-      <Link
-        href="/smu/calendar"
+      <Button
+        variant="ghost"
+        size="icon"
+        asChild
         className={cn(
-          'no-underline rounded-2xl flex p-2',
-          'hover:bg-theme-200'
+          'size-auto no-underline rounded-2xl flex p-2 transition-none',
+          'items-start justify-start',
+          'hover:bg-theme-200 dark:hover:bg-theme-200 hover:text-inherit',
+          "[&_svg:not([class*='size-'])]:size-6"
         )}
       >
-        <Icon name="maximize-2" className="text-theme-500" />
-      </Link>
+        <Link href="/smu/calendar">
+          <Icon name="maximize-2" className="text-theme-500" />
+        </Link>
+      </Button>
     </div>
   );
 };

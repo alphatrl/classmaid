@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import {
   WidgetHeader,
@@ -12,17 +13,21 @@ const Header: React.FC = function () {
     <WidgetHeader className="justify-between">
       <WidgetHeaderTitle>Library</WidgetHeaderTitle>
 
-      <a
-        href="https://library.smu.edu.sg"
-        target="_blank"
+      <Button
+        variant="ghost"
+        size="icon"
+        asChild
         className={cn(
-          'cursor-pointer no-underline rounded-2xl',
+          'size-auto cursor-pointer no-underline rounded-2xl transition-none',
           'flex p-2 -mr-2 items-center border-none bg-transparent',
-          'hover:bg-theme-200'
+          'hover:bg-theme-200 dark:hover:bg-theme-200 hover:text-inherit',
+          "[&_svg:not([class*='size-'])]:size-6"
         )}
       >
-        <Icon name="external-link" className="text-theme-500" />
-      </a>
+        <a href="https://library.smu.edu.sg" target="_blank">
+          <Icon name="external-link" className="text-theme-500" />
+        </a>
+      </Button>
     </WidgetHeader>
   );
 };

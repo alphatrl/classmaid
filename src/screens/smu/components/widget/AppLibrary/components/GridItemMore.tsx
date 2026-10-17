@@ -2,6 +2,9 @@ import React from 'react';
 
 import { cn } from '@/lib/utils';
 
+// Intentionally not built on shadcn Button/buttonVariants: it is the child of
+// a Radix `asChild` trigger and buttonVariants would need nearly every
+// default overridden (size, radius, hover bg, svg size) to keep pixel parity.
 export function GridItemMore({
   className,
   ...props
