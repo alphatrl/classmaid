@@ -1,0 +1,275 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "school.schema.json",
+  "title": "Classmaid school config",
+  "description": "Public configuration for one school. The file name must be <slug>.json. Private links (e.g. the School Guides) live in the guides Google Sheet, never here.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "slug",
+    "name",
+    "shortName",
+    "enabled",
+    "sso",
+    "lms",
+    "calendar",
+    "colors",
+    "features",
+    "bookmarks",
+    "links",
+    "meta"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "Lowercase slug; equals the file name and the URL segment."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "shortName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "sso": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["domain"],
+      "properties": {
+        "domain": {
+          "type": "string",
+          "pattern": "^(?:[a-z0-9-]+\\.)+[a-z]{2,}$",
+          "description": "Single sign-on email domain, e.g. smu.edu.sg."
+        }
+      }
+    },
+    "lms": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "url"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "pattern": "^https?://\\S+$"
+        }
+      },
+      "description": "Learning management system."
+    },
+    "calendar": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["semestersKey", "importantDatesKey"],
+      "properties": {
+        "semestersKey": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Key of the school-semesters JSON, e.g. SMU."
+        },
+        "importantDatesKey": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Key of the scraper's important-dates JSON, e.g. SMU."
+        }
+      }
+    },
+    "colors": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["accent"],
+      "description": "Branding-neutral colours. These must NOT be the school's trademark or brand colours.",
+      "properties": {
+        "accent": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Neutral accent colour, e.g. #3b82f6."
+        }
+      }
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": "Feature flags, e.g. library_occupancy, boss_export, calendar."
+    },
+    "bookmarks": {
+      "type": "array",
+      "description": "Bookmark sections in display order.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "showOnHome", "items"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "showOnHome": {
+            "type": "boolean"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["id", "title", "icon", "color", "type"],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "title": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "icon": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+                  "description": "Lucide icon name (https://lucide.dev/icons), or a custom SVG fallback name such as reddit."
+                },
+                "color": {
+                  "type": "string",
+                  "pattern": "^#[0-9a-fA-F]{6}$",
+                  "description": "Hex background colour of the icon tile."
+                },
+                "type": {
+                  "enum": ["url", "internal", "guides"],
+                  "description": "url opens link; internal opens an in-app feature keyed by link; guides opens the School Guides (from the private guides sheet)."
+                },
+                "link": {
+                  "type": "string",
+                  "description": "Public URL for url bookmarks (or use linkKey), route key for internal; must be absent for guides."
+                },
+                "linkKey": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9_]+$",
+                  "description": "url bookmarks only: key of a private link in the sheet links tab (e.g. feedback forms). Resolved at request time; the bookmark is hidden if the key does not resolve."
+                },
+                "description": {
+                  "type": "string"
+                }
+              },
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "type": {
+                        "const": "url"
+                      }
+                    }
+                  },
+                  "then": {
+                    "oneOf": [
+                      {
+                        "required": ["link"],
+                        "not": {
+                          "required": ["linkKey"]
+                        },
+                        "properties": {
+                          "link": {
+                            "type": "string",
+                            "pattern": "^https?://\\S+$"
+                          }
+                        }
+                      },
+                      {
+                        "required": ["linkKey"],
+                        "not": {
+                          "required": ["link"]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "if": {
+                    "properties": {
+                      "type": {
+                        "const": "internal"
+                      }
+                    }
+                  },
+                  "then": {
+                    "required": ["link"],
+                    "properties": {
+                      "link": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "not": {
+                      "required": ["linkKey"]
+                    }
+                  }
+                },
+                {
+                  "if": {
+                    "properties": {
+                      "type": {
+                        "const": "guides"
+                      }
+                    }
+                  },
+                  "then": {
+                    "not": {
+                      "anyOf": [
+                        {
+                          "required": ["link"]
+                        },
+                        {
+                          "required": ["linkKey"]
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "links": {
+      "type": "object",
+      "description": "Public links keyed by name.",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["url"],
+        "properties": {
+          "url": {
+            "type": "string",
+            "pattern": "^https?://\\S+$"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "meta": {
+      "type": "object",
+      "description": "Text values keyed by name.",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  }
+}

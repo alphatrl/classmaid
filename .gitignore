@@ -93,6 +93,9 @@ dist/
 buildCache.json
 
 .env.local
+# Any env file (service-account keys live here); keep the example tracked
+.env*
+!.env.example
 /public/temp
 
 # next-pwa
@@ -104,3 +107,6 @@ buildCache.json
 
 # TypeScript incremental build info
 *.tsbuildinfo
+
+# Content seed CSVs: generated locally for a one-time paste into the Google Sheets
+scripts/content/seed/
