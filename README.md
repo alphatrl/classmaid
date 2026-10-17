@@ -56,35 +56,40 @@ The data used by SMU-Shortcuts is stored in [smu-scraper](https://github.com/fol
 
 ## Content
 
-Public content lives in JSON in this repo; private links (the School Guides, formerly on Taskade) live in a private Google Sheet so that monetised links never enter the codebase. Both are served through `/api/content`:
+Public content lives in JSON in this repo; private links (the School Guides, formerly on Taskade, and the feedback and contact forms) live in a private Google Sheet so that monetised and private links never enter the codebase. Both are served through `/api/content`:
 
-| Route                                 | Response                                                           |
-| ------------------------------------- | ------------------------------------------------------------------ |
-| `GET /api/content/schools`            | Enabled schools (profile only)                                     |
-| `GET /api/content/site`               | Global links and meta from `data/site.json`                        |
-| `GET /api/content/[school]/all`       | School profile, bookmarks, guides, `guidesStatus`, links and meta  |
-| `GET /api/content/[school]/config`    | School profile (SSO domain, LMS, calendar keys, colours, features) |
-| `GET /api/content/[school]/bookmarks` | Bookmark sections                                                  |
-| `GET /api/content/[school]/guides`    | `{ guides, guidesStatus }` from the guides sheet                   |
-| `GET /api/content/[school]/links`     | Global links merged with the school's                              |
-| `GET /api/content/[school]/meta`      | Global meta, then the school's, then the guides sheet `meta` rows  |
-| `POST /api/content/revalidate`        | Clears and reloads the guides cache                                |
+| Route                                 | Response                                                                             |
+| ------------------------------------- | ------------------------------------------------------------------------------------ |
+| `GET /api/content/schools`            | Enabled schools (profile only)                                                       |
+| `GET /api/content/site`               | Global links and meta (`data/site.json` + sheet global rows), `sheetStatus`          |
+| `GET /api/content/[school]/all`       | Profile, bookmarks, guides, `sheetStatus`, links, meta, `omittedBookmarks`           |
+| `GET /api/content/[school]/config`    | School profile (SSO domain, LMS, calendar keys, colours, features)                   |
+| `GET /api/content/[school]/bookmarks` | Bookmark sections, with `linkKey` bookmarks resolved (unresolved ones omitted)       |
+| `GET /api/content/[school]/guides`    | `{ guides, sheetStatus }` from the private sheet                                     |
+| `GET /api/content/[school]/links`     | JSON links (global, school) merged with sheet links (global, school); the sheet wins |
+| `GET /api/content/[school]/meta`      | JSON meta (global, school), then the sheet `meta` rows                               |
+| `POST /api/content/revalidate`        | Clears and reloads the private sheet cache                                           |
 
 ### Public config (JSON)
 
-- `data/schools/<slug>.json`: one file per school, validated by `data/schools/school.schema.json` (editors pick it up through `"$schema"`). Holds the profile (`slug`, `name`, `shortName`, `enabled`, `sso.domain`, `lms`, `calendar` keys, `colors.accent`, `features`), `bookmarks` (sections of `{ id, title, icon, color, type, link?, description? }`, with Lucide icon names from [lucide.dev](https://lucide.dev/icons) and `type` `url`, `internal` or `guides`), and school `links` and `meta`. Colours must be branding-neutral, never the school's trademark colours.
+- `data/schools/<slug>.json`: one file per school, validated by `data/schools/school.schema.json` (editors pick it up through `"$schema"`). Holds the profile (`slug`, `name`, `shortName`, `enabled`, `sso.domain`, `lms`, `calendar` keys, `colors.accent`, `features`), `bookmarks` (sections of `{ id, title, icon, color, type, link?, linkKey?, description? }`, with Lucide icon names from [lucide.dev](https://lucide.dev/icons) and `type` `url`, `internal` or `guides`; a `url` bookmark has exactly one of a public `link` or a `linkKey` naming a row in the sheet `links` tab), and school `links` and `meta`. Colours must be branding-neutral, never the school's trademark colours.
 - `data/site.json`: global `links` and `meta`.
 
 The JSON is bundled at build time and validated on load and by `pnpm test`; an invalid file fails the build. Changes ship with a deploy.
 
-**Adding a school:** create `data/schools/<slug>.json` (the file name must equal `slug`), register it in `src/lib/content/schools.ts`, and optionally add a `<slug>` tab to the guides sheet.
+**Adding a school:** create `data/schools/<slug>.json` (the file name must equal `slug`), register it in `src/lib/content/schools.ts`, and optionally add a `<slug>` tab and `links`/`meta` rows to the private sheet.
 
-### Private guides (Google Sheets)
+### Private sheet (Google Sheets)
 
 One spreadsheet (`SHEET_ID_GUIDES`):
 
 - One tab per school slug: `group, group_icon, category, category_icon, title, link, description, enabled`. Row order is display order; `category` may be blank; `enabled` accepts TRUE/FALSE (blank means TRUE); icons are Lucide names.
+- `links` tab: `school, key, url, label` (blank school = global). Expected keys:
+  - `feedback` (global): the suggestion form; the About dialog's "Make a suggestion" reads `links.feedback`.
+  - `contact_us` (global): any "Contact us" UI reads `links.contact_us`.
+  - `smusa_feedback` (school `smu`): resolves the SMUSA Feedback Form bookmark (`"linkKey": "smusa_feedback"`).
 - Optional `meta` tab: `school, key, value` (blank school applies to every school), e.g. `smu, guides_note, <text>`.
+- `links` and `meta` are reserved tab names, not school slugs.
 - Tabs starting with `_` are ignored.
 
 Setup:
@@ -95,7 +100,7 @@ Setup:
 4. Share the spreadsheet with the service account email as Viewer and set `SHEET_ID_GUIDES` (the part of the sheet URL between `/d/` and `/edit`).
 5. Set `CONTENT_REVALIDATE_SECRET`.
 
-The sheet is cached in memory for 5 minutes and responses at the CDN (`s-maxage`). If the sheet is unreachable the last good data is served; with nothing cached, or without credentials, `guides` is empty and `guidesStatus` is `unavailable`. There is deliberately no bundled copy of the guides.
+The sheet is cached in memory for 5 minutes and responses at the CDN (`s-maxage`). If the sheet is unreachable the last good data is served; with nothing cached, or without credentials, `sheetStatus` is `unavailable`, `guides` is empty, sheet links are missing, and bookmarks whose `linkKey` does not resolve are left out of `bookmarks` (listed in `all.omittedBookmarks`). There is deliberately no bundled copy of the sheet.
 
 After editing the sheet, revalidate instead of waiting for the cache:
 
