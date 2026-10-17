@@ -8,13 +8,16 @@ import Calendar from './components/Calendar';
 import TodayEvent from './components/TodayEvent';
 import TodaysSummary from './components/TodaysSummary';
 
+const subscribeNoop = () => () => {};
+
 const TodaySummaryWidget: React.FC = function () {
   const { currentEvent, calendarEvents } = useDataContext();
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
+  // false during SSR and hydration, true once rendering on the client
+  const mounted = React.useSyncExternalStore(
+    subscribeNoop,
+    () => true,
+    () => false
+  );
 
   const today = moment();
 

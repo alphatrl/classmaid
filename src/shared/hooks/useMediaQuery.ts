@@ -1,19 +1,24 @@
 import React from 'react';
 
 function useMediaQuery(query: string): boolean {
-  const [matches, setMatches] = React.useState(false);
+  const subscribe = React.useCallback(
+    (onChange: () => void) => {
+      const media = window.matchMedia(query);
+      media.addEventListener('change', onChange);
+      window.addEventListener('resize', onChange);
+      return () => {
+        media.removeEventListener('change', onChange);
+        window.removeEventListener('resize', onChange);
+      };
+    },
+    [query]
+  );
 
-  React.useEffect(() => {
-    const media = window.matchMedia(query);
-    if (media.matches !== matches) {
-      setMatches(media.matches);
-    }
-    const listener = () => setMatches(media.matches);
-    window.addEventListener('resize', listener);
-    return () => window.removeEventListener('resize', listener);
-  }, [matches, query]);
-
-  return matches;
+  return React.useSyncExternalStore(
+    subscribe,
+    () => window.matchMedia(query).matches,
+    () => false
+  );
 }
 
 export default useMediaQuery;
