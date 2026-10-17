@@ -1,23 +1,4 @@
 declare namespace App {
-  /** For AppLibrary-related props */
-  declare namespace AppLibrary {
-    interface LibraryItem {
-      uid: string;
-      title: string;
-      shortcuts: ItemShortcut[];
-    }
-
-    interface LibraryItemShortcut {
-      id: string;
-      title: string;
-      logo: string;
-      color: string;
-      type: string;
-      link: string;
-      description?: string;
-    }
-  }
-
   /** For Calendar-related props */
   declare namespace Calendar {
     interface CalendarAppEvents {
