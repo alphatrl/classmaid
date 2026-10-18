@@ -1,26 +1,7 @@
 import React from 'react';
 
-import { Card, CardHeader } from '@/components/ui/card';
+import { CardHeader } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-
-export function CardTemplate({
-  className,
-  ...props
-}: React.ComponentProps<typeof Card>) {
-  return (
-    <Card
-      className={cn(
-        // neutralise shadcn Card defaults (flex, gap, border, py, text colour)
-        'block gap-0 border-0 py-0 text-inherit',
-        'box-border p-4 rounded-4xl bg-white dark:bg-black overflow-clip w-full h-full',
-        'shadow-xl',
-        'transition-all duration-200 ease-in hover:scale-105',
-        className
-      )}
-      {...props}
-    />
-  );
-}
 
 export function WidgetHeader({
   className,

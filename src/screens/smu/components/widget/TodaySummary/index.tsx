@@ -4,7 +4,6 @@ import React from 'react';
 
 import { useDataContext } from '@/screens/smu/contexts/DataContext';
 
-import { CardTemplate } from '../styled';
 import Calendar from './components/Calendar';
 import TodayEvent from './components/TodayEvent';
 import TodaysSummary from './components/TodaysSummary';
@@ -42,19 +41,21 @@ const TodaySummaryWidget: React.FC = function () {
     });
   }, [calendarEvents, today, mounted]);
 
-  // Render a placeholder until client mount to avoid hydration mismatch
-  // caused by moment() producing different times on server vs client
+  // Render nothing until client mount (the grid card is the placeholder) to
+  // avoid hydration mismatch caused by moment() producing different times on
+  // server vs client
   if (!mounted) {
-    return <CardTemplate className="flex flex-col" />;
+    return null;
   }
 
   return (
-    <Link href="/smu/calendar" className="no-underline">
-      <CardTemplate className="flex flex-col">
-        <TodayEvent currentEvent={currentEvent} />
-        <TodaysSummary todayMoment={today} numOfEvents={todayEvents.length} />
-        <Calendar events={todayEvents} />
-      </CardTemplate>
+    <Link
+      href="/smu/calendar"
+      className="no-underline box-border flex h-full flex-col p-4"
+    >
+      <TodayEvent currentEvent={currentEvent} />
+      <TodaysSummary todayMoment={today} numOfEvents={todayEvents.length} />
+      <Calendar events={todayEvents} />
     </Link>
   );
 };
