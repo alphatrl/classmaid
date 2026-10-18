@@ -1,5 +1,4 @@
 import moment from 'moment-timezone';
-import Link from 'next/link';
 import React from 'react';
 
 import { Button } from '@/components/ui/button';
@@ -101,9 +100,10 @@ const TodayEvent: React.FC<Props> = function (props) {
           "[&_svg:not([class*='size-'])]:size-6"
         )}
       >
-        <Link href="/smu/calendar">
+        {/* The whole widget is the link; a nested link is invalid HTML */}
+        <span aria-hidden="true">
           <Icon name="maximize-2" className="text-theme-500" />
-        </Link>
+        </span>
       </Button>
     </div>
   );
