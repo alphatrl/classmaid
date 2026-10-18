@@ -12,11 +12,11 @@ import { GridImage, GridText } from '../styled';
 import Section from './components/Section';
 
 interface Props {
-  apps: App.AppLibrary.LibraryItem[];
+  sections: Content.Section[];
 }
 
 const AppLibraryModal: React.FC<Props> = function (props) {
-  const { apps } = props;
+  const { sections } = props;
 
   return (
     <Modal>
@@ -33,8 +33,8 @@ const AppLibraryModal: React.FC<Props> = function (props) {
         <div className="px-6 py-4">
           <ModalTitle>App Library</ModalTitle>
 
-          {apps.map((library) => {
-            return <Section key={library.uid} library={library} />;
+          {sections.map((section) => {
+            return <Section key={section.id} section={section} />;
           })}
         </div>
       </ModalContent>

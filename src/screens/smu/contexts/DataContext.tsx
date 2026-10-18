@@ -1,9 +1,14 @@
 import axios from 'axios';
 import React from 'react';
 
+import { useContent } from '@/shared/contexts/ContentContext';
 import { getCurrentEvent, sortEventsByDate } from '@/shared/contexts/utils';
 
-import { IMPORTANT_DATES_URL, SCHOOL_TERM_URL } from '../constants';
+import {
+  DEFAULT_CALENDAR_KEYS,
+  getImportantDatesUrl,
+  getSchoolTermUrl,
+} from '../constants';
 
 interface ContextProps {
   schoolTerms: App.Calendar.SchoolTerm[];
@@ -27,32 +32,44 @@ export const DataWrapper: React.FC<React.PropsWithChildren> = (props) => {
     App.Calendar.ImportantDate[]
   >([]);
 
+  // The SMU keys apply until the content payload resolves; the URLs only
+  // change (and refetch) when a school uses different keys.
+  const { school } = useContent();
+  const calendar = school?.calendar ?? DEFAULT_CALENDAR_KEYS;
+  const schoolTermUrl = getSchoolTermUrl(calendar.semestersKey);
+  const importantDatesUrl = getImportantDatesUrl(calendar.importantDatesKey);
+
   /** Get school terms */
-  const getSchoolTerm = async () =>
-    axios(SCHOOL_TERM_URL)
+  React.useEffect(() => {
+    let ignore = false;
+    axios(schoolTermUrl)
       .then((response) => {
         const terms: App.Calendar.SchoolTerm[] = response.data.terms;
-        setSchoolTerms(terms);
+        if (!ignore) setSchoolTerms(terms);
       })
       .catch((error) => {
         console.error('sch terms:', error);
       });
+    return () => {
+      ignore = true;
+    };
+  }, [schoolTermUrl]);
 
   /** Get important dates */
-  const getImportantDates = async () =>
-    axios(IMPORTANT_DATES_URL)
+  React.useEffect(() => {
+    let ignore = false;
+    axios(importantDatesUrl)
       .then((response) => {
         const dates: App.Calendar.ImportantDate[] = response.data;
-        setImportantDates(dates);
+        if (!ignore) setImportantDates(dates);
       })
       .catch((error) => {
         console.error('important dates:', error);
       });
-
-  React.useEffect(() => {
-    getSchoolTerm();
-    getImportantDates();
-  }, []);
+    return () => {
+      ignore = true;
+    };
+  }, [importantDatesUrl]);
 
   /** Get today details */
   const currentEvent: App.Calendar.CurrentEvent | null = React.useMemo(() => {

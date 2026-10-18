@@ -5,6 +5,8 @@ import {
   useResponsiveLayout,
 } from 'react-grid-layout';
 
+import { useFeature } from '@/shared/contexts/ContentContext';
+
 import AppsCard from './components/AppsCard';
 import LibraryCard from './components/LibraryCard';
 import TodayCard from './components/TodayCard';
@@ -17,8 +19,22 @@ import {
   HomeCols,
 } from './constants/dashboard';
 import { DashboardKey } from './types';
+import { filterLayouts } from './utils/filterLayouts';
+
+const WITHOUT_LIBRARY = [DashboardKey.LIBRARY];
 
 const GridLayout: React.FC = function () {
+  // Drop the library slot (layout item and card) when the school has no
+  // library occupancy, so the grid leaves no empty cell
+  const showLibrary = useFeature('library_occupancy');
+  const layouts = React.useMemo(
+    () =>
+      showLibrary
+        ? DashboardLayouts
+        : filterLayouts(DashboardLayouts, WITHOUT_LIBRARY),
+    [showLibrary]
+  );
+
   const { width, containerRef, mounted } = useContainerWidth({
     measureBeforeMount: true,
   });
@@ -26,7 +42,7 @@ const GridLayout: React.FC = function () {
     width,
     breakpoints: DashboardBreakpoints,
     cols: HomeCols,
-    layouts: DashboardLayouts,
+    layouts,
   });
 
   const rowHeight = React.useMemo(
@@ -54,7 +70,7 @@ const GridLayout: React.FC = function () {
         >
           <TodayCard key={DashboardKey.TODAY} />
           <AppsCard key={DashboardKey.APPS} />
-          <LibraryCard key={DashboardKey.LIBRARY} />
+          {showLibrary && <LibraryCard key={DashboardKey.LIBRARY} />}
         </ReactGridLayout>
       )}
     </div>
