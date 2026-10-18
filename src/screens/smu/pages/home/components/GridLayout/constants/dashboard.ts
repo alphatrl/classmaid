@@ -63,7 +63,7 @@ export function getSquareRowHeight(width: number, cols: number): number {
 
 /** Grid container: width caps and gutters per viewport */
 export const DashboardContainerClassName = cn(
-  'w-full h-full max-w-96 mx-auto p-4',
+  'w-full h-full max-w-96 mx-auto px-4 py-8',
   'md:max-w-4xl md:px-4',
   'xl:max-w-7xl xl:px-12'
 );
